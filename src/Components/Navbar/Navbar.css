@@ -1,0 +1,86 @@
+nav {
+    font-family: 'Schibsted Grotesk', sans-serif;
+    height: 100px;
+    width: 100%;
+    max-width: 1440px;
+    padding: 0 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #0D0C120D;
+}
+
+.logo h1 {
+    /* border-bottom: 2px solid ; */
+    /* border-image-source: ; */
+    border-bottom: 2px solid;
+    border-image-source: linear-gradient(270deg, #FFDB58 0%, #801323 100%);
+}
+
+.nav-links ul {
+    width: 55.6%;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    font-size: 16px;
+}
+
+.nav-links ul li, .gtstd-btn {
+    cursor: pointer
+}
+
+.dark-bg-btn{
+    padding: 20px 32px;
+    border-radius: 10px;
+    background-color: rgba(128, 19, 35, 1);
+    outline: none;
+    border: none;
+    box-shadow: 0px 0px 5px 0px rgba(255, 219, 88, 1) inset;
+    color: white;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 100%;
+    letter-spacing: 0%;
+}
+
+.dropdown {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+@media screen and (max-width: 1200px)  {
+    nav {
+        padding: 0 40px;
+    }
+
+    .gtstd-btn {
+        padding: 20px;
+    }
+
+}
+
+@media screen and (max-width: 1026px)  {
+    .nav-links ul {
+        gap: 10px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .nav-links ul {
+        gap: 5px;
+    }
+}
+
+@media screen and (max-width: 868px)  {
+    .nav-links ul {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 425px)  {
+    nav {
+        display: none;
+    }
+}
