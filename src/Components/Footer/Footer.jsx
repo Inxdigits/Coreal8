@@ -1,5 +1,9 @@
 import React from 'react';
 import './Footer.css';
+import yt from '../../Assets/yt-logo.svg';
+import ig from '../../Assets/ig-logo.svg';
+import x from '../../Assets/x-logo.svg';
+import li from "../../Assets/linkedin-logo.svg";
 
 const Footer = () => {
   return (
@@ -8,8 +12,8 @@ const Footer = () => {
         <div className="newsletter-text">
           <h1>Join the Coreal8 Circle</h1>
           <span>
-            Get exclusive leadership content, early access to new courses, and
-            podcast updates.
+            Get exclusive leadership content, early access to new courses,{" "}
+            <br /> and podcast updates.
           </span>
         </div>
         <form action="">
@@ -18,7 +22,7 @@ const Footer = () => {
         </form>
       </div>
 
-      <div className="menu">
+      <div className="footer-menu">
         <div className="top">
           <ul className="footer-nav">
             <li className="nav-link">About</li>
@@ -31,10 +35,18 @@ const Footer = () => {
             <li className="nav-link">Terms of Service</li>
           </ul>
           <div className="socials">
-            <button>YT</button>
-            <button>IG</button>
-            <button>X</button>
-            <button>LI</button>
+            <button>
+              <img src={yt} alt="" />
+            </button>
+            <button>
+              <img src={ig} alt="" />
+            </button>
+            <button>
+              <img src={x} alt="" />
+            </button>
+            <button>
+              <img src={li} alt="" />
+            </button>
           </div>
         </div>
         <div className="bottom">
