@@ -1,0 +1,166 @@
+.services-container {
+    background-color: rgba(128, 19, 35, 0.05);
+    padding: 80px;
+}
+
+/* .service-header {
+    padding: 20px 0;
+} */
+
+.service-header span {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 600;   
+    font-size: 16px;
+    padding: 20px 0;
+    border-top: 5px solid;
+    border-image: linear-gradient(90deg, #801323 0%, #FFDB58 100%);
+    border-image-slice: 1;
+}
+
+.service-writeup {
+    margin: 50px 0;
+}
+
+.service-writeup h1 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    font-size: 40px;
+    margin: 0;
+}
+
+.service-writeup p {
+    font-family: "Schibsted Grotesk", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.services {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.services .card {
+    font-family: "Schibsted Grotesk", sans-serif;
+    background-color: rgba(255, 255, 255, 1);
+    line-height: 100%;
+    padding: 50px 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.services img {
+    margin-bottom: 12px;
+}
+
+.services .card h2 {
+    font-weight: 600;
+    font-size: 20px;
+    margin: 0;
+}
+
+.services .card p {
+    color: rgba(13, 12, 18, 0.5);
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.services-button button {
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+@media screen and (max-width: 860px) {
+    .services-container {
+        padding: 40px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .services-container {
+        text-align: center;
+    }
+    
+    .service-header span {
+        font-size: 14px;
+    }
+    
+    .service-writeup {
+        margin: 32px 0;
+    }
+    
+    .service-writeup h1 {
+        font-size: 24px;
+    }
+    
+    .service-writeup p {
+        font-size: 14px;
+    }
+    
+    .services {
+        gap: 16px;
+    }
+    
+    .services .card {
+        padding: 30px 15px;
+    }
+    
+    .services img {
+        margin-bottom: 12px;
+    }
+    
+    .services .card h2 {
+        font-size: 16px;
+    }
+    
+    .services .card p {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .services-container {
+        padding: 20px;
+    }
+
+    .service-header {
+        margin-top: 32px;
+    }
+    
+    .service-header span {
+        font-size: 12px;
+    }
+    
+    .service-writeup {
+        margin: 32px 0;
+    }
+    
+    .service-writeup h1 {
+        font-size: 20px;
+    }
+    
+    .service-writeup p {
+        font-size: 12px;
+    }
+    
+    .services {
+        gap: 16px;
+        grid-template-columns: repeat(1, 1fr);
+    }
+    
+    .services .card {
+        padding: 20px 15px;
+    }
+    
+    .services img {
+        margin-bottom: 12px;
+    }
+    
+    .services .card h2 {
+        font-size: 14px;
+    }
+    
+    .services .card p {
+        font-size: 12px;
+    }
+}

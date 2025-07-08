@@ -1,0 +1,188 @@
+.courses-container {
+    /* background-color: #8013230D; */
+    padding: 80px;
+    gap: 50px;
+}
+
+.courses-header span {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 600;   
+    font-size: 16px;
+    padding: 20px 0;
+    border-top: 5px solid;
+    border-image: linear-gradient(90deg, #801323 0%, #FFDB58 100%);
+    border-image-slice: 1;
+}
+
+.courses-writeup {
+    margin: 50px 0;
+}
+
+.courses-writeup h1 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    font-size: 40px;
+    margin: 0;
+}
+
+.courses-writeup p {
+    max-width: 60%;
+    font-family: "Schibsted Grotesk",sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.featured-button p {
+    max-width: 152px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: #8013230D;
+}
+
+.courses {
+    display: grid;
+    grid-template-columns: repeat(3, 32%);
+    gap: 24px;
+    text-align: center;
+}
+
+.courses-button button {
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+.courses-preview {
+    box-shadow: 0px 10px 50px 0px #0000001A;
+    border-top: 1px solid;
+    border-image: linear-gradient(90deg, #801323 0%, #FFDB58 100%);
+    border-image-slice: 1;
+    padding: 20px;
+    text-align: left;
+}
+
+.courses-preview-img {
+    max-height: 215px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.courses-preview-writeup p {
+    font-family: "Schibsted Grotesk";
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.courses-preview-writeup span {
+    font-family: "Schibsted Grotesk";
+    font-weight: 400;
+    font-size: 16px;
+    opacity: 0.5;
+}
+
+.podcardbottom {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.extra-courses-preview {
+    display: none;
+}
+
+.podcardbottom span {
+    font-family: "Open Sans";
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.view-course-link {
+    color: #000000;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+@media screen and (max-width: 1120px) {
+    .courses-preview-writeup p {
+        font-size: 18px;
+    }
+    
+    .courses-preview-writeup span {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 944px) {
+    .courses-container {
+        text-align: center;
+    }
+    
+    .courses-header span {
+        font-size: 14px;
+    }
+    
+    .courses-writeup {
+        margin: 32px 0;
+    }
+    
+    .courses-writeup h1 {
+        font-size: 24px;
+    }
+    
+    .courses-writeup p {
+        font-size: 14px;
+        max-width: 100%;
+    }
+
+    .courses {
+        display: grid;
+        grid-template-columns: repeat(2, 48.5%);
+        gap: 16px;
+        text-align: center;
+    }
+
+    .podcardbottom {
+        margin-top: 10px;
+        flex-direction: column;
+        align-items: start;
+        gap: 10px;
+    }
+    
+    .extra-courses-preview {
+        display: block;
+    }
+    
+    .courses-preview {
+        padding: 10px;
+    }
+
+    .courses-preview-writeup p {
+        font-size: 16px;
+    }
+
+    .courses-preview-writeup span {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 744px) {
+    .courses-container {
+        padding: 40px 20px;
+    }
+    
+}
+
+@media screen and (max-width: 425px) {
+    .courses-container {
+        padding: 40px 20px;
+    }
+
+    .courses {
+        grid-template-columns: repeat(1, 100%);
+    }
+
+    .podcardbottom {
+        flex-direction: row;
+    }
+}

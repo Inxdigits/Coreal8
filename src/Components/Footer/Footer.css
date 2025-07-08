@@ -173,11 +173,10 @@ form button {
     .footer-nav {
         text-align: left;
         flex-direction: column;
-        /* display: block; */
+        align-items: start;
     }
 
     .footer-nav .nav-link {
         text-align: left;
-        align-items: start;
     }
 }

@@ -31,6 +31,10 @@
     margin-bottom: 12px;
 }
 
+.overview-gtstd-menu {
+    left: 0;
+}
+
 @media screen and (max-width: 1240px) {
     .overview-writeup h2 {
         font-size: 42px;
@@ -74,6 +78,12 @@
     .right-side, .overview-image { 
         /* border: 1px solid darkblue; */
         width: 100%;
+    }
+}
+
+@media screen and (max-width: 930px) {
+    .overview-show {
+        display: block;
     }
 }
 
