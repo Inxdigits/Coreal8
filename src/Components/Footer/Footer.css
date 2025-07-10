@@ -15,7 +15,6 @@ footer {
 }
 
 .newsletter-text {
-    /* width: 50%; */
     margin: 32px auto;
 }
 
@@ -37,20 +36,19 @@ footer {
     text-align: center;
 }
 
-.newsletter form {
-    /* border: 1px solid purple; */
+.newsletter .footer-form {
+    border: 1px solid purple;
     margin: 0 auto;
     margin-top: 20px;
-    /* width: 60%; */
-    display: flex;
-    justify-content: center;
+    width: 70%;
+    display: grid;
+    grid-template-columns: 70% 30%;
     gap: 10px;
     margin-top: 20px;
 }
 
-form input {
-    /* width: 70%; */
-    min-width: 355px;
+.newsletter .footer-form input {
+    width: 100%;
     background: transparent;
     padding: 20px;
     outline: none;
@@ -59,9 +57,8 @@ form input {
     box-shadow: 0px 10px 50px 0px #00000026;
 }
 
-form button {
-    /* width: 30%; */
-    min-width: 183px;
+.newsletter .footer-form button {
+    width: 100%;
     outline: none;
     border: none;
     padding: 20px 32px;
@@ -137,12 +134,8 @@ form button {
         font-size: 14px;
     }
 
-    .newsletter form {
-        flex-direction: column;
-    }
-
-    form input {
-        min-width: 300px;
+    .newsletter .footer-form {
+        width: 80%;
     }
 }
 
@@ -159,13 +152,23 @@ form button {
         margin: 24px auto;
     }
     
-    form input{
-        min-width: 240px;
+    .newsletter .footer-form {
+        width: 90%;
     }
 
 }
 
 @media screen and (max-width: 650px) {
+    .newsletter .footer-form {
+        width: auto;
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .newsletter .footer-form button {
+        max-width: 140px;
+        margin: 0 auto;
+    }
+
     .top {
         align-items: start;
     }

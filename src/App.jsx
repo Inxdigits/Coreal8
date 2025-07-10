@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import HomePage from './Components/HomePage/HomePage.jsx';
-import Contact from './Components/HomePage/Components/Contact/Contact.jsx';
+import Contact from './Components/Contact/Contact.jsx';
 import './App.css';
 
 function App() {

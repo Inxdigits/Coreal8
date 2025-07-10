@@ -18,9 +18,9 @@ const Navbar = () => {
 
   return (
     <nav>
-      <div className="logo">
+      <Link to='/' className="logo">
         <img src={logo} alt="logo" />
-      </div>
+      </Link>
 
       <ul className={isMenuOpen ? "active" : "inactive"}>
         <li className="nav-link">About</li>

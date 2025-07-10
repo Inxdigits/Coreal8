@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from '../../../Navbar/Navbar.jsx';
-import Footer from '../../../Footer/Footer.jsx';
+import Navbar from '../Navbar/Navbar.jsx';
+import Footer from '../Footer/Footer.jsx';
 import './Contact.css';
-import contactIcon from '../HomeAssets/contact-icon.jpg';
-import phoneIcon from '../HomeAssets/phone-icon.svg';
-import emailIcon from '../HomeAssets/email-icon.svg';
-import chatIcon from '../HomeAssets/chat-icon.svg';
-import thankYouIcon from '../HomeAssets/thankyou.png';
+// import contactIcon from '../HomeAssets/contact-icon.jpg';
+import phoneIcon from '../../Assets/ContactPageAssets/phone-icon.svg';
+import emailIcon from '../../Assets/ContactPageAssets/email-icon.svg';
+import chatIcon from '../../Assets/ContactPageAssets/chat-icon.svg';
+import thankYouIcon from '../../Assets/ContactPageAssets/thankyou.png';
 
 const Contact = () => {
   const [formData, setFormData] = useState({

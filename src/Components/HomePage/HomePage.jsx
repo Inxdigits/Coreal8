@@ -23,7 +23,7 @@ const HomePage = () => {
         <Courses />
         <Leadership />
 
-        <Footer />
+        {/* <Footer /> */}
     </div>
   );
 };

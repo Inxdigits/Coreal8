@@ -16,7 +16,7 @@ const Footer = () => {
             <br /> and podcast updates.
           </span>
         </div>
-        <form action="">
+        <form action="" className="footer-form">
           <input type="email" name="" id="" placeholder="Email Address" />
           <button type="submit">Subscribe</button>
         </form>

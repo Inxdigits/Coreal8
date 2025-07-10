@@ -2,7 +2,7 @@ import React from 'react';
 import './Leadership.css';
 
 const Leadership = () => {
-  const randomWords = [
+  const leadershipWords = [
     "Career", "Life", "Executive", "Business", "Health & Wellness",
     "Finance", "Performance", "Academic", "Entrepreneurship",
     "Spiritual or Faith-Based", "Community", "Youth"
@@ -33,9 +33,9 @@ const Leadership = () => {
             velit interdum, ac aliquet odio mattis.
           </p>
         </div>
-        <div className="random-words">
+        <div className="leadership-words">
           <div className="word-container">
-            {randomWords.map((word, index) => (
+            {leadershipWords.map((word, index) => (
               <Word key={index} word={word} />
             ))}
           </div>
