@@ -19,7 +19,7 @@ const HomePage = () => {
         <AboutUs />
         <StoryBehind />
         <Services />
-        <Trust />
+        {/* <Trust /> */}
         <Podcast />
         <Courses />
         <Leadership />

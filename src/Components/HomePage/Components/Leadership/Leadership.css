@@ -9,7 +9,14 @@
     gap: 50px;
 }
 
+.leadership-header {
+    text-align: center;
+    margin: 0 auto;
+}
+
 .leadership-header span {
+    text-align: center;
+    margin: 0 auto;
     font-family: "Open Sans", sans-serif;
     font-weight: 600;   
     font-size: 16px;
