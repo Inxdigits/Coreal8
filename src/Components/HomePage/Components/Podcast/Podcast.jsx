@@ -7,44 +7,44 @@ import legacy from "../../Assets/legacy-img.png";
 import arrow from '../../Assets/right-arrow.svg';
 
 const Podcast = () => {
-    const episodes = [
-        {
-            img: noisy,
-            title: "Redefining Leadership in a Noisy World"
-        },
-        {
-            img: survival,
-            title: "From Survival to Strategy",
-            album: "- Beyond the Boardroom"
-        },
-        {
-            img: legacy,
-            title: "How to Build a Legacy That Lives After You"
-        }
-        
-    ]
+  const episodes = [
+      {
+          img: noisy,
+          title: "Redefining Leadership in a Noisy World"
+      },
+      {
+          img: survival,
+          title: "From Survival to Strategy",
+          album: "- Beyond the Boardroom"
+      },
+      {
+          img: legacy,
+          title: "How to Build a Legacy That Lives After You"
+      }
+      
+  ]
 
-    const Preview = ({img, title, album}) => {
-        return (
-          <div className="preview">
-            <div className="preview-img">
-              <img src={img} alt="" />
-            </div>
-            <div className="preview-writeup">
-              <p>{title}</p>
-              <span>{album}</span>
-            </div>
-            <a>
-              <img src={arrow} alt="" />
-            </a>
+  const Preview = ({img, title, album}) => {
+      return (
+        <div className="preview">
+          <div className="preview-img">
+            <img src={img} alt="" />
           </div>
-        );
-    };
+          <div className="preview-writeup">
+            <p>{title}</p>
+            <span>{album}</span>
+          </div>
+          <a>
+            <img src={arrow} alt="" />
+          </a>
+        </div>
+      );
+  };
 
   return (
     <div className="podcast-container">
       <div className="podcast-header">
-        <span>Podcast Episodes</span>
+        <span>PODCAST EPISODES</span>
       </div>
       <div className="podcast-writeup">
         <h1>The Coreal8 Podcast</h1>

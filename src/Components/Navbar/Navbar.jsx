@@ -13,17 +13,52 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const toggleMenu = () => setIsMenuOpen((prev) => !prev);
 
+  const servicesDropdown = useDropdown();
   const counselingDropdown = useDropdown();
   const mentorshipDropdown = useDropdown();
 
   return (
     <nav>
-      <Link to='/' className="logo">
+      <Link to="/" className="logo">
         <img src={logo} alt="logo" />
       </Link>
 
       <ul className={isMenuOpen ? "active" : "inactive"}>
         <li className="nav-link">About</li>
+
+        <li className="nav-link nav-services">
+          <NavDropdown
+            label="Services"
+            isOpen={servicesDropdown.isOpen}
+            toggle={servicesDropdown.toggle}
+            refProp={servicesDropdown.ref}
+          >
+            <div className="nav-services-dropdown">
+              <div className="nav-services-options">
+                <h3>Individual Counseling</h3>
+                <span>
+                  Anxiety & depression, self-esteem issues, trauma or abuse,
+                  stress management, grief and loss etc...
+                </span>
+              </div>
+              <div className="nav-services-options">
+                <h3>Couples/Relationship Counseling</h3>
+                <span>
+                  Improve communication, Resolve conflicts, Heal from
+                  infidelity, Strengthen emotional connection
+                </span>
+              </div>
+              <div className="nav-services-options">
+                <h3>Family Counseling</h3>
+                <span>
+                  Parenting challenges, Sibling rivalry, Divorce or separation
+                  impact, Blended family adjustments
+                </span>
+              </div>
+              
+            </div>
+          </NavDropdown>
+        </li>
 
         <li className="nav-link counsel">
           <NavDropdown
@@ -92,9 +127,7 @@ const Navbar = () => {
             </div>
           </NavDropdown>
         </li>
-        <li className="nav-link">Podcast</li>
         <li className="nav-link">Courses</li>
-        <li className="nav-link">Blog</li>
         <li className="nav-link mentor">
           <NavDropdown
             label="Mentorship"
@@ -115,6 +148,8 @@ const Navbar = () => {
             </div>
           </NavDropdown>
         </li>
+        <li className="nav-link">Podcast</li>
+        <li className="nav-link">Blog</li>
 
         <li className="nav-link">
           <Link to="/contact">Contact</Link>

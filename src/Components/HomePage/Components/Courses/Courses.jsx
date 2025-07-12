@@ -7,46 +7,46 @@ import course3 from '../../Assets/third-course.png';
 import openicon from '../../Assets/open-icon.svg';
 
 const Courses = () => {
-    const podcasts = [
-            {
-                img: course1,
-                title: "The Visionary Leader's Blueprint",
-                writeup: "Learn how to lead with clarity, courage, and conviction in today’s dynamic world."
-            },
-            {
-                img: course2,
-                title: "The Visionary Leader's Blueprint",
-                writeup: "Learn how to lead with clarity, courage, and conviction in today’s dynamic world.",
-            },
-            {
-                img: course3,
-                title: "The Visionary Leader's Blueprint",
-                writeup: "Learn how to lead with clarity, courage, and conviction in today’s dynamic world."
-            }
-            
-        ]
-    
-        const PodcastCard = ({img, title, writeup}) => {
-            return (
-              <div className="courses-preview">
-                <div className="courses-preview-img">
-                  <img src={img} alt="" />
-                </div>
-                <div className="courses-preview-writeup">
-                  <p>{title}</p>
-                  <span>{writeup}</span>
-                </div>
-                <div className='podcardbottom'>
-                    <span>
-                    ₦45,000
-                    </span>
-                    <Link to='/contact' className="view-course-link">View course
-                        <img src={openicon} />
-                    </Link>
-                </div>
-              </div>
-            );
-        };
+  const podcasts = [
+    {
+      img: course1,
+      title: "The Visionary Leader's Blueprint",
+      writeup: "Learn how to lead with clarity, courage, and conviction in today’s dynamic world."
+    },
+    {
+      img: course2,
+      title: "The Visionary Leader's Blueprint",
+      writeup: "Learn how to lead with clarity, courage, and conviction in today’s dynamic world.",
+    },
+    {
+      img: course3,
+      title: "The Visionary Leader's Blueprint",
+      writeup: "Learn how to lead with clarity, courage, and conviction in today’s dynamic world."
+    }
+      
+  ]
+  
+  const PodcastCard = ({ img, title, writeup }) => {
+    return (
+      <div className="courses-preview">
+        <div className="courses-preview-img">
+          <img src={img} alt="" />
+        </div>
+        <div className="courses-preview-writeup">
+          <p>{title}</p>
+          <span>{writeup}</span>
+        </div>
+        <div className="podcardbottom">
+          <span>₦45,000</span>
+          <Link to="/contact" className="view-course-link">
+            View course
+            <img src={openicon} />
+          </Link>
+        </div>
+      </div>
+    );
+  };
+  
   return (
     <div className="courses-container">
       <div className="courses-header">

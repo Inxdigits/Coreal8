@@ -8,6 +8,7 @@ import Trust from "./Components/Trust/Trust.jsx";
 import Podcast from "./Components/Podcast/Podcast.jsx";
 import Courses from "./Components/Courses/Courses.jsx";
 import Leadership from "./Components/Leadership/Leadership.jsx";
+import Blogs from "./Components/Blogs/Blogs.jsx";
 import Footer from '../Footer/Footer.jsx';
 
 const HomePage = () => {
@@ -22,8 +23,9 @@ const HomePage = () => {
         <Podcast />
         <Courses />
         <Leadership />
+        <Blogs />
 
-        {/* <Footer /> */}
+        <Footer />
     </div>
   );
 };
