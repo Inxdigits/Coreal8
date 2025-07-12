@@ -4,7 +4,7 @@ import "./Blogs.css";
 import blog1 from "../../Assets/blog1.png";
 import blog2 from "../../Assets/blog2.png";
 import blog3 from "../../Assets/blog3.png";
-import blog4 from "../../Assets/blog4-new.png";
+import blog4 from "../../Assets/blog4.png";
 import { IoOpenOutline } from "react-icons/io5";
 
 const Blogs = () => {

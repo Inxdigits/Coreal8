@@ -57,7 +57,8 @@
 }
 
 .blog:first-of-type .blog-img img,
-.blog:last-of-type .blog-img img {
+/* .blog:last-of-type .blog-img img  */
+{
     max-width: 100%;
 }
 

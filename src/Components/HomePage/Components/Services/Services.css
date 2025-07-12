@@ -1,6 +1,7 @@
 .services-container {
     background-color: rgba(128, 19, 35, 0.05);
     padding: 80px;
+    text-align: center;
 }
 
 /* .service-header {
