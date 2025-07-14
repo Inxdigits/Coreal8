@@ -9,6 +9,7 @@ import Podcast from "./Components/Podcast/Podcast.jsx";
 import Courses from "./Components/Courses/Courses.jsx";
 import Leadership from "./Components/Leadership/Leadership.jsx";
 import Blogs from "./Components/Blogs/Blogs.jsx";
+import Testimonial from "./Components/Testimonial/Testimonial.jsx";
 import Footer from '../Footer/Footer.jsx';
 
 const HomePage = () => {
@@ -19,11 +20,12 @@ const HomePage = () => {
         <AboutUs />
         <StoryBehind />
         <Services />
-        {/* <Trust /> */}
+        <Trust />
         <Podcast />
         <Courses />
         <Leadership />
         <Blogs />
+        <Testimonial />
 
         <Footer />
     </div>

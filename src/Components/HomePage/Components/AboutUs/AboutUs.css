@@ -14,6 +14,12 @@
     }
 }
 
+@media screen and (max-width: 768px) {
+    .aboutus-container {
+        padding: 20px;
+    }
+}
+
 @media screen and (max-width: 415px) {
     .aboutus-container {
         padding: 10px;

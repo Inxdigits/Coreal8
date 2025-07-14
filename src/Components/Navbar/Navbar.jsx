@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 import { useDropdown } from "../../hooks/useDropdown";
+import './Dropdown.css';
 import NavDropdown from "./NavDropdown";
 import logo from "../../Assets/coreal8-logo.png";
 import GetStartedbtn from "../Get-Started-btn/Get-Started-btn.jsx";
@@ -26,124 +27,67 @@ const Navbar = () => {
       <ul className={isMenuOpen ? "active" : "inactive"}>
         <li className="nav-link">About</li>
 
-        <li className="nav-link nav-services">
+        <li className="nav-link nav-services dropdown-menu">
           <NavDropdown
             label="Services"
             isOpen={servicesDropdown.isOpen}
             toggle={servicesDropdown.toggle}
             refProp={servicesDropdown.ref}
           >
-            <div className="nav-services-dropdown">
-              <div className="nav-services-options">
-                <h3>Individual Counseling</h3>
-                <span>
-                  Anxiety & depression, self-esteem issues, trauma or abuse,
-                  stress management, grief and loss etc...
-                </span>
+            <div className="nav-services-dropdown navdropdown">
+              <div className="nav-services-options navoptions">
+                <h3>Counseling & Engagement</h3>
               </div>
-              <div className="nav-services-options">
-                <h3>Couples/Relationship Counseling</h3>
-                <span>
-                  Improve communication, Resolve conflicts, Heal from
-                  infidelity, Strengthen emotional connection
-                </span>
+              <div className="nav-services-options navoptions">
+                <h3>Corporate Consulting & Training</h3>
               </div>
-              <div className="nav-services-options">
-                <h3>Family Counseling</h3>
-                <span>
-                  Parenting challenges, Sibling rivalry, Divorce or separation
-                  impact, Blended family adjustments
-                </span>
+              <div className="nav-services-options navoptions">
+                <h3>Personal Brand Development</h3>
               </div>
-              
             </div>
           </NavDropdown>
         </li>
 
-        <li className="nav-link counsel">
+        <li className="nav-link dropdown-menu counsel">
           <NavDropdown
             label="Counseling"
             isOpen={counselingDropdown.isOpen}
             toggle={counselingDropdown.toggle}
             refProp={counselingDropdown.ref}
           >
-            <div className="counseling-dropdown">
-              <div className="counseling-options">
+            <div className="counseling-dropdown navdropdown">
+              <div className="counseling-options navoptions">
                 <h3>Individual Counseling</h3>
-                <span>
-                  Anxiety & depression, self-esteem issues, trauma or abuse,
-                  stress management, grief and loss etc...
-                </span>
               </div>
-              <div className="counseling-options">
+              <div className="counseling-options navoptions">
                 <h3>Couples/Relationship Counseling</h3>
-                <span>
-                  Improve communication, Resolve conflicts, Heal from
-                  infidelity, Strengthen emotional connection
-                </span>
               </div>
-              <div className="counseling-options">
+              <div className="counseling-options navoptions">
                 <h3>Family Counseling</h3>
-                <span>
-                  Parenting challenges, Sibling rivalry, Divorce or separation
-                  impact, Blended family adjustments
-                </span>
               </div>
-              <div className="counseling-options">
+              <div className="counseling-options navoptions">
                 <h3>Group Counseling</h3>
-                <span>
-                  Addiction recovery, Grief support, Social skills development,
-                  Coping with shared issues (e.g., chronic illness...
-                </span>
-              </div>
-              <div className="counseling-options">
-                <h3>Career Counseling</h3>
-                <span>
-                  Career choice or change, Workplace stress, Burnout, Work-life
-                  balance...
-                </span>
-              </div>
-              <div className="counseling-options">
-                <h3>Trauma Counseling</h3>
-                <span>
-                  PTSD, Domestic violence, Childhood abuse, Accident or disaster
-                  recovery...
-                </span>
-              </div>
-              <div className="counseling-options">
-                <h3>Addiction Counseling</h3>
-                <span>
-                  Substance abuse, Gambling addiction, Internet or phone
-                  addiction, Recovery support...
-                </span>
-              </div>
-              <div className="counseling-options">
-                <h3>Crisis Counseling</h3>
-                <span>
-                  Loss of a loved one, Sudden job loss, Suicidal thoughts, Major
-                  life transitions...
-                </span>
               </div>
             </div>
           </NavDropdown>
         </li>
         <li className="nav-link">Courses</li>
-        <li className="nav-link mentor">
+        <li className="nav-link dropdown-menu mentor">
           <NavDropdown
             label="Mentorship"
             isOpen={mentorshipDropdown.isOpen}
             toggle={mentorshipDropdown.toggle}
             refProp={mentorshipDropdown.ref}
           >
-            <div className="mentor-dropdown">
-              <div className="mentor-options">
+            <div className="mentor-dropdown navdropdown">
+              <div className="mentor-options navoptions">
                 <h3>Mentorship</h3>
-                <span>Career, life, personal brand, etc</span>
+                {/* <span>Career, life, personal brand, etc</span> */}
               </div>
-              <div className="midline"></div>
-              <div className="mentor-options">
+              {/* <div className="midline"></div> */}
+              <div className="mentor-options navoptions">
                 <h3>Coaching</h3>
-                <span>Career, life, personal brand, etc</span>
+                {/* <span>Career, life, personal brand, etc</span> */}
               </div>
             </div>
           </NavDropdown>
@@ -155,22 +99,24 @@ const Navbar = () => {
           <Link to="/contact">Contact</Link>
         </li>
         <li className="nav-link">
-          <img src={cartIcon} alt="" />
+          <img src={cartIcon} alt="Cart" />
         </li>
         <li className="nav-link">
-          <img src={profileIcon} alt="" />
+          <img src={profileIcon} alt="Login" />
         </li>
 
         <div className="navbtn">
-          <li className="nav-link hidden-button">
-            <GetStartedbtn />
+          <li className="nav-link">
+            <div className="hidden-button gradient-button-container">
+              <button className="gradient-button">Book a Session</button>
+            </div>
           </li>
         </div>
       </ul>
 
       <div className="menu">
-        <div className="showing-button">
-          <GetStartedbtn />
+        <div className="showing-button gradient-button-container">
+          <button className="gradient-button">Book a Session</button>
         </div>
         <img src={menuIcon} onClick={toggleMenu} alt="menu toggle" />
       </div>

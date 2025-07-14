@@ -9,7 +9,7 @@ const Overview = () => {
     <div className="overview">
       <div className="left-side">
         <div className="overview-writeup">
-          <p>&gt;&gt; LEADERSHIP. LIFESTYLE. LEGACY</p>
+          <p>&gt;&gt; Transforming Minds. Amplifying Impact.</p>
           <h2>Unlock Your Full Potential.</h2>
           <span>
             From personal growth to corporate excellence, we provide tailored,

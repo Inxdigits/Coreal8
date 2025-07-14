@@ -3,6 +3,9 @@
     background-color: rgba(128, 19, 35, 1);
     text-align: center;
     padding: 40px 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
 }
 
 .trust-container h2 {
@@ -10,32 +13,77 @@
     font-size: 20px;
 }
 
-.insti-flex {
-    padding-top: 32px;
-    display: flex;
+.partners {
+    display: grid;
+    grid-template-columns: repeat(3, 32%);
+    flex-wrap: wrap;
     gap: 12px;
-    justify-content: space-between;
 }
 
-.insti-logos {
-    width: 20%;
+.card {
+    background-color: #F2F2F20D;
     padding: 20px 10px;
     border-radius: 5px;
-    background-color: rgba(242, 242, 242, 0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+.partner-card-text h2 {
+    font-family: "Schibsted Grotesk", sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+}
+
+.partner-card-text p {
     font-family: "Open Sans", sans-serif;
     font-weight: 400;
-    font-size: 16px;
-    
+    font-size: 14px;
+    opacity: 0.9;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+}
+
+.partner-button-container {
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.partner-button {
+    width: 100%;
+    color: #ffffff;
+    padding: 20px 30px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: rgba(128, 19, 35, 1);
+    box-shadow: 0px 0px 5px 0px #FFDB58 inset;
 }
 
 @media screen and (max-width: 768px) {
     .trust-container {
         padding: 40px 40px;
     }
+
+    .partners {
+        grid-template-columns: repeat(2, 50%);
+    }
+
+    .card:last-of-type {
+        grid-column: 1 / span -1;
+        justify-self: center;
+    }
 }
 
 @media screen and (max-width: 530px) {
     .trust-container {
         padding: 40px 20px;
+    }
+
+    .partners {
+        grid-template-columns: repeat(1, 99%);
     }
 }

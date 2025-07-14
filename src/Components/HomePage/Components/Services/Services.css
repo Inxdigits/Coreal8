@@ -2,6 +2,9 @@
     background-color: rgba(128, 19, 35, 0.05);
     padding: 80px;
     text-align: center;
+    width: 100%;
+    /* max-width: 1280px;
+    overflow: hidden; */
 }
 
 /* .service-header {
@@ -26,7 +29,7 @@
     font-family: "Montserrat", sans-serif;
     font-weight: 700;
     font-size: 40px;
-    margin: 0;
+    /* margin: 0; */
 }
 
 .service-writeup p {
@@ -37,33 +40,70 @@
 
 .services {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 32%);
     gap: 24px;
 }
 
 .services .card {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
     font-family: "Schibsted Grotesk", sans-serif;
     background-color: rgba(255, 255, 255, 1);
     line-height: 100%;
     padding: 50px 20px;
     border-radius: 10px;
     text-align: center;
+    transition: all 0.3s ease-in-out;
 }
 
-.services img {
+.services .card:hover {
+    box-shadow: 0px 0px 30px 0px #00000026;
+}
+
+/* .session-card-img {
     margin-bottom: 12px;
-}
+} */
 
-.services .card h2 {
+.session-card-text h2 {
     font-weight: 600;
     font-size: 20px;
     margin: 0;
 }
 
-.services .card p {
+.session-card-text p {
     color: rgba(13, 12, 18, 0.5);
+    font-family: "Schibsted Grotesk", sans-serif;
     font-weight: 400;
     font-size: 16px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+}
+
+.gradient-button {
+    padding: 20px 49px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: white;
+    font-family: "Schibsted Grotesk", sans-serif;
+    /* font-weight: 500;
+    font-size: 16px; */
+    transition: all 0.3s ease-in-out;
+}
+
+.gradient-button:hover {
+    background-color: aliceblue;
+}
+
+.card-button-container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.card-button {
+    width: 100%;
 }
 
 .services-button button {
@@ -71,17 +111,13 @@
     margin-top: 50px;
 }
 
-@media screen and (max-width: 860px) {
+@media screen and (max-width: 1024px) {
     .services-container {
         padding: 40px;
     }
 }
 
 @media screen and (max-width: 768px) {
-    .services-container {
-        text-align: center;
-    }
-    
     .service-header span {
         font-size: 14px;
     }
@@ -99,11 +135,13 @@
     }
     
     .services {
+        grid-template-columns: repeat(2, 50%);
         gap: 16px;
     }
     
     .services .card {
         padding: 30px 15px;
+        margin: 0 auto;
     }
     
     .services img {

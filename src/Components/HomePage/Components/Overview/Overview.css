@@ -1,8 +1,8 @@
 .overview {
     padding: 80px;
     padding-bottom: 110px;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 50px;
     /* flex-wrap: nowrap; */
 } 
@@ -82,6 +82,9 @@
 }
 
 @media screen and (max-width: 930px) {
+    .overview {
+        grid-template-columns: repeat(1, 100%);
+    }
     .overview-show {
         display: block;
     }

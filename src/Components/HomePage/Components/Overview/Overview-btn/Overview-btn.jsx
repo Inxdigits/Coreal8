@@ -26,7 +26,7 @@ const OverviewBtn = () => {
 
   return (
    
-       <div className="showing-button overview-show" ref={dropdownRef}>
+       <div className="overview-show" ref={dropdownRef}>
          <button className="gtstd-btn dark-bg-btn overview-gtstd-btn" onClick={toggleDropdown}>
            Get Started
            <FaAngleDown

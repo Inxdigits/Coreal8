@@ -14,43 +14,52 @@ const Services = () => {
       {
         icon: individual,
         header: "Individual Counseling",
-        body: "Anxiety & depression, self-esteem issues, trauma or abuse, stress management, grief and loss.",
+        body: "Healthcare Providers & Clinics | HR Departments & Employee Assistance Programs (EAPs) | Wellness & Lifestyle Coach | Community Organizations & NGOs."
       },
       {
         icon: couples,
-        header: "Couples/Relationship Counseling",
-        body: "Improve communication, Resolve conflicts, Heal from Infidelity, Strengthen emotional connection",
+        header: "Corporate Consulting & Training",
+        body: "Industry Associations and Chambers of Commerce | Business Consultancies | Technology Providers (LMS, HR Tech) | Executive Coaching Networks."
       },
       {
         icon: family,
-        header: "Family Counseling",
-        body: "Parenting challenges, Sibling rivalry, Divorce or separation impact, Blended family adjustments.",
+        header: "Personal Brand Development",
+        body: "Media Outlets & Publications | Content Creators & Influencers (aligned values) | Professional Photographers & Videographers | Digital Marketing Agencies & Web Developers."
       },
-      {
-        icon: group,
-        header: "Group Counseling",
-        body: "Addiction recovery, Grief support, Social skills development, Coping with shared issues.",
-      },
-      {
-        icon: career,
-        header: "Career Counseling",
-        body: "Career choice or change, Workplace stress, Burnout, Work-life balance.",
-      },
-      {
-        icon: trauma,
-        header: "Trauma Counseling",
-        body: "PTSD, Domestic violence, Childhood abuse, Accident or disaster recovery.",
-      },
+      // {
+      //   icon: group,
+      //   header: "Group Counseling",
+      //   body: "Addiction recovery, Grief support, Social skills development, Coping with shared issues.",
+      // },
+      // {
+      //   icon: career,
+      //   header: "Career Counseling",
+      //   body: "Career choice or change, Workplace stress, Burnout, Work-life balance.",
+      // },
+      // {
+      //   icon: trauma,
+      //   header: "Trauma Counseling",
+      //   body: "PTSD, Domestic violence, Childhood abuse, Accident or disaster recovery.",
+      // },
     ];
 
     
     const SessionCard = ({ icon, header, body }) => {
         return (
-            <div className="card">
+          <div className="card">
+            <div className="session-card-img">
               <img src={icon} alt="" />
+            </div>
+            <div className="session-card-text">
               <h2>{header}</h2>
               <p>{body}</p>
             </div>
+            <div className="gradient-button-container card-button-container">
+              <button className="gradient-button card-button">
+                View Service
+              </button>
+            </div>
+          </div>
         );
     };
 
@@ -71,9 +80,9 @@ const Services = () => {
           <SessionCard key={index} {...session} />
         ))}
       </div>
-      <div className="services-button">
+      {/* <div className="services-button">
         <button className='dark-bg-btn'>Book Counseling</button>
-      </div>
+      </div> */}
     </div>
   );
 }
