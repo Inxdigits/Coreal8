@@ -10,24 +10,26 @@ import Courses from "./Components/Courses/Courses.jsx";
 import Leadership from "./Components/Leadership/Leadership.jsx";
 import Blogs from "./Components/Blogs/Blogs.jsx";
 import Testimonial from "./Components/Testimonial/Testimonial.jsx";
+import BookAppointment from "./Components/BookAppointment/BookAppointment.jsx";
 import Footer from '../Footer/Footer.jsx';
 
 const HomePage = () => {
   return (
     <div className="home">
-        <Navbar />
-        <Overview />
-        <AboutUs />
-        <StoryBehind />
-        <Services />
-        <Trust />
-        <Podcast />
-        <Courses />
-        <Leadership />
-        <Blogs />
-        <Testimonial />
+      <Navbar />
+      <Overview />
+      <AboutUs />
+      <StoryBehind />
+      <Services />
+      <Trust />
+      <Podcast />
+      <Courses />
+      <Leadership />
+      <Blogs />
+      <Testimonial />
+      <BookAppointment />
 
-        <Footer />
+      <Footer />
     </div>
   );
 };

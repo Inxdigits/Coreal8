@@ -21,7 +21,7 @@ const MySlider = () => {
         role: "NGO Lead",
     },
     {
-        quote: "Ezekiel's input made our podcast shine.",
+        quote: "Dr. Ezekiel's input made our podcast shine.",
         name: "Tunde F.",
         role: "Podcaster",
     },

@@ -1,0 +1,180 @@
+.appointment-container {
+    background-color: #801323;
+    color: white;
+    display: grid;
+    grid-template-columns: repeat(2, 45%);
+    align-items: center;
+    padding: 0 80px;
+    position: relative;
+}
+
+.leftside {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    gap: 32px;
+}
+
+.appointment-button-container {
+    align-self: flex-start;
+    width: fit-content;
+    /* margin: 0 auto; */
+}
+
+.appointment-button {
+    width: 100%;
+    color: #ffffff;
+    padding: 20px 30px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: rgba(128, 19, 35, 1);
+    box-shadow: 0px 0px 5px 0px #FFDB58 inset;
+}
+
+.appointment-writeup h1 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 100%;
+    letter-spacing: 0%;
+}
+
+.appointment-writeup p {
+    font-family: "Schibsted Grotesk", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 100%;
+    letter-spacing: 0%;
+}
+
+.rightside img { 
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+}
+
+/* Background icons */
+.appointment-container::before {
+  content: '';
+  position: absolute;
+  background: url('../../../../Assets/ContactPageAssets/icon1.svg') no-repeat;
+  width: 150px;
+  height: 150px;
+  top: 10%;
+  left: 10%;
+  background-size: contain;
+}
+
+.appointment-container::after {
+  content: '';
+  position: absolute;
+  background: url('../../../../Assets/ContactPageAssets/icon2.svg') no-repeat;
+  width: 150px;
+  height: 150px;
+  bottom: 10%;
+  right: 5%;
+  rotate: 180deg;
+  background-size: contain;
+}
+
+.appointment-container .icon3 {
+  position: absolute;
+  background: url('../../../../Assets/ContactPageAssets/icon3.svg') no-repeat;
+  width: 150px;
+  height: 150px;
+  top: 20%;
+  left: 35%;
+  rotate: 180deg;
+  background-size: contain;
+}
+
+.appointment-container .icon4 {
+  position: absolute;
+  background: url('../../../../Assets/ContactPageAssets/icon4.svg') no-repeat;
+  width: 150px;
+  height: 150px;
+  top: 10%;
+  right: 5%;
+  rotate: 90deg;
+  background-size: contain;
+}
+
+.appointment-container .icon5 {
+  position: absolute;
+  background: url('../../../../Assets/ContactPageAssets/icon5.svg') no-repeat;
+  width: 150px;
+  height: 150px;
+  bottom: 25%;
+  right: 55%;
+  rotate: 90deg;
+  background-size: contain;
+}
+
+.appointment-container .icon6 { /* Bottom-left */
+  position: absolute;
+  background: url('../../../../Assets/ContactPageAssets/icon6.svg') no-repeat;
+  width: 150px;
+  height: 150px;
+  bottom: 10%;
+  left: 5%;
+  background-size: contain;
+}
+
+@media screen and (max-width: 900px ) {
+    .appointment-container {
+        padding: 0 40px;
+    }
+
+    .leftside {
+        gap: 16px;
+    }
+    
+    .appointment-writeup h1 {
+        font-size: 32px;
+    }
+
+    .appointment-writeup p {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 650px ) {
+    .appointment-container {
+        padding: 40px;
+        grid-template-columns: repeat(1, 99%);
+    }
+
+    .leftside {
+        gap: 16px;
+        text-align: center;
+    }
+    
+    .appointment-button-container {
+        margin: 0 auto;
+    }
+    
+    /* .appointment-writeup h1 {
+        font-size: 20px;
+    }
+
+    .appointment-writeup p {
+        font-size: 12px;
+    } */
+}
+
+@media screen and (max-width: 525px ) {
+    .appointment-container {
+        padding: 20px;
+    }
+    
+    .appointment-writeup h1 {
+        font-size: 20px;
+    }
+
+    .appointment-writeup p {
+        font-size: 12px;
+    }
+}

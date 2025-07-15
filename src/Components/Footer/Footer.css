@@ -1,5 +1,4 @@
 footer {
-    margin-top: 25%;
     padding: 80px;
     display: flex;
     flex-direction: column;
@@ -158,6 +157,14 @@ footer {
 }
 
 @media screen and (max-width: 650px) {
+    .newsletter-text h1 {
+        font-size: 20px;
+    }
+    
+    .newsletter-text span {
+        font-size: 12px;
+    }
+
     .newsletter .footer-form {
         width: auto;
         grid-template-columns: repeat(1, 1fr);

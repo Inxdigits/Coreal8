@@ -136,7 +136,7 @@
 .contact-form::before {
   content: '';
   position: absolute;
-  background: url('../HomeAssets/icon1.svg') no-repeat;
+  background: url('../../../../Assets/ContactPageAssets/icon1.svg') no-repeat;
   width: 80px;
   height: 80px;
   top: 20px;
@@ -147,7 +147,7 @@
 .contact-form::after {
   content: '';
   position: absolute;
-  background: url('../HomeAssets/icon2.svg') no-repeat;
+  background: url('../../../../Assets/ContactPageAssets/icon2.svg') no-repeat;
   width: 80px;
   height: 80px;
   bottom: 20px;
@@ -157,7 +157,7 @@
 
 .contact-form .icon3 {
   position: absolute;
-  background: url('../HomeAssets/icon3.svg') no-repeat;
+  background: url('../../../../Assets/ContactPageAssets/icon3.svg') no-repeat;
   width: 80px;
   height: 80px;
   top: 50%;
@@ -167,7 +167,7 @@
 
 .contact-form .icon4 {
   position: absolute;
-  background: url('../HomeAssets/icon4.svg') no-repeat;
+  background: url('../../../../Assets/ContactPageAssets/icon4.svg') no-repeat;
   width: 80px;
   height: 80px;
   top: 20px;
@@ -177,7 +177,7 @@
 
 .contact-form .icon5 {
   position: absolute;
-  background: url('../HomeAssets/icon5.svg') no-repeat;
+  background: url('../../../../Assets/ContactPageAssets/icon5.svg') no-repeat;
   width: 80px;
   height: 80px;
   bottom: 50%;
@@ -187,7 +187,7 @@
 
 .contact-form .icon6 { /* Bottom-left */
   position: absolute;
-  background: url('../HomeAssets/icon6.svg') no-repeat;
+  background: url('../../../../Assets/ContactPageAssets/icon6.svg') no-repeat;
   width: 80px;
   height: 80px;
   bottom: 20px;
@@ -197,7 +197,7 @@
 
 .contact-form .icon7 { /* Near Send Message button */
   position: absolute;
-  background: url('../HomeAssets/icon7.svg') no-repeat;
+  background: url('../../../../Assets/ContactPageAssets/icon7.svg') no-repeat;
   width: 80px;
   height: 80px;
   bottom: 50px; /* Above the button, adjusted for padding */

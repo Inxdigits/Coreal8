@@ -61,6 +61,13 @@
     grid-column: 3 / span 1;
 }
 
+
+@media screen and (min-width: 1400px) {
+    .blog:last-of-type .blog-img img {
+        min-height: 249.72px;
+    }
+}
+
 .blog-img img 
 {
     max-width: 100%;
@@ -133,6 +140,10 @@
 @media screen and (max-width: 451px) {
     .container {
         padding: 20px;
+    }
+
+    .blog-header {
+        margin-top: 50px;
     }
     
     .blogs {
