@@ -15,6 +15,7 @@
     gap: 12px;
     align-items: center;
     transition: all 0.2s ease-in-out;
+    position: relative;
 }
 
 .dark-bg-btn:hover {
@@ -23,11 +24,11 @@
 
 .overview-gtstd-menu {
     position: absolute;
-    top: 140%;
-    right: 0;
-    min-width: 732px;
+    /* top: 58%; */
+    left: 5%;
+    width: fit-content;
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     align-items: center;
     gap: 16px;
     padding: 50px;
@@ -57,7 +58,10 @@
     border: 1px solid #80132333;
     background-color: #8013230D;
     border-radius: 10px;
-    padding: 20px 32px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 /* 
 .displaynone {
@@ -81,12 +85,12 @@
 
 @media screen and (max-width: 930px) {
     .overview-gtstd-menu {
-        left: -80px;
+        left: 40%;
         display: flex;
         flex-direction: column;
         justify-content: start;
         align-items: start;
-        min-width: 335px;
+        width: fit-content;
         padding: 30px;
         gap: 16px;
     }
@@ -100,8 +104,18 @@
     } */
 }
 
+@media screen and (max-width: 650px) {
+    .overview-gtstd-menu {
+        left: 30%;
+    }
+}
+
 @media screen and (max-width: 400px) {
     .gtstd-btn {
-        padding: 10px 20px;
+        padding: 20px;
+    }
+
+    .overview-gtstd-menu {
+        left: 20%;
     }
 }

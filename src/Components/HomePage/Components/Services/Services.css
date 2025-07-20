@@ -82,7 +82,6 @@
 }
 
 .gradient-button {
-    padding: 20px 49px;
     border: none;
     border-radius: 10px;
     cursor: pointer;
@@ -104,6 +103,7 @@
 
 .card-button {
     width: 100%;
+    padding: 20px 49px;
 }
 
 .services-button button {
@@ -135,7 +135,7 @@
     }
     
     .services {
-        grid-template-columns: repeat(2, 50%);
+        grid-template-columns: repeat(1, 100%);
         gap: 16px;
     }
     

@@ -188,4 +188,14 @@ footer {
     .footer-nav .nav-link {
         text-align: left;
     }
+    
+    .socials {
+        margin-top: 10px;
+    }
+}
+
+@media screen and (max-width: 525px) {
+    footer {
+        padding: 40px 20px;
+    }
 }

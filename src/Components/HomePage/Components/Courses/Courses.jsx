@@ -7,7 +7,7 @@ import course3 from '../../Assets/third-course.png';
 import openicon from '../../Assets/open-icon.svg';
 
 const Courses = () => {
-  const podcasts = [
+  const courses = [
     {
       img: course1,
       title: "The Visionary Leader's Blueprint",
@@ -36,7 +36,7 @@ const Courses = () => {
           <p>{title}</p>
           <span>{writeup}</span>
         </div>
-        <div className="podcardbottom">
+        <div className="courses-card-bottom">
           <span>₦45,000</span>
           <Link to="/contact" className="view-course-link">
             View course
@@ -64,8 +64,8 @@ const Courses = () => {
           <p>Featured Courses</p>
         </div>
         <div className="courses">
-          {podcasts.map((podcast, index) => (
-            <PodcastCard key={index} {...podcast} />
+          {courses.map((course, index) => (
+            <PodcastCard key={index} {...course} />
           ))}
 
           <div className="courses-preview extra-courses-preview">
@@ -79,7 +79,7 @@ const Courses = () => {
                 today’s dynamic world.
               </span>
             </div>
-            <div className="podcardbottom">
+            <div className="courses-card-bottom">
               <span>₦45,000</span>
               <Link to="/contact" className="view-course-link">
                 View course

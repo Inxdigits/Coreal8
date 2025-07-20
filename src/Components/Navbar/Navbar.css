@@ -1,27 +1,29 @@
 /* Core Navbar Styles */
 nav {
-    /* position: fixed;
-    top: 0;
-    left: 0; 
-    z-index: 100000;*/
-    font-family: 'Schibsted Grotesk', sans-serif;
-    height: 100px;
-    width: 100%;
-    max-width: 1440px;
-    padding: 0 80px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid #0D0C120D;
-    gap: 5px;
-    position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100000;
+  background-color: #ffffff;
+  font-family: "Schibsted Grotesk", sans-serif;
+  height: 100px;
+  width: 100%;
+  max-width: 1440px;
+  padding: 0 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #0d0c120d;
+  gap: 5px;
+  /* position: relative; */
 }
 
-.logo {
-    position: relative;
-    padding-bottom: 12px;
+.logo.active-link {
+  position: relative;
+  /* padding-bottom: 12px; */
 }
-
+/* 
 .logo::after {
     content: "";
     position: absolute;
@@ -30,81 +32,97 @@ nav {
     height: 2px;
     width: 100%;
     background: linear-gradient(270deg, #FFDB58 0%, #801323 100%);
+} */
+
+.nav-link.active-link {
+  position: relative;
+  /* padding-bottom: 12px; */
 }
 
-.log img {
-    max-width: 123px;
+.nav-link.active-link::after,
+.logo.active-link::after {
+  content: "";
+  position: absolute;
+  bottom: -12px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(270deg, #ffdb58 0%, #801323 100%);
 }
+
+/* .logo img {
+    max-width: 123px;
+} */
 
 /* Nav links default (desktop) */
 ul {
-    list-style: none;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-    font-size: 16px;
-    transition: all 0.4s ease;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  font-size: 16px;
+  transition: all 0.4s ease;
 }
 
 .hidden-button {
-    display: none;
+  display: none;
 }
 
 .gradient-button-container {
-    padding: 2px;
-    border-radius: 10px;
-    background: linear-gradient(90deg, #FFDB58 0%, #801323 100%);
-    /* display: inline-block; */
+  padding: 2px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #ffdb58 0%, #801323 100%);
+  /* display: inline-block; */
 }
 
 .gradient-button {
-    padding: 20px 49px;
-    border: none;
-    border-radius: 10px;
-    background-color: white;
-    font-family: "Schibsted Grotesk", sans-serif;
-    /* font-weight: 500;
+  padding: 20px;
+  border: none;
+  border-radius: 10px;
+  background-color: white;
+  font-family: "Schibsted Grotesk", sans-serif;
+  /* font-weight: 500;
     font-size: 16px; */
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
 }
 
 .gradient-button:hover {
-    background-color: aliceblue;
+  background-color: aliceblue;
 }
 
 .nav-link,
 .gtstd-btn {
-    cursor: pointer;
-    text-decoration: none;
+  cursor: pointer;
+  text-decoration: none;
 }
 
 .nav-link a {
-    color: inherit; 
-    text-decoration: none; 
+  color: inherit;
+  text-decoration: none;
 }
 
 .nav-link a:hover {
-    color: inherit; 
-    text-decoration: none; 
+  color: inherit;
+  text-decoration: none;
 }
 
 .dropdown {
-    display: flex;
-    /* gap: 6px; */
-    align-items: center;
+  display: flex;
+  /* gap: 6px; */
+  align-items: center;
 }
 
 .menu {
-    display: flex;
-    gap: 10px;
-    align-items: center;
+  display: flex;
+  gap: 10px;
+  align-items: center;
 }
 
 .menu img {
-    display: none;
-    cursor: pointer;
+  display: none;
+  cursor: pointer;
 }
 
 /* .showing-button {
@@ -112,117 +130,116 @@ ul {
 } */
 
 .dropdown-icon {
-    margin-left: 8px;
-    transition: transform 0.3s ease;
+  margin-left: 8px;
+  transition: transform 0.3s ease;
 }
 
 .dropdown-icon.rotate {
-    transform: rotate(180deg);
-    transition: transform 0.3s ease;
+  transform: rotate(180deg);
+  transition: transform 0.3s ease;
 }
 
 /* Responsive */
 @media screen and (max-width: 1334px) {
-    nav {
-        padding: 0 40px;
-    }
+  nav {
+    padding: 0 40px;
+  }
 
-    .gradient-button-container {
-        padding: 2px;
-    }
+  .gradient-button-container {
+    padding: 2px;
+  }
 
-    .gradient-button {
-        padding: 20px 29px;
-    }
+  .gradient-button {
+    padding: 20px;
+  }
 
-    .logo {
-        margin-right: -15px;
-    }
+  .logo {
+    margin-right: -15px;
+  }
 }
 
 @media screen and (max-width: 1234px) {
-    ul {
-        gap: 10px;
-    }
+  ul {
+    gap: 10px;
+  }
 }
 
 @media screen and (max-width: 1138px) {
-    ul {
-        gap: 5px;
-    }
+  ul {
+    gap: 5px;
+  }
 }
 
 @media screen and (max-width: 1024px) {
-    .logo img {
-        max-width: 100px;
-    }
-    
-    ul {
-        display: none;
-    }
+  .logo img {
+    max-width: 100px;
+  }
 
-    .showing-button {
-        display: none;
-    }
+  ul {
+    display: none;
+  }
 
-    .hidden-button {
-        display: block;
-    }
+  .showing-button {
+    display: none;
+  }
 
-    .menu img {
-        display: inline-block;
-        width: 28px;
-    }
+  .hidden-button {
+    display: block;
+  }
 
-    .active {
-        position: absolute;
-        top: 100px;
-        left: 0;
-        margin: 0;
-        padding: 20px;
-        background-color: aliceblue;
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        width: 100%;
-        opacity: 1;
-        pointer-events: auto;
-        transition: opacity 0.3s ease-in-out;
-        z-index: 999;
-    }
+  .menu img {
+    display: inline-block;
+    width: 28px;
+  }
 
-    .active .nav-link {
-        padding: 20px;
-        cursor: pointer;
-    }
+  .active {
+    position: absolute;
+    top: 100px;
+    right: 0;
+    margin: 0;
+    padding: 20px;
+    background-color: aliceblue;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 70%;
+    opacity: 1;
+    pointer-events: auto;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 999;
+  }
 
-    /* Style for <Link> in mobile menu */
-    .active .nav-link a {
-        color: inherit;
-        text-decoration: none;
-    }
+  .active .nav-link {
+    padding: 20px;
+    cursor: pointer;
+  }
 
-    .active .nav-link:hover {
-        background-color: grey;
-    }
+  /* Style for <Link> in mobile menu */
+  .active .nav-link a {
+    color: inherit;
+    text-decoration: none;
+  }
 
-    .active .nav-link a:hover {
-        color: inherit;
-        text-decoration: none;
-    }
+  .active .nav-link:hover {
+    background-color: grey;
+  }
 
-    .inactive {
-        display: none;
-    }
+  .active .nav-link a:hover {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .inactive {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 540px) {
-    nav {
-        padding: 0 20px;
-    }
+  nav {
+    padding: 0 20px;
+  }
 
-    .logo img {
-        max-width: 80px;
-    }
+  .logo img {
+    max-width: 80px;
+  }
 }
-

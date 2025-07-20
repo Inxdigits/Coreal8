@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./Navbar.css";
 import { useDropdown } from "../../hooks/useDropdown";
 import './Dropdown.css';
@@ -18,14 +18,26 @@ const Navbar = () => {
   const counselingDropdown = useDropdown();
   const mentorshipDropdown = useDropdown();
 
+  const location = useLocation();
+  const currentPath = location.pathname;
+
   return (
     <nav>
-      <Link to="/" className="logo">
+      <Link
+        to="/"
+        className={`logo ${currentPath === "/" ? "active-link" : ""}`}
+      >
         <img src={logo} alt="logo" />
       </Link>
 
       <ul className={isMenuOpen ? "active" : "inactive"}>
-        <li className="nav-link">About</li>
+        <li
+          className={`nav-link ${
+            currentPath === "/about" ? "active-link" : ""
+          }`}
+        >
+          <Link to="/about">About</Link>
+        </li>
 
         <li className="nav-link nav-services dropdown-menu">
           <NavDropdown
@@ -49,29 +61,37 @@ const Navbar = () => {
         </li>
 
         <li className="nav-link dropdown-menu counsel">
-          <NavDropdown
-            label="Counseling"
-            isOpen={counselingDropdown.isOpen}
-            toggle={counselingDropdown.toggle}
-            refProp={counselingDropdown.ref}
-          >
-            <div className="counseling-dropdown navdropdown">
-              <div className="counseling-options navoptions">
-                <h3>Individual Counseling</h3>
+          <Link to="/counseling">
+            <NavDropdown
+              label="Counseling"
+              isOpen={counselingDropdown.isOpen}
+              toggle={counselingDropdown.toggle}
+              refProp={counselingDropdown.ref}
+            >
+              <div className="counseling-dropdown navdropdown">
+                <div className="counseling-options navoptions">
+                  <h3>Individual Counseling</h3>
+                </div>
+                <div className="counseling-options navoptions">
+                  <h3>Couples/Relationship Counseling</h3>
+                </div>
+                <div className="counseling-options navoptions">
+                  <h3>Family Counseling</h3>
+                </div>
+                <div className="counseling-options navoptions">
+                  <h3>Group Counseling</h3>
+                </div>
               </div>
-              <div className="counseling-options navoptions">
-                <h3>Couples/Relationship Counseling</h3>
-              </div>
-              <div className="counseling-options navoptions">
-                <h3>Family Counseling</h3>
-              </div>
-              <div className="counseling-options navoptions">
-                <h3>Group Counseling</h3>
-              </div>
-            </div>
-          </NavDropdown>
+            </NavDropdown>
+          </Link>
         </li>
-        <li className="nav-link">Courses</li>
+        <li
+          className={`nav-link ${
+            currentPath === "/courses" ? "active-link" : ""
+          }`}
+        >
+          <Link to="/courses">Courses</Link>
+        </li>
         <li className="nav-link dropdown-menu mentor">
           <NavDropdown
             label="Mentorship"
@@ -92,16 +112,38 @@ const Navbar = () => {
             </div>
           </NavDropdown>
         </li>
-        <li className="nav-link">Podcast</li>
-        <li className="nav-link">Blog</li>
+        <li
+          className={`nav-link ${
+            currentPath === "/podcast" ? "active-link" : ""
+          }`}
+        >
+          Podcast
+        </li>
+        <li
+          className={`nav-link ${currentPath === "/blog" ? "active-link" : ""}`}
+        >
+          Blog
+        </li>
 
-        <li className="nav-link">
+        <li
+          className={`nav-link ${
+            currentPath === "/contact" ? "active-link" : ""
+          }`}
+        >
           <Link to="/contact">Contact</Link>
         </li>
-        <li className="nav-link">
-          <img src={cartIcon} alt="Cart" />
+        <li
+          className={`nav-link ${currentPath === "/cart" ? "active-link" : ""}`}
+        >
+          <Link to={"/cart"}>
+            <img src={cartIcon} alt="Cart" />
+          </Link>
         </li>
-        <li className="nav-link">
+        <li
+          className={`nav-link ${
+            currentPath === "/login" ? "active-link" : ""
+          }`}
+        >
           <img src={profileIcon} alt="Login" />
         </li>
 

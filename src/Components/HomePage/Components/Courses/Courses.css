@@ -34,6 +34,10 @@
     font-size: 16px;
 }
 
+.featured-button {
+    margin: 12px 0;
+}
+
 .featured-button p {
     max-width: 152px;
     padding: 5px 10px;
@@ -68,6 +72,10 @@
     overflow: hidden;
 }
 
+.courses-preview-writeup {
+    margin: 12px 0;
+}
+
 .courses-preview-writeup p {
     font-family: "Schibsted Grotesk";
     font-weight: 500;
@@ -81,7 +89,7 @@
     opacity: 0.5;
 }
 
-.podcardbottom {
+.courses-card-bottom {
     margin-top: 15px;
     display: flex;
     justify-content: space-between;

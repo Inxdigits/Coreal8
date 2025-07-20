@@ -4,7 +4,7 @@ import Slider from './Slider/Slider.jsx';
 
 const Testimonial = () => {
   return (
-    <div className="testimonial-container container">
+    <div className="testimonial-container reuse-container">
       <div className="">
         <div className="header">
           <span>TESTIMONIAL</span>

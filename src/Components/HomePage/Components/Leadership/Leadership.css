@@ -34,16 +34,18 @@
     font-family: "Montserrat";
     font-weight: 700;
     font-size: 40px;
+    margin-bottom: 12px;
 }
 
 .leadership-main-section {
     display: grid;
     grid-template-columns: 48% 52%;
+    /* align-items: start; */
 }
 
-.leadership-words {
+/* .leadership-words {
     padding-top: 30px;
-}
+} */
 
 .word-container {
     display: flex;

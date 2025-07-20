@@ -136,7 +136,7 @@
 .contact-form::before {
   content: '';
   position: absolute;
-  background: url('../../../../Assets/ContactPageAssets/icon1.svg') no-repeat;
+  background: url('../../Assets/ContactPageAssets/icon1.svg') no-repeat;
   width: 80px;
   height: 80px;
   top: 20px;
@@ -147,7 +147,7 @@
 .contact-form::after {
   content: '';
   position: absolute;
-  background: url('../../../../Assets/ContactPageAssets/icon2.svg') no-repeat;
+  background: url('../../Assets/ContactPageAssets/icon2.svg') no-repeat;
   width: 80px;
   height: 80px;
   bottom: 20px;
@@ -157,7 +157,7 @@
 
 .contact-form .icon3 {
   position: absolute;
-  background: url('../../../../Assets/ContactPageAssets/icon3.svg') no-repeat;
+  background: url('../../Assets/ContactPageAssets/icon3.svg') no-repeat;
   width: 80px;
   height: 80px;
   top: 50%;
@@ -167,7 +167,7 @@
 
 .contact-form .icon4 {
   position: absolute;
-  background: url('../../../../Assets/ContactPageAssets/icon4.svg') no-repeat;
+  background: url('../../Assets/ContactPageAssets/icon4.svg') no-repeat;
   width: 80px;
   height: 80px;
   top: 20px;
@@ -177,7 +177,7 @@
 
 .contact-form .icon5 {
   position: absolute;
-  background: url('../../../../Assets/ContactPageAssets/icon5.svg') no-repeat;
+  background: url('../../Assets/ContactPageAssets/icon5.svg') no-repeat;
   width: 80px;
   height: 80px;
   bottom: 50%;
@@ -187,7 +187,7 @@
 
 .contact-form .icon6 { /* Bottom-left */
   position: absolute;
-  background: url('../../../../Assets/ContactPageAssets/icon6.svg') no-repeat;
+  background: url('../../Assets/ContactPageAssets/icon6.svg') no-repeat;
   width: 80px;
   height: 80px;
   bottom: 20px;
@@ -197,7 +197,7 @@
 
 .contact-form .icon7 { /* Near Send Message button */
   position: absolute;
-  background: url('../../../../Assets/ContactPageAssets/icon7.svg') no-repeat;
+  background: url('../../Assets/ContactPageAssets/icon7.svg') no-repeat;
   width: 80px;
   height: 80px;
   bottom: 50px; /* Above the button, adjusted for padding */
@@ -207,11 +207,11 @@
 
 
 .form-label{
-    font-family: Open Sans, sans-serif;
-    font-weight: 420;
-    font-style: Regular;
-    font-size: 16px;
-    color: #FFFFFF;
+  font-family: Open Sans, sans-serif;
+  font-weight: 420;
+  font-style: Regular;
+  font-size: 16px;
+  color: #FFFFFF;
 }
 
 .form-title {
@@ -219,7 +219,7 @@
   font-weight: 700;
   color: #FFFFFF;
   font-family: 'Montserrat', sans-serif;
-  margin-bottom: 8px;
+  /* margin-bottom: 8px; */
 }
 
 .form-subtitle {
@@ -228,7 +228,7 @@
     color: #FFFFFF;
     font-style: Regular;
     margin-top: 5px;
-    margin-bottom: 50px;
+    /* margin-bottom: 50px; */
 }
 
 form {
@@ -241,6 +241,7 @@ form {
 .form-input {
   padding: 10px;
   font-size: 16px;
+  background-color: transparent;
   border: 1px solid #FFFFFF33;
   border-radius: 10px;
   font-family: 'Montserrat', sans-serif;
@@ -280,7 +281,7 @@ form {
   height: 100px;
   resize: vertical;
   font-family: 'Montserrat', sans-serif;
-  background-color: #801323; /* light red background */
+  background-color: transparent; /* light red background */
   color: #FFFFFF; /* white text */
 }
 
@@ -292,7 +293,7 @@ form {
 .form-submit {
   padding: 10px 20px;
   font-size: 16px;
-  background-color: #801323;
+  background-color: transparent;
   color: white;
   border: none;
   border-radius: 8px;
@@ -301,6 +302,7 @@ form {
   width: 170px; /* Fixed width for button */
   align-self: center; /* Center the button */
   height: 60px;
+  box-shadow: 0px 0px 5px 0px #FFDB58 inset;
 }
 
 .form-submit:hover {
