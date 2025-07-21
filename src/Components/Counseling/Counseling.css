@@ -242,5 +242,82 @@
 /* BOOK COUNSELING */
 .book-counseling {
     color: white;
-    background-color: brown;
+    background-color: rgba(128, 19, 35, 1);
+    padding: 80px;
+}
+
+.booking-main {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    gap: 50px;
+}
+
+.booking-writeup-heading {
+    margin-bottom: 20px;
+}
+
+.booking-writeup-heading h2 {
+    font-family: "Schibsted Grotesk", sans-serif;
+    font-weight: 600;
+    font-size: 32px;
+} 
+
+.booking-writeup-heading p {
+    font-family: "Schibsted Grotesk", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+} 
+
+.booking-writeup-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.booking-writeup-list li h3 {
+    font-family: "Schibsted Grotesk", sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.booking-writeup-list li p {
+    font-family: "Schibsted Grotesk", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    opacity: 0.7;
+}
+
+.booking-button {
+    box-shadow: 0px 0px 5px 0px rgba(255, 219, 88, 1) inset;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.booking-button button {
+    color: white;
+    background-color: rgba(128, 19, 35, 1);
+}
+
+.booking-button button:hover {
+    background-color: rgba(128, 19, 35, 1);
+}
+
+.booking-image,
+.booking-image img {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 990px) {
+    .booking-main {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .book-counseling {
+        padding: 40px;
+    }
 }

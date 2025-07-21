@@ -25,13 +25,13 @@ nav {
 }
 /* 
 .logo::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 2px;
-    width: 100%;
-    background: linear-gradient(270deg, #FFDB58 0%, #801323 100%);
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(270deg, #FFDB58 0%, #801323 100%);
 } */
 
 .nav-link.active-link {
@@ -51,11 +51,11 @@ nav {
 }
 
 /* .logo img {
-    max-width: 123px;
+  max-width: 123px;
 } */
 
 /* Nav links default (desktop) */
-ul {
+nav ul {
   list-style: none;
   display: flex;
   justify-content: space-between;

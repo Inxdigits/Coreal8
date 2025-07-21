@@ -6,6 +6,7 @@ import approachImg from '../../Assets/approachImg.png';
 import couples from "../HomePage/Assets/couples-counseling.png";
 import family from "../HomePage/Assets/family-counseling.png";
 import individual from '../HomePage/Assets/individual-counseling.png';
+import bookingImg from '../../Assets/bookCounselingImage.png';
 
 const Counseling = () => {
   const sessions = [
@@ -45,6 +46,32 @@ const Counseling = () => {
     );
   };
 
+  const plans = [
+    {
+      planType: "Individual Counseling",
+      price: "₦120,000",
+    },
+    {
+      planType: "Group Counseling",
+      price: "₦150,000",
+    },
+    {
+      planType: "Initial Consultation",
+      price: "₦120,000",
+    },
+  ];
+
+  const PlanType = ({planType, price}) => {
+    return (
+      <div className="plan-type">
+        <h3>{planType}</h3>
+        <h2>{price}
+          <span>/per session</span>
+        </h2>
+        <p>60-minutes</p>
+      </div>
+    );
+  }
 
   return (
     <div className="counseling-container">
@@ -89,18 +116,18 @@ const Counseling = () => {
             ))}
           </div>
         </section>
-        <section className="book-counseling">
-          <div className="booking-writeup">
-            <div className="booking-writeup-heading">
-              <h2>Ready to Begin? Your Booking is Simple.</h2>
-              <p>
-                We aim to make accessing support as easy as possible. Follow
-                these steps to schedule your confidential session with a Coreal8
-                counselor:
-              </p>
-            </div>
-            <div className="booking-writeup-list">
-              <ul>
+        <section className="book-counseling flex-column">
+          <div className="booking-main">
+            <div className="booking-writeup">
+              <div className="booking-writeup-heading">
+                <h2>Ready to Begin? Your Booking is Simple.</h2>
+                <p>
+                  We aim to make accessing support as easy as possible. Follow
+                  these steps to schedule your confidential session with a
+                  Coreal8 counselor:
+                </p>
+              </div>
+              <ul className="booking-writeup-list">
                 <li>
                   <h3>Initial Inquiry</h3>
                   <p>
@@ -110,31 +137,51 @@ const Counseling = () => {
                   </p>
                 </li>
                 <li>
-                  <h3>Initial Inquiry</h3>
+                  <h3>Complimentary Consultation</h3>
                   <p>
-                    Fill out our brief online contact form or call us directly.
-                    This helps us understand your needs and match you with the
-                    best fit.
+                    We offer a brief [10-minute] complimentary phone
+                    consultation to discuss your needs, answer any questions,
+                    and ensure we're the right fit for you.
                   </p>
                 </li>
                 <li>
-                  <h3>Initial Inquiry</h3>
+                  <h3>Schedule Your Session</h3>
                   <p>
-                    Fill out our brief online contact form or call us directly.
-                    This helps us understand your needs and match you with the
-                    best fit.
+                    Once aligned, we will help you schedule your first
+                    appointment at a time that works for you, either virtually
+                    or in-person at our office.
                   </p>
                 </li>
                 <li>
-                  <h3>Initial Inquiry</h3>
+                  <h3>Secure Client Portal</h3>
                   <p>
-                    Fill out our brief online contact form or call us directly.
-                    This helps us understand your needs and match you with the
-                    best fit.
+                    Prior to your first session, you will receive access to our
+                    secure client portal to complete necessary intake forms
+                    privately.
                   </p>
                 </li>
               </ul>
             </div>
+            <div className="booking-image">
+              <img src={bookingImg} alt="booking image" />
+            </div>
+          </div>
+          <div className="booking-button gradient-button-container">
+            <button className="gradient-button">Book Your Session Today</button>
+          </div>
+        </section>
+        <section className="co-payment-options">
+          <div className="copo-heading">
+            <h2>Transparent Fees & Payment Options</h2>
+            <p>
+              We believe in clear and straightforward pricing for our
+              high-quality counseling services. Our fee structure is as follows:
+            </p>
+          </div>
+          <div className="copo-payment-plans">
+            {plans.map((index, plan) => (
+              <PlanType key={index} {...plan} />
+            ))}
           </div>
         </section>
       </div>
