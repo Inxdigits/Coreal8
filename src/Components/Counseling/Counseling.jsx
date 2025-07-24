@@ -7,6 +7,7 @@ import couples from "../HomePage/Assets/couples-counseling.png";
 import family from "../HomePage/Assets/family-counseling.png";
 import individual from '../HomePage/Assets/individual-counseling.png';
 import bookingImg from '../../Assets/bookCounselingImage.png';
+import { FaAngleRight } from 'react-icons/fa';
 
 const Counseling = () => {
   const sessions = [
@@ -63,12 +64,21 @@ const Counseling = () => {
 
   const PlanType = ({planType, price}) => {
     return (
-      <div className="plan-type">
+      <div className="plan-type flex-column">
         <h3>{planType}</h3>
-        <h2>{price}
-          <span>/per session</span>
+        <h2>
+          {price}
+          <span className="per-session">/per session</span>
         </h2>
         <p>60-minutes</p>
+        <div className="start-plan-button">
+          <button>
+            Get Started
+            <FaAngleRight
+              // style
+            />
+          </button>
+        </div>
       </div>
     );
   }
@@ -170,18 +180,37 @@ const Counseling = () => {
             <button className="gradient-button">Book Your Session Today</button>
           </div>
         </section>
-        <section className="co-payment-options">
+        <section className="co-payment-options flex-column">
           <div className="copo-heading">
             <h2>Transparent Fees & Payment Options</h2>
             <p>
               We believe in clear and straightforward pricing for our
-              high-quality counseling services. Our fee structure is as follows:
+              high-quality counseling services. <br /> Our fee structure is as follows:
             </p>
           </div>
           <div className="copo-payment-plans">
-            {plans.map((index, plan) => (
+            {plans.map((plan, index) => (
               <PlanType key={index} {...plan} />
             ))}
+          </div>
+          <div className="co-payment-info">
+            <span className="info-icon">i</span>
+            <h4>Payment Methods</h4>
+            <p>
+              We accept bank transfers, major credit/debit cards, online payment
+              platforms like Paystack/Flutterwave.
+            </p>
+            <div className="line-separator"></div>
+            <h4>Payment is Due</h4>
+            <p>At the time of service, 24 hours prior to the session.</p>
+            <div className="line-separator"></div>
+            <h4>Cancellation Policy</h4>
+            <p>
+              We require 24-hour notice for cancellations
+              or rescheduling. Sessions cancelled with less than 24-hour notice
+              will be subject to a 50% charge. This allows us to offer the slot
+              to other clients in need.
+            </p>
           </div>
         </section>
       </div>

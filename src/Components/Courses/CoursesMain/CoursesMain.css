@@ -1,0 +1,79 @@
+.mc-container {
+    padding: 80px;
+    gap: 24px;
+}
+
+.mc-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+}
+
+.searchbar-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
+.searchbar-container input {
+    outline: none;
+    padding: 16px 20px;
+    border-radius: 15px;
+    border: 1px solid rgba(13, 12, 18, 0.10);
+}
+
+.searchbar-container button {
+    padding: 20px 50px;
+    border-radius: 10px;
+    background: #801323;
+    box-shadow: 0px 0px 5px 0px #FFDB58 inset;
+    color: #fff;
+    border: none;
+    outline: none;
+}
+
+.sorting-mechanism {
+    /* border: 1px solid black; */
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    align-self: stretch;
+    color: rgba(13, 12, 18, 0.5);
+}
+
+.sorting-mechanism select {
+    border-radius: 15px;
+    border: 1px solid rgba(13, 12, 18, 0.10);
+    outline: none;
+    background: #FFF;
+    padding: 10px 20px;
+    /* gap: 12px; */
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    padding-right: 36px;
+    height: 40px;
+    padding: 10px 36px 10px 20px;
+}
+
+.featured-courses p {
+    color: #0D0C12;
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+@media screen and (max-width: 1068px) {
+    .mc-top {
+        flex-direction: column;
+        align-items: start;
+        gap: 12px;
+    }
+}

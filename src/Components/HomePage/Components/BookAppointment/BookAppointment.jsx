@@ -5,7 +5,7 @@ import appImage from '../../Assets/appointment-image.png';
 
 const BookAppointment = () => {
   return (
-    <div className="appointment-container container">
+    <div className="appointment-container">
       <div className="leftside">
         <div className="appointment-writeup">
           <h1>Book Dr. Enobong Ezekiel</h1>

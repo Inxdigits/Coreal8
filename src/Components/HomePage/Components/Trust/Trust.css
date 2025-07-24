@@ -22,6 +22,7 @@
 
 .card {
     background-color: #F2F2F20D;
+    color: white;
     padding: 20px 10px;
     border-radius: 5px;
     display: flex;
@@ -35,6 +36,7 @@
     line-height: 100%;
     letter-spacing: 0%;
     text-align: center;
+    margin-bottom: 12px;
 }
 
 .partner-card-text p {

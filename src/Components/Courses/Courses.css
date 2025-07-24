@@ -125,3 +125,142 @@
         gap: 10px;
     }
 }
+
+/* COURSES TESTIMONIAL */
+.courses-testimonial {
+    background: rgba(128, 19, 35, 0.10);
+    padding: 80px;
+    text-align: center;
+}
+
+.ct-intro h1 {
+    color: #0D0C12;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.ct-intro p {
+    color: rgba(13, 12, 18, 0.80);
+    text-align: center;
+    font-family: "Schibsted Grotesk";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+/* FAQs Section */
+.faqs-container {
+    text-align: center;
+}
+
+.faqs-intro h1 {
+    color: #0D0C12;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+/* LAST COURSES CONTAINER */
+.last-container {
+    /* z-index: ; */
+    background: #801323;
+    gap: 32px;
+    color: #fff;
+    text-align: center;
+    align-items: center;
+    position: relative;
+}
+
+.lc-images {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+.lc-images img {
+    max-width: 80px;
+    max-height: 80px;
+    flex-shrink: 0;
+    aspect-ratio: 1/1;
+    margin-right: -20px;
+    border-radius: 100px;
+    border: 2px solid #FFDB58;
+    /* background: lightgray 50% / cover no-repeat; */
+}
+
+/* .lc-text {
+    width: ;
+} */
+
+/* .lc-button-container {
+    padding: 2px;
+    border-radius: 10px;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.25) 0%, #FFDB58 100%);
+    display: inline-block;
+} */
+
+.lc-button {
+    border-radius: 10px;
+    background: #801323;
+    box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 #FFDB58 inset;
+    color: white;
+}
+
+/* Background-icons */
+.last-container::before {
+  content: '';
+  background: rgba(255, 219, 88, 0.35);
+  filter: blur(60px);
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  left: 30px;
+  top: 10px;
+  background-size: contain;
+}
+
+.last-container::after {
+  content: '';
+  background: rgba(255, 219, 88, 0.35);
+  filter: blur(60px);
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  right: 88px;
+  background-size: contain;
+}
+
+.last-container .icon-3 {
+  background: rgba(255, 219, 88, 0.35);
+  filter: blur(60px);
+  width: 100px;
+  height: 100px;
+  aspect-ratio: 1/1;
+  position: absolute;
+  left: 400px;
+  bottom: 52px;
+  rotate: 180deg;
+  background-size: contain;
+}
+
+.last-container .icon-4 {
+  background: rgba(255, 219, 88, 0.35);
+  filter: blur(60px);
+  width: 100px;
+  height: 100px;
+  aspect-ratio: 1/1;
+  position: absolute;
+  right: 290px;
+  bottom: 2px;
+  rotate: 90deg;
+  background-size: contain;
+}

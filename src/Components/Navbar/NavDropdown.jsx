@@ -2,12 +2,19 @@ import React from "react";
 import { FaAngleDown } from "react-icons/fa";
 import "./Navbar.css";
 
-const NavDropdown = ({ label, children, isOpen, toggle, refProp }) => {
+const NavDropdown = ({ label, children, isOpen, refProp }) => {
   return (
-    <li className="nav-link dropdown" onClick={toggle} ref={refProp}>
-      {label}
-      <FaAngleDown className={`dropdown-icon ${isOpen ? "rotate" : ""}`} />
-      {isOpen && <div className="dropdown-content">{children}</div>}
+    <li
+      className="nav-link dropdown"
+      ref={refProp}
+    >
+      <div className="dropdown-label">
+        {label}
+        <FaAngleDown className={`dropdown-icon ${isOpen ? "rotate" : ""}`} />
+      </div>
+      <div className="dropdown-content">
+        {children}
+      </div>
     </li>
   );
 };

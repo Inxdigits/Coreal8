@@ -9,21 +9,21 @@ import "./Slider.css";
 const MySlider = () => {
   const testimonials = [
     {
-        quote:
-        "Working with Dr. Ezekiel changed the way I lead my team and my life.",
-        name: "Chidi N.",
-        role: "Tech Founder",
+      quote:
+      "Working with Dr. Ezekiel changed the way I lead my team and my life.",
+      name: "Chidi N.",
+      role: "Tech Founder",
     },
     {
-        quote:
-        "Our partnership has been transformational for our community programs.",
-        name: "Amaka O.",
-        role: "NGO Lead",
+      quote:
+      "Our partnership has been transformational for our community programs.",
+      name: "Amaka O.",
+      role: "NGO Lead",
     },
     {
-        quote: "Dr. Ezekiel's input made our podcast shine.",
-        name: "Tunde F.",
-        role: "Podcaster",
+      quote: "Dr. Ezekiel's input made our podcast shine.",
+      name: "Tunde F.",
+      role: "Podcaster",
     },
   ];
 

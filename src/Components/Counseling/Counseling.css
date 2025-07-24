@@ -3,6 +3,7 @@
     padding: 80px;
     text-align: center;
     background-color: rgba(128, 19, 35, 0.08);
+    font-family: "Schibsted Grotesk", sans-serif;
 }
 
 .counseling-overview-writeup {
@@ -318,6 +319,112 @@
 
 @media screen and (max-width: 768px) {
     .book-counseling {
+        padding: 40px;
+    }
+}
+
+/* COUNSELING-PAYMENT */
+.co-payment-options {
+    padding: 80px;
+    text-align: center;
+}
+
+.copo-heading h2 { 
+    font-size: 24px;
+    font-weight: 700;
+    font-family: "Schibsted Grotesk", sans-serif;
+}
+
+.copo-heading p { 
+    font-size: 16px;
+    font-weight: 400;
+    font-family: "Schibsted Grotesk", sans-serif;
+}
+
+.copo-payment-plans {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.plan-type {
+    border: 1px solid rgba(13, 12, 18, 0.1);
+    padding: 30px 20px;
+    border-radius: 10px;
+    text-align: left;
+    gap: 12px;
+}
+
+.plan-type h3 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.plan-type h2 {
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.per-session,
+.plan-type p {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.start-plan-button {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+
+.start-plan-button button {
+    background: transparent;
+    border: 1px solid rgba(128, 19, 35, 1);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+.co-payment-info {
+    max-width: 40%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.co-payment-info h4 {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.co-payment-info p {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.info-icon {
+    max-width: fit-content;
+    margin: 0 auto;
+    cursor: pointer;
+    padding: 5px 15px;
+    border-radius: 50%;
+    color: white;
+    background-color: black;
+}
+
+.line-separator {
+    width: 50%;
+    margin: 0 auto;
+    border: 1px solid;
+    border-image: linear-gradient(90deg, rgba(255, 219, 88, 0.5) 0%, rgba(128, 19, 35, 0.5) 50%, rgba(255, 219, 88, 0.5) 100%);
+    border-image-slice: 1;
+}
+
+@media screen and (max-width: 1050px) {
+    .co-payment-options {
         padding: 40px;
     }
 }

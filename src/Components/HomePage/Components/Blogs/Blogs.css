@@ -92,6 +92,11 @@
     margin: 0;
 }
 
+.blog-preview-writeup span {
+    opacity: 0.8;
+}
+
+
 .blog-preview-writeup span,
 .about-blog span, 
 .blog a {

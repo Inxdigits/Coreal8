@@ -14,7 +14,7 @@ function App() {
       {/* <Route path="/cart" element={<Cart />} /> */}
       <Route path="/courses" element={<Courses />} />
       <Route path="/about" element={<About />} />
-      <Route path="/counseling" element={<Counseling />} />
+      <Route path="/counseling" element={<Counseling />} />  
     </Routes>
   );
 }

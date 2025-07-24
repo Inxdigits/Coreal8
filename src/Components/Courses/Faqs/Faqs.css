@@ -1,0 +1,71 @@
+.faq-text h3 {
+    color: #0D0C12;
+    font-family: "Schibsted Grotesk";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.hidden-faq p {
+    color: #0D0C12;
+    font-family: "Schibsted Grotesk";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.show1 {
+    display: block;
+}
+.show2 {
+    display: block;
+}
+.show3 {
+    display: block;
+}
+.show4 {
+    display: block;
+}
+.show5 {
+    display: block;
+}
+
+.hide1{
+    display: none;
+}
+.hide2{
+    display: none;
+}
+.hide3{
+    display: none;
+}
+.hide4{
+    display: none;
+}
+.hide5{
+    display: none;
+}
+
+.faq-card {
+    max-width: 60%;
+    margin: 0 auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    display: flex;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(13, 12, 18, 0.10);
+}
+
+.faq-text {
+    text-align: left;
+}
+
+.dropdown-circle {
+    border: none;
+    outline: none;
+    background-color: transparent;
+}

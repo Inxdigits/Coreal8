@@ -11,20 +11,22 @@ const Courses = () => {
     {
       img: course1,
       title: "The Visionary Leader's Blueprint",
-      writeup: "Learn how to lead with clarity, courage, and conviction in today’s dynamic world."
+      writeup:
+        "Learn how to lead with clarity, courage, and conviction in today’s dynamic world.",
     },
     {
       img: course2,
       title: "The Visionary Leader's Blueprint",
-      writeup: "Learn how to lead with clarity, courage, and conviction in today’s dynamic world.",
+      writeup:
+        "Learn how to lead with clarity, courage, and conviction in today’s dynamic world.",
     },
     {
       img: course3,
       title: "The Visionary Leader's Blueprint",
-      writeup: "Learn how to lead with clarity, courage, and conviction in today’s dynamic world."
+      writeup:
+        "Learn how to lead with clarity, courage, and conviction in today’s dynamic world.",
     }
-      
-  ]
+  ];
   
   const PodcastCard = ({ img, title, writeup }) => {
     return (
@@ -67,7 +69,6 @@ const Courses = () => {
           {courses.map((course, index) => (
             <PodcastCard key={index} {...course} />
           ))}
-
           <div className="courses-preview extra-courses-preview">
             <div className="courses-preview-img">
               <img src={course1} alt="" />
