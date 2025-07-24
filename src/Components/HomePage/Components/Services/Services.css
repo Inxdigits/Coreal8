@@ -82,6 +82,13 @@
     text-align: center;
 }
 
+.session-card-img {
+    width: 100%;
+}
+
+.session-card-img img {
+    margin: 0 auto;
+}
 .gradient-button {
     border: none;
     border-radius: 10px;

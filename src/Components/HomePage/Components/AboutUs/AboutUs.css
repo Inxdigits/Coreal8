@@ -1,3 +1,4 @@
+@import "tailwindcss";
 .aboutus-container {
     background-color: rgba(128, 19, 35, 1);
     padding: 40px 80px;

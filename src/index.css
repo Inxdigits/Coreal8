@@ -1,3 +1,4 @@
+@import "tailwindcss";
 *{
   margin: 0;
   padding: 0;
@@ -5,8 +6,10 @@
 }
 
 body {
+  padding: 0;
+  margin:0;
   padding-top: 100px;
-  max-width: 1440px;
+  max-width: 100%;
   font-family: -apple-system, BlinkMacSystemFont, 'Open Sans', 'Montserrat', 'Schibsted Grotesk',
     sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -16,28 +19,4 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
-
-.section-container {
-  padding: 80px;
-}
-
-.flex-column {
-  display: flex;
-  flex-direction: column;
-  gap: 50px;
-}
-
-.section-header {
-  margin-top: 25px;
-}
-
-.section-header span {
-  font-family: "Open Sans", sans-serif;
-  font-weight: 600;   
-  font-size: 16px;
-  padding: 20px 0;
-  border-top: 5px solid;
-  border-image: linear-gradient(90deg, #801323 0%, #FFDB58 100%);
-  border-image-slice: 1;
 }
