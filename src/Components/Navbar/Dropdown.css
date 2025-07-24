@@ -1,0 +1,45 @@
+/* Mentor Dropdown */
+.dropdown-menu {
+    position: relative;
+}
+
+.navdropdown {
+    font-family: "Schibsted Grotesk", sans-serif;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    /* gap: 20px; */
+    min-width: 250px;
+    top: 300%;
+    left: 0;
+    border-radius: 5px;
+    border: 1px solid #0D0C120D;
+    background-color: #ffffff;
+    box-shadow: 4px 10px 20px 0px #00000033;
+}
+
+.navdropdown .navoptions {
+    padding-top: 20px;
+    padding-bottom: 10px;
+    /* border: 1px solid #0D0C120D; */
+    transition: all 0.2s ease-in;
+    border-bottom: 1px solid #0D0C121A;
+}
+
+.navdropdown .navoptions:last-of-type {
+    border-bottom: none;
+}
+
+.navdropdown .navoptions h3 {
+    font-weight: 600;
+    font-size: 16px;
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+/* .navdropdown .navoptions span {
+    font-weight: 400;
+    font-size: 14px;    
+    color: #0D0C1280;
+} */

@@ -1,0 +1,108 @@
+
+.dark-bg-btn{
+    padding: 20px 32px;
+    border-radius: 10px;
+    background-color: rgba(128, 19, 35, 1);
+    outline: none;
+    border: none;
+    box-shadow: 0px 0px 5px 0px rgba(255, 219, 88, 1) inset;
+    color: white;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    transition: all 0.2s ease-in-out;
+}
+
+.dark-bg-btn:hover {
+    box-shadow: 0px 0px 20px 0px rgba(255, 219, 88, 1) inset;
+}
+
+.gtstd-menu {
+    position: absolute;
+    top: 140%;
+    left: -550px;
+    min-width: 732px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 50px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 30px 0px #00000026;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.gtstd-menu.dropdown-show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+  
+.gtstd-menu.dropdown-hide {
+    display: none;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px);
+}
+
+.gtstd-option {
+    border: 1px solid #80132333;
+    background-color: #8013230D;
+    margin: 5px 0;
+    border-radius: 10px;
+    padding: 20px 32px;
+}
+/* 
+.displaynone {
+    display: none;
+} */
+
+.dropdown-icon {
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+}
+  
+.dropdown-icon.rotate {
+    transform: rotate(180deg);
+}
+
+@media screen and (max-width: 1200px)  {
+    .gtstd-btn {
+        padding: 20px;
+    }
+}
+
+@media screen and (max-width: 930px) {
+    .gtstd-menu {
+        left: -80px;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: start;
+        min-width: 335px;
+        padding: 30px;
+        gap: 16px;
+    }
+    
+    .gtstd-menu.dropdown-show {
+        display: block;
+    }
+    
+    .gtstd-option {
+        margin-bottom: 10px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .gtstd-btn {
+        padding: 10px 20px;
+    }
+}

@@ -1,0 +1,323 @@
+/* OVERVIEW SECTION */
+.counseling-overview {
+    padding: 80px;
+    text-align: center;
+    background-color: rgba(128, 19, 35, 0.08);
+}
+
+.counseling-overview-writeup {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.counseling-overview-writeup h1 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    font-size: 40px;
+    margin-bottom: 12px;
+}
+
+.counseling-overview-writeup p {
+    font-family: "Schibsted Grotesk", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    opacity: 0.9;
+}
+
+@media screen and (max-width: 1024px) {
+    .counseling-overview-writeup {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 900px){
+    .counseling-overview-writeup h1 {
+        font-size: 32px;
+    }
+
+    .counseling-overview-writeup p {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .counseling-overview {
+        padding: 80px 40px;
+    }
+    
+    .counseling-overview-writeup h1 {
+        font-size: 24px;
+    }
+
+    .counseling-overview-writeup {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 525px) {
+    .counseling-overview {
+        padding: 40px 20px;
+    }
+    
+    .counseling-overview-writeup h1 {
+        font-size: 20px;
+    }
+
+}
+
+/* COUNSELING APPROACH */
+.counseling-approach {
+    padding: 80px;
+    text-align: center;
+}
+
+.counseling-approach-writeup h2 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    margin-bottom: 12px;
+}
+
+.counseling-approach-writeup p {
+    font-family: "Schibsted Grotesk", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    opacity: 0.9;
+    width: 60%;
+    margin: 0 auto;
+}
+
+.approach-image, 
+.approach-image img {
+    width: 100%;
+}
+
+
+@media screen and (max-width: 1024px) {
+    .counseling-approach-writeup p {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 900px){
+    .counseling-approach {
+        padding: 40px;
+    }
+
+    .counseling-approach-writeup h2 {
+        font-size: 20px;
+    }
+
+    .counseling-approach-writeup p {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+    .counseling-approach-writeup {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 525px) {
+    .counseling-approach {
+        padding: 40px 20px;
+    }
+}
+
+/* COUNSELING SUPPORT */
+.counseling-support {
+    padding: 80px;
+    background-color: rgba(128, 19, 35, 0.08);
+    text-align: center;
+}
+
+.counseling-support-writeup h2 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    margin-bottom: 12px;
+}
+
+.counseling-support-writeup p {
+    font-family: "Schibsted Grotesk", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    opacity: 0.9;
+    width: 60%;
+    margin: 0 auto;
+}
+
+.support {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.counseling-support-card {
+    background-color: rgba(255, 255, 255, 1);
+    padding: 50px 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.support-card-img {
+    width: 100%;
+    text-align: center;
+}
+
+.support-card-text h2 {
+    font-size: 16px;
+    font-family: "Schibsted Grotesk", sans-serif;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.support-card-text p {
+    font-size: 16px;
+    font-family: "Schibsted Grotesk", sans-serif;
+    font-weight: 400;
+}
+
+@media screen and (max-width: 1200px) {
+    .counseling-support-card {
+        padding: 50px 10px;
+    }
+
+    .support {
+        gap: 16px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .counseling-support-card {
+        padding: 50px 20px;
+    }
+
+    .support {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .counseling-support {
+        padding: 40px;
+    }
+    
+    .counseling-support-writeup h2 {
+        font-size: 20px;
+        margin-bottom: 12px;
+    }
+
+    .counseling-support-writeup p {
+        font-size: 14px;
+        width: 80%;
+    }
+
+}
+
+@media screen and (max-width: 600px) {
+    .counseling-support {
+        padding: 40px 20px;
+    }
+    
+    .support {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 24px;
+    }
+    
+    .counseling-support-writeup h2 {
+        font-size: 16px;
+        margin-bottom: 12px;
+    }
+
+    .counseling-support-writeup p {
+        font-size: 14px;
+        width: 80%;
+    }
+}
+
+/* BOOK COUNSELING */
+.book-counseling {
+    color: white;
+    background-color: rgba(128, 19, 35, 1);
+    padding: 80px;
+}
+
+.booking-main {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    gap: 50px;
+}
+
+.booking-writeup-heading {
+    margin-bottom: 20px;
+}
+
+.booking-writeup-heading h2 {
+    font-family: "Schibsted Grotesk", sans-serif;
+    font-weight: 600;
+    font-size: 32px;
+} 
+
+.booking-writeup-heading p {
+    font-family: "Schibsted Grotesk", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+} 
+
+.booking-writeup-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.booking-writeup-list li h3 {
+    font-family: "Schibsted Grotesk", sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.booking-writeup-list li p {
+    font-family: "Schibsted Grotesk", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    opacity: 0.7;
+}
+
+.booking-button {
+    box-shadow: 0px 0px 5px 0px rgba(255, 219, 88, 1) inset;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.booking-button button {
+    color: white;
+    background-color: rgba(128, 19, 35, 1);
+}
+
+.booking-button button:hover {
+    background-color: rgba(128, 19, 35, 1);
+}
+
+.booking-image,
+.booking-image img {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 990px) {
+    .booking-main {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .book-counseling {
+        padding: 40px;
+    }
+}
