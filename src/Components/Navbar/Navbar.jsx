@@ -51,7 +51,7 @@ const Navbar = () => {
         </button>
 
         <div
-          className={`collapse navbar-collapse ${isMenuOpen ? "show" : ""}`}
+          className={`navbar-collapse ${isMenuOpen ? "block" : "hidden"}`}
           id="navbarNav"
         >
           <ul className="navbar-nav ms-auto align-items-lg-center gap-3">
