@@ -75,7 +75,7 @@ const Navbar = () => {
             ))}
 
             {/* Services Dropdown */}
-            <li className="nav-item dropdown position-relative">
+            <li className={`nav-item dropdown position-relative ${currentPath === '/services' ? "active-link" : ""}`}>
               <Link to='/services' className="nav-link dropdown-link dropdown-label">
                 Services <FaAngleDown className="rotate-icon" /> {" "}
               </Link>
@@ -99,7 +99,7 @@ const Navbar = () => {
             </li>
 
             {/* Counseling Dropdown */}
-            <li className="nav-item dropdown position-relative">
+            <li className={`nav-item dropdown position-relative ${currentPath === '/counseling' ? "active-link" : ""}`}>
               <Link to='/counseling' className="nav-link dropdown-link dropdown-label">
                 Counseling <FaAngleDown className="rotate-icon" /> {" "}
               </Link>
@@ -120,7 +120,7 @@ const Navbar = () => {
             </li>
 
             {/* Mentorship Dropdown */}
-            <li className="nav-item dropdown position-relative">
+            <li className={`nav-item dropdown position-relative ${currentPath === '/mentoring' ? "active-link" : ""}`}>
               <Link to='/mentoring' className="nav-link dropdown-link dropdown-label">
                 Mentorship <FaAngleDown className="rotate-icon" /> {" "}
               </Link>
@@ -145,7 +145,9 @@ const Navbar = () => {
 
             {/* Book Button */}
             <li className="nav-item gradient-button-container">
-              <button className="btn btn-outline-dark px-4 py-2 gradient-button">
+              <button className="
+              // btn btn-outline-dark px-4 py-2 
+              nav-gradient-button gradient-button">
                 Book a Session
               </button>
             </li>

@@ -42,7 +42,7 @@ const Trust = () => {
   const Partner = ({ icon, header, body }) => {
     return (
       <div className="card">
-        <div className="partner-card-img">
+        <div className="session-card-img partner-card-img">
           <img src={icon} alt="" />
         </div>
         <div className="partner-card-text">

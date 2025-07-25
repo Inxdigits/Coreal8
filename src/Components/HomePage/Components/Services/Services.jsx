@@ -55,7 +55,7 @@ const Services = () => {
           <p>{body}</p>
         </div>
         <div className="gradient-button-container card-button-container">
-          <button className="gradient-button card-button">
+          <button className="gradient-button session-card-button">
             View Service
           </button>
         </div>
