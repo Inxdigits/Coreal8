@@ -1,0 +1,13 @@
+.cart-intro {
+    padding: 40px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+    border-bottom: 1px solid rgba(13, 12, 18, 0.05);
+    background: #FFF;
+}
+
+.ci-btn-container {
+    width: fit-content;
+}

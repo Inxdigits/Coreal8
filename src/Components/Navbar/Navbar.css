@@ -5,7 +5,7 @@
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
   z-index: 10300000000000000000;
-  padding: 0 80px;
+  padding: 0 80px !important;
   border-bottom: 1px solid #0d0c120d;
 }
 
@@ -31,6 +31,10 @@
 /* ACTIVE LINK UNDERLINE */
 .logo.active-link {
   position: relative;
+}
+
+.nav-link {
+  cursor: pointer !important;
 }
 
 .navbar .nav-item.active-link .nav-link::after {
@@ -61,6 +65,7 @@
   cursor: pointer;
 }
 
+.nav-link:hover,
 .dropdown-link:hover {
   color: black
 }
@@ -81,7 +86,6 @@
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   color: #0D0C12;
-  font-family: "Schibsted Grotesk";
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
@@ -118,12 +122,18 @@
   text-decoration: none;
   display: block;
   transition: background-color 0.2s ease;
-  border-bottom: 1px solid #0D0C12;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .custom-dropdown .dropdown-item:hover {
   background-color: #f0f0f0;
   color: #000;
+}
+
+@media screen and (max-width: 1350px) {
+  nav {
+    padding: 0 40px !important;
+  }
 }
 
 /* DESKTOP: SHOW ON HOVER */
@@ -142,7 +152,8 @@
   .custom-dropdown {
     position: static;
     box-shadow: none;
-    padding-left: 16px;
+    /* padding-left: 16px; */
+    padding: 0 !important;
   }
 
   nav {
@@ -158,7 +169,7 @@
     padding: 20px;
     /* border: 1px solid yellow; */
   }
-  
+
   .navbar-nav .nav-item:hover {
     border-bottom: 1px solid #0D0C12;
   } 
@@ -168,14 +179,15 @@
   }
 
   .dropdown-label {
+
     font-weight: 600;
-    margin-top: 1rem;
-    display: block;
+    display: flex;
+    gap: 5px;
   }
 
-  .navbar-toggler {
-    border: none;
-    outline: none;
+  .navbar-toggler, .navbar-toggler:active, .navbar-toggler img {
+    border: none !important;
+    outline: none !important;
   }
 }
 

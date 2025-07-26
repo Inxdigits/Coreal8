@@ -34,7 +34,7 @@ const Podcast = () => {
             <p>{title}</p>
             <span>{album}</span>
           </div>
-          <a>
+          <a className="session-card-img">
             <img src={arrow} alt="" />
           </a>
         </div>

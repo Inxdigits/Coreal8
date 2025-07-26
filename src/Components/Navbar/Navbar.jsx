@@ -25,7 +25,7 @@ const Navbar = () => {
       navbar 
       navbar-expand-lg 
       border-bottom 
-      px-80 py-3 
+      // px-80 py-3 
       fixed-top 
       "
     >
@@ -75,9 +75,16 @@ const Navbar = () => {
             ))}
 
             {/* Services Dropdown */}
-            <li className={`nav-item dropdown position-relative ${currentPath === '/services' ? "active-link" : ""}`}>
-              <Link to='/services' className="nav-link dropdown-link dropdown-label">
-                Services <FaAngleDown className="rotate-icon" /> {" "}
+            <li
+              className={`nav-item dropdown position-relative ${
+                currentPath === "/services" ? "active-link" : ""
+              }`}
+            >
+              <Link
+                to="/services"
+                className="nav-link dropdown-link dropdown-label"
+              >
+                Services <FaAngleDown className="rotate-icon" />{" "}
               </Link>
               <div className="dropdown-menu custom-dropdown">
                 <Link className="dropdown-item" to="/services/counseling">
@@ -99,9 +106,16 @@ const Navbar = () => {
             </li>
 
             {/* Counseling Dropdown */}
-            <li className={`nav-item dropdown position-relative ${currentPath === '/counseling' ? "active-link" : ""}`}>
-              <Link to='/counseling' className="nav-link dropdown-link dropdown-label">
-                Counseling <FaAngleDown className="rotate-icon" /> {" "}
+            <li
+              className={`nav-item dropdown position-relative ${
+                currentPath === "/counseling" ? "active-link" : ""
+              }`}
+            >
+              <Link
+                to="/counseling"
+                className="nav-link dropdown-link dropdown-label"
+              >
+                Counseling <FaAngleDown className="rotate-icon" />{" "}
               </Link>
               <div className="dropdown-menu custom-dropdown">
                 <Link className="dropdown-item" to="/counseling/individual">
@@ -120,9 +134,16 @@ const Navbar = () => {
             </li>
 
             {/* Mentorship Dropdown */}
-            <li className={`nav-item dropdown position-relative ${currentPath === '/mentoring' ? "active-link" : ""}`}>
-              <Link to='/mentoring' className="nav-link dropdown-link dropdown-label">
-                Mentorship <FaAngleDown className="rotate-icon" /> {" "}
+            <li
+              className={`nav-item dropdown position-relative ${
+                currentPath === "/mentoring" ? "active-link" : ""
+              }`}
+            >
+              <Link
+                to="/mentoring"
+                className="nav-link dropdown-link dropdown-label"
+              >
+                Mentorship <FaAngleDown className="rotate-icon" />{" "}
               </Link>
               <div className="dropdown-menu custom-dropdown">
                 <Link className="dropdown-item" to="/mentorship/mentoring">
@@ -135,8 +156,14 @@ const Navbar = () => {
             </li>
 
             {/* Icons */}
-            <li className="nav-item">
-              <img src={cartIcon} alt="Cart" className="nav-icon" />
+            <li
+              className={`nav-item ${
+                currentPath === "/cart" ? "active-link" : ""
+              }`}
+            >
+              <Link className="nav-link" to="/cart">
+                <img src={cartIcon} alt="Cart" className="nav-icon" />
+              </Link>
             </li>
 
             <li className="nav-item">
@@ -145,9 +172,11 @@ const Navbar = () => {
 
             {/* Book Button */}
             <li className="nav-item gradient-button-container">
-              <button className="
+              <button
+                className="
               // btn btn-outline-dark px-4 py-2 
-              nav-gradient-button gradient-button">
+              nav-gradient-button gradient-button"
+              >
                 Book a Session
               </button>
             </li>

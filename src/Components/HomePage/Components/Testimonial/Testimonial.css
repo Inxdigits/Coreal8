@@ -42,5 +42,16 @@
     .testimonial-writeup p {
         font-size: 14px;
     }
+}
 
+@media screen and (max-width: 768px) {
+    .testimonial-container {
+        padding: 80px 40px;
+    }
+}
+
+@media screen and (max-width: 525px) {
+    .testimonial-container {
+        padding: 40px 20px;
+    }
 }

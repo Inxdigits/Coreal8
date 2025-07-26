@@ -7,6 +7,16 @@
     line-height: normal;
 }
 
+.section-header span {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 600;   
+    font-size: 16px;
+    padding: 20px 0;
+    border-top: 5px solid;
+    border-image: linear-gradient(90deg, #801323 0%, #FFDB58 100%);
+    border-image-slice: 1;
+}
+
 .hidden-faq p {
     color: #0D0C12;
     font-family: "Schibsted Grotesk";
@@ -14,38 +24,6 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-}
-
-.show1 {
-    display: block;
-}
-.show2 {
-    display: block;
-}
-.show3 {
-    display: block;
-}
-.show4 {
-    display: block;
-}
-.show5 {
-    display: block;
-}
-
-.hide1{
-    display: none;
-}
-.hide2{
-    display: none;
-}
-.hide3{
-    display: none;
-}
-.hide4{
-    display: none;
-}
-.hide5{
-    display: none;
 }
 
 .faq-card {
