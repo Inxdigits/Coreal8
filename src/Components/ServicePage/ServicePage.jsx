@@ -73,7 +73,7 @@ const ServicePage = () => {
               <p>Stress Management</p>
             </div>
           </div>
-          <div className="individual-flex">
+          <div className="individual-flex  btn-flex">
             <div className="red-btn">
               <p>Explore Counseling Services</p>
             </div>
@@ -101,7 +101,7 @@ const ServicePage = () => {
             development, and strategic team solutions that enhance culture,
             performance, and collaboration.
           </p>
-          <div className="consulting-flex">
+          <div className="individual-flex">
             <svg
               width="20"
               height="20"
@@ -134,7 +134,7 @@ const ServicePage = () => {
               <p>Culture Alignment</p>
             </div>
           </div>
-          <div className="consulting-flex">
+          <div className="btn-flex">
             <div className="red-btn">
               <p>View Mentorship & Coaching Programs</p>
             </div>
@@ -183,7 +183,7 @@ const ServicePage = () => {
             </div>
           </div>
           <div className="spacer"></div>
-          <div className="individual-flex">
+          <div className="btn-flex">
             <div className="red-btn">
               <p>Discover Coaching Programs</p>
             </div>

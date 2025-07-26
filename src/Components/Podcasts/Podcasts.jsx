@@ -207,9 +207,7 @@ const Podcasts = () => {
           <div className="pagination">
             <p>3</p>
           </div>
-          <div className="pagination">
-            <p>4</p>
-          </div>
+          
           <div className="pagination">
             <svg
               width="20"
@@ -233,10 +231,9 @@ const Podcasts = () => {
         </div>
         <div className="red-section-right">
           <h2>Available Everywhere You Listen</h2>
-
-          <div className="flex app-grid">
-            <div className="flex red-section-item">
-              <div className="flex gap-3 items-center">
+          <div className="app-grid">
+            <div className="grid-item">
+              <div className="flex gap-3 items-center red-section-item">
                 <img src={Apple} className="w-14" />
                 <div>
                   <div>
@@ -246,10 +243,9 @@ const Podcasts = () => {
                 </div>
               </div>
             </div>
-
-            <div className="flex red-section-item">
-              <div className="flex gap-3 items-center">
-                <img src={Apple} className="w-12" />
+            <div className="grid-item">
+              <div className="flex gap-3 items-center red-section-item">
+                <img src={Apple} className="w-14" />
                 <div>
                   <div>
                     <p>Listen on</p>
@@ -258,10 +254,9 @@ const Podcasts = () => {
                 </div>
               </div>
             </div>
-
-            <div className="flex red-section-item ">
-              <div className="flex gap-3 items-center">
-                <img src={Spotify} className="w-12" />
+            <div className="grid-item">
+              <div className="flex gap-3 items-center red-section-item">
+                <img src={Spotify} className="w-14" />
                 <div>
                   <div>
                     <p>Listen on</p>
@@ -270,9 +265,14 @@ const Podcasts = () => {
                 </div>
               </div>
             </div>
-            <div className="flex red-section-item">
-              <div className="flex gap-3 items-center">
-                <img src={YouTube} className="w-12" />
+
+          </div>
+
+          <div className=" app-grid">
+            
+            <div className="grid-item">
+              <div className="flex gap-3 items-center  red-section-item">
+                <img src={YouTube} className="w-14" />
                 <div>
                   <div>
                     <p>Listen on</p>
@@ -281,9 +281,9 @@ const Podcasts = () => {
                 </div>
               </div>
             </div>
-            <div className="flex red-section-item">
-              <div className="flex gap-3 items-center">
-                <img src={Spotify} className="w-12" />
+            <div className="grid-item">
+              <div className="flex gap-3 items-center  red-section-item">
+                <img src={Spotify} className="w-14" />
                 <div>
                   <div>
                     <p>Listen on</p>
@@ -292,9 +292,9 @@ const Podcasts = () => {
                 </div>
               </div>
             </div>
-            <div className="flex red-section-item">
-              <div className="flex gap-3 items-center">
-                <img src={YouTube} className="w-12" />
+            <div className="grid-item">
+              <div className="flex gap-3 items-center red-section-item">
+                <img src={YouTube} className="w-14" />
                 <div>
                   <div>
                     <p>Listen on</p>

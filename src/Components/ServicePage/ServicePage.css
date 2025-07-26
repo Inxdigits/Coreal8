@@ -1,7 +1,14 @@
 .individual-flex{
-    background-color: #FAFAFA;
     display: flex;
     align-items: flex-start;
+    gap: 12px;
+    align-self: stretch;
+    margin-top: 10px;
+}
+.btn-flex{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: 12px;
     align-self: stretch;
 }
@@ -68,7 +75,6 @@ align-items: flex-start;
 align-content: flex-start;
 gap: 12px;
 align-self: stretch;
-flex-wrap: wrap;
 }
 .tiles{
     display: flex;
@@ -160,7 +166,8 @@ background: linear-gradient(0deg, rgba(0, 0, 0, 0.10) 0%, rgba(0, 0, 0, 0.10) 10
     align-items: center;
     gap: 12px;
     border-radius: 10px;
-    background:  rgba(255, 219, 88, 0.10);
+    background:  none;
+    
 }
 .yellow-btn p{
     color: #0D0C12;
@@ -179,4 +186,65 @@ background: linear-gradient(0deg, rgba(0, 0, 0, 0.10) 0%, rgba(0, 0, 0, 0.10) 10
 }
 .spacer{
     height: 30px;
+}
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .services-header {
+        padding: 80px 20px;
+        flex-direction: column;
+        align-items: center;
+    }
+    .individual-section, .consulting-section {
+        grid-template-columns: 1fr;
+        padding-bottom: 0px;
+        padding-top: 80px !important;
+        
+    }
+    .counseling-image img, .consulting-image img {
+        width: 100%;
+        height: auto;
+    }
+    .individual, .consulting {
+        padding-left: 20px;
+        padding-right: 20px;
+        width: 100%;
+    }
+    .tile-grid{
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+    }
+    .tiles {
+        width: 100%;
+        max-width: 400px;
+    }
+    .services-header p {
+        width: 100%;
+    }
+    .counseling-image img{
+        display: none;
+    }
+   .btn-flex {
+    margin-top: 20px;
+        flex-direction: column;
+        align-items: center;
+    }
+    .consulting-section{
+        padding: 80px 20px !important;
+        gap: 0px;
+
+    }
+    .consulting{
+        padding-right: 0px !important;
+    }
+    .consulting-flex{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        align-self: stretch;
+    }
+    .yellow-btn{
+        background: none;
+    }
 }

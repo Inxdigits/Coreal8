@@ -115,15 +115,23 @@ font-style: normal;
 font-weight: 700;
 line-height: normal;
 width: 514px;
+margin-bottom: 30px;
 }
 .red-section-right{
     display: flex;
 width: 679px;
 flex-direction: column;
 align-items: flex-start;
-gap: 32px;
+gap: 10px;
+}
+.red-sec{
+     display: flex;
+    justify-content: center;
+    align-items: center;
+  
 }
 .red-section-item{
+    width: fit-content;
     display: flex;
     padding: 10px 15px;
     justify-content: center;
@@ -132,6 +140,13 @@ gap: 32px;
     border-radius: 20px;
 background: rgba(255, 255, 255, 0.05);
 }
+.app-grid{
+    display: grid !important;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+    grid-row-gap: 0;
+}
+
 
 .red-section-item h3{
     color: #FFF;
@@ -149,15 +164,7 @@ font-style: normal;
 font-weight: 400;
 line-height: normal;
 }
-.app-grid{
-    display: flex;
-    width: 100%;
-align-items: flex-start;
-align-content: flex-start;
-gap: 12px;
-flex-wrap: wrap;
 
-}
 .image img{
     width: 350px;
 }
@@ -167,7 +174,6 @@ padding: 40px 80px 80px 80px !important;
 flex-direction: column;
 justify-content: center;
 align-items: flex-start;
-gap: 50px;
 align-self: stretch;
 }
 .featured-voices{
@@ -201,4 +207,54 @@ align-self: stretch;
 .voices img{
     width: 301px;
     height: 301px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .spotlight{
+        padding:40px 20px;
+    }
+    .flex{
+        flex-direction: column;
+        align-items: center;
+    }
+    .all-episodes{
+        padding: 40px 20px !important;
+        gap: 0px;
+    }
+    .episode-grid{
+        grid-template-columns: 1fr;
+    }
+    .image img{
+        display: none;
+    }
+    .red-section{
+        padding: 40px 40px;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    .red-section h2{
+        width: 100%;
+        text-align: center;
+    }
+    .red-section-right{
+        width: 100%;
+        align-items: center;
+        flex-direction: column;
+    }
+   
+    .red-section-item{
+        width: 200px;
+        justify-content: center;
+        flex-direction: row !important;
+        display: flex !important;
+    }
+    .featured-voices{
+        padding: 40px 20px;
+    }
+    .pagination-num{
+        margin-top: 40px;
+        flex-direction: row !important;
+    }
 }
