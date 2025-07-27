@@ -258,3 +258,18 @@ align-self: stretch;
         flex-direction: row !important;
     }
 }
+
+.category-header{
+    padding: 0px 80px;
+}
+.episode-h3{
+    padding: 20px 80px;
+}
+.episode-h3 h3{
+    color: #0D0C12;
+font-family: "Schibsted Grotesk";
+font-size: 24px;
+font-style: normal;
+font-weight:700  !important;
+line-height: normal;
+}

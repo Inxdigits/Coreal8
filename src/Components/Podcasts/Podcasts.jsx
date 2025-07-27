@@ -2,6 +2,9 @@ import React from "react";
 import Navbar from "../Navbar/Navbar.jsx";
 import Footer from "../Footer/Footer.jsx";
 import "./Podcasts.css";
+import { EpisodeListSection } from "./EpisodeListSection.jsx";
+import { FilterSection } from "./FilterSection.jsx";
+import { HeaderSection } from "./HeaderSection.jsx";
 import Image from "../../Assets/PodcastPageAssests/spotlight.png";
 import arrow from "../../Assets/PodcastPageAssests/arrow.svg";
 import play from "../../Assets/PodcastPageAssests/play.svg";
@@ -108,6 +111,8 @@ const Podcasts = () => {
   return (
     <>
       <Navbar />
+      
+      
       <section className=" flex-col items-center justify-center gap-3 p-20 relative bg-[#80132314] services-header">
         <header className=" relative mt-[-2.00px] [font-family: 'Montserrat-Bold', sans-serif] font-bold text-[#801323] text-[40px] text-center tracking-[0] leading-[normal]">
           The Coreal8 Podcast
@@ -151,8 +156,16 @@ const Podcasts = () => {
           ))}
         </div>
       </div>
+      <div className="episode-h3">
+   <h3>All Episodes</h3>
+      </div>
+   
+      <HeaderSection />
+  
       <div className="spotlight all-episodes">
-        <h3>All Episodes</h3>
+        
+        
+      
         <div className="flex w-full items-start gap-8 relative self-stretch flex-[0_0_auto] episode-grid">
           {episodeData.map((item) => (
             <article key={item.id}>
