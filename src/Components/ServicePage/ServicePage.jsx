@@ -73,6 +73,7 @@ const ServicePage = () => {
               <p>Stress Management</p>
             </div>
           </div>
+          <div className="spacer"></div>
           <div className="individual-flex  btn-flex">
             <div className="red-btn">
               <p>Explore Counseling Services</p>
@@ -134,6 +135,7 @@ const ServicePage = () => {
               <p>Culture Alignment</p>
             </div>
           </div>
+          <div className="spacer"></div>
           <div className="btn-flex">
             <div className="red-btn">
               <p>View Mentorship & Coaching Programs</p>
