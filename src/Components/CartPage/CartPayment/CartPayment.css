@@ -1,0 +1,11 @@
+.cartpayment-container {
+    display: flex;
+    /* width: 500px; */
+    padding: 80px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+    flex-shrink: 0;
+    align-self: stretch;
+    background: rgba(128, 19, 35, 0.05);
+}

@@ -11,3 +11,8 @@
 .ci-btn-container {
     width: fit-content;
 }
+
+.cartmain {
+    display: grid;
+    grid-template-columns: 65% 35%;
+}
