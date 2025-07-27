@@ -8,6 +8,7 @@ import ServicePage from './Components/ServicePage/ServicePage.jsx';
 import Podcasts from './Components/Podcasts/Podcasts.jsx';
 import Blog from './Components/Blog/Blog.jsx';
 import './App.css';
+import CartPage from './Components/CartPage/CartPage.jsx';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Route path="/services" element={<ServicePage />} />
       <Route path="/blog" element={<Blog />} />
       {/* <Route path="/cart" element={<Cart />} /> */}
+      <Route path="/cart" element={<CartPage />} />
       <Route path="/courses" element={<Courses />} />
       <Route path="/about" element={<About />} />
       <Route path="/podcast" element={<Podcasts />}/>

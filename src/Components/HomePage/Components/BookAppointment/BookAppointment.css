@@ -125,7 +125,7 @@
 
 @media screen and (max-width: 900px ) {
     .appointment-container {
-        padding: 0 40px;
+        padding: 80px 40px;
     }
 
     .leftside {
@@ -145,6 +145,7 @@
     .appointment-container {
         padding: 40px;
         grid-template-columns: repeat(1, 99%);
+        gap: 32px;
     }
 
     .leftside {
@@ -167,7 +168,7 @@
 
 @media screen and (max-width: 525px ) {
     .appointment-container {
-        padding: 20px;
+        padding: 40px 20px;
     }
     
     .appointment-writeup h1 {

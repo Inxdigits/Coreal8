@@ -67,7 +67,6 @@
     }
 }
 
-
 @media screen and (max-width: 985px) {
     .courses-overview {
         grid-template-columns: repeat(1, 100%);
@@ -155,6 +154,7 @@
 
 /* FAQs Section */
 .faqs-container {
+    padding: 80px;
     text-align: center;
 }
 
@@ -177,6 +177,7 @@
     text-align: center;
     align-items: center;
     position: relative;
+    padding: 80px !important;
 }
 
 .lc-images {
