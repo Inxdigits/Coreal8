@@ -6,6 +6,7 @@ import About from "./Components/About/About.jsx";
 import Counseling from "./Components/Counseling/Counseling.jsx";
 import ServicePage from './Components/ServicePage/ServicePage.jsx';
 import Podcasts from './Components/Podcasts/Podcasts.jsx';
+import Blog from './Components/Blog/Blog.jsx';
 import './App.css';
 import CartPage from './Components/CartPage/CartPage.jsx';
 
@@ -15,6 +16,8 @@ function App() {
       <Route path="/" element={<HomePage />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/services" element={<ServicePage />} />
+      <Route path="/blog" element={<Blog />} />
+      {/* <Route path="/cart" element={<Cart />} /> */}
       <Route path="/cart" element={<CartPage />} />
       <Route path="/courses" element={<Courses />} />
       <Route path="/about" element={<About />} />
