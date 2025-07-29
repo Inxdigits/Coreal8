@@ -91,7 +91,9 @@ const Courses = () => {
         </div>
       </div>
       <div className="courses-button">
-        <button className="dark-bg-btn">View All Courses</button>
+        <Link to="/courses">
+          <button className="dark-bg-btn">View All Courses</button>
+        </Link>
       </div>
     </div>
   );

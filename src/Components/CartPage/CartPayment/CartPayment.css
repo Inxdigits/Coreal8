@@ -9,3 +9,52 @@
     align-self: stretch;
     background: rgba(128, 19, 35, 0.05);
 }
+
+#order-summary-title {
+    color: #0D0C12;
+    font-family: "Schibsted Grotesk";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.flex-between-div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    color: #0D0C12;
+    font-family: "Schibsted Grotesk";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.total-amount {
+    color: #0D0C12;
+    font-family: "Schibsted Grotesk";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.payment-button {
+    color: white;
+    border-radius: 10px;
+    background: #801323;
+    box-shadow: 0 0 5px 0 #FFDB58 inset;
+    display: flex;
+    padding: 20px 53px;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    align-self: stretch;
+}
+
+.cp-info-icon {
+    width: 20px;
+    height: 20px;
+    aspect-ratio: 1/1;
+}

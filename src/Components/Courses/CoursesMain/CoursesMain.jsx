@@ -1,73 +1,77 @@
 import React from 'react';
 import './CoursesMain.css';
 import { Link } from 'react-router-dom';
-import course1 from '../../HomePage/Assets/first-course.png';
-import openicon from '../../HomePage/Assets/open-icon.svg';
-import course2 from '../../HomePage/Assets/second-course.png';
-import course3 from '../../HomePage/Assets/third-course.png';
-import arrowdown from '../../../Assets/arrowdown.svg';
+// import course1 from '../../HomePage/Assets/first-course.png';
+// import openicon from '../../HomePage/Assets/open-icon.svg';
+// import course2 from '../../HomePage/Assets/second-course.png';
+// import course3 from '../../HomePage/Assets/third-course.png';
+// import arrowdown from '../../../Assets/arrowdown.svg';
+import { SearchSection } from './SearchSection';
+import { FeaturedCoursesSection } from './FeaturedCoursesSection';
 
 const CoursesMain = () => {
-  const courses = [
-    {
-      img: course1,
-      title: "The Visionary Leader's Blueprint",
-      writeup: "Learn how to lead with clarity, courage, and conviction in today’s dynamic world."
-    },
-    {
-      img: course2,
-      title: "The Visionary Leader's Blueprint",
-      writeup: "Learn how to lead with clarity, courage, and conviction in today’s dynamic world.",
-    },
-    {
-      img: course3,
-      title: "The Visionary Leader's Blueprint",
-      writeup: "Learn how to lead with clarity, courage, and conviction in today’s dynamic world."
-    },
-    {
-      img: course1,
-      title: "The Visionary Leader's Blueprint",
-      writeup:
-        "Learn how to lead with clarity, courage, and conviction in today’s dynamic world.",
-    },
-    {
-      img: course2,
-      title: "The Visionary Leader's Blueprint",
-      writeup:
-        "Learn how to lead with clarity, courage, and conviction in today’s dynamic world.",
-    },
-    {
-      img: course3,
-      title: "The Visionary Leader's Blueprint",
-      writeup:
-        "Learn how to lead with clarity, courage, and conviction in today’s dynamic world.",
-    }
-  ]
+  // const courses = [
+  //   {
+  //     img: course1,
+  //     title: "The Visionary Leader's Blueprint",
+  //     writeup: "Learn how to lead with clarity, courage, and conviction in today’s dynamic world."
+  //   },
+  //   {
+  //     img: course2,
+  //     title: "The Visionary Leader's Blueprint",
+  //     writeup: "Learn how to lead with clarity, courage, and conviction in today’s dynamic world.",
+  //   },
+  //   {
+  //     img: course3,
+  //     title: "The Visionary Leader's Blueprint",
+  //     writeup: "Learn how to lead with clarity, courage, and conviction in today’s dynamic world."
+  //   },
+  //   {
+  //     img: course1,
+  //     title: "The Visionary Leader's Blueprint",
+  //     writeup:
+  //       "Learn how to lead with clarity, courage, and conviction in today’s dynamic world.",
+  //   },
+  //   {
+  //     img: course2,
+  //     title: "The Visionary Leader's Blueprint",
+  //     writeup:
+  //       "Learn how to lead with clarity, courage, and conviction in today’s dynamic world.",
+  //   },
+  //   {
+  //     img: course3,
+  //     title: "The Visionary Leader's Blueprint",
+  //     writeup:
+  //       "Learn how to lead with clarity, courage, and conviction in today’s dynamic world.",
+  //   }
+  // ]
   
-  const CoursePreview = ({ img, title, writeup }) => {
-    return (
-      <div className="courses-preview">
-        <div className="courses-preview-img">
-          <img src={img} alt="" />
-        </div>
-        <div className="courses-preview-writeup">
-          <p>{title}</p>
-          <span>{writeup}</span>
-        </div>
-        <div className="courses-card-bottom">
-          <span>₦45,000</span>
-          <Link to="/contact" className="view-course-link">
-            View course
-            <img src={openicon} />
-          </Link>
-        </div>
-      </div>
-    );
-  };
+  // const CoursePreview = ({ img, title, writeup }) => {
+  //   return (
+  //     <div className="courses-preview">
+  //       <div className="courses-preview-img">
+  //         <img src={img} alt="" />
+  //       </div>
+  //       <div className="courses-preview-writeup">
+  //         <p>{title}</p>
+  //         <span>{writeup}</span>
+  //       </div>
+  //       <div className="courses-card-bottom">
+  //         <span>₦45,000</span>
+  //         <Link to="/contact" className="view-course-link">
+  //           View course
+  //           <img src={openicon} />
+  //         </Link>
+  //       </div>
+  //     </div>
+  //   );
+  // };
   
   return (
     <div className="mc-container flex-column">
-      <div className="mc-top">
+      <SearchSection />
+      <FeaturedCoursesSection />
+      {/* <div className="mc-top">
         <div className="searchbar-container">
           <input
             size={50}
@@ -100,7 +104,7 @@ const CoursesMain = () => {
             <CoursePreview key={index} {...course} />
           ))}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

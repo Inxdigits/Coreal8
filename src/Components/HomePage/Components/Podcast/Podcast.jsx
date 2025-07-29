@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Podcast.css';
 import '../../../Get-Started-btn/Get-Started-btn.css';
 import noisy from "../../Assets/noisy-world.png";
@@ -56,11 +57,14 @@ const Podcast = () => {
       </div>
       <div className="podcasts">
         {episodes.map((episode, index) => (
-            <Preview key={index} {...episode} />
+          <Preview key={index} {...episode} />
         ))}
       </div>
+
       <div className="podcasts-button">
-        <button className="dark-bg-btn">Explore All Episodes</button>
+        <Link to="/podcast">
+          <button className="dark-bg-btn">Explore All Episodes</button>
+        </Link>
       </div>
     </div>
   );

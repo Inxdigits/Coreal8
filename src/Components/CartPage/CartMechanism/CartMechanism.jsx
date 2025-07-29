@@ -63,7 +63,7 @@ const CartMechanism = ({ setArrayLength }) => {
       </header>
 
       <div className="divider">
-        <svg
+        {/* <svg
           xmlns="http://www.w3.org/2000/svg"
           width="782"
           height="2"
@@ -76,7 +76,7 @@ const CartMechanism = ({ setArrayLength }) => {
             stroke-opacity="0.1"
             stroke-linecap="round"
           />
-        </svg>
+        </svg> */}
       </div>
 
       <main className="cart-mechanism">
@@ -124,7 +124,7 @@ const CartMechanism = ({ setArrayLength }) => {
       </main>
 
       <div className="divider">
-        <svg
+        {/* <svg
           xmlns="http://www.w3.org/2000/svg"
           width="782"
           height="2"
@@ -137,7 +137,7 @@ const CartMechanism = ({ setArrayLength }) => {
             stroke-opacity="0.1"
             stroke-linecap="round"
           />
-        </svg>
+        </svg> */}
       </div>
 
       <div className="bottom">

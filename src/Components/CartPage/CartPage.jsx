@@ -14,18 +14,18 @@ const CartPage = () => {
         <div className="cartpage-container">
             <section className="cart-intro">
                 <div className="cart-intro-text">
-                    <h2>Cart</h2>
-                    <span>You have {arrayLength} Cart Items</span>
+                  <h2>Cart</h2>
+                  <span>You have {arrayLength} Cart Items</span>
                 </div>
                 <div className="gradient-button-container ci-btn-container">
-                    <button className="gradient-button ci-btn">
-                        Add to Cart
-                    </button>
+                  <button className="gradient-button ci-btn">
+                    Add to Cart
+                  </button>
                 </div>
             </section>
             <section className="cartmain">
-                <CartMechanism setArrayLength={setArrayLength} />
-                <CartPayment />
+              <CartMechanism setArrayLength={setArrayLength} />
+              <CartPayment />
             </section>
         </div>
       <Footer />

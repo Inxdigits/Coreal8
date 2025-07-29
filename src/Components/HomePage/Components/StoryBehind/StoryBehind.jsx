@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import './StoryBehind.css';
 // import left from '../../Assets/left-story-image-resized.jpg';
 import right from '../../Assets/right-story-image.png';
@@ -16,14 +17,17 @@ const StoryBehind = () => {
           strategic growth. Our foundational philosophy, captured in our driving
           purpose – Empowering Minds, Shaping Futures – reflects our commitment
           to fostering well-being, success, and authentic influence at every
-          level. <br />  <br /> We are a pioneering firm dedicated to unlocking potential,
-          whether it's through the journey of individual transformation or the
-          strategic evolution of an entire organization. We understand that true
-          growth begins within and radiates outward, impacting personal lives,
-          professional environments, and broader communities...
+          level. <br /> <br /> We are a pioneering firm dedicated to unlocking
+          potential, whether it's through the journey of individual
+          transformation or the strategic evolution of an entire organization.
+          We understand that true growth begins within and radiates outward,
+          impacting personal lives, professional environments, and broader
+          communities...
         </p>
         <div className="learn-more">
-          <button className="lm-button">Learn More</button>
+          <Link to="/about">
+            <button className="lm-button">Learn More</button>
+          </Link>
         </div>
       </div>
       <div className="story-images">
