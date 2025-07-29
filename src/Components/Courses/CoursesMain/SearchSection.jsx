@@ -39,7 +39,7 @@ export const SearchSection = () => {
 
   return (
     <div className="mc-top">
-      <form onSubmit={handleSearchSubmit} className="mc-form">
+      <form onSubmit={handleSubmit} className="mc-form">
         <div className="searchbar-container">
           <div
             className="input-search-icon"

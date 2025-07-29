@@ -1,0 +1,77 @@
+.header h1{
+    color: #0D0C12;
+text-align: center;
+font-family: "Schibsted Grotesk";
+font-size: 24px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+.header p{
+    color: rgba(13, 12, 18, 0.70);
+text-align: center;
+font-family: "Schibsted Grotesk";
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+.pathways{
+    padding: 50px;
+}
+
+.coaching{
+    display: flex;
+    flex-direction: column;
+}
+.article-grid{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap:12px
+}
+
+.article{
+    border-radius: 10px;
+background: #FFF;
+box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.10);display: flex;
+padding: 50px 20px;
+flex-direction: column;
+align-items: center;
+gap: 12px;
+flex: 1 0 0;
+}
+.article h2{
+    color: #0D0C12;
+text-align: center;
+font-family: "Schibsted Grotesk";
+font-size: 16px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+align-self: stretch;
+
+}
+.article p{
+    color: rgba(13, 12, 18, 0.50);
+text-align: center;
+font-family: "Schibsted Grotesk";
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+color: rgba(13, 12, 18, 0.50);
+text-align: center;
+font-family: "Schibsted Grotesk";
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+
+.plan-text{
+    color: #801323;
+}
+
+.info-con{
+   background-color: #801323;
+}

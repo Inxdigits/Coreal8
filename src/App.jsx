@@ -6,6 +6,7 @@ import About from "./Components/About/About.jsx";
 import Counseling from "./Components/Counseling/Counseling.jsx";
 import ServicePage from './Components/ServicePage/ServicePage.jsx';
 import Podcasts from './Components/Podcasts/Podcasts.jsx';
+import Mentorship from './Components/Mentorship/Mentorship.jsx';
 import Blog from './Components/Blog/Blog.jsx';
 import './App.css';
 import CartPage from './Components/CartPage/CartPage.jsx';
@@ -22,6 +23,8 @@ function App() {
       <Route path="/about" element={<About />} />
       <Route path="/podcast" element={<Podcasts />}/>
       <Route path="/counseling" element={<Counseling />} />
+      <Route path="/mentoring" element={<Mentorship />} />
+      {/* Add other routes as needed */}
     </Routes>
   );
 }

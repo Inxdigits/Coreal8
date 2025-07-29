@@ -61,6 +61,7 @@ const Navbar = () => {
               { path: "/podcast", label: "Podcast" },
               { path: "/blog", label: "Blog" },
               { path: "/contact", label: "Contact" },
+              
             ].map(({ path, label }) => (
               <li
                 key={path}
