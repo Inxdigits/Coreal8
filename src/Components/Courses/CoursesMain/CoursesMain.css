@@ -1,6 +1,6 @@
 .mc-container {
     padding: 80px;
-    gap: 24px;
+    gap: 50px;
 }
 
 .mc-top {
@@ -16,7 +16,15 @@
     gap: 8px;
     flex-direction: row;
 }
-
+nav{
+    padding: 0 !important;
+}
+.mb{
+    
+}
+form{
+    width: 800px;
+}
 .filter-select {
     border-radius: 15px;
     border: 1px solid rgba(13, 12, 18, 0.10);

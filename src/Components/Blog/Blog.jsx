@@ -73,7 +73,7 @@ const Blog = () => {
     ];
     const sortOptions = ["Newest", "Oldest", "Popular", "Trending"];
 
-    const handleFilerClick = (filterId, label) =>{
+    const handleFilterClick = (filterId, label) =>{
         setSelectedFilter(label);
     }
     const handleSortSelect = (option) => {
@@ -129,13 +129,13 @@ const Blog = () => {
                 {filterOptions.map((option) => (
                     <button
                     key={option.id}
-                    onClick={() => handleFilerClick(option.id, option.label)}
+                    onClick={() => handleFilterClick(option.id, option.label)}
                     className={`tiles items-start gap-2.5 px-2.5 mt-[-1.00px] mb[-1.00px] ${option.id === "all" ? "ml-[-1.00px]" : ""} ${option.id === "legacy" ? "mr-{-1.00px]" : ""} "rounded-[15px] overflow-hidden border border-solid inline-flex relative flex-[0_0_auto] transition-colors duration-200 hover:opacity-80 focus:outline-none focus:ring-offset-2 focus:ring-[#801323] focus:border-[#801323] focus:ring-opacity-50 ${selectedFilter === option.label ? "border-[#801323] bg-transparent " : "border-[#0d0c121a] bg-white "}`}
                     aria-pressed={selectedFilter === option.label}
                     type="button"
                     >
                
-                              <span className={`relatice w-fit [font-family: 'Schibsted_Grotesk-Regular', Helvetica] font-normal text-[#0d0c12] text-base text-center tracking-[0] leading-[normal] ${selectedFilter === option.label ? "text-[#801323]" : "text-[#0d0c12]" }`}>
+                              <span className={`relative w-fit [font-family: 'Schibsted_Grotesk-Regular', Helvetica] font-normal text-[#0d0c12] text-base text-center tracking-[0] leading-[normal] ${selectedFilter === option.label ? "text-[#801323]" : "text-[#0d0c12]" }`}>
 
                         {option.label}</span>
                     </button>
@@ -159,7 +159,7 @@ const Blog = () => {
                         type='button'
                         >
                             <span className='relative w-fit'>{selectedSort}</span>
-                            <div className={`items-center justify-center relative w-2.5 h-5 overflow-hidden transition-transform duration-200 ${isDropDownOpen ? "rotate-180" : "rotate-0"}`}>
+                            <div className={`items-center justify-center flex relative w-2.5 h-5 overflow-hidden transition-transform duration-200 ${isDropDownOpen ? "rotate-180" : "rotate-0"}`}>
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#801323" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                     <polyline points="6 9 12 15 18 9"></polyline>
                                 </svg>

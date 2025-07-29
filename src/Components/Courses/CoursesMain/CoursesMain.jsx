@@ -70,6 +70,7 @@ const CoursesMain = () => {
   return (
     <div className="mc-container flex-column">
       <SearchSection />
+      <div className='mb'></div>
       <FeaturedCoursesSection />
       {/* <div className="mc-top">
         <div className="searchbar-container">
