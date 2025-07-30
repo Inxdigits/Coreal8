@@ -11,13 +11,51 @@ import { FaAngleDown } from 'react-icons/fa';
 const Navbar = () => {
   const location = useLocation();
   const currentPath = location.pathname;
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   const toggleMenu = () => setIsMenuOpen((prev) => !prev);
-
   useEffect(() => {
     setIsMenuOpen(false); // Close menu on route change
   }, [currentPath]);
+  
+  const [dropdowns, setDropdowns] = useState({
+    services: false,
+    counseling: false,
+    mentorship: false,
+  });
+
+  // Toggle specific dropdown and close others
+  const toggleDropdown = (type) => {
+    setDropdowns((prev) => {
+      const newState = {
+        services: false,
+        counseling: false,
+        mentorship: false,
+      };
+      newState[type] = !prev[type]; // Toggle only the selected
+      return newState;
+    });
+  };
+  
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (!event.target.closest(".nav-item.dropdown")) {
+        setDropdowns({
+          services: false,
+          counseling: false,
+          mentorship: false,
+        });
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
+
+
 
   return (
     <nav
@@ -54,14 +92,17 @@ const Navbar = () => {
           className={`navbar-collapse ${isMenuOpen ? "block" : "hidden"}`}
           id="navbarNav"
         >
-          <ul className="navbar-nav ms-auto align-items-lg-center gap-3">
+          <ul
+            className="navbar-nav 
+            align-items-lg-center 
+            "
+          >
             {[
               { path: "/about", label: "About" },
               { path: "/courses", label: "Courses" },
               { path: "/podcast", label: "Podcast" },
               { path: "/blog", label: "Blog" },
               { path: "/contact", label: "Contact" },
-              
             ].map(({ path, label }) => (
               <li
                 key={path}
@@ -82,29 +123,66 @@ const Navbar = () => {
               }`}
             >
               <Link
-                to="/services"
+                onClick={() => toggleDropdown("services")}
                 className="nav-link dropdown-link dropdown-label"
               >
-                Services <FaAngleDown className="rotate-icon" />{" "}
+                Services{" "}
+                <FaAngleDown
+                  className={`${dropdowns.services ? "rotate-icon" : ""}`}
+                />
               </Link>
-              <div className="dropdown-menu custom-dropdown">
-                <Link className="dropdown-item" to="/services/counseling">
+              <div
+                className={`dropdown-menu ${
+                  dropdowns.services ? "custom-dropdown" : "hidden"
+                }`}
+              >
+                <Link className="dropdown-item" to="/services">
+                  Counseling & Engagement
+                </Link>
+                <Link className="dropdown-item" to="/services">
+                  Corporate Consulting & Training
+                </Link>
+                <Link className="dropdown-item" to="/services">
+                  Personal Brand Development
+                </Link>
+              </div>
+            </li>
+
+            {/* <li
+              className={`nav-item dropdown position-relative ${
+                currentPath === "/services" ? "active-link" : ""
+              }`}
+            >
+              <Link
+                // to="/services"
+                onClick={toggleDropdown}
+                className="nav-link dropdown-link dropdown-label"
+              >
+                Services <FaAngleDown className={`${isDropdown ? "rotate-icon" : ""}`} />{" "}
+              </Link>
+              <div
+                // className="dropdown-menu custom-dropdown"
+                className={`dropdown-menu ${
+                  isDropdown ? "custom-dropdown" : "hidden"
+                }`}
+              >
+                <Link className="dropdown-item" to="/services">
                   Counseling & Engagement
                 </Link>
                 <Link
                   className="dropdown-item"
-                  to="/services/corporate-consulting"
+                  to="/services"
                 >
                   Corporate Consulting & Training
                 </Link>
                 <Link
                   className="dropdown-item"
-                  to="/services/personal-branding"
+                  to="/services"
                 >
                   Personal Brand Development
                 </Link>
               </div>
-            </li>
+            </li> */}
 
             {/* Counseling Dropdown */}
             <li
@@ -113,26 +191,66 @@ const Navbar = () => {
               }`}
             >
               <Link
-                to="/counseling"
+                onClick={() => toggleDropdown("counseling")}
                 className="nav-link dropdown-link dropdown-label"
               >
-                Counseling <FaAngleDown className="rotate-icon" />{" "}
+                Counseling{" "}
+                <FaAngleDown
+                  className={`${dropdowns.counseling ? "rotate-icon" : ""}`}
+                />
               </Link>
-              <div className="dropdown-menu custom-dropdown">
-                <Link className="dropdown-item" to="/counseling/individual">
+              <div
+                className={`dropdown-menu ${
+                  dropdowns.counseling ? "custom-dropdown" : "hidden"
+                }`}
+              >
+                <Link className="dropdown-item" to="/counseling">
                   Individual Counseling
                 </Link>
-                <Link className="dropdown-item" to="/counseling/relationship">
+                <Link className="dropdown-item" to="/counseling">
                   Couples/Relationship Counseling
                 </Link>
-                <Link className="dropdown-item" to="/counseling/family">
+                <Link className="dropdown-item" to="/counseling">
                   Family Counseling
                 </Link>
-                <Link className="dropdown-item" to="/counseling/group">
+                <Link className="dropdown-item" to="/counseling">
                   Group Counseling
                 </Link>
               </div>
             </li>
+
+            {/* <li
+              className={`nav-item dropdown position-relative ${
+                currentPath === "/counseling" ? "active-link" : ""
+              }`}
+            >
+              <Link
+                // to="/counseling"
+                onClick={toggleDropdown}
+                className="nav-link dropdown-link dropdown-label"
+              >
+                Counseling <FaAngleDown className={`${isDropdown ? "rotate-icon" : ""}`} />{" "}
+              </Link>
+              <div
+                // className="dropdown-menu custom-dropdown"
+                className={`dropdown-menu ${
+                  isDropdown ? "custom-dropdown" : "hidden"
+                }`}
+              >
+                <Link className="dropdown-item" to="/counseling">
+                  Individual Counseling
+                </Link>
+                <Link className="dropdown-item" to="/counseling">
+                  Couples/Relationship Counseling
+                </Link>
+                <Link className="dropdown-item" to="/counseling">
+                  Family Counseling
+                </Link>
+                <Link className="dropdown-item" to="/counseling">
+                  Group Counseling
+                </Link>
+              </div>
+            </li> */}
 
             {/* Mentorship Dropdown */}
             <li
@@ -141,20 +259,54 @@ const Navbar = () => {
               }`}
             >
               <Link
-                to="/mentoring"
+                onClick={() => toggleDropdown("mentorship")}
                 className="nav-link dropdown-link dropdown-label"
               >
-                Mentorship <FaAngleDown className="rotate-icon" />{" "}
+                Mentorship{" "}
+                <FaAngleDown
+                  className={`${dropdowns.mentorship ? "rotate-icon" : ""}`}
+                />
               </Link>
-              <div className="dropdown-menu custom-dropdown">
-                <Link className="dropdown-item" to="/mentorship/mentoring">
+              <div
+                className={`dropdown-menu ${
+                  dropdowns.mentorship ? "custom-dropdown" : "hidden"
+                }`}
+              >
+                <Link className="dropdown-item" to="/mentoring">
                   Mentorship
                 </Link>
-                <Link className="dropdown-item" to="/mentorship/coaching">
+                <Link className="dropdown-item" to="/mentoring">
                   Coaching
                 </Link>
               </div>
             </li>
+
+            {/* <li
+              className={`nav-item dropdown position-relative ${
+                currentPath === "/mentoring" ? "active-link" : ""
+              }`}
+            >
+              <Link
+                // to="/mentoring"
+                onClick={toggleDropdown}
+                className="nav-link dropdown-link dropdown-label"
+              >
+                Mentorship <FaAngleDown className={`${isDropdown ? "rotate-icon" : ""}`} />{" "}
+              </Link>
+              <div
+                // className="dropdown-menu custom-dropdown"
+                className={`dropdown-menu ${
+                  isDropdown ? "custom-dropdown" : "hidden"
+                }`}
+              >
+                <Link className="dropdown-item" to="/mentoring">
+                  Mentorship
+                </Link>
+                <Link className="dropdown-item" to="/mentoring">
+                  Coaching
+                </Link>
+              </div>
+            </li> */}
 
             {/* Icons */}
             <li
@@ -173,11 +325,7 @@ const Navbar = () => {
 
             {/* Book Button */}
             <li className="nav-item gradient-button-container">
-              <button
-                className="
-              // btn btn-outline-dark px-4 py-2 
-              nav-gradient-button gradient-button"
-              >
+              <button className="nav-gradient-button gradient-button">
                 Book a Session
               </button>
             </li>
@@ -189,3 +337,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+// btn btn-outline-dark px-4 py-2

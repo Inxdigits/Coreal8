@@ -16,3 +16,26 @@
     display: grid;
     grid-template-columns: 65% 35%;
 }
+
+.show-courses {
+    padding: 80px;
+}
+
+.show-courses h3 {
+    color: #0D0C12;
+    font-family: "Schibsted Grotesk";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    color: rgba(13, 12, 18, 1);
+}
+
+@media screen and (max-width: 980px) {
+    .cartmain {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .show-courses {
+        padding: 80px 40px;
+    }
+}

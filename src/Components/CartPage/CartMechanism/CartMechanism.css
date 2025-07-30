@@ -95,3 +95,9 @@
 .clearcart {
     padding: 20px 49px;
 }
+
+@media screen and (max-width: 1190px) {
+    .cart-mechanism-container {
+        padding: 80px 40px;
+    }
+}
