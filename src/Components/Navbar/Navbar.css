@@ -185,6 +185,7 @@
     padding: 20px !important;
     padding-left: 30px;
     margin: 0 !important;
+    overflow: scroll;
   }
 
   .navbar-nav .nav-item {
