@@ -91,8 +91,8 @@ const Blog = () => {
         </p>
         </header>
        
-        <form onSubmit={handleSubmit} className="incline-flex flex-row items-center justify-center gap-3 flex-[0_0_auto] relative" role='search' aria-label='Search blogs'>
-            <div className='flex w-[502px] input rounded-2xl border border-solid border-[#0d0c121a] items-center relative'> 
+        <form onSubmit={handleSubmit} className="flex incline-flex flex-row items-center justify-center gap-3 flex-[0_0_auto] relative" role='search' aria-label='Search blogs'>
+            <div className='flex flex-row w-[502px] input rounded-2xl border border-solid border-[#0d0c121a] items-center relative'> 
                 
                 <div className='relative w-6 h-6' aria-hidden="true">
                 <div className='relative w-5 h-5 top-0.5 left-0.5'>
