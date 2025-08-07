@@ -20,7 +20,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
 p{
   margin-bottom: 0px !important;
   padding-bottom: 0px !important;
+}
+
+a {
+  color: inherit;
 }

@@ -61,7 +61,7 @@ const CartPayment = () => {
         Proceed to Payment
       </button>
 
-      <div className="flex-between-div">
+      <div className="hidden-fees">
         <span className="cp-info-icon" aria-hidden="true">
           <svg
             xmlns="http://www.w3.org/2000/svg"

@@ -53,8 +53,21 @@
     align-self: stretch;
 }
 
+.hidden-fees {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+}
+
 .cp-info-icon {
     width: 20px;
     height: 20px;
     aspect-ratio: 1/1;
+}
+
+@media screen and (max-width: 1190px) {
+    .cartpayment-container {
+        padding: 80px 40px;
+    }
 }

@@ -28,7 +28,7 @@ const Courses = () => {
     }
   ];
   
-  const PodcastCard = ({ img, title, writeup }) => {
+  const CourseCard = ({ img, title, writeup }) => {
     return (
       <div className="courses-preview">
         <div className="courses-preview-img">
@@ -40,7 +40,7 @@ const Courses = () => {
         </div>
         <div className="courses-card-bottom">
           <span>₦45,000</span>
-          <Link to="/contact" className="view-course-link">
+          <Link to="/courses" className="view-course-link">
             View course
             <img src={openicon} />
           </Link>
@@ -67,7 +67,7 @@ const Courses = () => {
         </div>
         <div className="courses">
           {courses.map((course, index) => (
-            <PodcastCard key={index} {...course} />
+            <CourseCard key={index} {...course} />
           ))}
           <div className="courses-preview extra-courses-preview">
             <div className="courses-preview-img">

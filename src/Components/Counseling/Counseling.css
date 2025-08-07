@@ -428,3 +428,10 @@
         padding: 40px;
     }
 }
+
+@media screen and (max-width: 970px) {
+    .copo-payment-plans {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 24px;
+    }
+}

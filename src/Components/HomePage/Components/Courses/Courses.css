@@ -152,11 +152,11 @@
         text-align: center;
     }
 
-    .podcardbottom {
+    .courses-card-bottom {
         margin-top: 10px;
         flex-direction: column;
         align-items: start;
-        gap: 10px;
+        /* gap: 10px; */
     }
     
     .extra-courses-preview {
