@@ -73,6 +73,7 @@
 
     .partners {
         grid-template-columns: repeat(2, 50%);
+        gap: 24px;
     }
 
     .card:last-of-type {
@@ -83,7 +84,7 @@
 
 @media screen and (max-width: 530px) {
     .trust-container {
-        padding: 40px 20px;
+        padding: 80px 20px;
     }
 
     .partners {

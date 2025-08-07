@@ -11,6 +11,7 @@ import Leadership from "./Components/Leadership/Leadership.jsx";
 import Blogs from "./Components/Blogs/Blogs.jsx";
 import Testimonial from "./Components/Testimonial/Testimonial.jsx";
 import BookAppointment from "./Components/BookAppointment/BookAppointment.jsx";
+import Faqs from '../Courses/Faqs/Faqs.jsx';
 import Footer from '../Footer/Footer.jsx';
 
 const HomePage = () => {
@@ -28,7 +29,15 @@ const HomePage = () => {
       <Blogs />
       <Testimonial />
       <BookAppointment />
-
+      <section className="faqs-container flex-column section-container">
+        <div className="section-header">
+          <span>FAQs</span>
+        </div>
+        <div className="faqs-intro">
+          <h1>Frequently Asked Questions</h1>
+        </div>
+        <Faqs />
+      </section>
       <Footer />
     </div>
   );

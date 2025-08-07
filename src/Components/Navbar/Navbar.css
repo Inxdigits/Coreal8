@@ -164,6 +164,11 @@
 
 /* MOBILE: ALWAYS SHOW ON CLICK IF collapse is active */
 @media (max-width: 991.98px) {
+  .navbar-collapse {
+    max-height: 100vh;
+    overflow-y: auto;
+  }
+
   .navbar.custom-dropdown {
     /* position: static; */
     box-shadow: none;
@@ -177,7 +182,8 @@
 
   .navbar-nav {
     width: 50%;
-    /* max-width: 300px; */
+    max-height: 90vh;
+    overflow-y: auto;
     position: absolute;
     top: 90%;
     right: 0;

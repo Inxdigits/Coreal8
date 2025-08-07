@@ -79,8 +79,8 @@ const Contact = () => {
                 <div className="card-text">
                   <h3 className="card-title">Contact Us</h3>
                   <ul id="liststyledisc">
-                    <li>Monday - Friday from 9:00 AM - 6:00 PM (WAT)</li>
-                    <li> Saturdays: 10:00 AM – 2:00 PM</li>
+                    <li className="card-subtitle">Monday - Friday from 9:00 AM - 6:00 PM (WAT)</li>
+                    <li className="card-subtitle"> Saturdays: 10:00 AM – 2:00 PM</li>
                   </ul>
                 </div>
                 <p className="card-detail">099200399012</p>

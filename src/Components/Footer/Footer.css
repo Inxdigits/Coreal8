@@ -139,7 +139,7 @@ footer {
 
 @media screen and (max-width: 728px) {
     footer {
-        padding: 40px;
+        padding: 80px 40px;
     }
 
     .newsletter {
@@ -168,6 +168,7 @@ footer {
     .newsletter .footer-form {
         width: auto;
         grid-template-columns: repeat(1, 1fr);
+        gap: 24px;
     }
 
     .newsletter .footer-form button {
@@ -196,6 +197,6 @@ footer {
 
 @media screen and (max-width: 525px) {
     footer {
-        padding: 40px 20px;
+        padding: 80px 20px;
     }
 }

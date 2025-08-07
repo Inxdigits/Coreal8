@@ -147,7 +147,7 @@
     .story-images {
         width: 100%;
         height: 330px;
-        gap: 16px;
+        gap: 28px;
     }
 
     .left-story-image {
@@ -168,8 +168,8 @@
 
 @media screen and (max-width: 560px) { 
     .story-container {
-        margin-top: 50px;
-        padding: 20px;
+        /* margin-top: 50px; */
+        padding: 80px 20px;
     }
 
     .story-container-header {
@@ -195,7 +195,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 12px;
+        gap: 24px;
     }
 
     .left-story-image,

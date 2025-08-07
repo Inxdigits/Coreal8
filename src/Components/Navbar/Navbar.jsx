@@ -85,7 +85,13 @@ const Navbar = () => {
           aria-expanded={isMenuOpen}
           aria-label="Toggle navigation"
         >
-          <img src={menuIcon} alt="menu toggle" style={{ width: "28px" }} />
+          {isMenuOpen ? (
+            <span style={{ fontSize: "40px", fontWeight: "600" }}>
+              &times;
+            </span>
+          ) : (
+            <img src={menuIcon} alt="menu toggle" style={{ width: "28px" }} />
+          )}
         </button>
 
         <div

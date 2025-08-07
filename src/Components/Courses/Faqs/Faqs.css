@@ -32,14 +32,22 @@
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    gap: 24px;
-    display: flex;
+    /* gap: 100%; */
     padding: 20px 0;
     border-bottom: 1px solid rgba(13, 12, 18, 0.10);
 }
 
 .faq-text {
     text-align: left;
+}
+
+.faq-answer {
+    width: 80%;
+}
+
+.dropdown-circle {
+    width: 20px !important;
+    height: 20px;
 }
 
 .dropdown-circle {

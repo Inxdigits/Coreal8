@@ -13,33 +13,33 @@ const Faqs = () => {
   const faqs = [
     {
       id: 1,
-      question: "Do I need leadership experience to enroll?",
+      question: "How do I know which program or service is right for me?",
       answer:
-        "Sorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum...",
+        "We offer a complimentary discovery call to understand your current needs, challenges, and goals. During the session, we will guide you to the best-fit solution.",
     },
     {
       id: 2,
-      question: "Are courses live or self-paced?",
+      question: "What’s the difference between coaching and mentorship?",
       answer:
-        "Sorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum...",
+        "Coaching is usually goal-focused and time-bound with structured sessions, while mentorship involves guidance and sharing of personal experiences to support long-term growth. Our programs can combine both depending on your goals.",
     },
     {
       id: 3,
-      question: "Can I pay in installments?",
+      question: "Can I work with Coreal8 if I’m outside Nigeria?",
       answer:
-        "Sorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum...",
+        "Absolutely! We work with clients globally via virtual sessions, and our digital resources and communication channels are designed to support international clients.",
     },
     {
       id: 4,
-      question: "How will I access my course?",
+      question: "Do you offer corporate packages or workshops?",
       answer:
-        "Sorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum...",
+        "Yes, we offer customized workshops, strategy sessions, and team training programs for organizations. Please reach out to us directly to discuss your team’s needs.",
     },
     {
       id: 5,
-      question: "Do I need leadership experience to enroll?",
+      question: "What payment methods are available?",
       answer:
-        "Sorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum...",
+        "We accept bank transfers, debit/credit cards, and secure online payments through Paystack and Flutterwave. Payment plans are available for selected programs.",
     },
   ];
 
@@ -60,6 +60,7 @@ const Faqs = () => {
           <img
             src={isOpen ? minuscircle : pluscircle}
             alt={`Toggle ${question}`}
+            className='plusorminus'
           />
         </button>
       </div>

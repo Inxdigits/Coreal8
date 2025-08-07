@@ -148,7 +148,7 @@
     .courses {
         display: grid;
         grid-template-columns: repeat(2, 48.5%);
-        gap: 16px;
+        gap: 28px;
         text-align: center;
     }
 
@@ -178,18 +178,19 @@
 
 @media screen and (max-width: 744px) {
     .courses-container {
-        padding: 40px 20px;
+        padding: 80px 20px;
     }
     
 }
 
 @media screen and (max-width: 425px) {
     .courses-container {
-        padding: 40px 20px;
+        padding: 80px 20px;
     }
 
     .courses {
         grid-template-columns: repeat(1, 100%);
+        gap: 24px;
     }
 
     .podcardbottom {

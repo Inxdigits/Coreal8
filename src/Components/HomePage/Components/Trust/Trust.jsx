@@ -1,26 +1,29 @@
-import React from 'react';
-import './Trust.css';
-import '../../Reuse.css'
+import React, { useState } from "react";
+import "./Trust.css";
+import "../../Reuse.css";
 import couples from "../../Assets/couples-counseling.png";
 import family from "../../Assets/family-counseling.png";
-import individual from '../../Assets/individual-counseling.png';
+import individual from "../../Assets/individual-counseling.png";
+import PartnerModal from "./PartnerModal/PartnerModal";
 
 const Trust = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const partners = [
     {
       icon: individual,
       header: "Healthcare Providers & Clinics",
-      body: "We work with trusted wellness centers to ensure holistic support through referrals and collaboration."
+      body: "We work with trusted wellness centers to ensure holistic support through referrals and collaboration.",
     },
     {
       icon: couples,
       header: "HR Departments & EAPs",
-      body: "Partnering with HR teams to provide counseling and wellness programs for employee growth."
+      body: "Partnering with HR teams to provide counseling and wellness programs for employee growth.",
     },
     {
       icon: family,
       header: "Industry Associations",
-      body: "We deliver training and speak at events, helping professionals and organizations grow together."
+      body: "We deliver training and speak at events, helping professionals and organizations grow together.",
     },
     {
       icon: individual,
@@ -38,7 +41,7 @@ const Trust = () => {
       body: "Collaborating with NGOs and youth groups to offer workshops, support groups, and outreach programs.",
     },
   ];
-  
+
   const Partner = ({ icon, header, body }) => {
     return (
       <div className="card">
@@ -68,11 +71,19 @@ const Trust = () => {
           <Partner key={index} {...partner} />
         ))}
       </div>
-      <div className=" partner-button-container">
-        <button className="partner-button">Become a Partner</button>
+      <div className="partner-button-container">
+        <button className="partner-button" onClick={() => setIsModalOpen(true)}>
+          Become a Partner
+        </button>
       </div>
+
+      {/* Modal */}
+      <PartnerModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </div>
   );
-}
+};
 
-export default Trust
+export default Trust;

@@ -165,14 +165,14 @@
     }
 }
 
-@media screen and (max-width: 451px) {
+@media screen and (max-width: 525px) {
     .container {
-        padding: 20px;
+        padding: 80px 20px;
     }
 
-    .blog-header {
+    /* .blog-header {
         margin-top: 50px;
-    }
+    } */
     
    
 }
