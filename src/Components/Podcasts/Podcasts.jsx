@@ -14,6 +14,9 @@ import Apple from "../../Assets/PodcastPageAssests/applepodcast.png";
 import Spotify from "../../Assets/PodcastPageAssests/spotify.png";
 import YouTube from "../../Assets/PodcastPageAssests/youtube.png";
 import John from "../../Assets/PodcastPageAssests/john.jpg";
+import Makamba from "../../Assets/PodcastPageAssests/Makamba.jpg"
+import MakambaBig from "../../Assets/PodcastPageAssests/makamba.png"
+import Solar from "../../Assets/PodcastPageAssests/solar.svg"
 const Podcasts = () => {
   const spotlightData = [
     {
@@ -114,13 +117,12 @@ const Podcasts = () => {
       
       
       <section className=" flex-col items-center justify-center gap-3 p-20 relative bg-[#80132314] services-header">
-        <header className=" relative mt-[-2.00px] [font-family: 'Montserrat-Bold', sans-serif] font-bold text-[#801323] text-[40px] text-center tracking-[0] leading-[normal]">
-          The Coreal8 Podcast
+        <img src={Makamba}/>
+        <header className=" relative mt-[-2.00px] [font-family: 'Montserrat-Bold', sans-serif] font-bold text-[#DBA126] text-[40px] text-center tracking-[0] leading-[normal]">
+         Makamba Podcast by Coreal8
         </header>
-        <p>
-          Explore high-impact masterclasses designed to equip you with practical
-          tools for ethical leadership, lifestyle balance, and legacy creation —
-          all led by Dr. Enobong Ezekiel through the Coreal8 platform.
+        <p className="text-[#0D0C12] font-normal">
+          Conversations that spark clarity, growth, and purpose. Hosted by Coreal8, Makamba is where real stories, deep reflections, and intentional dialogue meet to guide your personal and professional evolution.
         </p>
       </section>
       <div className="spotlight">
@@ -237,6 +239,26 @@ const Podcasts = () => {
           </div>
         </div>
       </div>
+      
+      <section className="flex flex-row bg-[#DBA126] p-[80px] gap-[50px] text-[white] items-start about-section">
+        <div className="gap-4 flex items-start about-podcast">
+          <h2 className="font-black">About The Podcast</h2>
+          <p>Makamba is a Coreal8 original podcast series that explores the intersections of clarity, growth, purpose, and becoming.
+Through honest conversations with thought leaders, creatives, coaches, and everyday changemakers, we unpack what it means to evolve — personally and professionally.
+Whether you're navigating transitions, rediscovering yourself, or chasing purpose, Makamba offers perspectives, stories, and insights to inspire your next step.</p>
+<div>
+  <div className="flex flex-row gap-2.5">
+    <img src={Solar}/>
+    <p>Tune in, reflect deeply, and live more intentionally — one episode at a time.</p>
+  </div>
+
+</div>
+        </div>
+        <div className="makamba-img">
+          <img src={MakambaBig} width="3500px" />
+        </div>
+
+      </section>
 
       <div className="flex red-section">
         <div className="image">
@@ -244,18 +266,19 @@ const Podcasts = () => {
         </div>
         <div className="red-section-right">
           <h2>Available Everywhere You Listen</h2>
-          <div className="app-grid">
-            <div className="grid-item">
-              <div className="flex gap-3 items-center red-section-item">
-                <img src={Apple} className="w-14" />
+          <div className="flex gap-3">
+               <div className="grid-item">
+              <div className="flex gap-3 items-center  red-section-item">
+                <img src={YouTube} className="w-14" />
                 <div>
                   <div>
                     <p>Listen on</p>
-                    <h3>Apple Podcasts</h3>
+                    <h3>Youtube</h3>
                   </div>
                 </div>
               </div>
             </div>
+           
             <div className="grid-item">
               <div className="flex gap-3 items-center red-section-item">
                 <img src={Apple} className="w-14" />
@@ -278,44 +301,14 @@ const Podcasts = () => {
                 </div>
               </div>
             </div>
+         
 
           </div>
 
           <div className=" app-grid">
             
-            <div className="grid-item">
-              <div className="flex gap-3 items-center  red-section-item">
-                <img src={YouTube} className="w-14" />
-                <div>
-                  <div>
-                    <p>Listen on</p>
-                    <h3>Youtube</h3>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="grid-item">
-              <div className="flex gap-3 items-center  red-section-item">
-                <img src={Spotify} className="w-14" />
-                <div>
-                  <div>
-                    <p>Listen on</p>
-                    <h3>Spotify</h3>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="grid-item">
-              <div className="flex gap-3 items-center red-section-item">
-                <img src={YouTube} className="w-14" />
-                <div>
-                  <div>
-                    <p>Listen on</p>
-                    <h3>Youtube</h3>
-                  </div>
-                </div>
-              </div>
-            </div>
+            
+           
           </div>
         </div>
       </div>

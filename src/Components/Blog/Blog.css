@@ -87,3 +87,12 @@ a{
 .btn-flex{
     flex-direction: row;
 }
+
+.about-section{
+    padding :80px;
+}
+
+.makamba-img{
+    justify-items: center;
+    align-items: center;
+}
