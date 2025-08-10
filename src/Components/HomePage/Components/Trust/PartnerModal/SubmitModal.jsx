@@ -26,7 +26,6 @@ const SubmitModal = ( isOpen, onClose ) => {
           X
         </button>
         <div className="modal-content fade-in">
-          '
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="100"
@@ -106,6 +105,14 @@ const SubmitModal = ( isOpen, onClose ) => {
               stroke-linecap="round"
             />
           </svg>
+
+          <div className="submit-modal-text">
+            <h3>Thanks For Reaching Out!</h3>
+            <p>Our partnerships team will review your request and get back to you within 2-3 business days.</p>
+            <p>We look forward to building something impactful together.</p>
+          </div>
+
+          <button className="close-submit-modal">Close</button>
         </div>
       </div>
     </div>
