@@ -149,10 +149,20 @@ form{
     align-self: stretch;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 991px) {
+    .courses-lineup {
+        flex-direction: row;
+    }
+    
     .courseslist {
         flex-direction: column;
         margin: 0 auto;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .courses-lineup {
+        flex-direction: column;
     }
 
     .courses-card {

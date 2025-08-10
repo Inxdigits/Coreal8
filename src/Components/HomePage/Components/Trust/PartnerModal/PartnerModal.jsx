@@ -20,11 +20,11 @@ const PartnerModal = ({ isOpen, onClose }) => {
     return () => document.removeEventListener("keydown", handleEscape);
   }, [onClose]);
 
-  const handleBackdropClick = (e) => {
-    if (e.target.classList.contains("modal-backdrop")) {
-      onClose();
-    }
-  };
+  // const handleBackdropClick = (e) => {
+  //   if (e.target.classList.contains("modal-backdrop")) {
+  //     onClose();
+  //   }
+  // };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -37,7 +37,9 @@ const PartnerModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="modal-backdrop" onClick={handleBackdropClick}>
+    <div className="modal-backdrop" 
+    // onClick={handleBackdropClick}
+    >
       <button className="close-btn" onClick={onClose}>
         X
       </button>
@@ -56,7 +58,7 @@ const PartnerModal = ({ isOpen, onClose }) => {
             type="text"
             name="fullName"
             placeholder="e.g John Doe"
-            required
+            
           />
 
           <label htmlFor="email">Email Address *</label>
@@ -64,17 +66,17 @@ const PartnerModal = ({ isOpen, onClose }) => {
             type="email"
             name="email"
             placeholder="e.g johndoe@gmail.com"
-            required
+            
           />
 
           <label htmlFor="company">Organization / Company Name</label>
           <input type="text" name="company" placeholder="e.g Power House" />
 
           <label htmlFor="role">Your Role / Title</label>
-          <input type="text" name="role" placeholder="e.g C.E.O" required />
+          <input type="text" name="role" placeholder="e.g C.E.O"  />
 
           <label htmlFor="">Type of Partnership</label>
-          <select name="" id="" defaultValue={"select"} required>
+          <select name="" id="" defaultValue={"select"} >
             <option value="select" disabled>
               Select Partnership:
             </option>
@@ -93,7 +95,7 @@ const PartnerModal = ({ isOpen, onClose }) => {
           <textarea
             name="message"
             placeholder="Tell us a bit about your goals and how we might collaborate"
-            required
+            
           />
           <button type="submit" className="modal-submit-button"
             onClick={()=> setIsModalSubmitted(true)}

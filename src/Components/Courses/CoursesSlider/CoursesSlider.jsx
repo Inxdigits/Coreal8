@@ -54,6 +54,22 @@ const CoursesSlider = () => {
           nextEl: ".custom-swiper-next",
           prevEl: ".custom-swiper-prev",
         }}
+        breakpoints={{
+          1024: {
+            slidesPerView: 3.5,
+          },
+          900: {
+            slidesPerView: 2.5,
+            spaceBetween: 20,
+          },
+          768: {
+            slidesPerView: 1.5,
+          },
+          0: {
+            // from 0px to 767px
+            slidesPerView: 1,
+          },
+        }}
         //   pagination={{ clickable: true }}
         //   onSlideChange={() => console.log("slide changed")}
         //   onSwiper={(swiper) => console.log(swiper)}
@@ -71,7 +87,7 @@ const CoursesSlider = () => {
                   <img src={stars} className="review-stars" />
                 </div>
               </div>
-              <p className='ct-card-quote'>"{testimonial.quote}"</p>
+              <p className="ct-card-quote">"{testimonial.quote}"</p>
             </div>
           </SwiperSlide>
         ))}

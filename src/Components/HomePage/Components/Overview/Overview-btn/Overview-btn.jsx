@@ -41,15 +41,15 @@ const OverviewBtn = () => {
          >
            <div className="gtstd-option">
              <img src={schedule} alt="" />
-             <span>Book Dr. Enobong</span>
+             <span>Book a Session</span>
            </div>
            <div className="gtstd-option">
              <img src={book} alt="" />
-             <span>Start Learning</span>
+             <span>Explore Services</span>
            </div>
            <div className="gtstd-option">
              <img src={podcast} alt="" />
-             <span>Listen to Podcast</span>
+             <span>Start a Course</span>
            </div>
          </div>
        </div>
