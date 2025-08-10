@@ -44,11 +44,11 @@ const Podcast = () => {
 
   return (
     <div className="podcast-container">
-      <div className="podcast-header">
+      <div className="hp-podcast-header">
         <span>PODCAST EPISODES</span>
       </div>
       <div className="podcast-writeup">
-        <h1>The Coreal8 Podcast</h1>
+        <h1>The Makamba Podcast</h1>
         <p>
           Dive into real, powerful conversations with visionary leaders,
           entrepreneurs, and changemakers across Africa and beyond. Dr. Ezekiel
