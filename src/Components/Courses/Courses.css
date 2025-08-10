@@ -6,6 +6,11 @@
     gap: 50px;
 }
 
+.courses-login-button {
+    padding: 15px 20px;
+    width: 150px;
+}
+
 .co-writeup {
     padding-left: 80px;
     /* padding-right: 0; */

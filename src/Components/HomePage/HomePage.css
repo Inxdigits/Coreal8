@@ -1,0 +1,16 @@
+.faqs-container {
+    padding: 80px;
+}
+
+@media screen and (max-width: 900px) {
+    .faqs-container {
+        padding: 80px 40px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .faqs-container {
+        padding: 40px 20px;
+        padding-top: 80px ;
+    }
+}

@@ -26,7 +26,7 @@ const Courses = () => {
           <div className="co-writeup-buttons">
             <button className="dark-bg-btn">Start a Course</button>
             <div className="gradient-button-container">
-              <button className="gradient-button card-button">Login</button>
+              <button className="gradient-button card-button courses-login-button">Login</button>
             </div>
           </div>
         </div>
