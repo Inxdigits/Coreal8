@@ -23,7 +23,7 @@ export const SearchSection = () => {
 
   return (
     <nav
-      className=" flex justify-between items-center relative"
+      className="search-container flex justify-between items-center relative"
       role="navigation"
       aria-label="Content filters and sorting"
     >
@@ -66,7 +66,7 @@ export const SearchSection = () => {
         </button>
       </form>
 
-      <div className="flex gap-4">
+      <div className="flex gap-4 filter">
         <label className="content-center relative w-fit [font-family: 'Schibsted_Grotesk-Regular', Helvetica] font-normal text-[#0d0c12] text-base text-center tracking-[0] leading-[normal]">
           Filter by:
         </label>

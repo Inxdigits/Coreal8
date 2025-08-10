@@ -5,9 +5,8 @@ import CoursesSlider from "./CoursesSlider/CoursesSlider.jsx";
 import Faqs from "./Faqs/Faqs.jsx";
 import Navbar from '../Navbar/Navbar.jsx';
 import Footer from '../Footer/Footer.jsx';
-import coImage from '../../Assets/co-overview-image.png';
 import johndoe from "../../Assets/john-doe.png";
-
+import coImage from "../../Assets/Frame179.png";
 const Courses = () => {
   return (
     <div className="courses-page">

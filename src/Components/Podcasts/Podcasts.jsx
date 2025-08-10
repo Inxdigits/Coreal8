@@ -116,12 +116,12 @@ const Podcasts = () => {
       <Navbar />
       
       
-      <section className=" flex-col items-center justify-center gap-3 p-20 relative bg-[#80132314] services-header">
+      <section className=" flex-col items-center justify-center gap-3 p-20 relative bg-[#80132314] services-header podcast-header">
         <img src={Makamba}/>
         <header className=" relative mt-[-2.00px] [font-family: 'Montserrat-Bold', sans-serif] font-bold text-[#DBA126] text-[40px] text-center tracking-[0] leading-[normal]">
          Makamba Podcast by Coreal8
         </header>
-        <p className="text-[#0D0C12] font-normal">
+        <p className="text-white font-normal">
           Conversations that spark clarity, growth, and purpose. Hosted by Coreal8, Makamba is where real stories, deep reflections, and intentional dialogue meet to guide your personal and professional evolution.
         </p>
       </section>

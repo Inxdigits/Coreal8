@@ -321,6 +321,22 @@ align-items: center;
         margin-top: 40px;
         flex-direction: row !important;
     }
+    form{
+        width: 100%;
+    }
+    .mc-container{
+        padding: 40px 20px;
+    }
+    .input{
+        padding:10px;
+        flex-direction: row;
+    }
+    .filter{
+        flex-direction: row;
+    }
+    .search-container{
+        gap: 20px;
+    }
 }
 
 .category-header{
@@ -336,4 +352,9 @@ font-size: 24px;
 font-style: normal;
 font-weight:700  !important;
 line-height: normal;
+}
+.podcast-header{
+    background-image: url("../../Assets/PodcastPageAssests/1064.jpg");
+    background-repeat: no-repeat;
+   background-size: cover;
 }

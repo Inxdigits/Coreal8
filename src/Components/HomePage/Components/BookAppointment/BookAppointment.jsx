@@ -1,8 +1,8 @@
 import React from 'react';
 import '../../Reuse.css';
 import './BookAppointment.css';
-import appImage from '../../Assets/appointment-image.png';
 
+import appImage from "../../Assets/Frame86.png"
 const BookAppointment = () => {
   return (
     <div className="appointment-container">

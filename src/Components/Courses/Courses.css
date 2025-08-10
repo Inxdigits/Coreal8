@@ -5,6 +5,9 @@
     align-items: center;
     gap: 50px;
 }
+.gradient-button{
+   width: 100%;
+}
 
 .courses-login-button {
     padding: 15px 20px;

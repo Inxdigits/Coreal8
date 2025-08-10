@@ -69,10 +69,9 @@ const Services = () => {
         <span>COREAL8 SERVICES</span>
       </div>
       <div className="service-writeup">
-        <h1>Counseling Services</h1>
+        <h1>What We Do</h1>
         <p>
-          Vorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-          vulputate libero et velit interdum, ac aliquet odio mattis.
+         At Coreal8, we empower individuals, professionals, and teams through transformative coaching, counseling, mentorship, courses, and thought-provoking content.
         </p>
       </div>
       <div className="services">
