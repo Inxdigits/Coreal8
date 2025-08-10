@@ -149,6 +149,18 @@ form{
     align-self: stretch;
 }
 
+@media screen and (max-width: 900px) {
+    .courseslist {
+        flex-direction: column;
+        margin: 0 auto;
+    }
+
+    .courses-card {
+        justify-content: center;
+        text-align: center;
+    }
+}
+
 .courses-card {
     display: flex;
     padding: 20px;

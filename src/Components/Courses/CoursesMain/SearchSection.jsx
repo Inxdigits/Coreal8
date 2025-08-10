@@ -23,7 +23,7 @@ export const SearchSection = () => {
 
   return (
     <nav
-      className="search-container flex justify-between items-center relative"
+      className="search-container flex justify-between items-center relative gap-5"
       role="navigation"
       aria-label="Content filters and sorting"
     >
@@ -33,7 +33,7 @@ export const SearchSection = () => {
         role="search"
         aria-label="Search blogs"
       >
-        <div className="flex w-[502px] input rounded-2xl border border-solid border-[#0d0c121a]  relative">
+        <div className="flex w-full input rounded-2xl border border-solid border-[#0d0c121a]  relative">
           <div className="relative w-6 h-6" aria-hidden="true">
             <div className="relative w-5 h-5 top-0.5 left-0.5">
               <img src={Search} alt="Search Icon" className="" />
@@ -66,7 +66,7 @@ export const SearchSection = () => {
         </button>
       </form>
 
-      <div className="flex gap-4 filter">
+      <div className="flex gap-4 w-fit">
         <label className="content-center relative w-fit [font-family: 'Schibsted_Grotesk-Regular', Helvetica] font-normal text-[#0d0c12] text-base text-center tracking-[0] leading-[normal]">
           Filter by:
         </label>

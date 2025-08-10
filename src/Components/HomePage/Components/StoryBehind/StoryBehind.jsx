@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import './StoryBehind.css';
 // import left from '../../Assets/left-story-image-resized.jpg';
-import right from "../../Assets/Frame280.png"
+// import right from "../../Assets/Frame280.png";
 
 const StoryBehind = () => {
   return (
