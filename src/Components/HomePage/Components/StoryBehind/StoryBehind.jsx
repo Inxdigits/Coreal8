@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import './StoryBehind.css';
 // import left from '../../Assets/left-story-image-resized.jpg';
-import right from '../../Assets/right-story-image.png';
+import right from "../../Assets/Frame280.png"
 
 const StoryBehind = () => {
   return (
@@ -32,13 +32,10 @@ const StoryBehind = () => {
       </div>
       <div className="story-images">
         <div className="left-story-image">
-          <span>
-            “Vorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-            vulputate libero et velit interdum, ac aliquet odio mattis.”
-          </span>
+      
         </div>
         <div className="right-story-image">
-          <img src={right} alt="" />
+         
         </div>
       </div>
     </div>

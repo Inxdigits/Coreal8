@@ -66,14 +66,14 @@
 
 .story-images .left-story-image {
     display: flex;
-    width: 32%;
+    width: 39%;
     height: 100%;
     max-width: 400px;
     justify-content: center;
     align-items: center;
     padding: 20px;
     border-radius: 20px;
-    background-image: url('../../Assets/left-story-image.jpg');
+    background-image: url('../../Assets/Frame49.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -99,7 +99,7 @@
     align-items: center;
     padding: 20px;
     border-radius: 20px;
-    background-image: url('../../Assets/right-story-bg.jpg');
+    background-image: url('../../Assets/Frame280.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
