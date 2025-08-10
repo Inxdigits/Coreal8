@@ -4,6 +4,7 @@ import yt from '../../Assets/yt-logo.svg';
 import ig from '../../Assets/ig-logo.svg';
 import x from '../../Assets/x-logo.svg';
 import li from "../../Assets/linkedin-logo.svg";
+import { Link, Links } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -31,7 +32,7 @@ const Footer = () => {
             <li className="nav-link">Blog</li>
             <li className="nav-link">Contact</li>
             <li className="nav-link">Login</li>
-            <li className="nav-link">Privacy Policy</li>
+            <li className="nav-link"><Link to="/privacy">Privacy Policy</Link></li>
             <li className="nav-link">Terms of Service</li>
           </ul>
           <div className="socials">

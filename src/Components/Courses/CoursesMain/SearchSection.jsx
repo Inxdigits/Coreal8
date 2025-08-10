@@ -38,7 +38,7 @@ export const SearchSection = () => {
 
       return(
          <nav className=' flex justify-between items-center relative' role="navigation" aria-label='Content filters and sorting'>
-             <form onSubmit={handleSubmit} className="incline-flex flex-row  gap-3 flex-[0_0_auto] relative" role='search' aria-label='Search blogs'>
+             <form onSubmit={handleSubmit} className="inline-flex flex-row  gap-3 flex-[0_0_auto] relative" role='search' aria-label='Search blogs'>
                         <div className='flex w-[502px] input rounded-2xl border border-solid border-[#0d0c121a]  relative'> 
                             
                             <div className='relative w-6 h-6' aria-hidden="true">
