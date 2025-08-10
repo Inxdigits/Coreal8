@@ -46,7 +46,7 @@ const DataCount = () => {
     <section className="stats-section">
       <div className="stat-item">
         <div className="flex-div">
-          <h2 className="stat-number" data-target="30">
+          <h2 className="stat-number" data-target="25">
             0
           </h2>
           <span className="span-plus">+</span>
@@ -55,7 +55,7 @@ const DataCount = () => {
       </div>
       <div className="stat-item">
         <div className="flex-div">
-          <h2 className="stat-number" data-target="5000">
+          <h2 className="stat-number" data-target="2500">
             0
           </h2>
           <span className="span-plus">+</span>
@@ -64,7 +64,7 @@ const DataCount = () => {
       </div>
       <div className="stat-item">
         <div className="flex-div">
-          <h2 className="stat-number" data-target="20">
+          <h2 className="stat-number" data-target="10">
             0
           </h2>
           <span className="span-plus">+</span>
@@ -73,7 +73,7 @@ const DataCount = () => {
       </div>
       <div className="stat-item">
         <div className="flex-div">
-          <h2 className="stat-number" data-target="50">
+          <h2 className="stat-number" data-target="20">
             0
           </h2>
           <span className="span-plus">+</span>

@@ -45,3 +45,11 @@
     font-weight: 400;
     line-height: normal;
 }
+
+.custom-swiper-prev, .custom-swiper-next {
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

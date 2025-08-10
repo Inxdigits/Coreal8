@@ -1,4 +1,5 @@
 import React from 'react';
+import './HomePage.css';
 import Navbar from '../Navbar/Navbar.jsx';
 import Overview from './Components/Overview/Overview.jsx';
 import AboutUs from './Components/AboutUs/AboutUs.jsx';
@@ -25,7 +26,7 @@ const HomePage = () => {
       <Trust />
       <Podcast />
       <Courses />
-      <Leadership />
+      {/* <Leadership /> */}
       <Blogs />
       <Testimonial />
       <BookAppointment />

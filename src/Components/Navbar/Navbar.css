@@ -4,7 +4,7 @@
   background-color: #fff;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
-  z-index: 10300000000000000000;
+  z-index: 103;
   padding: 0 80px !important;
   border-bottom: 1px solid #0d0c120d;
 }
@@ -85,7 +85,7 @@
 }
 
 .gradient-button {
-  padding: 20px;
+  padding: 10px 20px;
   border: none;
   border-radius: 10px;
   background-color: white;

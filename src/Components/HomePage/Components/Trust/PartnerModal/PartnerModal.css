@@ -16,10 +16,13 @@
 }
 
 .modal-content {
+  overflow-y: scroll;
+  max-height: 700px;
   color: black;
   display: flex;
-  width: 1000px;
-  padding: 50px;
+  width: 60%;
+  /* max-height: 100vh; */
+  padding: 20px;
   flex-direction: column;
   align-items: center;
   gap: 24px;
@@ -28,7 +31,7 @@
   /* padding: 40px; */
   border-radius: 10px;
   /* width: 400px; */
-  position: relative;
+  /* position: relative; */
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
   animation: fadeInModal 0.3s ease forwards;
 }
@@ -36,18 +39,20 @@
 .modal-content h2 {
   margin-bottom: 20px;
   font-size: 24px;
-  text-align: center;
+  text-align: center !important;
 }
 
 .modal-content form {
+  text-align: left;
   display: flex;
   flex-direction: column;
   gap: 15px;
+  width: 100%;
 }
 
 .modal-content input,
 .modal-content textarea {
-  padding: 12px;
+  padding: 14px;
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 6px;
@@ -64,17 +69,17 @@
 }
 
 .close-btn {
-    display: flex;
-    padding: 20px;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    position: absolute;
-    right: 80px;
-    top: 80px;
-    border-radius: 5px;
-    border: 1px solid #FFF;
-    cursor: pointer;
+  display: flex;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  position: absolute;
+  right: 80px;
+  top: 80px;
+  border-radius: 5px;
+  border: 1px solid #FFF;
+  cursor: pointer;
 }
 
 @keyframes fadeInBackdrop {
