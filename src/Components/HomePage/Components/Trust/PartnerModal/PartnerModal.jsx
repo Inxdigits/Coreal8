@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./PartnerModal.css";
+import SubmitModal from "./SubmitModal";
 
 const PartnerModal = ({ isOpen, onClose }) => {
+  const [isModalSubmitted, setIsModalSubmitted] = useState(false); 
+
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -68,16 +71,20 @@ const PartnerModal = ({ isOpen, onClose }) => {
           <input type="text" name="company" placeholder="e.g Power House" />
 
           <label htmlFor="role">Your Role / Title</label>
-          <input type="text" name="role" placeholder="e.g C.E.O" />
+          <input type="text" name="role" placeholder="e.g C.E.O" required />
 
-          <select name="" id="">
+          <label htmlFor="">Type of Partnership</label>
+          <select name="" id="" defaultValue={"select"} required>
+            <option value="select" disabled>
+              Select Partnership:
+            </option>
             <option value="healthcare">Healthcare Provider or Clinic</option>
-            <option value="hr">Healthcare Provider or Clinic</option>
-            <option value="healthcare">Healthcare Provider or Clinic</option>
-            <option value="healthcare">Healthcare Provider or Clinic</option>
-            <option value="healthcare">Healthcare Provider or Clinic</option>
-            <option value="healthcare">Healthcare Provider or Clinic</option>
-            <option value="healthcare">Healthcare Provider or Clinic</option>
+            <option value="hr">HR Department / EAP</option>
+            <option value="industry">Industry Association</option>
+            <option value="media">Media / Podcast</option>
+            <option value="creator">Personal Brand Creator</option>
+            <option value="community">Community Organization</option>
+            <option value="other">Other</option>
           </select>
 
           <label htmlFor="message">
@@ -85,12 +92,17 @@ const PartnerModal = ({ isOpen, onClose }) => {
           </label>
           <textarea
             name="message"
-            placeholder="Tell us about your interest..."
+            placeholder="Tell us a bit about your goals and how we might collaborate"
             required
           />
-          <button type="submit">Submit</button>
+          <button type="submit" className="modal-submit-button"
+            onClick={()=> setIsModalSubmitted(true)}
+          >Submit Interest</button>
         </form>
       </div>
+
+      {/* Success Popup */}
+      {/* <SubmitModal isOpen={isModalSubmitted} onClose={() => setIsModalSubmitted(false)} /> */}
     </div>
   );
 };

@@ -17,7 +17,7 @@
 
 .modal-content {
   overflow-y: scroll;
-  max-height: 700px;
+  max-height: 85%;
   color: black;
   display: flex;
   width: 60%;
@@ -36,22 +36,40 @@
   animation: fadeInModal 0.3s ease forwards;
 }
 
-.modal-content h2 {
+.modal-intro-text h2 {
   margin-bottom: 20px;
   font-size: 24px;
   text-align: center !important;
+  color: #0D0C12;
+  text-align: center;
+  font-family: "Schibsted Grotesk";
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.modal-intro-text p {
+  color: rgba(13, 12, 18, 0.70);
+  text-align: center;
+  font-family: "Schibsted Grotesk";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
 .modal-content form {
   text-align: left;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 10px;
   width: 100%;
 }
 
-.modal-content input,
-.modal-content textarea {
+.modal-content form input,
+.modal-content form textarea,
+.modal-content form select {
   padding: 14px;
   font-size: 16px;
   border: 1px solid #ccc;
@@ -59,21 +77,56 @@
   resize: none;
 }
 
-.modal-content button[type="submit"] {
-  background-color: #2d89ef;
+.modal-content form input:focus,
+.modal-content form textarea:focus,
+.modal-content form input:active,
+.modal-content form textarea:active,
+.modal-content form select:focus,
+.modal-content form select:active {
+  /* border: none; */
+  outline: none;
+}
+
+/* .modal-content form select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding-right: 40px;
+  background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%23FFFFFF' stroke-width='2'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 10px 6px;
+
+  width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+} */
+
+.modal-content form button[type="submit"] {
+  display: flex;
+  padding: 15px 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  border-radius: 10px;
+  background: #801323;
+  box-shadow: 0 0 5px 0 #FFDB58 inset;
   color: white;
-  padding: 12px;
+  outline: none;
   border: none;
-  border-radius: 6px;
+  width: fit-content;
+  /* max-width: 150px; */
+  margin: 0 auto;
   cursor: pointer;
 }
 
 .close-btn {
   display: flex;
-  padding: 20px;
+  padding: 10px 15px;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  /* gap: 10px; */
   position: absolute;
   right: 80px;
   top: 80px;
