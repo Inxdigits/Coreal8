@@ -1,0 +1,17 @@
+.close-submit-modal {
+  display: flex;
+  padding: 15px 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  border-radius: 10px;
+  background: #801323;
+  box-shadow: 0 0 5px 0 #FFDB58 inset;
+  color: white;
+  outline: none;
+  border: none;
+  width: fit-content;
+  /* max-width: 150px; */
+  margin: 0 auto;
+  cursor: pointer;
+}

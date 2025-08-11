@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./PartnerModal.css";
-import SubmitModal from "./SubmitModal";
 import emailjs from "emailjs-com";
 
-const PartnerModal = ({ isOpen, onClose }) => {
-  const [isModalSubmitted, setIsModalSubmitted] = useState(false);
-
+const PartnerModal = ({ isOpen, onClose, onSubmitSuccess }) => {
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -43,12 +40,11 @@ const PartnerModal = ({ isOpen, onClose }) => {
           company: formData.company,
           role: formData.role,
           partnershipType: formData.partnershipType,
-          message: formData.message
+          message: formData.message,
         },
         "reL3GH2C5YfM5hSJw" // public key
       )
       .then(() => {
-        // setIsModalSubmitted(true);
         setFormData({
           fullName: "",
           email: "",
@@ -58,14 +54,12 @@ const PartnerModal = ({ isOpen, onClose }) => {
           message: "",
         });
 
-        setTimeout(() => {
-          setIsModalSubmitted(true);
-          onClose();
-        }, 3000);
+        onClose(); // close the form modal
+        onSubmitSuccess(); // open submit modal
       })
       .catch((err) => {
         console.error("Error sending email:", err);
-        alert("Failed to send message 😢")
+        alert("Failed to send message 😢");
       });
   };
 
@@ -78,11 +72,15 @@ const PartnerModal = ({ isOpen, onClose }) => {
         backdropFilter: "blur(6px)",
         backgroundColor: "rgba(0,0,0,0.4)",
       }}
+      onClick={onClose}
     >
-      <button className="close-btn" onClick={onClose}>
-        X
-      </button>
-      <div className="modal-content fade-in" onClick={(e) => e.stopPropagation()}>
+      <div
+        className="modal-content fade-in"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button className="close-btn" onClick={onClose}>
+          X
+        </button>
         <div className="modal-intro-text">
           <h2>Partner with Coreal8</h2>
           <p>
@@ -141,13 +139,19 @@ const PartnerModal = ({ isOpen, onClose }) => {
             <option value="" disabled>
               Select Partnership:
             </option>
-            <option value="healthcare">Healthcare Provider or Clinic</option>
-            <option value="hr">HR Department / EAP</option>
-            <option value="industry">Industry Association</option>
-            <option value="media">Media / Podcast</option>
-            <option value="creator">Personal Brand Creator</option>
-            <option value="community">Community Organization</option>
-            <option value="other">Other</option>
+            <option value="Healthcare Provider or Clinic">
+              Healthcare Provider or Clinic
+            </option>
+            <option value="HR Department / EAP">HR Department / EAP</option>
+            <option value="Industry Association">Industry Association</option>
+            <option value="Media / Podcast">Media / Podcast</option>
+            <option value="Personal Brand Creator">
+              Personal Brand Creator
+            </option>
+            <option value="Community Organization">
+              Community Organization
+            </option>
+            <option value="Other">Other</option>
           </select>
 
           <label htmlFor="message">
@@ -165,7 +169,6 @@ const PartnerModal = ({ isOpen, onClose }) => {
           </button>
         </form>
       </div>
-
     </div>
   );
 };

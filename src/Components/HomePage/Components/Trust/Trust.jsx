@@ -5,9 +5,11 @@ import couples from "../../Assets/couples-counseling.png";
 import family from "../../Assets/family-counseling.png";
 import individual from "../../Assets/individual-counseling.png";
 import PartnerModal from "./PartnerModal/PartnerModal";
+import SubmitModal from "./PartnerModal/SubmitModal";
 
 const Trust = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalSubmitted, setIsModalSubmitted] = useState(false);
 
   const partners = [
     {
@@ -42,19 +44,17 @@ const Trust = () => {
     },
   ];
 
-  const Partner = ({ icon, header, body }) => {
-    return (
-      <div className="card">
-        <div className="session-card-img partner-card-img">
-          <img src={icon} alt="" />
-        </div>
-        <div className="partner-card-text">
-          <h2>{header}</h2>
-          <p>{body}</p>
-        </div>
+  const Partner = ({ icon, header, body }) => (
+    <div className="card">
+      <div className="session-card-img partner-card-img">
+        <img src={icon} alt="" />
       </div>
-    );
-  };
+      <div className="partner-card-text">
+        <h2>{header}</h2>
+        <p>{body}</p>
+      </div>
+    </div>
+  );
 
   return (
     <div className="trust-container">
@@ -77,13 +77,14 @@ const Trust = () => {
         </button>
       </div>
 
-      {/* Modal */}
+      {/* Partner Form Modal */}
       <PartnerModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
+        onSubmitSuccess={() => setIsModalSubmitted(true)}
       />
 
-      {/* Success Popup */}
+      {/* Success Modal */}
       <SubmitModal
         isOpen={isModalSubmitted}
         onClose={() => setIsModalSubmitted(false)}
