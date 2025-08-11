@@ -24,7 +24,7 @@ const SubmitModal = ({ isOpen, onClose }) => {
         <button className="close-btn" onClick={onClose}>
           X
         </button>
-        <div className="modal-content fade-in">
+        <div className="modal-content submit-modal-content fade-in">
           {/* SVG icon */}
           <svg
             xmlns="http://www.w3.org/2000/svg"
