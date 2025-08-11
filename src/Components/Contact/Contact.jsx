@@ -1,21 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import Navbar from '../Navbar/Navbar.jsx';
-import Footer from '../Footer/Footer.jsx';
-import './Contact.css';
+import React, { useState, useEffect } from "react";
+import Navbar from "../Navbar/Navbar.jsx";
+import Footer from "../Footer/Footer.jsx";
+import "./Contact.css";
 // import contactIcon from '../HomeAssets/contact-icon.jpg';
-import phoneIcon from '../../Assets/ContactPageAssets/phone-icon.svg';
-import emailIcon from '../../Assets/ContactPageAssets/email-icon.svg';
-import chatIcon from '../../Assets/ContactPageAssets/chat-icon.svg';
-import thankYouIcon from '../../Assets/ContactPageAssets/thankyou.png';
-import ig from '../../Assets/ig-logo.svg';
-import linkedin from '../../Assets/linkedin-logo.svg';
+import phoneIcon from "../../Assets/ContactPageAssets/phone-icon.svg";
+import emailIcon from "../../Assets/ContactPageAssets/email-icon.svg";
+import chatIcon from "../../Assets/ContactPageAssets/chat-icon.svg";
+import thankYouIcon from "../../Assets/ContactPageAssets/thankyou.png";
+import ig from "../../Assets/ig-logo.svg";
+import linkedin from "../../Assets/linkedin-logo.svg";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    fullName: '',
-    email: '',
-    subject: '',
-    message: '',
+    fullName: "",
+    email: "",
+    subject: "",
+    message: "",
   });
 
   const [isValid, setIsValid] = useState(false);
@@ -26,9 +26,10 @@ const Contact = () => {
     const { fullName, email, subject, message } = formData;
     const isNameValid = fullName.trim().split(/\s+/).length >= 2;
     const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    const isSubjectValid = subject !== '';
+    const isSubjectValid = subject !== "";
     const isMessageValid = message.trim().length >= 2;
-    const newIsValid = isNameValid && isEmailValid && isSubjectValid && isMessageValid;
+    const newIsValid =
+      isNameValid && isEmailValid && isSubjectValid && isMessageValid;
     setIsValid(newIsValid);
   }, [formData]);
 
@@ -42,7 +43,7 @@ const Contact = () => {
     if (isValid) {
       setShowError(false); // ✅ Hide error
       setShowThankYou(true); // Show thank-you screen
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
       setShowError(true); // ✅ Show error if form incomplete
     }
@@ -50,7 +51,7 @@ const Contact = () => {
 
   const handleClose = () => {
     setShowThankYou(false);
-    setFormData({ fullName: '', email: '', subject: '', message: '' });
+    setFormData({ fullName: "", email: "", subject: "", message: "" });
   };
 
   return (
@@ -79,8 +80,13 @@ const Contact = () => {
                 <div className="card-text">
                   <h3 className="card-title">Contact Us</h3>
                   <ul id="liststyledisc">
-                    <li className="card-subtitle">Monday - Friday from 9:00 AM - 6:00 PM (WAT)</li>
-                    <li className="card-subtitle"> Saturdays: 10:00 AM – 2:00 PM</li>
+                    <li className="card-subtitle">
+                      Monday - Friday from 9:00 AM - 6:00 PM (WAT)
+                    </li>
+                    <li className="card-subtitle">
+                      {" "}
+                      Saturdays: 10:00 AM – 2:00 PM
+                    </li>
                   </ul>
                 </div>
                 <p className="card-detail">099200399012</p>
@@ -116,9 +122,7 @@ const Contact = () => {
 
           <div className="contact-form-container">
             <div className="contact-form">
-              <h2 className="form-title">
-                Send a Message
-              </h2>
+              <h2 className="form-title">Send a Message</h2>
               <h4 className="form-subtitle">
                 Vorem ipsum dolor sit amet, consectetur adipiscing elit.
               </h4>
@@ -170,7 +174,7 @@ const Contact = () => {
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  style={{resize: "none"}}
+                  style={{ resize: "none" }}
                 ></textarea>
 
                 <button

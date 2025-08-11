@@ -44,7 +44,7 @@
 .contact-cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  padding: 0 180px;
+  padding: 80px 180px;
   gap: 24px;
   align-self: stretch;
 }
@@ -137,7 +137,7 @@ ul#liststyledisc{
 /* New styles for contact form */
 .contact-form-container {
   display: flex;
-  padding: 10px 180px;
+  padding: 40px 180px;
   justify-content: center;
   align-items: flex-start;
   gap: 50px;

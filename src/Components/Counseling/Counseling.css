@@ -161,11 +161,18 @@
     padding: 50px 20px;
     border-radius: 10px;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
 }
 
 .support-card-img {
     width: 100%;
     text-align: center;
+}
+
+.support-card-img img {
+    margin: 0 auto !important;
 }
 
 .support-card-text h2 {

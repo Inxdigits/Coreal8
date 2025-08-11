@@ -14,9 +14,9 @@ import Apple from "../../Assets/PodcastPageAssests/applepodcast.png";
 import Spotify from "../../Assets/PodcastPageAssests/spotify.png";
 import YouTube from "../../Assets/PodcastPageAssests/youtube.png";
 import John from "../../Assets/PodcastPageAssests/john.jpg";
-import Makamba from "../../Assets/PodcastPageAssests/Makamba.jpg"
-import MakambaBig from "../../Assets/PodcastPageAssests/makamba.png"
-import Solar from "../../Assets/PodcastPageAssests/solar.svg"
+import Makamba from "../../Assets/PodcastPageAssests/Makamba.jpg";
+import MakambaBig from "../../Assets/PodcastPageAssests/makamba.png";
+import Solar from "../../Assets/PodcastPageAssests/solar.svg";
 const Podcasts = () => {
   const spotlightData = [
     {
@@ -114,15 +114,17 @@ const Podcasts = () => {
   return (
     <>
       <Navbar />
-      
-      
+
       <section className=" flex-col items-center justify-center gap-3 p-20 relative bg-[#80132314] services-header podcast-header">
-        <img src={Makamba}/>
+        <img src={Makamba} />
         <header className=" relative mt-[-2.00px] [font-family: 'Montserrat-Bold', sans-serif] font-bold text-[#DBA126] text-[40px] text-center tracking-[0] leading-[normal]">
-         Makamba Podcast by Coreal8
+          Makamba Podcast by Coreal8
         </header>
         <p className="text-white font-normal">
-          Conversations that spark clarity, growth, and purpose. Hosted by Coreal8, Makamba is where real stories, deep reflections, and intentional dialogue meet to guide your personal and professional evolution.
+          Conversations that spark clarity, growth, and purpose. Hosted by
+          Coreal8, Makamba is where real stories, deep reflections, and
+          intentional dialogue meet to guide your personal and professional
+          evolution.
         </p>
       </section>
       <div className="spotlight">
@@ -159,15 +161,12 @@ const Podcasts = () => {
         </div>
       </div>
       <div className="episode-h3">
-   <h3>All Episodes</h3>
+        <h3>All Episodes</h3>
       </div>
-   
+
       <HeaderSection />
-  
+
       <div className="spotlight all-episodes">
-        
-        
-      
         <div className="flex w-full items-start gap-8 relative self-stretch flex-[0_0_auto] episode-grid">
           {episodeData.map((item) => (
             <article key={item.id}>
@@ -222,7 +221,7 @@ const Podcasts = () => {
           <div className="pagination">
             <p>3</p>
           </div>
-          
+
           <div className="pagination">
             <svg
               width="20"
@@ -239,25 +238,33 @@ const Podcasts = () => {
           </div>
         </div>
       </div>
-      
+
       <section className="flex flex-row bg-[#DBA126] p-[80px] gap-[50px] text-[white] items-start about-section">
         <div className="gap-4 flex items-start about-podcast">
           <h2 className="font-black">About The Podcast</h2>
-          <p>Makamba is a Coreal8 original podcast series that explores the intersections of clarity, growth, purpose, and becoming.
-Through honest conversations with thought leaders, creatives, coaches, and everyday changemakers, we unpack what it means to evolve — personally and professionally.
-Whether you're navigating transitions, rediscovering yourself, or chasing purpose, Makamba offers perspectives, stories, and insights to inspire your next step.</p>
-<div>
-  <div className="flex flex-row gap-2.5">
-    <img src={Solar}/>
-    <p>Tune in, reflect deeply, and live more intentionally — one episode at a time.</p>
-  </div>
-
-</div>
+          <p>
+            Makamba is a Coreal8 original podcast series that explores the
+            intersections of clarity, growth, purpose, and becoming. Through
+            honest conversations with thought leaders, creatives, coaches, and
+            everyday changemakers, we unpack what it means to evolve —
+            personally and professionally. Whether you're navigating
+            transitions, rediscovering yourself, or chasing purpose, Makamba
+            offers perspectives, stories, and insights to inspire your next
+            step.
+          </p>
+          <div>
+            <div className="flex flex-row gap-2.5">
+              <img src={Solar} />
+              <p>
+                Tune in, reflect deeply, and live more intentionally — one
+                episode at a time.
+              </p>
+            </div>
+          </div>
         </div>
         <div className="makamba-img">
           <img src={MakambaBig} width="3500px" />
         </div>
-
       </section>
 
       <div className="flex red-section">
@@ -267,7 +274,7 @@ Whether you're navigating transitions, rediscovering yourself, or chasing purpos
         <div className="red-section-right">
           <h2>Available Everywhere You Listen</h2>
           <div className="flex gap-3">
-               <div className="grid-item">
+            <div className="grid-item">
               <div className="flex gap-3 items-center  red-section-item">
                 <img src={YouTube} className="w-14" />
                 <div>
@@ -278,7 +285,7 @@ Whether you're navigating transitions, rediscovering yourself, or chasing purpos
                 </div>
               </div>
             </div>
-           
+
             <div className="grid-item">
               <div className="flex gap-3 items-center red-section-item">
                 <img src={Apple} className="w-14" />
@@ -301,22 +308,16 @@ Whether you're navigating transitions, rediscovering yourself, or chasing purpos
                 </div>
               </div>
             </div>
-         
-
           </div>
 
-          <div className=" app-grid">
-            
-            
-           
-          </div>
+          <div className=" app-grid"></div>
         </div>
       </div>
 
       <section className="featured-voices flex">
         <h1>Featured Voices</h1>
 
-        <div className="voices flex">
+        <div className="voices">
           <img src={John} />
           <img src={John} />
           <img src={John} />
