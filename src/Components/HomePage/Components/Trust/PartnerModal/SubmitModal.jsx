@@ -112,7 +112,7 @@ const SubmitModal = ( isOpen, onClose ) => {
             <p>We look forward to building something impactful together.</p>
           </div>
 
-          <button className="close-submit-modal">Close</button>
+          <button className="close-submit-modal" onClick={onClose}>Close</button>
         </div>
       </div>
     </div>

@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from "react";
 import "./PartnerModal.css";
 import SubmitModal from "./SubmitModal";
+import emailjs from "emailjs-com";
 
 const PartnerModal = ({ isOpen, onClose }) => {
-  const [isModalSubmitted, setIsModalSubmitted] = useState(false); 
+  const [isModalSubmitted, setIsModalSubmitted] = useState(false);
 
   const [formData, setFormData] = useState({
-    fullName: '',
-    email: '',
-    subject: '',
-    message: '',
+    fullName: "",
+    email: "",
+    company: "",
+    role: "",
+    partnershipType: "",
+    message: "",
   });
 
   useEffect(() => {
@@ -20,30 +23,66 @@ const PartnerModal = ({ isOpen, onClose }) => {
     return () => document.removeEventListener("keydown", handleEscape);
   }, [onClose]);
 
-  // const handleBackdropClick = (e) => {
-  //   if (e.target.classList.contains("modal-backdrop")) {
-  //     onClose();
-  //   }
-  // };
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const formData = new FormData(e.target);
-    const data = Object.fromEntries(formData);
-    console.log("Form Data:", data); // replace with actual logic
-    onClose();
+
+    emailjs
+      .send(
+        "service_jct9kcm", // service key
+        "template_sij9oxx", // template key
+        {
+          name: formData.fullName,
+          email: formData.email,
+          company: formData.company,
+          role: formData.role,
+          partnershipType: formData.partnershipType,
+          message: formData.message
+        },
+        "reL3GH2C5YfM5hSJw" // public key
+      )
+      .then(() => {
+        // setIsModalSubmitted(true);
+        setFormData({
+          fullName: "",
+          email: "",
+          company: "",
+          role: "",
+          partnershipType: "",
+          message: "",
+        });
+
+        setTimeout(() => {
+          setIsModalSubmitted(true);
+          onClose();
+        }, 3000);
+      })
+      .catch((err) => {
+        console.error("Error sending email:", err);
+        alert("Failed to send message 😢")
+      });
   };
 
   if (!isOpen) return null;
 
   return (
-    <div className="modal-backdrop" 
-    // onClick={handleBackdropClick}
+    <div
+      className="modal-backdrop"
+      style={{
+        backdropFilter: "blur(6px)",
+        backgroundColor: "rgba(0,0,0,0.4)",
+      }}
     >
       <button className="close-btn" onClick={onClose}>
         X
       </button>
-      <div className="modal-content fade-in">
+      <div className="modal-content fade-in" onClick={(e) => e.stopPropagation()}>
         <div className="modal-intro-text">
           <h2>Partner with Coreal8</h2>
           <p>
@@ -58,7 +97,9 @@ const PartnerModal = ({ isOpen, onClose }) => {
             type="text"
             name="fullName"
             placeholder="e.g John Doe"
-            
+            value={formData.fullName}
+            onChange={handleChange}
+            required
           />
 
           <label htmlFor="email">Email Address *</label>
@@ -66,18 +107,38 @@ const PartnerModal = ({ isOpen, onClose }) => {
             type="email"
             name="email"
             placeholder="e.g johndoe@gmail.com"
-            
+            value={formData.email}
+            onChange={handleChange}
+            required
           />
 
           <label htmlFor="company">Organization / Company Name</label>
-          <input type="text" name="company" placeholder="e.g Power House" />
+          <input
+            type="text"
+            name="company"
+            placeholder="e.g Power House"
+            value={formData.company}
+            onChange={handleChange}
+          />
 
           <label htmlFor="role">Your Role / Title</label>
-          <input type="text" name="role" placeholder="e.g C.E.O"  />
+          <input
+            type="text"
+            name="role"
+            placeholder="e.g C.E.O"
+            value={formData.role}
+            onChange={handleChange}
+            required
+          />
 
-          <label htmlFor="">Type of Partnership</label>
-          <select name="" id="" defaultValue={"select"} >
-            <option value="select" disabled>
+          <label htmlFor="partnershipType">Type of Partnership</label>
+          <select
+            name="partnershipType"
+            value={formData.partnershipType}
+            onChange={handleChange}
+            required
+          >
+            <option value="" disabled>
               Select Partnership:
             </option>
             <option value="healthcare">Healthcare Provider or Clinic</option>
@@ -95,16 +156,16 @@ const PartnerModal = ({ isOpen, onClose }) => {
           <textarea
             name="message"
             placeholder="Tell us a bit about your goals and how we might collaborate"
-            
+            value={formData.message}
+            onChange={handleChange}
+            required
           />
-          <button type="submit" className="modal-submit-button"
-            onClick={()=> setIsModalSubmitted(true)}
-          >Submit Interest</button>
+          <button type="submit" className="modal-submit-button">
+            Submit Interest
+          </button>
         </form>
       </div>
 
-      {/* Success Popup */}
-      {/* <SubmitModal isOpen={isModalSubmitted} onClose={() => setIsModalSubmitted(false)} /> */}
     </div>
   );
 };

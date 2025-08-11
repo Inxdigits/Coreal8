@@ -82,6 +82,12 @@ const Trust = () => {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
       />
+
+      {/* Success Popup */}
+      <SubmitModal
+        isOpen={isModalSubmitted}
+        onClose={() => setIsModalSubmitted(false)}
+      />
     </div>
   );
 };
