@@ -68,19 +68,19 @@ const PartnerModal = ({ isOpen, onClose, onSubmitSuccess }) => {
   return (
     <div
       className="modal-backdrop"
-      style={{
-        backdropFilter: "blur(6px)",
-        backgroundColor: "rgba(0,0,0,0.4)",
-      }}
+      // style={{
+      //   backdropFilter: "blur(6px)",
+      //   backgroundColor: "rgba(0,0,0,0.4)",
+      // }}
       onClick={onClose}
     >
+      <button className="close-btn" onClick={onClose}>
+        X
+      </button>
       <div
         className="modal-content fade-in"
         onClick={(e) => e.stopPropagation()}
       >
-        <button className="close-btn" onClick={onClose}>
-          X
-        </button>
         <div className="modal-intro-text">
           <h2>Partner with Coreal8</h2>
           <p>

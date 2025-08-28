@@ -11,6 +11,7 @@ import Blog from './Components/Blog/Blog.jsx';
 import Privacy from "./Components/Privacy/Privacy.jsx"
 import './App.css';
 import CartPage from './Components/CartPage/CartPage.jsx';
+import LoginPage from './Components/LoginPage/LoginPage.jsx';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
       <Route path="/podcast" element={<Podcasts />}/>
       <Route path="/counseling" element={<Counseling />} />
       <Route path="/mentoring" element={<Mentorship />} />
+      <Route path="/login" element={<LoginPage />} />
       <Route path='/privacy' element={<Privacy/>}/>
       {/* Add other routes as needed */}
     </Routes>

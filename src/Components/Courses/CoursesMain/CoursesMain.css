@@ -16,14 +16,11 @@
     gap: 8px;
     flex-direction: row;
 }
+
 nav{
     padding: 0 !important;
 }
-.mb{
-    
-}
-form{
-}
+
 .filter-select {
     border-radius: 15px;
     border: 1px solid rgba(13, 12, 18, 0.10);
@@ -166,7 +163,15 @@ form{
 
     .courses-card {
         justify-content: center;
-        text-align: center;
+        text-align: left;
+        gap: 12px !important;
+        padding: 12px !important;
+    }
+
+    .courses-card-bottom {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
     }
 }
 
@@ -220,8 +225,8 @@ form{
     .search-btn {
     padding: 16px 30px !important;
     border-radius: 10px;
-}
-.gap-5{
-    gap: 1rem !important;
-}
+    }
+    .gap-5{
+        gap: 1rem !important;
+    }
 }

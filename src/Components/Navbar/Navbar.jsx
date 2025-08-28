@@ -86,9 +86,7 @@ const Navbar = () => {
           aria-label="Toggle navigation"
         >
           {isMenuOpen ? (
-            <span style={{ fontSize: "40px", fontWeight: "600" }}>
-              &times;
-            </span>
+            <span style={{ fontSize: "40px", fontWeight: "600" }}>&times;</span>
           ) : (
             <img src={menuIcon} alt="menu toggle" style={{ width: "28px" }} />
           )}
@@ -325,8 +323,14 @@ const Navbar = () => {
               </Link>
             </li>
 
-            <li className="nav-item">
-              <img src={profileIcon} alt="Login" className="nav-icon" />
+            <li
+              className={`nav-item ${
+                currentPath === "/login" ? "active-link" : ""
+              }`}
+            >
+              <Link className="nav-link" to="/login">
+                <img src={profileIcon} alt="Login" className="nav-icon" />
+              </Link>
             </li>
 
             {/* Book Button */}

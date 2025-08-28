@@ -132,14 +132,15 @@
 }
 
 .close-btn {
+  z-index: 90 !important;
   display: flex;
   padding: 10px 15px;
   justify-content: center;
   align-items: center;
   /* gap: 10px; */
   position: absolute;
-  right: 80px;
-  top: 70px;
+  right: 40px;
+  top: 40px;
   border-radius: 5px;
   border: 1px solid #FFF;
   cursor: pointer;
@@ -161,14 +162,21 @@
   }
 }
 
+@media screen and (max-width: 1024px) {
+  .close-btn {
+    top: 40px;
+    right: 40px;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .modal-content {
     width: 80%;
   }
 
   .close-btn {
-    top: 40px !important;
-    right: 40px !important;
+    top: 10px !important;
+    right: 10px !important;
   }
 }
 
