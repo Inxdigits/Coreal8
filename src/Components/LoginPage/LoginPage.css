@@ -1,0 +1,10 @@
+.login-modal-content {
+    width: 60%;
+    overflow-y: hidden;
+    padding: 50px;
+    text-align: center;
+}
+
+.login-logo {
+    margin: 0 auto;
+}
