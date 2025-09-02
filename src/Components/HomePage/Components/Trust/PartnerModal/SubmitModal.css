@@ -16,6 +16,12 @@
   cursor: pointer;
 }
 
+.submit-modal-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @media screen and (max-width: 500px) {
   .submit-modal-content {
       height: 50%

@@ -12,6 +12,9 @@ import Privacy from "./Components/Privacy/Privacy.jsx"
 import './App.css';
 import CartPage from './Components/CartPage/CartPage.jsx';
 import LoginPage from './Components/LoginPage/LoginPage.jsx';
+import Register from './Components/LoginPage/Register/Register.jsx';
+import ForgotPassword from './Components/LoginPage/ForgotPassword/ForgotPassword.jsx';
+import Dashboard from './Components/LMS/Dashboard/Dashboard.jsx';
 
 function App() {
   return (
@@ -27,7 +30,10 @@ function App() {
       <Route path="/counseling" element={<Counseling />} />
       <Route path="/mentoring" element={<Mentorship />} />
       <Route path="/login" element={<LoginPage />} />
+      <Route path="/register" element={<Register />}/>
       <Route path='/privacy' element={<Privacy/>}/>
+      <Route path="/forgot-password" element={<ForgotPassword />} />
+      <Route path='/dashboard' element={<Dashboard />} />
       {/* Add other routes as needed */}
     </Routes>
   );

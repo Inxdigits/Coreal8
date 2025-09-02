@@ -17,7 +17,9 @@
 }
 
 .modal-content {
-  overflow-y: scroll;
+  max-height: 785px;
+  /* height: 100%;
+  overflow-y: scroll; */
   color: black;
   display: flex;
   width: 80%;
@@ -47,13 +49,11 @@
 }
 
 .modal-intro-text h2 {
-  margin-bottom: 20px;
-  font-size: 24px;
   text-align: center !important;
   color: #0D0C12;
   text-align: center;
   font-family: "Schibsted Grotesk";
-  font-size: 32px;
+  font-size: 20px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
@@ -63,7 +63,7 @@
   color: rgba(13, 12, 18, 0.70);
   text-align: center;
   font-family: "Schibsted Grotesk";
-  font-size: 16px;
+  font-size: 12px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -73,15 +73,15 @@
   text-align: left;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 4px;
   width: 100%;
 }
 
 .modal-content form input,
 .modal-content form textarea,
 .modal-content form select {
-  padding: 14px;
-  font-size: 16px;
+  padding: 8px 4px;
+  font-size: 10px;
   border: 1px solid #ccc;
   border-radius: 6px;
   resize: none;
@@ -115,10 +115,11 @@
 
 .modal-content form button[type="submit"] {
   display: flex;
-  padding: 15px 20px;
+  padding: 5px 8px;
   justify-content: center;
   align-items: center;
   gap: 12px;
+  font-size: 10px;
   border-radius: 10px;
   background: #801323;
   box-shadow: 0 0 5px 0 #FFDB58 inset;
