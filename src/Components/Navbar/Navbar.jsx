@@ -8,7 +8,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./Navbar.css";
 import { FaAngleDown } from 'react-icons/fa';
 
+
+import { useWaitlist } from "../../context/WaitListcontext.jsx";
+
 const Navbar = () => {
+  const { openWaitlist } = useWaitlist();
+
   const location = useLocation();
   const currentPath = location.pathname;
 
@@ -335,7 +340,7 @@ const Navbar = () => {
 
             {/* Book Button */}
             <li className="nav-item gradient-button-container">
-              <button className="nav-gradient-button gradient-button">
+              <button onClick={openWaitlist} className="nav-gradient-button gradient-button">
                 Book a Session
               </button>
             </li>

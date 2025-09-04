@@ -8,8 +8,11 @@ import family from "../../Assets/family-counseling.png";
 // import trauma from "../../Assets/trauma-counseling.png";
 import '../../../Get-Started-btn/Get-Started-btn.css';
 
+import { useWaitlist } from "../../../../context/WaitListcontext.jsx";
 
 const Services = () => {
+  const { openWaitlist } = useWaitlist();
+
   const sessions = [
     {
       icon: individual,
@@ -26,21 +29,6 @@ const Services = () => {
       header: "Personal Brand Development",
       body: "Media Outlets & Publications | Content Creators & Influencers (aligned values) | Professional Photographers & Videographers | Digital Marketing Agencies & Web Developers."
     },
-    // {
-    //   icon: group,
-    //   header: "Group Counseling",
-    //   body: "Addiction recovery, Grief support, Social skills development, Coping with shared issues.",
-    // },
-    // {
-    //   icon: career,
-    //   header: "Career Counseling",
-    //   body: "Career choice or change, Workplace stress, Burnout, Work-life balance.",
-    // },
-    // {
-    //   icon: trauma,
-    //   header: "Trauma Counseling",
-    //   body: "PTSD, Domestic violence, Childhood abuse, Accident or disaster recovery.",
-    // },
   ];
 
   
@@ -55,7 +43,7 @@ const Services = () => {
           <p>{body}</p>
         </div>
         <div className="gradient-button-container card-button-container">
-          <button className="gradient-button session-card-button">
+          <button onClick={openWaitlist} className="gradient-button session-card-button">
             View Service
           </button>
         </div>

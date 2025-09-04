@@ -1,0 +1,249 @@
+.waitlist {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000000000000000000000000;
+  background-color: white;
+}
+
+.waitlist-container {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 65% 35%;
+  align-items: center;
+  justify-content: center;
+}
+
+.waitlist-form {
+  padding: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  flex: 1 0 0;
+  align-self: stretch;
+  position: relative;
+}
+
+.waitlist-form-content {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+}
+
+.waitlist-image {
+  background-color: rgba(128, 19, 35, 0.08);
+  display: flex;
+  padding: 80px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+  align-self: stretch;
+}
+
+.waitlist-close-btn {
+  display: flex;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+  /* gap: 10px; */
+  position: absolute;
+  left: 80px;
+  top: 80px;
+  border-radius: 5px;
+  border: 1px solid #0D0C12;
+  cursor: pointer;
+  font-size: 14px;
+  max-height: 44px;
+  max-width: 44px;
+}
+
+.waitlist-logo {
+  margin: 0 auto;
+}
+
+.waitlist-form-intro-text h2 {
+  text-align: center;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: rgba(13, 12, 18, 0.05);
+  font-family: Montserrat;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  background: linear-gradient(90deg, #801323 0%, #FFDB58 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.waitlist-form p {
+  color: #0D0C12;
+  text-align: center;
+  font-family: "Schibsted Grotesk";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.waitlist-form-content form {
+  text-align: left !important;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.waitlist-form input {
+  width: 100%;
+  padding: 20px;
+  margin: 8px 0;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+
+  font-family: "Schibsted Grotesk";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.waitlist-form input:focus {
+  outline: none;
+  /* border: none; */
+}
+
+.waitlist-input-field label{
+  color: #0D0C12;
+  font-family: "Schibsted Grotesk";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.waitlist-submit-btn {
+  /* margin-bottom: 10px; */
+  display: flex;
+  padding: 20px 32px;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 10px;
+  background-color: #801323;
+  color: white;
+  box-shadow: 0 0 5px 0 #FFDB58 inset;
+}
+
+.submit-btn:hover {
+  background: #a00028;
+}
+
+/* LOADING */
+.loading-spinner-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.loading-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid currentColor;        
+  border-top: 2px solid transparent;     
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* SUCCESS MESSAGE */
+.waitlist-success .icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.waitlist-error {
+  color: red;
+}
+
+.waitlist-success-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(13, 12, 18, 0.7); /* semi-transparent backdrop */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.waitlist-success {
+  display: flex;
+  max-width: 742px;
+  padding: 50px;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  flex-shrink: 0;
+}
+
+.success-intro-text h3 {
+  color: #0D0C12;
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.success-intro-text p {
+  color: #0D0C12;
+  text-align: center;
+  font-family: "Schibsted Grotesk";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.success-submit-btn {
+  display: flex;
+  width: 100%;
+  max-width: 250px;
+  padding: 20px 53px;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  border-radius: 10px;
+  color: white;
+  background-color: #801323;
+  box-shadow: 0 0 5px 0 #FFDB58 inset;
+  color: #FAFAFA;
+  font-family: "Schibsted Grotesk";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}

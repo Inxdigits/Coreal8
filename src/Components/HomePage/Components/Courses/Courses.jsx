@@ -6,7 +6,11 @@ import course2 from '../../Assets/second-course.png';
 import course3 from '../../Assets/third-course.png';
 import openicon from '../../Assets/open-icon.svg';
 
+import { useWaitlist } from "../../../../context/WaitListcontext.jsx";
+
 const Courses = () => {
+  const { openWaitlist } = useWaitlist();
+
   const courses = [
     {
       img: course1,
@@ -40,7 +44,7 @@ const Courses = () => {
         </div>
         <div className="courses-card-bottom">
           <span>₦45,000</span>
-          <Link to="/courses" className="view-course-link">
+          <Link onClick={openWaitlist} className="view-course-link">
             View course
             <img src={openicon} />
           </Link>

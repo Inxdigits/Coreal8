@@ -7,22 +7,25 @@ import survival from "../../Assets/survival-strategy.png";
 import legacy from "../../Assets/legacy-img.png";
 import arrow from '../../Assets/right-arrow.svg';
 
+import { useWaitlist } from "../../../../context/WaitListcontext.jsx";
+
 const Podcast = () => {
+  const { openWaitlist } = useWaitlist();
+
   const episodes = [
-      {
-          img: noisy,
-          title: "Redefining Leadership in a Noisy World"
-      },
-      {
-          img: survival,
-          title: "From Survival to Strategy",
-          album: "- Beyond the Boardroom"
-      },
-      {
-          img: legacy,
-          title: "How to Build a Legacy That Lives After You"
-      }
-      
+    {
+      img: noisy,
+      title: "Redefining Leadership in a Noisy World"
+    },
+    {
+      img: survival,
+      title: "From Survival to Strategy",
+      album: "- Beyond the Boardroom"
+    },
+    {
+      img: legacy,
+      title: "How to Build a Legacy That Lives After You"
+    } 
   ]
 
   const Preview = ({img, title, album}) => {
@@ -35,7 +38,7 @@ const Podcast = () => {
             <p>{title}</p>
             <span>{album}</span>
           </div>
-          <a className="session-card-img">
+          <a onClick={openWaitlist} className="session-card-img">
             <img src={arrow} alt="" />
           </a>
         </div>

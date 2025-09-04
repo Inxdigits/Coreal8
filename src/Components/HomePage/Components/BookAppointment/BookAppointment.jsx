@@ -1,9 +1,15 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import '../../Reuse.css';
 import './BookAppointment.css';
 
+import { useWaitlist } from "../../../../context/WaitListcontext.jsx";
+
 import appImage from "../../Assets/Frame86.png"
+
 const BookAppointment = () => {
+  const { openWaitlist } = useWaitlist();
+
   return (
     <div className="appointment-container">
       <div className="leftside">
@@ -16,7 +22,7 @@ const BookAppointment = () => {
           </p>
         </div>
         <div className="appointment-button-container">
-          <button className="appointment-button">Book Counseling</button>
+          <button onClick={openWaitlist} className="appointment-button">Book Counseling</button>
         </div>
       </div>
       <div className="rightside">

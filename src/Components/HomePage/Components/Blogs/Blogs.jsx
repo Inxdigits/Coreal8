@@ -1,5 +1,6 @@
 import React from "react";
-import '../../Reuse.css';
+import { Link } from "react-router-dom";
+import "../../Reuse.css";
 import "../Leadership/Leadership.css";
 import "./Blogs.css";
 import blog1 from "../../Assets/blog1.png";
@@ -8,7 +9,11 @@ import blog3 from "../../Assets/blog3.png";
 import blog4 from "../../Assets/blog4-new.png";
 import { IoOpenOutline } from "react-icons/io5";
 
+import { useWaitlist } from "../../../../context/WaitListcontext.jsx";
+
 const Blogs = () => {
+  const { openWaitlist } = useWaitlist();
+
   const blogs = [
     {
       img: blog1,
@@ -51,16 +56,18 @@ const Blogs = () => {
           <img src={img} alt="" />
         </div>
         <div className="about-blog">
-          <span>{dateReleased} | {time}</span>
+          <span>
+            {dateReleased} | {time}
+          </span>
         </div>
         <div className="blog-preview-writeup">
           <p>{title}</p>
           <span>{description}</span>
         </div>
-        <a>
+        <Link to="/blogs" onClick={openWaitlist}>
           Read blog
           <IoOpenOutline />
-        </a>
+        </Link>
       </div>
     );
   };
