@@ -8,7 +8,7 @@ import "./Waitlist.css";
 const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
 const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
 const USER_ID = import.meta.env.VITE_EMAILJS_USER_ID;
-const AUTO_CLOSE_DELAY = 5000000; // 5 seconds
+const AUTO_CLOSE_DELAY = 5000; // 5 seconds
 
 const WaitlistModal = () => {
   const { isOpen, closeWaitlist } = useWaitlist();
