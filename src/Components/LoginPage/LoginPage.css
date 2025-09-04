@@ -12,6 +12,27 @@
 
 .close-btn {
     color: white;
+    border: 1px solid white !important;
+}
+
+.modal-content form input,
+.modal-content form textarea,
+.modal-content form select {
+  padding: 8px 10px;
+  font-size: 13px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  resize: none;
+}
+
+.modal-content form input:focus,
+.modal-content form textarea:focus,
+.modal-content form input:active,
+.modal-content form textarea:active,
+.modal-content form select:focus,
+.modal-content form select:active {
+  /* border: none; */
+  outline: none;
 }
 
 /* @media screen and (max-height: 790px) {
@@ -40,7 +61,11 @@
     font-size: 8px;
 }
 
-.email-login label {
+#email-login {
+    gap: 8px;
+}
+
+#email-login label {
     font-size: 12px;
 }
 
@@ -56,7 +81,7 @@
 .toggle-password-btn {
     position: absolute;
     right: 10px;
-    top: 5%;
+    top: 10%;
 }
 
 .form-options, .remember-me {

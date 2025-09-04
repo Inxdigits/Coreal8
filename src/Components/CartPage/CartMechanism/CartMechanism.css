@@ -36,6 +36,11 @@
     flex: 1 0 0;
 }
 
+.cartitem-info img {
+    max-width: 86px;
+    max-height: 86px;
+}
+
 .cartitem-info-text .title {
     color: #0D0C12;
     font-family: "Schibsted Grotesk";

@@ -26,6 +26,9 @@ const Register = () => {
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
+  
+  // close modal handler
+  const handleClose = () => navigate("/");
 
   const validateEmail = (value) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i;
@@ -132,8 +135,14 @@ const Register = () => {
   return (
     <div className="signup-container">
       <div className="modal-backdrop" id="login-main">
-        <button className="close-btn">
-          <Link to="/">X</Link>
+        {/* Close button */}
+        <button
+          className="close-btn"
+          id="partner-close-btn"
+          style={{ color: "white" }}
+          onClick={handleClose}
+        >
+          ✕
         </button>
         <div
           className="modal-content fade-in login-modal-content register-modal-content"
@@ -161,7 +170,7 @@ const Register = () => {
             <span>OR</span>
           </div>
 
-          <form onSubmit={handleEmailSignup} className="email-login">
+          <form onSubmit={handleEmailSignup} id="email-login">
             <label htmlFor="fullName">Full Name</label>
             <input
               id="fullName"
@@ -218,16 +227,6 @@ const Register = () => {
             />
 
             <div className="form-options">
-              {/* <div className="remember-me">
-                <input
-                  type="checkbox"
-                  id="rememberMe"
-                  checked={rememberMe}
-                  onChange={() => setRememberMe(!rememberMe)}
-                />
-                <label htmlFor="rememberMe">Remember Me</label>
-              </div> */}
-
               <div className="remember-me terms">
                 <input
                   type="checkbox"

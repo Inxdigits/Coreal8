@@ -3,12 +3,17 @@ import './ForgotPassword.css';
 import { sendPasswordResetEmail } from "firebase/auth";
 import { auth } from "../../../Firebase/Firebase.js"; 
 import coreal8Logo from "../../../Assets/login-logo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
+
+  const navigate = useNavigate();
+
+  // close modal handler
+  const handleClose = () => navigate("/");
 
   const handleReset = async (e) => {
     e.preventDefault();
@@ -32,10 +37,13 @@ const ForgotPassword = () => {
     <div className="forgot-container signup-container">
       <div className="modal-backdrop" id="login-main">
         {/* Close button */}
-        <button className="close-btn" style={{ color: "white" }}>
-          <Link to="/" className="close-link">
-            X
-          </Link>
+        <button
+          className="close-btn"
+          id="partner-close-btn"
+          style={{ color: "white" }}
+          onClick={handleClose}
+        >
+          ✕
         </button>
 
         <div
@@ -50,7 +58,7 @@ const ForgotPassword = () => {
             <h2>Forgot Password?</h2>
             <p>No worries, we’ll send you reset instructions.</p>
           </div>
-          <form onSubmit={handleReset}>
+          <form onSubmit={handleReset} id="email-login">
             <label htmlFor="email" className="fp-email-label">
               Email Address
             </label>

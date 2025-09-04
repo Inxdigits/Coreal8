@@ -195,7 +195,7 @@ const Dashboard = () => {
               <div className="card-title">Courses</div>
               <div className="card-number">{summaryData.courses.count}</div>
               <div className="card-label">{summaryData.courses.label}</div>
-              <button className="card-button">Enrol ></button>
+              <button className="card-button">Enrol </button>
             </div>
           </div>
           
@@ -205,7 +205,7 @@ const Dashboard = () => {
               <div className="card-title">Mentorship</div>
               <div className="card-number">{summaryData.mentorship.count}</div>
               <div className="card-label">{summaryData.mentorship.label}</div>
-              <button className="card-button">Apply ></button>
+              <button className="card-button">Apply </button>
             </div>
           </div>
           
@@ -215,7 +215,7 @@ const Dashboard = () => {
               <div className="card-title">Counseling</div>
               <div className="card-number">{summaryData.counseling.count}</div>
               <div className="card-label">{summaryData.counseling.label}</div>
-              <button className="card-button">Apply ></button>
+              <button className="card-button">Apply </button>
             </div>
           </div>
           
@@ -225,7 +225,7 @@ const Dashboard = () => {
               <div className="card-title">Coaching</div>
               <div className="card-number">{summaryData.coaching.count}</div>
               <div className="card-label">{summaryData.coaching.label}</div>
-              <button className="card-button">Apply ></button>
+              <button className="card-button">Apply </button>
             </div>
           </div>
         </div>

@@ -1,54 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./CartMechanism.css";
-import courseimg from "../../../Assets/CartPageAssets/cartImage.png";
-import update from '../../../Assets/CartPageAssets/update-restore.svg';
+import update from "../../../Assets/CartPageAssets/update-restore.svg";
 
-const CartMechanism = ({ setArrayLength }) => {
-  const [cartItems, setCartItems] = useState([
-    {
-      id: 1,
-      title: "The Visionary Leader's Blueprint",
-      price: 45000,
-      quantity: 1,
-      image: courseimg,
-    },
-    {
-      id: 2,
-      title: "The Visionary Leader's Blueprint",
-      price: 45000,
-      quantity: 1,
-      image: courseimg,
-    },
-    {
-      id: 3,
-      title: "The Visionary Leader's Blueprint",
-      price: 45000,
-      quantity: 1,
-      image: courseimg,
-    },
-  ]);
-
-  useEffect(() => {
-    setArrayLength(cartItems.length);
-  }, [cartItems, setArrayLength]);
-
-  const updateQuantity = (id, newQuantity) => {
-    if (newQuantity < 1) return;
-    setCartItems((items) =>
-      items.map((item) =>
-        item.id === id ? { ...item, quantity: newQuantity } : item
-      ),
-    );
-  }
-
-  const removeItem = (id) => {
-    setCartItems((items) => items.filter((item) => item.id !== id));
-  };
-
-  const clearCart = () => {
-    setCartItems([]);
-  };
-
+const CartMechanism = ({ cartItems, updateQuantity, removeItem, clearCart }) => {
   const updateCart = () => {
     console.log("cart updated");
   };
@@ -62,23 +16,6 @@ const CartMechanism = ({ setArrayLength }) => {
         <div>Total</div>
       </header>
 
-      <div className="divider">
-        {/* <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="782"
-          height="2"
-          viewBox="0 0 782 2"
-          fill="none"
-        >
-          <path
-            d="M1 1L781 1"
-            stroke="#0D0C12"
-            stroke-opacity="0.1"
-            stroke-linecap="round"
-          />
-        </svg> */}
-      </div>
-
       <main className="cart-mechanism">
         <div className="cart">
           {cartItems.map((item) => (
@@ -87,7 +24,7 @@ const CartMechanism = ({ setArrayLength }) => {
                 {item.image ? (
                   <img src={item.image} alt="Product" />
                 ) : (
-                  <div className="relative w-[86px] h-[86px] bg-[linear-gradient(0deg,rgba(0,0,0,0.1)_0%,rgba(0,0,0,0.1)_100%)]" />
+                  <div className="relative w-[86px] h-[86px] bg-gray-200" />
                 )}
 
                 <div className="cartitem-info-text">
@@ -98,19 +35,13 @@ const CartMechanism = ({ setArrayLength }) => {
               <div className="price">N{item.price.toLocaleString()}</div>
               <div className="quantity">
                 <button
-                  className="cursor-pointer"
                   onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                  aria-label="Decrease Quantity"
                 >
                   -
                 </button>
-
                 <span>{item.quantity}</span>
-
                 <button
-                  className=""
                   onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                  aria-label="Increase quantity"
                 >
                   +
                 </button>
@@ -123,25 +54,8 @@ const CartMechanism = ({ setArrayLength }) => {
         </div>
       </main>
 
-      <div className="divider">
-        {/* <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="782"
-          height="2"
-          viewBox="0 0 782 2"
-          fill="none"
-        >
-          <path
-            d="M1 1L781 1"
-            stroke="#0D0C12"
-            stroke-opacity="0.1"
-            stroke-linecap="round"
-          />
-        </svg> */}
-      </div>
-
       <div className="bottom">
-        <button className="updatecart" onClick={{ updateCart }}>
+        <button className="updatecart" onClick={updateCart}>
           <img src={update} alt="" />
           Update
         </button>

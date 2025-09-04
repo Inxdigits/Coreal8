@@ -9,23 +9,28 @@ import {
 import { auth, provider } from "../../Firebase/Firebase.js";
 import { FcGoogle } from "react-icons/fc";
 import "./LoginPage.css";
-import { Link, useNavigate } from "react-router-dom"; // ⬅️ import useNavigate
+import { Link, useNavigate } from "react-router-dom";
 import coreal8Logo from "../../Assets/login-logo.png";
 
 const LoginPage = () => {
-  const navigate = useNavigate(); // ⬅️ create navigate instance
+  const navigate = useNavigate();
 
-  // states
+  // Modal open/close state
+  const [isOpen, setIsOpen] = useState(true);
+
+  // form states
   const [email, setEmail] = useState("");
   const [isEmailValid, setIsEmailValid] = useState(true);
 
   const [password, setPassword] = useState("");
   const [isPasswordValid, setIsPasswordValid] = useState(true);
 
-  const [showPassword, setShowPassword] = useState(false); // 👁️ toggle state
-
+  const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+
+  // close modal handler
+  const handleClose = () => navigate("/");
 
   // email input change + validation
   const handleChange = (e) => {
@@ -41,7 +46,6 @@ const LoginPage = () => {
     const value = e.target.value;
     setPassword(value);
 
-    // Password must be at least 6 chars, with one letter and one number
     const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
     setIsPasswordValid(passwordRegex.test(value));
   };
@@ -77,7 +81,7 @@ const LoginPage = () => {
       );
 
       console.log("User logged in:", userCredential.user);
-      navigate("/dashboard"); // ⬅️ redirect to dashboard
+      navigate("/dashboard");
     } catch (error) {
       let customError = "Login failed. Please try again.";
       if (error.code === "auth/user-not-found") {
@@ -105,21 +109,27 @@ const LoginPage = () => {
       const result = await signInWithPopup(auth, provider);
       console.log("User logged in with Google:", result.user);
 
-      navigate("/dashboard"); // ⬅️ redirect to dashboard
+      navigate("/dashboard");
     } catch (error) {
       setErrorMessage("Google login failed. Please try again.");
       console.error("Error logging in with Google:", error.message);
     }
   };
 
+  // ✅ Don't render modal if closed
+  if (!isOpen) return null;
+
   return (
     <div className="login-container">
       <div className="modal-backdrop" id="login-main">
         {/* Close button */}
-        <button className="close-btn" style={{ color: "white" }}>
-          <Link to="/" className="close-link">
-            X
-          </Link>
+        <button
+          className="close-btn"
+          id="partner-close-btn"
+          style={{ color: "white" }}
+          onClick={handleClose}
+        >
+          ✕
         </button>
 
         <div
@@ -137,7 +147,7 @@ const LoginPage = () => {
             </p>
           </div>
 
-          {/* Google Login Button */}
+          {/* Google Login */}
           <button
             onClick={handleGoogleLogin}
             className="google-login w-full flex items-center justify-center gap-2 hover:bg-gray-100"
@@ -151,8 +161,8 @@ const LoginPage = () => {
             <span>OR</span>
           </div>
 
-          {/* Email/Password Login Form */}
-          <form onSubmit={handleEmailLogin} className="email-login">
+          {/* Email/Password Login */}
+          <form onSubmit={handleEmailLogin} id="email-login">
             <label htmlFor="email">Email Address</label>
             <input
               id="email"
@@ -174,7 +184,7 @@ const LoginPage = () => {
             <div className="password-input-wrapper">
               <input
                 id="password"
-                type={showPassword ? "text" : "password"} // 👁️ toggle type
+                type={showPassword ? "text" : "password"}
                 name="password"
                 placeholder="Enter Password"
                 value={password}
