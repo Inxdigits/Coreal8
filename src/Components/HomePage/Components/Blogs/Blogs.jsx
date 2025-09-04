@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../../Reuse.css";
+import '../../Reuse.css';
 import "../Leadership/Leadership.css";
 import "./Blogs.css";
 import blog1 from "../../Assets/blog1.png";
@@ -56,18 +56,16 @@ const Blogs = () => {
           <img src={img} alt="" />
         </div>
         <div className="about-blog">
-          <span>
-            {dateReleased} | {time}
-          </span>
+          <span>{dateReleased} | {time}</span>
         </div>
         <div className="blog-preview-writeup">
           <p>{title}</p>
           <span>{description}</span>
         </div>
-        <Link to="/blogs" onClick={openWaitlist}>
+        <a onClick={openWaitlist}>
           Read blog
           <IoOpenOutline />
-        </Link>
+        </a>
       </div>
     );
   };
@@ -89,9 +87,9 @@ const Blogs = () => {
           <Blog key={index} {...blog} />
         ))}
       </div>
-      <div className="blogs-button">
+      <Link to="/blog" className="blogs-button">
         <button className="dark-bg-btn">Read More Insights</button>
-      </div>
+      </Link>
     </div>
   );
 };
