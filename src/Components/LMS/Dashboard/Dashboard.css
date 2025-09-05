@@ -1,8 +1,9 @@
-/* Dashboard Container */
+/* Dashboard Container - Figma Design Match */
 .dashboard-container {
   display: flex;
   min-height: 100vh;
   background-color: #f8f9fa;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
 }
 
 .loading {
@@ -14,7 +15,7 @@
   color: #666;
 }
 
-/* Sidebar */
+/* Sidebar - Figma Specifications */
 .dashboard-sidebar {
   width: 280px;
   background-color: #8B0000; /* Dark red */
@@ -26,6 +27,7 @@
   left: 0;
   top: 0;
   z-index: 1000;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .sidebar-header {
@@ -156,8 +158,12 @@
 .dashboard-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   margin-bottom: 30px;
+}
+
+.header-left {
+  flex: 1;
 }
 
 .welcome-text {
@@ -180,6 +186,11 @@
   border-radius: 50%;
   background-color: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+.notification-icon:hover {
+  transform: scale(1.05);
 }
 
 .search-bar {
@@ -190,6 +201,11 @@
   padding: 8px 16px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   min-width: 250px;
+  transition: all 0.2s ease;
+}
+
+.search-bar:focus-within {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .search-icon {
@@ -221,19 +237,14 @@
   border-radius: 8px;
   padding: 16px;
   display: flex;
-  align-items: flex-start;
-  gap: 12px;
+  flex-direction: column;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   transition: all 0.2s ease;
   cursor: pointer;
   border: 1px solid #e5e7eb;
   position: relative;
   overflow: hidden;
-  min-height: 100px;
-}
-
-.summary-card .card-icon {
-  margin-top: 2px;
+  height: 130px;
 }
 
 .summary-card:hover {
@@ -241,75 +252,84 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
+.card-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
 .card-icon {
-  font-size: 16px;
-  width: 32px;
-  height: 32px;
+  width: 20px;
+  height: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: transparent;
-  border-radius: 4px;
-  border: none;
+  color: #374151;
   flex-shrink: 0;
-  margin-top: 0;
 }
 
-.card-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
+.card-icon svg {
+  width: 100%;
+  height: 100%;
 }
 
 .card-title {
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 16px;
+  font-weight: 600;
   color: #374151;
   margin: 0;
-  margin-bottom: 12px;
 }
 
 .card-number {
-  font-size: 24px;
+  font-size: 32px;
   font-weight: 700;
   color: #111827;
   margin: 0;
   line-height: 1;
-  margin-bottom: 4px;
+  margin-bottom: 16px;
+}
+
+.card-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
 }
 
 .card-label {
-  font-size: 12px;
+  font-size: 14px;
   color: #6b7280;
   margin: 0;
   font-weight: 400;
-  margin-bottom: 12px;
 }
 
 .card-button {
-  background: #f3f4f6;
+  background: white;
   border: 1px solid #d1d5db;
   color: #374151;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 500;
   cursor: pointer;
-  padding: 4px 8px;
-  border-radius: 4px;
+  padding: 8px 12px;
+  border-radius: 6px;
   transition: all 0.2s ease;
   display: inline-flex;
   align-items: center;
-  gap: 2px;
-  margin-top: auto;
-  align-self: flex-end;
-  min-width: 60px;
+  gap: 4px;
+  min-width: 80px;
   justify-content: center;
 }
 
 .card-button:hover {
-  background: #e5e7eb;
+  background: #f9fafb;
   border-color: #9ca3af;
   transform: translateY(-1px);
+}
+
+.button-arrow {
+  color: #8B0000;
+  font-weight: 600;
 }
 
 /* Dashboard Content */
@@ -353,8 +373,14 @@
   text-decoration: underline;
 }
 
-/* Course Item */
-.course-item {
+/* Course Grid */
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.course-card {
   display: flex;
   align-items: center;
   gap: 16px;
@@ -362,13 +388,13 @@
   border: 1px solid #e9ecef;
   border-radius: 8px;
   transition: all 0.2s ease;
-  background-color: #fafafa;
+  background-color: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-.course-item:hover {
+.course-card:hover {
   border-color: #8B0000;
   box-shadow: 0 2px 8px rgba(139, 0, 0, 0.1);
-  background-color: white;
 }
 
 .course-thumbnail {
@@ -420,7 +446,7 @@
 
 .progress-fill {
   height: 100%;
-  background-color: #8B0000;
+  background: linear-gradient(90deg, #8B0000 0%, #ff6b35 100%);
   border-radius: 4px;
   transition: width 0.3s ease;
 }
@@ -442,6 +468,278 @@
 
 .course-arrow:hover {
   background-color: #f8f9fa;
+}
+
+/* Mentorship Grid */
+.mentorship-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.mentorship-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  background-color: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.mentorship-card:hover {
+  border-color: #8B0000;
+  box-shadow: 0 2px 8px rgba(139, 0, 0, 0.1);
+}
+
+.mentorship-info {
+  flex: 1;
+}
+
+.mentorship-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 8px 0;
+}
+
+.mentorship-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.next-session {
+  font-size: 13px;
+  color: #666;
+}
+
+.sessions {
+  font-size: 13px;
+  color: #666;
+}
+
+.mentorship-arrow {
+  font-size: 20px;
+  color: #8B0000;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.mentorship-arrow:hover {
+  background-color: #f8f9fa;
+}
+
+/* Counseling Grid */
+.counseling-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.counseling-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  background-color: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.counseling-card:hover {
+  border-color: #8B0000;
+  box-shadow: 0 2px 8px rgba(139, 0, 0, 0.1);
+}
+
+.counseling-info {
+  flex: 1;
+}
+
+.counseling-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.last-attended {
+  font-size: 13px;
+  color: #666;
+}
+
+.counseling-arrow {
+  font-size: 20px;
+  color: #8B0000;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.counseling-arrow:hover {
+  background-color: #f8f9fa;
+}
+
+/* Coaching Grid */
+.coaching-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.coaching-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  background-color: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.coaching-card:hover {
+  border-color: #8B0000;
+  box-shadow: 0 2px 8px rgba(139, 0, 0, 0.1);
+}
+
+.coaching-info {
+  flex: 1;
+}
+
+.coaching-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.coaching-arrow {
+  font-size: 20px;
+  color: #8B0000;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.coaching-arrow:hover {
+  background-color: #f8f9fa;
+}
+
+/* Calendar Item */
+.calendar-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.calendar-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  background-color: #fafafa;
+  transition: all 0.2s ease;
+}
+
+.calendar-item:hover {
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.calendar-content {
+  flex: 1;
+}
+
+.calendar-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 4px 0;
+}
+
+.calendar-description {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+}
+
+.calendar-time {
+  background-color: #8B0000;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* Event Item */
+.events-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.event-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  background-color: #fafafa;
+  transition: all 0.2s ease;
+}
+
+.event-item:hover {
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.event-content {
+  flex: 1;
+}
+
+.event-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 4px 0;
+}
+
+.event-date {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+}
+
+.event-button {
+  background-color: #8B0000;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.event-button:hover {
+  background-color: #A00000;
+  transform: translateY(-1px);
 }
 
 /* Empty States */
@@ -489,12 +787,23 @@
     grid-template-columns: repeat(2, 1fr);
   }
   
+  .summary-card {
+    height: 120px;
+  }
+  
   .dashboard-content {
     grid-template-columns: 1fr;
   }
   
   .content-right {
     order: -1;
+  }
+  
+  .courses-grid,
+  .mentorship-grid,
+  .counseling-grid,
+  .coaching-grid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -511,7 +820,30 @@
   }
   
   .summary-cards {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .summary-card {
+    height: 110px;
+    padding: 16px;
+  }
+  
+  .card-number {
+    font-size: 24px;
+  }
+  
+  .card-title {
+    font-size: 14px;
+  }
+  
+  .card-label {
+    font-size: 12px;
+  }
+  
+  .card-button {
+    font-size: 12px;
+    padding: 4px 8px;
+    min-width: 60px;
   }
   
   .dashboard-header {
@@ -531,6 +863,14 @@
 }
 
 @media (max-width: 480px) {
+  .summary-cards {
+    grid-template-columns: 1fr;
+  }
+  
+  .summary-card {
+    height: 120px;
+  }
+  
   .course-item {
     flex-direction: column;
     text-align: center;

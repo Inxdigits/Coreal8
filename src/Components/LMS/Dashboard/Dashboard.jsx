@@ -15,8 +15,8 @@ const Dashboard = () => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
         setUser({
-          name: user.displayName || 'User',
-          email: user.email || 'user@example.com',
+          name: user.displayName || 'Jane Doe',
+          email: user.email || 'janedoe@gmail.com',
           profileImage: user.photoURL || 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face'
         });
       } else {
@@ -27,48 +27,151 @@ const Dashboard = () => {
     return () => unsubscribe();
   }, [navigate]);
 
-  // Mock data for summary cards
-  const summaryData = {
-    courses: { count: 1, label: 'On-going courses', button: 'Enrol >' },
-    mentorship: { count: 0, label: 'On-going mentorship', button: 'Apply >' },
-    counseling: { count: 0, label: 'On-going counseling', button: 'Apply >' },
-    coaching: { count: 0, label: 'On-going coaching', button: 'Apply >' }
-  };
-
-  // Mock course data
-  const courseData = {
+  // Mock course data - matching the design exactly (2 identical cards)
+  const courseData = [
+    {
+      id: 1,
+      title: "The Visionary Leader's Blueprint",
+      progress: 50,
+      status: "In progress",
+      thumbnail: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=120&fit=crop&crop=face",
+      instructor: "Dr. Enobong",
+      duration: "12 weeks"
+    },
+    {
+      id: 2,
     title: "The Visionary Leader's Blueprint",
     progress: 50,
     status: "In progress",
-    thumbnail: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=120&fit=crop&crop=face"
+      thumbnail: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=120&fit=crop&crop=face",
+      instructor: "Dr. Enobong",
+      duration: "12 weeks"
+    }
+  ];
+
+  // Mock mentorship data - matching the design exactly (2 identical cards)
+  const mentorshipData = [
+    {
+      id: 1,
+      title: "Build personal brand & improve time discipline",
+      nextSession: "Next Sessions: Jul 10, 3:00 PM",
+      progress: 50,
+      sessions: "Progress: 2/6 Sessions",
+      status: "In progress"
+    },
+    {
+      id: 2,
+      title: "Build personal brand & improve time discipline",
+      nextSession: "Next Sessions: Jul 10, 3:00 PM",
+      progress: 50,
+      sessions: "Progress: 2/6 Sessions",
+      status: "In progress"
+    }
+  ];
+
+  // Mock counseling data - matching the design exactly (2 identical cards)
+  const counselingData = [
+    {
+      id: 1,
+      nextSession: "Next Session: Jul 10, 3:00 PM",
+      lastAttended: "Last Attended: Jul 1",
+      progress: 50,
+      sessions: "Progress: 2/6 Sessions",
+      status: "In progress"
+    },
+    {
+      id: 2,
+      nextSession: "Next Session: Jul 10, 3:00 PM",
+      lastAttended: "Last Attended: Jul 1",
+      progress: 50,
+      sessions: "Progress: 2/6 Sessions",
+      status: "In progress"
+    }
+  ];
+
+  // Mock coaching data - matching the design exactly (2 identical cards)
+  const coachingData = [
+    {
+      id: 1,
+      nextSession: "Next Session: Jul 10, 3:00 PM",
+      lastAttended: "Last Attended: Jul 1",
+      progress: 50,
+      sessions: "Progress: 2/6 Sessions",
+      status: "In progress"
+    },
+    {
+      id: 2,
+      nextSession: "Next Session: Jul 10, 3:00 PM",
+      lastAttended: "Last Attended: Jul 1",
+      progress: 50,
+      sessions: "Progress: 2/6 Sessions",
+      status: "In progress"
+    }
+  ];
+
+  // Mock calendar data - matching the design exactly
+  const calendarData = [
+    {
+      id: 1,
+      title: "Week 01 Assignment",
+      description: "Course assignment",
+      time: "7:00pm"
+    },
+    {
+      id: 2,
+      title: "Week 01 Assignment",
+      description: "Course assignment",
+      time: "7:00pm"
+    },
+    {
+      id: 3,
+      title: "Week 01 Assignment",
+      description: "Course assignment",
+      time: "7:00pm"
+    }
+  ];
+
+  // Mock events data - matching the design exactly
+  const eventsData = [
+    {
+      id: 1,
+      title: "Coaching Session",
+      date: "July 12, 2025",
+      button: "View Details >"
+    },
+    {
+      id: 2,
+      title: "Coaching Session",
+      date: "July 12, 2025",
+      button: "View Details >"
+    },
+    {
+      id: 3,
+      title: "Coaching Session",
+      date: "July 12, 2025",
+      button: "View Details >"
+    }
+  ];
+
+  // Dynamic summary data based on actual content
+  const summaryData = {
+    courses: { count: courseData.length, label: 'On-going courses', button: 'Enrol >' },
+    mentorship: { count: mentorshipData.length, label: 'On-going mentorship', button: 'Apply >' },
+    counseling: { count: counselingData.length, label: 'On-going counseling', button: 'Apply >' },
+    coaching: { count: coachingData.length, label: 'On-going coaching', button: 'Apply >' }
   };
 
   const sidebarItems = [
-    { id: 'dashboard', label: 'Dashboard', icon: 'grid' },
-    { id: 'courses', label: 'My Courses', icon: 'graduation-cap' },
-    { id: 'mentorship', label: 'My Mentorship', icon: 'people' },
-    { id: 'coaching', label: 'Coaching Sessions', icon: 'coaching' },
-    { id: 'counseling', label: 'Counseling Services', icon: 'counseling' },
-    { id: 'calendar', label: 'Calendar', icon: 'calendar' },
-    { id: 'resources', label: 'Resources', icon: 'resources' },
-    { id: 'settings', label: 'Account Settings', icon: 'person' },
-    { id: 'logout', label: 'Logout', icon: 'logout' }
+    { id: 'dashboard', label: 'Dashboard', icon: '⊞', path: '/dashboard' },
+    { id: 'courses', label: 'My Courses', icon: '🎓', path: '/lms/courses' },
+    { id: 'mentorship', label: 'My Mentorship', icon: '👥', path: '/lms/mentorship' },
+    { id: 'coaching', label: 'Coaching Sessions', icon: '👥➡️', path: '/lms/coaching' },
+    { id: 'counseling', label: 'Counseling Services', icon: '👥', path: '/lms/counseling' },
+    { id: 'calendar', label: 'Calendar', icon: '📅', path: '/lms/calendar' },
+    { id: 'resources', label: 'Resources', icon: '⊞+', path: '/lms/resources' },
+    { id: 'settings', label: 'Account Settings', icon: '👤', path: '/lms/settings' },
+    { id: 'logout', label: 'Logout', icon: '↪️', path: null }
   ];
-
-  const getIcon = (iconName) => {
-    const icons = {
-      grid: '⊞',
-      'graduation-cap': '🎓',
-      people: '👥',
-      coaching: '👥➡️',
-      counseling: '👥',
-      calendar: '📅',
-      resources: '⊞+',
-      person: '👤',
-      logout: '↪️'
-    };
-    return icons[iconName] || '•';
-  };
 
   const getCardIcon = (type) => {
     const cardIcons = {
@@ -91,22 +194,52 @@ const Dashboard = () => {
 
   const handleSearch = (e) => {
     setSearchQuery(e.target.value);
-    // Implement search functionality here
   };
+
+  // Filter data based on search query
+  const filteredCourseData = courseData.filter(course => 
+    course.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    course.instructor.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  const filteredMentorshipData = mentorshipData.filter(mentorship => 
+    mentorship.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    mentorship.mentor.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  const filteredCounselingData = counselingData.filter(counseling => 
+    counseling.nextSession.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    counseling.lastAttended.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    counseling.sessions.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    counseling.status.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  const filteredCoachingData = coachingData.filter(coaching => 
+    coaching.nextSession.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    coaching.lastAttended.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    coaching.sessions.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    coaching.status.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   const handleCardClick = (type) => {
     switch (type) {
       case 'courses':
-        navigate('/courses');
+        navigate('/lms/courses');
         break;
       case 'mentorship':
-        navigate('/mentoring');
+        navigate('/lms/mentorship');
         break;
       case 'counseling':
-        navigate('/counseling');
+        navigate('/lms/counseling');
         break;
       case 'coaching':
-        navigate('/coaching');
+        navigate('/lms/coaching');
+        break;
+      case 'calendar':
+        navigate('/lms/calendar');
+        break;
+      case 'resources':
+        navigate('/lms/resources');
         break;
       default:
         break;
@@ -136,17 +269,17 @@ const Dashboard = () => {
                 className={`nav-item logout-btn ${activeSection === item.id ? 'active' : ''}`}
                 onClick={handleLogout}
               >
-                <span className="nav-icon">{getIcon(item.icon)}</span>
+                <span className="nav-icon">{item.icon}</span>
                 <span className="nav-label">{item.label}</span>
               </button>
             ) : (
               <Link
                 key={item.id}
-                to={`/${item.id === 'dashboard' ? 'dashboard' : item.id}`}
+                to={item.path}
                 className={`nav-item ${activeSection === item.id ? 'active' : ''}`}
                 onClick={() => setActiveSection(item.id)}
               >
-                <span className="nav-icon">{getIcon(item.icon)}</span>
+                <span className="nav-icon">{item.icon}</span>
                 <span className="nav-label">{item.label}</span>
               </Link>
             )
@@ -190,42 +323,91 @@ const Dashboard = () => {
         {/* Summary Cards */}
         <div className="summary-cards">
           <div className="summary-card courses" onClick={() => handleCardClick('courses')}>
-            <div className="card-icon">{getCardIcon('courses')}</div>
-            <div className="card-content">
+            <div className="card-top">
+              <div className="card-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                  <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                </svg>
+              </div>
               <div className="card-title">Courses</div>
-              <div className="card-number">{summaryData.courses.count}</div>
+            </div>
+            <div className="card-number">{summaryData.courses.count}</div>
+            <div className="card-bottom">
               <div className="card-label">{summaryData.courses.label}</div>
-              <button className="card-button">Enrol </button>
+              <button className="card-button">
+                Enrol <span className="button-arrow">&gt;</span>
+              </button>
             </div>
           </div>
           
           <div className="summary-card mentorship" onClick={() => handleCardClick('mentorship')}>
-            <div className="card-icon">{getCardIcon('mentorship')}</div>
-            <div className="card-content">
+            <div className="card-top">
+              <div className="card-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                  <circle cx="9" cy="7" r="4"/>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                </svg>
+              </div>
               <div className="card-title">Mentorship</div>
-              <div className="card-number">{summaryData.mentorship.count}</div>
+            </div>
+            <div className="card-number">{summaryData.mentorship.count}</div>
+            <div className="card-bottom">
               <div className="card-label">{summaryData.mentorship.label}</div>
-              <button className="card-button">Apply </button>
+              <button className="card-button">
+                Apply <span className="button-arrow">&gt;</span>
+              </button>
             </div>
           </div>
           
           <div className="summary-card counseling" onClick={() => handleCardClick('counseling')}>
-            <div className="card-icon">{getCardIcon('counseling')}</div>
-            <div className="card-content">
+            <div className="card-top">
+              <div className="card-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                  <circle cx="9" cy="7" r="4"/>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                </svg>
+              </div>
               <div className="card-title">Counseling</div>
-              <div className="card-number">{summaryData.counseling.count}</div>
+            </div>
+            <div className="card-number">{summaryData.counseling.count}</div>
+            <div className="card-bottom">
               <div className="card-label">{summaryData.counseling.label}</div>
-              <button className="card-button">Apply </button>
+              <button className="card-button">
+                Apply <span className="button-arrow">&gt;</span>
+              </button>
             </div>
           </div>
           
           <div className="summary-card coaching" onClick={() => handleCardClick('coaching')}>
-            <div className="card-icon">{getCardIcon('coaching')}</div>
-            <div className="card-content">
+            <div className="card-top">
+              <div className="card-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                  <circle cx="12" cy="7" r="4"/>
+                  <circle cx="12" cy="12" r="2"/>
+                  <path d="M12 1v2"/>
+                  <path d="M12 17v2"/>
+                  <path d="M4.22 4.22l1.42 1.42"/>
+                  <path d="M18.36 18.36l1.42 1.42"/>
+                  <path d="M1 12h2"/>
+                  <path d="M21 12h2"/>
+                  <path d="M4.22 19.78l1.42-1.42"/>
+                  <path d="M18.36 5.64l1.42-1.42"/>
+                </svg>
+              </div>
               <div className="card-title">Coaching</div>
-              <div className="card-number">{summaryData.coaching.count}</div>
+            </div>
+            <div className="card-number">{summaryData.coaching.count}</div>
+            <div className="card-bottom">
               <div className="card-label">{summaryData.coaching.label}</div>
-              <button className="card-button">Apply </button>
+              <button className="card-button">
+                Apply <span className="button-arrow">&gt;</span>
+              </button>
             </div>
           </div>
         </div>
@@ -237,39 +419,30 @@ const Dashboard = () => {
             <div className="dashboard-section">
               <div className="section-header">
                 <h3>My Courses</h3>
-                <Link to="/courses" className="view-all-link">View all</Link>
+                <Link to="/lms/courses" className="view-all-link">View all</Link>
               </div>
-              <div className="course-item">
+                          <div className="courses-grid">
+              {filteredCourseData.map((course) => (
+                  <div key={course.id} className="course-card">
                 <div className="course-thumbnail">
-                  <img src={courseData.thumbnail} alt="Course" />
+                      <img src={course.thumbnail} alt="Course" />
                 </div>
                 <div className="course-info">
-                  <h4 className="course-title">{courseData.title}</h4>
-                  <div className="course-status">{courseData.status}</div>
+                      <h4 className="course-title">{course.title}</h4>
+                      <div className="course-status">{course.status}</div>
                   <div className="progress-container">
                     <div className="progress-bar">
                       <div 
                         className="progress-fill" 
-                        style={{ width: `${courseData.progress}%` }}
+                            style={{ width: `${course.progress}%` }}
                       ></div>
+                        </div>
+                        <span className="progress-text">{course.progress}%</span>
+                      </div>
                     </div>
-                    <span className="progress-text">{courseData.progress}%</span>
+                    <div className="course-arrow">→</div>
                   </div>
-                </div>
-                <div className="course-arrow">→</div>
-              </div>
-            </div>
-
-            {/* My Counseling */}
-            <div className="dashboard-section">
-              <div className="section-header">
-                <h3>My Counseling</h3>
-                <Link to="/counseling" className="view-all-link">View all</Link>
-              </div>
-              <div className="empty-state">
-                <div className="empty-title">No Active Counseling Sessions</div>
-                <div className="empty-description">You're not enrolled in a counseling program yet.</div>
-                <button className="cta-button" onClick={() => navigate('/counseling')}>Start Counseling</button>
+                ))}
               </div>
             </div>
 
@@ -277,12 +450,60 @@ const Dashboard = () => {
             <div className="dashboard-section">
               <div className="section-header">
                 <h3>My Mentorship</h3>
-                <Link to="/mentoring" className="view-all-link">View all</Link>
+                <Link to="/lms/mentorship" className="view-all-link">View all</Link>
               </div>
-              <div className="empty-state">
-                <div className="empty-title">No Active Mentorship Sessions</div>
-                <div className="empty-description">You're not enrolled in a mentorship program yet.</div>
-                <button className="cta-button" onClick={() => navigate('/mentoring')}>Explore Mentorships</button>
+                          <div className="mentorship-grid">
+              {filteredMentorshipData.map((mentorship) => (
+                  <div key={mentorship.id} className="mentorship-card">
+                    <div className="mentorship-info">
+                      <h4 className="mentorship-title">{mentorship.title}</h4>
+                      <div className="mentorship-meta">
+                        <span className="next-session">{mentorship.nextSession}</span>
+                        <span className="sessions">{mentorship.sessions}</span>
+                      </div>
+                      <div className="progress-container">
+                        <div className="progress-bar">
+                          <div 
+                            className="progress-fill" 
+                            style={{ width: `${mentorship.progress}%` }}
+                          ></div>
+                        </div>
+                        <span className="progress-text">{mentorship.progress}%</span>
+                      </div>
+                    </div>
+                    <div className="mentorship-arrow">→</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* My Counseling */}
+            <div className="dashboard-section">
+              <div className="section-header">
+                <h3>My Counseling</h3>
+                <Link to="/lms/counseling" className="view-all-link">View all</Link>
+              </div>
+                          <div className="counseling-grid">
+              {filteredCounselingData.map((counseling) => (
+                  <div key={counseling.id} className="counseling-card">
+                    <div className="counseling-info">
+                      <div className="counseling-meta">
+                        <span className="next-session">{counseling.nextSession}</span>
+                        <span className="last-attended">{counseling.lastAttended}</span>
+                      </div>
+                      <div className="progress-container">
+                        <div className="progress-bar">
+                          <div 
+                            className="progress-fill" 
+                            style={{ width: `${counseling.progress}%` }}
+                          ></div>
+                        </div>
+                        <span className="progress-text">{counseling.progress}%</span>
+                      </div>
+                    </div>
+                    <div className="counseling-arrow">→</div>
+                  </div>
+                ))}
               </div>
             </div>
 
@@ -290,12 +511,29 @@ const Dashboard = () => {
             <div className="dashboard-section">
               <div className="section-header">
                 <h3>My Coaching</h3>
-                <Link to="/coaching" className="view-all-link">View all</Link>
+                <Link to="/lms/coaching" className="view-all-link">View all</Link>
               </div>
-              <div className="empty-state">
-                <div className="empty-title">No Active Coaching Sessions</div>
-                <div className="empty-description">You're not enrolled in a coaching program yet.</div>
-                <button className="cta-button" onClick={() => navigate('/coaching')}>Book Coaching</button>
+                          <div className="coaching-grid">
+              {filteredCoachingData.map((coaching) => (
+                  <div key={coaching.id} className="coaching-card">
+                    <div className="coaching-info">
+                      <div className="coaching-meta">
+                        <span className="next-session">{coaching.nextSession}</span>
+                        <span className="last-attended">{coaching.lastAttended}</span>
+                      </div>
+                      <div className="progress-container">
+                        <div className="progress-bar">
+                          <div 
+                            className="progress-fill" 
+                            style={{ width: `${coaching.progress}%` }}
+                          ></div>
+                        </div>
+                        <span className="progress-text">{coaching.progress}%</span>
+                      </div>
+                    </div>
+                    <div className="coaching-arrow">→</div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -307,9 +545,16 @@ const Dashboard = () => {
               <div className="section-header">
                 <h3>My Calendar</h3>
               </div>
-              <div className="empty-state">
-                <div className="empty-title">Nothing in Calendar</div>
-                <div className="empty-description">You have nothing in your calendar</div>
+              <div className="calendar-list">
+                {calendarData.map((item) => (
+                  <div key={item.id} className="calendar-item">
+                    <div className="calendar-content">
+                      <h4 className="calendar-title">{item.title}</h4>
+                      <p className="calendar-description">{item.description}</p>
+                    </div>
+                    <div className="calendar-time">{item.time}</div>
+                  </div>
+                ))}
               </div>
             </div>
 
@@ -318,9 +563,16 @@ const Dashboard = () => {
               <div className="section-header">
                 <h3>Events</h3>
               </div>
-              <div className="empty-state">
-                <div className="empty-title">No Upcoming Event</div>
-                <div className="empty-description">You have upcoming event.</div>
+              <div className="events-list">
+                {eventsData.map((event) => (
+                  <div key={event.id} className="event-item">
+                    <div className="event-content">
+                      <h4 className="event-title">{event.title}</h4>
+                      <p className="event-date">{event.date}</p>
+                    </div>
+                    <button className="event-button">{event.button}</button>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
