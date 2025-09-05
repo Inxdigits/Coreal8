@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Courses.css';
 import CoursesMain from './CoursesMain/CoursesMain.jsx';
 import CoursesSlider from "./CoursesSlider/CoursesSlider.jsx";
@@ -7,7 +8,14 @@ import Navbar from '../Navbar/Navbar.jsx';
 import Footer from '../Footer/Footer.jsx';
 import johndoe from "../../Assets/john-doe.png";
 import coImage from "../../Assets/Frame179.png";
+
+import { useWaitlist } from "../../context/WaitListcontext.jsx";
+
+
 const Courses = () => {
+
+  const { openWaitlist } = useWaitlist();
+
   return (
     <div className="courses-page">
       <Navbar />
@@ -23,10 +31,14 @@ const Courses = () => {
             </span>
           </div>
           <div className="co-writeup-buttons">
-            <button className="dark-bg-btn">Start a Course</button>
-            <div className="gradient-button-container">
-              <button className="gradient-button card-button courses-login-button">Login</button>
-            </div>
+            <button onClick={openWaitlist} className="dark-bg-btn">
+              Start a Course
+            </button>
+            <Link to="/login" className="gradient-button-container">
+              <button className="gradient-button card-button courses-login-button">
+                Login
+              </button>
+            </Link>
           </div>
         </div>
         <div className="co-right-side">
@@ -37,7 +49,7 @@ const Courses = () => {
         <CoursesMain />
       </section>
       <section className="courses-testimonial flex-column">
-        <div className="section-header">
+        <div className="tc section-header">
           <span>TESTIMONIALS</span>
         </div>
         <div className="ct-intro">
@@ -52,7 +64,7 @@ const Courses = () => {
         </div>
       </section>
       <section className="faqs-container flex-column section-container">
-        <div className="section-header">
+        <div className="tc section-header">
           <span>FAQs</span>
         </div>
         <div className="faqs-intro">
@@ -75,7 +87,9 @@ const Courses = () => {
           </h1>
         </div>
         <div className="lc-button-container">
-          <button className="lc-button gradient-button">Start Courses</button>
+          <button onClick={openWaitlist} className="lc-button gradient-button">
+            Start Courses
+          </button>
         </div>
 
         <div className="icon-3"></div>

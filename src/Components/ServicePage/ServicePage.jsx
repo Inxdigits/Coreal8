@@ -4,13 +4,10 @@ import Navbar from "../Navbar/Navbar.jsx";
 import Footer from "../Footer/Footer.jsx";
 import Image from "../../Assets/ServicePageAssets/image.jpg";
 
+import { useWaitlist } from "../../context/WaitListcontext.jsx";
+
 const ServicePage = () => {
-  // const counselingServices = [
-  //   "Individual Counseling",
-  //   "Grief Counseling",
-  //   "Trauma Therapy",
-  //   "Stress Management",
-  // ];
+  const { openWaitlist } = useWaitlist();
 
   return (
     <div>
@@ -75,10 +72,10 @@ const ServicePage = () => {
           </div>
           <div className="spacer"></div>
           <div className="individual-flex  btn-flex">
-            <div className="red-btn">
+            <div onClick={openWaitlist} className="red-btn">
               <p>Explore Counseling Services</p>
             </div>
-            <div className="white-btn">
+            <div onClick={openWaitlist} className="white-btn">
               <p>Book a Counseling Session</p>
             </div>
           </div>
@@ -137,10 +134,10 @@ const ServicePage = () => {
           </div>
           <div className="spacer"></div>
           <div className="btn-flex">
-            <div className="red-btn">
+            <div onClick={openWaitlist} className="red-btn">
               <p>View Mentorship & Coaching Programs</p>
             </div>
-            <div className="yellow-btn">
+            <div onClick={openWaitlist} className="yellow-btn">
               <p>Book a Discovery Call</p>
             </div>
           </div>
@@ -186,10 +183,10 @@ const ServicePage = () => {
           </div>
           <div className="spacer"></div>
           <div className="btn-flex">
-            <div className="red-btn">
+            <div onClick={openWaitlist} className="red-btn">
               <p>Discover Coaching Programs</p>
             </div>
-            <div className="white-btn">
+            <div onClick={openWaitlist} className="white-btn">
               <p>Book Brand Strategy Session</p>
             </div>
           </div>
