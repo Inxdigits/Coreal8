@@ -9,7 +9,12 @@ import individual from '../HomePage/Assets/individual-counseling.png';
 import bookingImg from '../../Assets/bookCounselingImage.png';
 import { FaAngleRight } from 'react-icons/fa';
 
+import { useWaitlist } from "../../context/WaitListcontext.jsx";
+
 const Counseling = () => {
+  
+  const { openWaitlist } = useWaitlist();
+
   const sessions = [
     {
       icon: individual,
@@ -72,7 +77,7 @@ const Counseling = () => {
         </h2>
         <p>60-minutes</p>
         <div className="start-plan-button">
-          <button>
+          <button onClick={openWaitlist}>
             Get Started
             <FaAngleRight
               // style
@@ -178,7 +183,9 @@ const Counseling = () => {
             </div>
           </div>
           <div className="booking-button gradient-button-container">
-            <button className="gradient-button">Book Your Session Today</button>
+            <button onClick={openWaitlist} className="gradient-button">
+              Book Your Session Today
+            </button>
           </div>
         </section>
         <section className="co-payment-options flex-column">
@@ -186,7 +193,8 @@ const Counseling = () => {
             <h2>Transparent Fees & Payment Options</h2>
             <p>
               We believe in clear and straightforward pricing for our
-              high-quality counseling services. <br /> Our fee structure is as follows:
+              high-quality counseling services. <br /> Our fee structure is as
+              follows:
             </p>
           </div>
           <div className="copo-payment-plans">
@@ -207,10 +215,10 @@ const Counseling = () => {
             <div className="line-separator"></div>
             <h4>Cancellation Policy</h4>
             <p>
-              We require 24-hour notice for cancellations
-              or rescheduling. Sessions cancelled with less than 24-hour notice
-              will be subject to a 50% charge. This allows us to offer the slot
-              to other clients in need.
+              We require 24-hour notice for cancellations or rescheduling.
+              Sessions cancelled with less than 24-hour notice will be subject
+              to a 50% charge. This allows us to offer the slot to other clients
+              in need.
             </p>
           </div>
         </section>

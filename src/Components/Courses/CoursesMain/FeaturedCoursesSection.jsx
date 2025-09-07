@@ -1,11 +1,8 @@
 import React from "react";
 import openicon from '../../HomePage/Assets/open-icon.svg';
-// import image from "./image.svg";
-// import vector2 from "./vector-2.svg";
-// import vector3 from "./vector-3.svg";
-// import vector4 from "./vector-4.svg";
-// import vector5 from "./vector-5.svg";
-// import vector6 from "./vector-6.svg";
+
+import { useWaitlist } from "../../../context/WaitListcontext.jsx";
+
 
 import course1 from '../../HomePage/Assets/first-course.png';
 import course2 from '../../HomePage/Assets/second-course.png';
@@ -13,6 +10,8 @@ import course3 from '../../HomePage/Assets/third-course.png';
 import { Link } from "react-router-dom";
 
 export const FeaturedCoursesSection = () => {
+  const { openWaitlist } = useWaitlist();
+
   const coursesData = [
     {
       id: 1,
@@ -85,7 +84,7 @@ export const FeaturedCoursesSection = () => {
         <span className="course-price">{course.price}</span>
 
         <Link
-          to="/courses"
+          onClick={openWaitlist}
           className="view-course-link"
           aria-label={`View ${course.title} course`}
         >
