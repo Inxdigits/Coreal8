@@ -83,8 +83,9 @@ const Blog = () => {
     return (
        <>
        <Navbar/>
+       <div className="page-content">
         <section className=" flex-col items-center justify-center p-20 relative bg-[#80132314] services-header">
-        <header className=" relative mt-[-2.00px] [font-family: 'Montserrat-Bold', sans-serif] font-bold text-[#801323] text-[40px] text-center tracking-[0] leading-[normal] gap-3 flex flex-col">
+        <header className=" relative [font-family: 'Montserrat-Bold', sans-serif] font-bold text-[#801323] text-[40px] text-center tracking-[0] leading-[normal] gap-3 flex flex-col">
           Insights & Reflections
            <p>
           Vorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.
@@ -219,6 +220,7 @@ const Blog = () => {
             </article>
             <BlogCard/>
       </section>
+      </div>
 
       <Footer/>
        

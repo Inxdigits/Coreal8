@@ -19,7 +19,8 @@ const HomePage = () => {
   return (
     <div className="home">
       <Navbar />
-      <Overview />
+      <div className="page-content">
+        <Overview />
       <AboutUs />
       <StoryBehind />
       <Services />
@@ -39,6 +40,7 @@ const HomePage = () => {
         </div>
         <Faqs />
       </section>
+      </div>
       <Footer />
     </div>
   );

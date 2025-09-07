@@ -53,8 +53,9 @@ const Mentorship = () => {
     return (
         <>
         <Navbar />
+        <div className="page-content">
           <section className="f1ex flex-col items-center justify-center gap-3 p-20 relative bg-[#80132314] services-header">
-        <header className="w-[800px] relative mt-[-2.00px] [font-family: 'Montserrat-Bold', sans-serif] font-bold text-[#801323] text-[40px] text-center tracking-[0] leading-[normal]">
+        <header className="w-[800px] relative [font-family: 'Montserrat-Bold', sans-serif] font-bold text-[#801323] text-[40px] text-center tracking-[0] leading-[normal]">
           Ignite Your Potential: Strategic Mentorship & Coaching
         </header>
         <p>
@@ -98,6 +99,7 @@ const Mentorship = () => {
             </p>
           </div>
         </section>
+        </div>
       <Footer/>
         </>
     )

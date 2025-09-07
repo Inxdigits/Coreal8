@@ -114,10 +114,10 @@ const Podcasts = () => {
   return (
     <>
       <Navbar />
-
+      <div className="page-content">
       <section className=" flex-col items-center justify-center gap-3 p-20 relative bg-[#80132314] services-header podcast-header">
         <img src={Makamba} />
-        <header className=" relative mt-[-2.00px] [font-family: 'Montserrat-Bold', sans-serif] font-bold text-[#DBA126] text-[40px] text-center tracking-[0] leading-[normal]">
+        <header className=" relative [font-family: 'Montserrat-Bold', sans-serif] font-bold text-[#DBA126] text-[40px] text-center tracking-[0] leading-[normal]">
           Makamba Podcast by Coreal8
         </header>
         <p className="text-white font-normal">
@@ -324,6 +324,7 @@ const Podcasts = () => {
           <img src={John} />
         </div>
       </section>
+      </div>
       <Footer />
     </>
   );

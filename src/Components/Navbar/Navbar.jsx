@@ -68,7 +68,6 @@ const Navbar = () => {
       navbar 
       navbar-expand-lg 
       border-bottom 
-      // px-80 py-3 
       fixed-top 
       "
     >

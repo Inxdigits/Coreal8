@@ -131,6 +131,7 @@ const About = () => {
   return (
     <div className="About-Page">
       <Navbar />
+      <div className="page-content">
       <div className="about-container">
         <section className="about-coreal8">
           <div className="ac-writeup">
@@ -271,6 +272,7 @@ const About = () => {
             ))}
           </div>
         </section> */}
+      </div>
       </div>
       <Footer />
     </div>

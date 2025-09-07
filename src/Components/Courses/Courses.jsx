@@ -11,6 +11,7 @@ const Courses = () => {
   return (
     <div className="courses-page">
       <Navbar />
+      <div className="page-content">
       <section className="courses-overview">
         <div className="co-writeup">
           <div className="co-writeup-text">
@@ -81,6 +82,7 @@ const Courses = () => {
         <div className="icon-3"></div>
         <div className="icon-4"></div>
       </section>
+      </div>
       <Footer />
     </div>
   );

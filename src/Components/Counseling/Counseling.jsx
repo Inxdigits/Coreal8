@@ -86,6 +86,7 @@ const Counseling = () => {
   return (
     <div className="counseling-container">
       <Navbar />
+      <div className="page-content">
       <div className="counseling-main">
         <section className="counseling-overview">
           <div className="counseling-overview-writeup">
@@ -213,6 +214,7 @@ const Counseling = () => {
             </p>
           </div>
         </section>
+      </div>
       </div>
       <Footer />
     </div>

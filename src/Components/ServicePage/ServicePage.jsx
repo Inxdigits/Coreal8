@@ -15,8 +15,9 @@ const ServicePage = () => {
   return (
     <div>
       <Navbar />
-      <section className="f1ex flex-col items-center justify-center gap-3 p-20 relative bg-[#80132314] services-header">
-        <header className=" relative mt-[-2.00px] [font-family: 'Montserrat-Bold', sans-serif] font-bold text-[#801323] text-[40px] text-center tracking-[0] leading-[normal]">
+      <div className="page-content">
+        <section className="f1ex flex-col items-center justify-center gap-3 p-20 relative bg-[#80132314] services-header">
+        <header className=" relative [font-family: 'Montserrat-Bold', sans-serif] font-bold text-[#801323] text-[40px] text-center tracking-[0] leading-[normal]">
           Our Services
         </header>
         <p>
@@ -198,6 +199,7 @@ const ServicePage = () => {
           <img className="counseling-image" src={Image} alt="" />
         </div>
       </section>
+      </div>
 
       <Footer />
     </div>

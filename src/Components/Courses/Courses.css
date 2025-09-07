@@ -10,7 +10,12 @@
 }
 
 .courses-login-button {
-    padding: 15px 20px;
+    padding: 20px 32px;
+    width: 150px;
+}
+
+/* Make both buttons the same size - just set width to match */
+.co-writeup-buttons .dark-bg-btn {
     width: 150px;
 }
 

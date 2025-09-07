@@ -66,8 +66,9 @@ const Privacy = () =>{
     return(
         <>
            <Navbar/>
+           <div className="page-content">
                   <section className=" flex-col items-center justify-center p-20 relative bg-[#80132314] services-header">
-        <header className=" relative mt-[-2.00px] [font-family: 'Montserrat-Bold', sans-serif] font-bold text-[#801323] text-[40px] text-center tracking-[0] leading-[normal] gap-3 flex flex-col">
+        <header className=" relative [font-family: 'Montserrat-Bold', sans-serif] font-bold text-[#801323] text-[40px] text-center tracking-[0] leading-[normal] gap-3 flex flex-col">
           Privacy Policy
 
           <p className="last-updated">Last Updated: July 31st, 2025</p>
@@ -123,6 +124,7 @@ const Privacy = () =>{
 
            </section>
         </section>
+        </div>
       
         <Footer/>
         
