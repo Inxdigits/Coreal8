@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import logo from "../../../../Assets/DashboardAssets/dashboard-logo.png";
 
 const DashboardSidebar = ({ user, activeSection, onLogout }) => {
   const sidebarItems = [
@@ -18,8 +19,7 @@ const DashboardSidebar = ({ user, activeSection, onLogout }) => {
     <div className="lms-sidebar">
       <div className="sidebar-header">
         <div className="logo">
-          <div className="logo-icon">C<span className="logo-8">8</span></div>
-          <span className="logo-text">Coreal8</span>
+          <img src={logo} alt="" />
         </div>
       </div>
       

@@ -197,37 +197,6 @@
   transform: scale(1.05);
 }
 
-.search-bar {
-  display: flex;
-  align-items: center;
-  background-color: white;
-  border-radius: 25px;
-  padding: 8px 16px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  min-width: 250px;
-  transition: all 0.2s ease;
-}
-
-.search-bar:focus-within {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-}
-
-.search-icon {
-  margin-right: 8px;
-  color: #666;
-}
-
-.search-bar input {
-  border: none;
-  outline: none;
-  flex: 1;
-  font-size: 14px;
-}
-
-.search-bar input::placeholder {
-  color: #999;
-}
-
 /* Filter Tabs */
 .filter-tabs {
   display: flex;
