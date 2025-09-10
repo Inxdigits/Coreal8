@@ -1,14 +1,13 @@
+/* Shared styles for all admin pages */
 .dashboard-container {
   display: flex;
   min-height: 100vh;
   background-color: #f8f9fa;
-  width: 100% !important;
 }
 
 .dashboard-main {
   flex: 1;
-  margin-left: 20% !important;
- 
+  margin-left: 250px;
   display: flex;
   flex-direction: column;
 }
@@ -93,7 +92,7 @@
   color: #6b7280;
 }
 
-/* Typography for all span and p elements in dashboard */
+/* Typography for all span and p elements in admin pages */
 .dashboard-container span,
 .dashboard-container p {
   font-family: -apple-system, BlinkMacSystemFont, 'Open Sans', 'Montserrat', 'Schibsted Grotesk', sans-serif;

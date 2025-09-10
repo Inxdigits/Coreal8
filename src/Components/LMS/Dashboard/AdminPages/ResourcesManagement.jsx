@@ -1,8 +1,8 @@
 import React from 'react';
-import DashboardSidebar from './Components/DashboardSidebar';
-import './Dashboard.css';
+import DashboardSidebar from '../Components/DashboardSidebar';
+import './AdminPages.css';
 
-const Dashboard = () => {
+const ResourcesManagement = () => {
   return (
     <div className="dashboard-container">
       <DashboardSidebar />
@@ -10,7 +10,7 @@ const Dashboard = () => {
         {/* Header */}
         <div className="dashboard-header">
           <div className="header-left">
-            <h1 className="welcome-text">Welcome, Admin</h1>
+            <h1 className="welcome-text">Resources Management</h1>
           </div>
           <div className="header-right">
             <div className="user-profile">
@@ -27,10 +27,9 @@ const Dashboard = () => {
 
         {/* Main Content */}
         <div className="dashboard-content">
-          {/* Content will be added later */}
           <div className="content-placeholder">
-            <h2>Dashboard Content</h2>
-            <p>Main dashboard content will be implemented here</p>
+            <h2>Resources Management</h2>
+            <p>Manage learning resources, upload materials, and organize content</p>
           </div>
         </div>
       </div>
@@ -38,4 +37,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default ResourcesManagement;

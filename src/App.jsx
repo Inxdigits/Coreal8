@@ -15,6 +15,12 @@ import LoginPage from './Components/LoginPage/LoginPage.jsx';
 import Register from './Components/LoginPage/Register/Register.jsx';
 import ForgotPassword from './Components/LoginPage/ForgotPassword/ForgotPassword.jsx';
 import Dashboard from './Components/LMS/Dashboard/Dashboard.jsx';
+import CourseManagement from './Components/LMS/Dashboard/AdminPages/CourseManagement.jsx';
+import ProgramManagement from './Components/LMS/Dashboard/AdminPages/ProgramManagement.jsx';
+import BlogManagement from './Components/LMS/Dashboard/AdminPages/BlogManagement.jsx';
+import PodcastManagement from './Components/LMS/Dashboard/AdminPages/PodcastManagement.jsx';
+import ResourcesManagement from './Components/LMS/Dashboard/AdminPages/ResourcesManagement.jsx';
+import AccountSettings from './Components/LMS/Dashboard/AdminPages/AccountSettings.jsx';
 import LMSCourses from './Components/LMS/Courses/LMSCourses.jsx';
 import LMSMentorship from './Components/LMS/Mentorship/LMSMentorship.jsx';
 import LMSCoaching from './Components/LMS/Coaching/LMSCoaching.jsx';
@@ -47,6 +53,12 @@ function App() {
         <Route path='/privacy' element={<RouteTransition><Privacy /></RouteTransition>}/>
         <Route path="/forgot-password" element={<RouteTransition><ForgotPassword /></RouteTransition>} />
         <Route path='/dashboard' element={<RouteTransition><Dashboard /></RouteTransition>} />
+        <Route path='/admin/course-management' element={<RouteTransition><CourseManagement /></RouteTransition>} />
+        <Route path='/admin/program-management' element={<RouteTransition><ProgramManagement /></RouteTransition>} />
+        <Route path='/admin/blog-management' element={<RouteTransition><BlogManagement /></RouteTransition>} />
+        <Route path='/admin/podcast-management' element={<RouteTransition><PodcastManagement /></RouteTransition>} />
+        <Route path='/admin/resources-management' element={<RouteTransition><ResourcesManagement /></RouteTransition>} />
+        <Route path='/admin/account-settings' element={<RouteTransition><AccountSettings /></RouteTransition>} />
         <Route path='/lms/courses' element={<RouteTransition><LMSCourses /></RouteTransition>} />
         <Route path='/lms/mentorship' element={<RouteTransition><LMSMentorship /></RouteTransition>} />
         <Route path='/lms/coaching' element={<RouteTransition><LMSCoaching /></RouteTransition>} />
