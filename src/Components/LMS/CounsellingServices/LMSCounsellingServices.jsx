@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
 import { auth } from '../../../Firebase/Firebase.js';
-import './LMSCoaching.css';
+import WelcomeHeader from '../Components/WelcomeHeader';
+import './LMSCounsellingServices.css';
 
-const LMSCoaching = () => {
-  const [activeSection, setActiveSection] = useState('coaching');
+const LMSCounsellingServices = () => {
+  const [activeSection, setActiveSection] = useState('counseling');
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
@@ -18,7 +19,7 @@ const LMSCoaching = () => {
           profileImage: user.photoURL || 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face'
         });
       } else {
-        navigate('/login');
+        navigate('/');
       }
     });
     return () => unsubscribe();
@@ -39,7 +40,7 @@ const LMSCoaching = () => {
   const handleLogout = async () => {
     try {
       await signOut(auth);
-      navigate('/login');
+      navigate('/');
     } catch (error) {
       console.error('Error signing out:', error);
     }
@@ -50,7 +51,7 @@ const LMSCoaching = () => {
   }
 
   return (
-    <div className="lms-coaching-container">
+    <div className="lms-counseling-container">
       <div className="lms-sidebar">
         <div className="sidebar-header">
           <div className="logo">
@@ -98,21 +99,20 @@ const LMSCoaching = () => {
       </div>
 
       <div className="lms-main">
-        <div className="lms-header">
-          <div className="header-left">
-            <h1 className="page-title">Coaching Sessions</h1>
-            <p className="page-subtitle">Professional coaching to accelerate your growth</p>
-          </div>
-        </div>
+        <WelcomeHeader 
+          user={user}
+          pageSubtitle="Professional counseling and mental health support"
+          showSearch={false}
+        />
 
         <div className="coming-soon">
-          <div className="coming-soon-icon">🚀</div>
+          <div className="coming-soon-icon">💬</div>
           <h2>Coming Soon</h2>
-          <p>Coaching sessions feature is under development. Stay tuned!</p>
+          <p>Counseling services feature is under development. Stay tuned!</p>
         </div>
       </div>
     </div>
   );
 };
 
-export default LMSCoaching;
+export default LMSCounsellingServices;

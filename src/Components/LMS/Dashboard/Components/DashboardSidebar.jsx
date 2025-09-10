@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { signOut } from 'firebase/auth';
 import { auth } from '../../../../Firebase/Firebase.js';
 import './DashboardSidebar.css';
 import dashboardIcon from '../../../../Assets/LmsPageAssets/dashboard.svg';
@@ -11,24 +12,35 @@ import resourcesIcon from '../../../../Assets/LmsPageAssets/resources.svg';
 import accountIcon from '../../../../Assets/LmsPageAssets/account.svg';
 import logoutIcon from '../../../../Assets/LmsPageAssets/logout.svg';
 import logoIcon from '../../../../Assets/LmsPageAssets/logo.png';
-
 const DashboardSidebar = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const [user, setUser] = useState(null);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
+        console.log('Firebase user data:', user);
+        console.log('User photoURL:', user.photoURL);
         setUser({
           name: user.displayName || 'Jane Doe',
           email: user.email || 'janedoe@gmail.com',
-          photoURL: user.photoURL || 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=40&h=40&fit=crop&crop=face'
+          profileImage: user.photoURL ? `${user.photoURL}?sz=40` : 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=40&h=40&fit=crop&crop=face'
         });
       }
     });
 
     return () => unsubscribe();
   }, []);
+
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      navigate('/');
+    } catch (error) {
+      console.error('Error signing out:', error);
+    }
+  };
 
   const navigationItems = [
     { id: 'dashboard', label: 'Dashboard', path: '/dashboard', icon: dashboardIcon },
@@ -38,7 +50,7 @@ const DashboardSidebar = () => {
     { id: 'podcast-management', label: 'Podcast Management', path: '/admin/podcast-management', icon: podcastIcon },
     { id: 'resources-management', label: 'Resources Management', path: '/admin/resources-management', icon: resourcesIcon },
     { id: 'account-settings', label: 'Account Settings', path: '/admin/account-settings', icon: accountIcon },
-    { id: 'logout', label: 'Logout', path: '/logout', icon: logoutIcon }
+    { id: 'logout', label: 'Logout', path: null, icon: logoutIcon }
   ];
 
   return (
@@ -54,14 +66,25 @@ const DashboardSidebar = () => {
       {/* Navigation Menu */}
       <nav className="sidebar-nav">
         {navigationItems.map((item) => (
-          <Link
-            key={item.id}
-            to={item.path}
-            className={`nav-item ${location.pathname === item.path ? 'active' : ''}`}
-          >
-            <img src={item.icon} alt={item.label} className="nav-icon" />
-            <span className="nav-label">{item.label }</span>
-          </Link>
+          item.id === 'logout' ? (
+            <button
+              key={item.id}
+              className={`nav-item logout-btn ${location.pathname === item.path ? 'active' : ''}`}
+              onClick={handleLogout}
+            >
+              <img src={item.icon} alt={item.label} className="nav-icon" />
+              <span className="nav-label">{item.label}</span>
+            </button>
+          ) : (
+            <Link
+              key={item.id}
+              to={item.path}
+              className={`nav-item ${location.pathname === item.path ? 'active' : ''}`}
+            >
+              <img src={item.icon} alt={item.label} className="nav-icon" />
+              <span className="nav-label">{item.label}</span>
+            </Link>
+          )
         ))}
       </nav>
 
@@ -69,7 +92,22 @@ const DashboardSidebar = () => {
       {user && (
         <div className="user-profile-section">
           <div className="user-profile-image">
-            <img src={user.photoURL} alt="Profile" />
+            <img 
+              src={user.profileImage} 
+              alt="Profile" 
+              onError={(e) => {
+                console.log('Image failed to load:', user.profileImage);
+                console.log('Error event:', e);
+                e.target.style.display = 'none';
+                e.target.nextSibling.style.display = 'flex';
+              }}
+              onLoad={() => {
+                console.log('Image loaded successfully:', user.profileImage);
+              }}
+            />
+            <div className="profile-initials" style={{ display: 'none' }}>
+              {user.name ? user.name.split(' ').map(n => n[0]).join('').toUpperCase() : 'U'}
+            </div>
           </div>
           <div className="user-profile-info">
             <div className="user-name">{user.name}</div>

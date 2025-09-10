@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
 import { auth } from '../../../Firebase/Firebase.js';
+import WelcomeHeader from '../Components/WelcomeHeader';
 import './LMSCalendar.css';
 
 const LMSCalendar = () => {
@@ -20,10 +21,10 @@ const LMSCalendar = () => {
         setUser({
           name: user.displayName || 'Jane Doe',
           email: user.email || 'janedoe@gmail.com',
-          profileImage: user.photoURL || 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face'
+          profileImage: user.photoURL ? `${user.photoURL}?sz=40` : 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face'
         });
       } else {
-        navigate('/login');
+        navigate('/');
       }
     });
     return () => unsubscribe();
@@ -86,7 +87,7 @@ const LMSCalendar = () => {
   const handleLogout = async () => {
     try {
       await signOut(auth);
-      navigate('/login');
+      navigate('/');
     } catch (error) {
       console.error('Error signing out:', error);
     }
@@ -201,7 +202,17 @@ const LMSCalendar = () => {
         <div className="sidebar-footer">
           <div className="user-profile">
             <div className="profile-image">
-              <img src={user.profileImage} alt="Profile" />
+              <img 
+                src={user.profileImage} 
+                alt="Profile" 
+                onError={(e) => {
+                  e.target.style.display = 'none';
+                  e.target.nextSibling.style.display = 'flex';
+                }}
+              />
+              <div className="profile-initials" style={{ display: 'none' }}>
+                {user.name ? user.name.split(' ').map(n => n[0]).join('').toUpperCase() : 'U'}
+              </div>
             </div>
             <div className="profile-info">
               <div className="profile-name">{user.name}</div>
@@ -214,27 +225,18 @@ const LMSCalendar = () => {
       {/* Main Content Area */}
       <div className="lms-main">
         {/* Header */}
-        <div className="lms-header">
-          <div className="header-right">
-            <div className="notification-icon">🔔</div>
-            <div className="search-bar">
-              <span className="search-icon">🔍</span>
-              <input 
-                type="text" 
-                placeholder="Search" 
-                value={searchQuery}
-                onChange={handleSearch}
-              />
-            </div>
-          </div>
-        </div>
+        <WelcomeHeader 
+          user={user}
+          pageSubtitle="See all your upcoming sessions, and events in one place."
+          searchQuery={searchQuery}
+          onSearchChange={handleSearch}
+        />
 
         {/* Calendar Content */}
         <div className="calendar-content">
           <div className="calendar-header">
             <div className="calendar-title-section">
               <h1 className="page-title">Calendar</h1>
-              <p className="page-subtitle">See all your upcoming sessions, and events in one place.</p>
             </div>
             
             <div className="calendar-controls">

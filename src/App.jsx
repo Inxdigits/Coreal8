@@ -21,10 +21,10 @@ import BlogManagement from './Components/LMS/Dashboard/AdminPages/BlogManagement
 import PodcastManagement from './Components/LMS/Dashboard/AdminPages/PodcastManagement.jsx';
 import ResourcesManagement from './Components/LMS/Dashboard/AdminPages/ResourcesManagement.jsx';
 import AccountSettings from './Components/LMS/Dashboard/AdminPages/AccountSettings.jsx';
-import LMSCourses from './Components/LMS/Courses/LMSCourses.jsx';
-import LMSMentorship from './Components/LMS/Mentorship/LMSMentorship.jsx';
-import LMSCoaching from './Components/LMS/Coaching/LMSCoaching.jsx';
-import LMSCounseling from './Components/LMS/Counseling/LMSCounseling.jsx';
+import LMSMyCourses from './Components/LMS/Courses/LMSCourses.jsx';
+import LMSMyMentorship from './Components/LMS/MyMentorship/LMSMyMentorship.jsx';
+import LMSCoachingSessions from './Components/LMS/CoachingSessions/LMSCoachingSessions.jsx';
+import LMSCounsellingServices from './Components/LMS/CounsellingServices/LMSCounsellingServices.jsx';
 import LMSSettings from './Components/LMS/Settings/LMSSettings.jsx';
 import LMSCalendar from './Components/LMS/Calendar/LMSCalendar.jsx';
 import LMSResources from './Components/LMS/Resources/LMSResources.jsx';
@@ -59,10 +59,10 @@ function App() {
         <Route path='/admin/podcast-management' element={<RouteTransition><PodcastManagement /></RouteTransition>} />
         <Route path='/admin/resources-management' element={<RouteTransition><ResourcesManagement /></RouteTransition>} />
         <Route path='/admin/account-settings' element={<RouteTransition><AccountSettings /></RouteTransition>} />
-        <Route path='/lms/courses' element={<RouteTransition><LMSCourses /></RouteTransition>} />
-        <Route path='/lms/mentorship' element={<RouteTransition><LMSMentorship /></RouteTransition>} />
-        <Route path='/lms/coaching' element={<RouteTransition><LMSCoaching /></RouteTransition>} />
-        <Route path='/lms/counseling' element={<RouteTransition><LMSCounseling /></RouteTransition>} />
+        <Route path='/lms/courses' element={<RouteTransition><LMSMyCourses /></RouteTransition>} />
+        <Route path='/lms/mentorship' element={<RouteTransition><LMSMyMentorship /></RouteTransition>} />
+        <Route path='/lms/coaching' element={<RouteTransition><LMSCoachingSessions /></RouteTransition>} />
+        <Route path='/lms/counseling' element={<RouteTransition><LMSCounsellingServices /></RouteTransition>} />
         <Route path='/lms/settings' element={<RouteTransition><LMSSettings /></RouteTransition>} />
         <Route path='/lms/calendar' element={<RouteTransition><LMSCalendar /></RouteTransition>} />
         <Route path='/lms/resources' element={<RouteTransition><LMSResources /></RouteTransition>} />

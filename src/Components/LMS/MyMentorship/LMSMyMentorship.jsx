@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
 import { auth } from '../../../Firebase/Firebase.js';
-import './LMSMentorship.css';
+import WelcomeHeader from '../Components/WelcomeHeader';
+import './LMSMyMentorship.css';
 
-const LMSMentorship = () => {
+const LMSMyMentorship = () => {
   const [activeSection, setActiveSection] = useState('mentorship');
   const [user, setUser] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
@@ -21,7 +22,7 @@ const LMSMentorship = () => {
           profileImage: user.photoURL || 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face'
         });
       } else {
-        navigate('/login');
+        navigate('/');
       }
     });
 
@@ -94,7 +95,7 @@ const LMSMentorship = () => {
   const handleLogout = async () => {
     try {
       await signOut(auth);
-      navigate('/login');
+      navigate('/');
     } catch (error) {
       console.error('Error signing out:', error);
     }
@@ -183,24 +184,12 @@ const LMSMentorship = () => {
       {/* Main Content */}
       <div className="lms-main">
         {/* Header */}
-        <div className="lms-header">
-          <div className="header-left">
-            <h1 className="page-title">My Mentorship</h1>
-            <p className="page-subtitle">Connect with mentors and accelerate your growth journey</p>
-          </div>
-          <div className="header-right">
-            <div className="notification-icon">🔔</div>
-            <div className="search-bar">
-              <span className="search-icon">🔍</span>
-              <input 
-                type="text" 
-                placeholder="Search mentorships..." 
-                value={searchQuery}
-                onChange={handleSearch}
-              />
-            </div>
-          </div>
-        </div>
+        <WelcomeHeader 
+          user={user}
+          pageSubtitle="Connect with mentors and accelerate your growth journey"
+          searchQuery={searchQuery}
+          onSearchChange={handleSearch}
+        />
 
         {/* Filter Tabs */}
         <div className="filter-tabs">
@@ -327,4 +316,4 @@ const LMSMentorship = () => {
   );
 };
 
-export default LMSMentorship;
+export default LMSMyMentorship;

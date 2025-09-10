@@ -1,24 +1,12 @@
-/* Shared styles for all admin pages */
-.dashboard-container {
-  display: flex;
-  min-height: 100vh;
-  background-color: #f8f9fa;
-}
-
-.dashboard-main {
-  flex: 1;
-  margin-left: 250px;
-  display: flex;
-  flex-direction: column;
-}
-
-.dashboard-header {
+/* Welcome Header Styles */
+.lms-header {
   background: white;
   padding: 1.5rem 2rem;
   border-bottom: 1px solid #e5e7eb;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 0;
 }
 
 .header-left .welcome-text {
@@ -37,6 +25,46 @@
 .header-right {
   display: flex;
   align-items: center;
+  gap: 1rem;
+}
+
+.notification-icon {
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.notification-icon:hover {
+  background-color: #f3f4f6;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  min-width: 200px;
+}
+
+.search-icon {
+  margin-right: 0.5rem;
+  color: #6b7280;
+}
+
+.search-bar input {
+  border: none;
+  background: transparent;
+  outline: none;
+  flex: 1;
+  font-size: 0.9rem;
+}
+
+.search-bar input::placeholder {
+  color: #9ca3af;
 }
 
 .user-profile {
@@ -50,6 +78,10 @@
   height: 40px;
   border-radius: 50%;
   overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .profile-image img {
@@ -81,37 +113,7 @@
   font-size: 0.9rem;
 }
 
-.profile-role {
+.profile-email {
   font-size: 0.8rem;
   color: #6b7280;
-}
-
-.dashboard-content {
-  flex: 1;
-  padding: 2rem;
-  background-color: #f8f9fa;
-}
-
-.content-placeholder {
-  background: white;
-  padding: 2rem;
-  border-radius: 8px;
-  text-align: center;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.content-placeholder h2 {
-  color: #1f2937;
-  margin-bottom: 0.5rem;
-}
-
-.content-placeholder p {
-  font-family: -apple-system, BlinkMacSystemFont, 'Open Sans', 'Montserrat', 'Schibsted Grotesk', sans-serif;
-  color: #6b7280;
-}
-
-/* Typography for all span and p elements in admin pages */
-.dashboard-container span,
-.dashboard-container p {
-  font-family: -apple-system, BlinkMacSystemFont, 'Open Sans', 'Montserrat', 'Schibsted Grotesk', sans-serif;
 }

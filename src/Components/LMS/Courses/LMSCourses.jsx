@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
 import { auth } from '../../../Firebase/Firebase.js';
+import WelcomeHeader from '../Components/WelcomeHeader';
 import './LMSCourses.css';
 
-const LMSCourses = () => {
+const LMSMyCourses = () => {
   const [activeSection, setActiveSection] = useState('courses');
   const [user, setUser] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
@@ -21,7 +22,7 @@ const LMSCourses = () => {
           profileImage: user.photoURL || 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face'
         });
       } else {
-        navigate('/login');
+        navigate('/');
       }
     });
 
@@ -136,7 +137,7 @@ const LMSCourses = () => {
   const handleLogout = async () => {
     try {
       await signOut(auth);
-      navigate('/login');
+      navigate('/');
     } catch (error) {
       console.error('Error signing out:', error);
     }
@@ -216,24 +217,12 @@ const LMSCourses = () => {
       {/* Main Content */}
       <div className="lms-main">
         {/* Header */}
-        <div className="lms-header">
-          <div className="header-left">
-            <h1 className="page-title">My Courses</h1>
-            <p className="page-subtitle">Continue your learning journey and explore new courses</p>
-          </div>
-          <div className="header-right">
-            <div className="notification-icon">🔔</div>
-            <div className="search-bar">
-              <span className="search-icon">🔍</span>
-              <input 
-                type="text" 
-                placeholder="Search courses..." 
-                value={searchQuery}
-                onChange={handleSearch}
-              />
-            </div>
-          </div>
-        </div>
+        <WelcomeHeader 
+          user={user}
+          pageSubtitle="Continue your learning journey and explore new courses"
+          searchQuery={searchQuery}
+          onSearchChange={handleSearch}
+        />
 
         {/* Filter Tabs */}
         <div className="filter-tabs">
@@ -339,4 +328,4 @@ const LMSCourses = () => {
   );
 };
 
-export default LMSCourses;
+export default LMSMyCourses;

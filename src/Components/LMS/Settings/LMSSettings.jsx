@@ -6,7 +6,7 @@ import './LMSSettings.css';
 
 // Import mini-components
 import LMSSidebar from './Components/LMSSidebar';
-import LMSHeader from './Components/LMSHeader';
+import WelcomeHeader from '../Components/WelcomeHeader';
 import ProfileSection from './Components/ProfileSection';
 import SecuritySection from './Components/SecuritySection';
 import PaymentSection from './Components/PaymentSection';
@@ -144,7 +144,7 @@ const LMSSettings = () => {
         setUser({
           name: displayName || 'User',
           email: user.email || '',
-          profileImage: user.photoURL || 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face'
+          profileImage: user.photoURL ? `${user.photoURL}?sz=40` : 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face'
         });
         
         setFormData({
@@ -154,7 +154,7 @@ const LMSSettings = () => {
           phone: user.phoneNumber || ''
         });
       } else {
-        navigate('/login');
+        navigate('/');
       }
     });
 
@@ -182,7 +182,7 @@ const LMSSettings = () => {
   const handleLogout = async () => {
     try {
       await signOut(auth);
-      navigate('/login');
+      navigate('/');
     } catch (error) {
       console.error('Error signing out:', error);
     }
@@ -481,7 +481,9 @@ const LMSSettings = () => {
       />
 
       <div className="lms-main">
-        <LMSHeader 
+        <WelcomeHeader 
+          user={user}
+          pageSubtitle="Manage your account settings and preferences"
           searchQuery={searchQuery} 
           onSearchChange={handleSearch} 
         />

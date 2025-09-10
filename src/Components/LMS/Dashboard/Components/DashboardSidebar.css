@@ -58,8 +58,8 @@ margin-bottom: 50px;
   width: 100%;
   height: 50px;
 }
-.dashboard-sidebar .nav-item span{
-  
+.dashboard-sidebar .nav-item span {
+  margin-left: 8px;
 }
 
 .dashboard-sidebar .nav-item:hover {
@@ -113,7 +113,7 @@ margin-bottom: 50px;
   display: flex;
   align-items: center;
   padding: 1rem;
-  background: rgba(255, 255, 255, 0.1);
+
   margin-top: auto;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -125,12 +125,28 @@ margin-bottom: 50px;
   overflow: hidden;
   margin-right: 12px;
   flex-shrink: 0;
+  background-color: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .dashboard-sidebar .user-profile-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.dashboard-sidebar .profile-initials {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
 .dashboard-sidebar .user-profile-info {

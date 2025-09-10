@@ -50,7 +50,17 @@ const LMSSidebar = ({ user, activeSection, onLogout }) => {
       <div className="sidebar-footer">
         <div className="user-profile">
           <div className="profile-image">
-            <img src={user?.profileImage} alt="Profile" />
+            <img 
+              src={user?.profileImage} 
+              alt="Profile" 
+              onError={(e) => {
+                e.target.style.display = 'none';
+                e.target.nextSibling.style.display = 'flex';
+              }}
+            />
+            <div className="profile-initials" style={{ display: 'none' }}>
+              {user?.name ? user.name.split(' ').map(n => n[0]).join('').toUpperCase() : 'U'}
+            </div>
           </div>
           <div className="profile-info">
             <div className="profile-name">{user?.name}</div>
