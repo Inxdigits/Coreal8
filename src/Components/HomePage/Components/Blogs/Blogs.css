@@ -28,7 +28,8 @@
 }
 
 .blog-writeup p {
-    /* width: 60%; */
+    margin: 0 auto;
+    width: 80%;
     font-family: "Open Sans";
     font-weight: 500;
     font-size: 16px;

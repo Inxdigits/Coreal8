@@ -1,232 +1,277 @@
+/* ===== Main Container ===== */
 .mc-container {
-    padding: 80px;
-    gap: 50px;
+  padding: 80px;
+  gap: 50px;
 }
 
+/* ===== Top Section (Search + Filter) ===== */
 .mc-top {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    align-self: stretch;
-    /* border: 1px solid yellow; */
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
 }
 
-.mc-form {
-    gap: 8px;
-    flex-direction: row;
+/* Reset nav padding */
+nav {
+  padding: 0 !important;
 }
 
-nav{
-    padding: 0 !important;
+/* ===== Search Bar ===== */
+.searchcontainer {
+  width: 100%;
+  max-width: 1440px;
 }
 
-.filter-select {
-    border-radius: 15px;
-    border: 1px solid rgba(13, 12, 18, 0.10);
-    background: #FFF;
-
-    display: flex;
-    padding: 10px 20px;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
+.searchform {
+  max-width: 630px !important;
+  padding-right: -30px !important;
+  justify-content: space-between !important;
 }
 
-.filter-listbox {
-    position: absolute;
-    right: 40px;
-    display: flex;
-    padding: 20px;
-    padding-left: 20px !important;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 12px;
-    align-self: stretch;
-    border-radius: 5px;
-    border: 1px solid rgba(13, 12, 18, 0.05);
-    background: #FFF;
-    box-shadow: 4px 10px 20px 0 rgba(0, 0, 0, 0.20);
+.searchbar {
+  width: 100%;
+
 }
 
-.filter-option-case {
-    width: 100%;
-    text-align: center;
-    border-bottom: 2px solid rgba(13, 12, 18, 0.10);
+.searchcontainer input {
+  outline: none;
+  padding: 16px 20px 16px 10px;
+  display: flex;
+  width: 500px;
+  align-items: center;
+  gap: 10px;
+  background-color: transparent;
 }
 
-.filter-option {
-    margin: 0 auto;
-}
-
-.searchbar-container {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* gap: 12px; */
-}
-
-.searchbar-container input {
-    outline: none;
-    padding: 16px 20px;
-    padding-left: 36px;
-    border-radius: 15px;
-    border: 1px solid rgba(13, 12, 18, 0.10);
-    display: flex;
-    width: 500px;
-    align-items: center;
-    gap: 10px;
+.searchcontainer input:focus,
+.searchcontainer input:active {
+  background-color: transparent;
 }
 
 .input-search-icon {
-    position: absolute;
-    left: 10px;
-    
+  position: absolute;
+  left: 10px;
 }
 
-.search-button {
-    padding: 20px 50px;
-    border-radius: 10px;
-    background: #801323;
-    box-shadow: 0px 0px 5px 0px #FFDB58 inset;
-    color: #fff;
-    border: none;
-    outline: none;
+.search-button,
+.search-btn {
+  padding: 16px 30px;
+  border-radius: 10px;
+  background: #801323;
+  box-shadow: 0px 0px 5px 0px #ffdb58 inset;
+  color: #fff;
+  border: none;
+  outline: none;
 }
 
+/* ===== Filter Dropdown ===== */
+.filter-dropdown {
+  border-radius: 15px;
+  border: 1px solid rgba(13, 12, 18, 0.10);
+  background: #FFF;
+  padding: 10px 20px;
+}
+
+.filter-dropdown:focus, .filter-dropdown:active {
+  outline: none;
+  border: 1px solid #0d0c121a;
+}
+
+.filter-select {
+  border-radius: 15px;
+  border: 1px solid rgba(13, 12, 18, 0.1);
+  background: #fff;
+  display: flex;
+  padding: 10px 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.listbox {
+  /* position: absolute;
+  right: 40px; */
+  display: flex;
+  padding: 20px;
+  padding-left: 20px !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  align-self: stretch;
+  border-radius: 15px;
+  border: 1px solid rgba(13, 12, 18, 0.05);
+  background: #FFF;
+  box-shadow: 4px 10px 20px 0 rgba(0, 0, 0, 0.20);
+}
+
+.filter-option-case {
+  width: 100%;
+  text-align: center;
+  border-bottom: 2px solid rgba(13, 12, 18, 0.1);
+}
+
+.filteroption {
+  margin: 0 auto;
+  padding: 10px 20px !important;
+  border-bottom: 1px solid rgba(13, 12, 18, 0.10);
+  width: 100%;
+}
+
+/* ===== Sorting Mechanism ===== */
 .sorting-mechanism {
-    /* border: 1px solid black; */
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    align-self: stretch;
-    color: rgba(13, 12, 18, 0.5);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: rgba(13, 12, 18, 0.5);
 }
 
 .sorting-mechanism select {
-    border-radius: 15px;
-    border: 1px solid rgba(13, 12, 18, 0.10);
-    outline: none;
-    background: #FFF;
-    padding: 10px 20px;
-    /* gap: 12px; */
-/* 
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background-repeat: no-repeat;
-    background-position: right 10px center;
-    padding-right: 36px;
-    height: 40px;
-    padding: 10px 36px 10px 20px; */
+  border-radius: 15px;
+  border: 1px solid rgba(13, 12, 18, 0.1);
+  outline: none;
+  background: #fff;
+  padding: 10px 20px;
 }
 
-.featured-courses, .courses-lineup {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
+/* ===== Featured Courses Section ===== */
+.featured-courses,
+.courses-lineup {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .featured-courses p {
-    color: #0D0C12;
-    font-family: "Montserrat", sans-serif;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
+  color: #0d0c12;
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
 }
 
+/* ===== Course Card ===== */
 .courseslist {
-    display: flex;
-    align-items: flex-start;
-    gap: 24px;
-    align-self: stretch;
-}
-
-@media screen and (max-width: 991px) {
-    .courses-lineup {
-        flex-direction: row;
-    }
-    
-    .courseslist {
-        flex-direction: column;
-        margin: 0 auto;
-    }
-}
-
-@media screen and (max-width: 600px) {
-    .courses-lineup {
-        flex-direction: column;
-    }
-
-    .courses-card {
-        justify-content: center;
-        text-align: left;
-        gap: 12px !important;
-        padding: 12px !important;
-    }
-
-    .courses-card-bottom {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-    }
+  display: grid;
+  grid-template-columns: repeat(3, 32%);
+  margin: 0 auto;
+  gap: 24px;
+  align-self: stretch;
 }
 
 .courses-card {
-    display: flex;
-    padding: 20px;
-    flex-direction: column;
-    align-items: center;
-    gap: 24px;
-    border-radius: 5px;
-    border-top: 1px solid #801323;
-    background: #FFF;
-    box-shadow: 0 10px 50px 0 rgba(0, 0, 0, 0.10);
+  display: flex;
+  padding: 20px;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  border-radius: 5px;
+  border-top: 1px solid #801323;
+  background: #FFF;
+  box-shadow: 0 10px 50px 0 rgba(0, 0, 0, 0.10);
+  min-width: 300px;
+}
+
+.courses-preview-writeup {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.course-card-image {
+  position: relative;
+}
+
+.category {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  color: #fff;
+  display: flex;
+  padding: 5px 10px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 10px;
+  background: rgba(13, 12, 18, 0.40);
+  backdrop-filter: blur(2px);
+}
+
+.courses-preview-writeup p {
+  color: #0D0C12;
+  /* text-align: center; */
+  font-family: "Schibsted Grotesk";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.courses-preview-writeup span{
+  color: #0D0C12;
+  font-family: "Schibsted Grotesk";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
 .courses-card-bottom {
-    width: 100%;
-    margin: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .course-price {
-    color: #0D0C12;
-    text-align: center;
-    font-family: "Open Sans";
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
+  color: #0d0c12;
+  text-align: center;
+  font-family: "Open Sans", sans-serif;
+  font-size: 24px;
+  font-weight: 700;
 }
 
 .view-course-link {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 10px;
 }
 
-/* @media screen and (max-width: 1068px) {
-    .mc-top {
-        flex-direction: column;
-        align-items: start;
-        gap: 12px;
-    }
-} */
+/* ===== Responsive ===== */
+@media screen and (max-width: 991px) {
+  .courses-lineup {
+    flex-direction: row;
+  }
 
-@media (max-width: 991.98px) {
-    nav {
-        position: relative;
-    }
-    .search-btn {
-    padding: 16px 30px !important;
-    border-radius: 10px;
-    }
-    .gap-5{
-        gap: 1rem !important;
-    }
+  .courseslist {
+    flex-direction: column;
+    margin: 0 auto;
+  }
+
+  nav {
+    position: relative;
+  }
+
+  .gap-5 {
+    gap: 1rem !important;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .courseslist {
+    grid-template-columns: repeat(2, 49%);
+  }
+
+  .courses-card {
+    justify-content: center;
+    text-align: left;
+    gap: 12px !important;
+    padding: 12px !important;
+  }
+
+  .courses-card-bottom {
+    flex-direction: row;
+  }
 }

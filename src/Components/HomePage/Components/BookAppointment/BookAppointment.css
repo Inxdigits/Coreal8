@@ -2,26 +2,29 @@
     background-color: #801323;
     color: white;
     display: grid;
-    grid-template-columns: repeat(2, 45%);
+    grid-template-columns: 40% 45%;
     align-items: center;
+    justify-content: center;
+    /* margin: 0 auto; */
     padding: 0 80px;
     position: relative;
-    gap: 40px;
+    gap: 50px;
 }
 
 .leftside {
     text-align: left;
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: flex-end;
     justify-content: start;
-    gap: 32px;
+    gap: 50px;
+    max-width: 514px;
 }
 
 .appointment-button-container {
     align-self: flex-start;
     width: fit-content;
-    /* margin: 0 auto; */
+    margin-right: auto;
 }
 
 .appointment-button {
@@ -35,20 +38,27 @@
     box-shadow: 0px 0px 5px 0px #FFDB58 inset;
 }
 
+.appointment-writeup {
+    /* width: 80%; */
+    max-width: 514px;
+}
+
 .appointment-writeup h1 {
-    font-family: "Montserrat", sans-serif;
-    font-weight: 700;
+    color: #FFF;
+    font-family: Montserrat;
     font-size: 48px;
-    line-height: 100%;
-    letter-spacing: 0%;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
 }
 
 .appointment-writeup p {
-    font-family: "Schibsted Grotesk", sans-serif;
-    font-weight: 400;
+    color: #FFF;
+    font-family: "Schibsted Grotesk";
     font-size: 16px;
-    line-height: 100%;
-    letter-spacing: 0%;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
 
 .rightside img { 

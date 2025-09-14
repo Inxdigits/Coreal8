@@ -95,7 +95,6 @@ const Register = () => {
     }
   };
 
-
   const handleGoogleSignup = async () => {
     setError("");
     try {
@@ -171,60 +170,62 @@ const Register = () => {
           </div>
 
           <form onSubmit={handleEmailSignup} id="email-login">
-            <label htmlFor="fullName">Full Name</label>
-            <input
-              id="fullName"
-              type="text"
-              name="fullName"
-              placeholder="e.g John Doe"
-              value={fullName}
-              onChange={(e) => setFullName(e.target.value)}
-              required
-            />
+            <div className="form-fields">
+              <label htmlFor="fullName">Full Name</label>
+              <input
+                id="fullName"
+                type="text"
+                name="fullName"
+                placeholder="e.g John Doe"
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
+                required
+              />
 
-            <label htmlFor="email">Email Address</label>
-            <input
-              id="email"
-              type="email"
-              name="email"
-              placeholder="e.g johndoe@gmail.com"
-              value={email}
-              onChange={handleChangeEmail}
-              required
-              className={`border ${
-                isEmailValid
-                  ? "border-yellow-300 focus:ring-yellow-300"
-                  : "border-red-500 focus:ring-red-300"
-              }`}
-            />
+              <label htmlFor="email">Email Address</label>
+              <input
+                id="email"
+                type="email"
+                name="email"
+                placeholder="e.g johndoe@gmail.com"
+                value={email}
+                onChange={handleChangeEmail}
+                required
+                className={`border ${
+                  isEmailValid
+                    ? "border-yellow-300 focus:ring-yellow-300"
+                    : "border-red-500 focus:ring-red-300"
+                }`}
+              />
 
-            {!isEmailValid && email.length > 0 && (
-              <p className="text-red-500 text-sm">
-                That doesn't look like a valid email address
-              </p>
-            )}
+              {!isEmailValid && email.length > 0 && (
+                <p className="text-red-500 text-sm">
+                  That doesn't look like a valid email address
+                </p>
+              )}
 
-            <label htmlFor="phoneNumber">Phone Number</label>
-            <input
-              id="phoneNumber"
-              type="tel"
-              name="phoneNumber"
-              placeholder="e.g +2348012345789"
-              value={phoneNumber}
-              onChange={(e) => setPhoneNumber(e.target.value)}
-              required
-            />
+              <label htmlFor="phoneNumber">Phone Number</label>
+              <input
+                id="phoneNumber"
+                type="tel"
+                name="phoneNumber"
+                placeholder="e.g +2348012345789"
+                value={phoneNumber}
+                onChange={(e) => setPhoneNumber(e.target.value)}
+                required
+              />
 
-            <label htmlFor="password">Password</label>
-            <input
-              id="password"
-              type="password"
-              name="password"
-              placeholder="Enter Password (min 6 characters)"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
+              <label htmlFor="password">Password</label>
+              <input
+                id="password"
+                type="password"
+                name="password"
+                placeholder="Enter Password (min 6 characters)"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </div>
 
             <div className="form-options">
               <div className="remember-me terms">

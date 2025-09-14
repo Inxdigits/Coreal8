@@ -10,7 +10,11 @@ import course2 from "../HomePage/Assets/second-course.png";
 import course3 from "../HomePage/Assets/third-course.png";
 import openicon from "../HomePage/Assets/open-icon.svg";
 
+import { useWaitlist } from "../../context/WaitListcontext.jsx";
+
 const CartPage = () => {
+  const { openWaitlist } = useWaitlist();
+
   const courses = [
     {
       img: course1,
@@ -46,7 +50,7 @@ const CartPage = () => {
         <div className="courses-card-bottom">
           {" "}
           <span>₦45,000</span>{" "}
-          <Link to="/contact" className="view-course-link">
+          <Link onClick={openWaitlist} className="view-course-link">
             {" "}
             View course <img src={openicon} />{" "}
           </Link>{" "}
@@ -113,7 +117,7 @@ const CartPage = () => {
             <span>You have {arrayLength} Cart Items</span>
           </div>
           <div className="gradient-button-container ci-btn-container">
-            <button className="gradient-button ci-btn">Add to Cart</button>
+            <button onClick={openWaitlist} className="gradient-button ci-btn">Add to Cart</button>
           </div>
         </section>
 

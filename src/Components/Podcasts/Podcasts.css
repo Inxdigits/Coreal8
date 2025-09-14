@@ -1,136 +1,168 @@
-.spotlight{
-padding: 40px 80px;
-
-
+/* ==============================
+   PODCASTS OVERVIEW
+============================== */
+.podcast-header {
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.60) 0%, rgba(0, 0, 0, 0.60) 100%), url("../../Assets/PodcastPageAssests/1064.jpg") lightgray 50% / cover no-repeat;
 }
 
-.spotlight h3{
+/* ==============================
+   SPOTLIGHT SECTION
+============================== */
+.spotlight {
+    padding: 40px 80px;
+}
+
+.spotlight h3 {
     color: #0D0C12;
-font-family: Montserrat;
-font-size: 24px;
-font-style: normal;
-font-weight: 700;
-line-height: normal;
-padding-bottom: 20px;
+    font-family: Montserrat;
+    font-size: 24px;
+    font-weight: 700;
+    padding-bottom: 20px;
 }
-.spotlight-item{
+
+.spotlight-item {
     display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: flex-start;
-gap: 16px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 16px;
 }
-.spotlight-item h3{
-    color: #0D0C12;
-font-family: "Schibsted Grotesk";
-font-size: 24px;
-font-style: normal;
-font-weight: 600;
-line-height: normal;
-align-self: stretch;
-}
-.spotlight-item p{
-    color: #0D0C12;
-font-family: "Schibsted Grotesk";
-font-size: 16px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-align-self: stretch;
-}
-.spotlight-image img{
-    width: 200px !important;
 
-}
-.spotlight-text h2{
+.spotlight-item h3 {
     color: #0D0C12;
-font-family: "Schibsted Grotesk";
-font-size: 24px;
-font-style: normal;
-font-weight: 600;
-line-height: normal;
-align-self: stretch;
-padding-top: 15px;
+    font-family: "Schibsted Grotesk";
+    font-size: 24px;
+    font-weight: 600;
+    align-self: stretch;
 }
-.spotlight-text p{
+
+.spotlight-item p {
+    color: #0D0C12;
+    font-family: "Schibsted Grotesk";
+    font-size: 16px;
+    font-weight: 400;
+    align-self: stretch;
+}
+
+.spotlight-image img {
+    width: 100%;
+    max-width: 200px !important;
+}
+
+.spotlight-text h2 {
+    color: #0D0C12;
+    font-family: "Schibsted Grotesk";
+    font-size: 24px;
+    font-weight: 600;
+    padding-top: 15px;
+    align-self: stretch;
+}
+
+.spotlight-text p {
     padding-top: 10px;
     color: #0D0C12;
-font-family: "Schibsted Grotesk";
-font-size: 16px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
+    font-family: "Schibsted Grotesk";
+    font-size: 16px;
+    font-weight: 400;
 }
-.spotlight-text img{
+
+.spotlight-text img {
     margin-top: 10px;
     width: 24px;
-height: 24px;
-
-aspect-ratio: 1/1;
+    height: 24px;
+    aspect-ratio: 1/1;
 }
-.episode-grid{
+
+/* ==============================
+   EPISODES + PAGINATION
+============================== */
+.episode-grid {
     display: grid;
     grid-template-columns: repeat(3,1fr);
+    gap: 24px;
 }
-.pagination{
-    display: flex;
-width: 60px;
-height: 60px;
-padding: 20px;
-justify-content: center;
-align-items: center;
-gap: 10px;
-border-radius: 10px;
-border: 1px solid #0D0C12;
 
-}
-.pagination-num{
+.all-episodes {
+    display: flex;
+    padding: 40px 80px 80px 80px !important;
+    flex-direction: column;
     justify-content: center;
-   
-    gap:10px
-}
-.pagination p{
-    color: #0D0C12;
-font-family: "Open Sans";
-font-size: 16px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
+    align-items: flex-start;
+    align-self: stretch;
 }
 
-.red-section{
+.episode-h3 {
+    padding: 20px 80px;
+}
+
+.episode-h3 h3 {
+    color: #0D0C12;
+    font-family: "Schibsted Grotesk";
+    font-size: 24px;
+    font-weight: 700 !important;
+}
+
+.pagination {
     display: flex;
-padding: 40px 80px;
-justify-content: center;
-align-items: center;
-gap: 50px;
-align-self: stretch;
-background: #801323;
-}
-.red-section h2{
-    color: #FFF;
-font-family: Montserrat;
-font-size: 40px;
-font-style: normal;
-font-weight: 700;
-line-height: normal;
-width: 514px;
-margin-bottom: 30px;
-}
-.red-section-right{
-    display: flex;
-width: 679px;
-flex-direction: column;
-align-items: flex-start;
-gap: 10px;
-}
-.red-sec{
-     display: flex;
+    width: 60px;
+    height: 60px;
+    padding: 20px;
     justify-content: center;
     align-items: center;
-  
+    gap: 10px;
+    border-radius: 10px;
+    border: 1px solid #0D0C12;
 }
-.red-section-item{
+
+.pagination-num {
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 40px;
+}
+
+.pagination p {
+    color: #0D0C12;
+    font-family: "Open Sans";
+    font-size: 16px;
+    font-weight: 400;
+}
+
+/* ==============================
+   RED SECTION
+============================== */
+.red-section {
+    display: flex;
+    padding: 40px 80px;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    background: #801323;
+}
+
+.red-section h2 {
+    color: #FFF;
+    font-family: Montserrat;
+    font-size: 40px;
+    font-weight: 700;
+    width: 514px;
+    margin-bottom: 30px;
+}
+
+.red-section-right {
+    display: flex;
+    width: 679px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.red-sec {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.red-section-item {
     width: fit-content;
     display: flex;
     padding: 10px 15px;
@@ -138,72 +170,220 @@ gap: 10px;
     align-items: center;
     gap: 12px;
     border-radius: 20px;
-background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.05);
 }
-.app-grid{
+
+.red-section-item h3 {
+    color: #FFF;
+    font-family: "Schibsted Grotesk";
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.red-section-item p {
+    color: #FFF;
+    font-family: "Schibsted Grotesk";
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.image img {
+    width: 350px;
+}
+
+.app-grid {
     display: grid !important;
     grid-template-columns: repeat(3,1fr);
     gap: 20px;
     grid-row-gap: 0;
 }
 
-
-.red-section-item h3{
-    color: #FFF;
-font-family: "Schibsted Grotesk";
-font-size: 20px;
-font-style: normal;
-font-weight: 700;
-line-height: normal;
-}
-.red-section-item p{
-    color: #FFF;
-font-family: "Schibsted Grotesk";
-font-size: 14px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-}
-
-.image img{
-    width: 350px;
-}
-.all-episodes{
+/* ==============================
+   FEATURED VOICES
+============================== */
+.featured-voices {
     display: flex;
-padding: 40px 80px 80px 80px !important;
-flex-direction: column;
-justify-content: center;
-align-items: flex-start;
-align-self: stretch;
-}
-.featured-voices{
-    display: flex;
-padding: 80px;
-flex-direction: column;
-justify-content: flex-end;
-align-items: center;
-gap: 24px;
-align-self: stretch;
-background: rgba(128, 19, 35, 0.10);
+    padding: 80px;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 24px;
+    background: rgba(128, 19, 35, 0.10);
 }
 
-.featured-voices h1{
+.featured-voices h1 {
     color: #0D0C12;
     text-align: center;
     font-family: Montserrat;
     font-size: 40px;
-    font-style: normal;
     font-weight: 700;
-    line-height: normal;
 }
 
-.voices{
+.voices {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
 }
 
-@media screen and (max-width: 768px) {
+/* ==============================
+   ABOUT PODCAST
+============================== */
+.about-makamba-container {
+    padding: 0 80px !important;
+}
+
+.about-podcast {
+    display: flex;
+    flex-direction: column;
+    justify-content: center !important;
+}
+
+.about-podcast h2 {
+    color: #FFF;
+    font-family: "Schibsted Grotesk";
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.about-podcast p {
+    color: #FFF;
+    font-family: "Schibsted Grotesk";
+    font-size: 16px;
+    font-weight: 300;
+}
+
+/* ==============================
+   CATEGORY HEADER
+============================== */
+.category-header {
+    padding: 0px 80px;
+}
+
+/* ==============================
+   RESPONSIVE STYLES
+============================== */
+@media (max-width: 768px) {
+    .spotlight {
+        padding: 40px 20px;
+    }
+
+    .episode-h3 {
+        padding: 20px !important;
+    }
+
+    .category-header {
+        padding: 20px !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        align-items: end !important;
+        justify-items: end !important;
+    }
+
+    .categories {
+        display: grid !important;
+        grid-template-columns: repeat(4,1fr) !important;
+    }
+
+    .sort {
+        padding-top: 50px;
+        flex-direction: row !important;
+        align-items: center !important;
+    }
+
+    .sort-btn {
+        border-radius: 10px;
+        border: 1px solid rgba(13, 12, 18, 0.10);
+        background: #FFF;
+        display: flex;
+        padding: 10px 16px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .about-section {
+        padding: 40px 20px !important;
+        display: flex;
+        flex-direction: column !important;
+    }
+
+    .about-podcast {
+        align-items: start !important;
+        gap: 20px !important;
+    }
+
+    .flex {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .all-episodes {
+        padding: 40px 20px !important;
+        gap: 0px;
+    }
+
+    .episode-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .image img {
+        display: none;
+    }
+
+    .red-section {
+        padding: 40px 40px;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .red-section h2 {
+        width: 100%;
+        text-align: center;
+    }
+
+    .red-section-right {
+        width: 100%;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .red-section-item {
+        width: 200px;
+        justify-content: center;
+        flex-direction: row !important;
+        display: flex !important;
+    }
+
+    .featured-voices {
+        padding: 40px 20px;
+    }
+
+    .pagination-num {
+        margin-top: 40px;
+        flex-direction: row !important;
+    }
+
+    form {
+        width: 100%;
+    }
+
+    .mc-container {
+        padding: 40px 20px;
+    }
+
+    .input {
+        padding: 10px;
+        flex-direction: row;
+    }
+
+    .filter {
+        flex-direction: row;
+    }
+
+    .search-container {
+        gap: 20px;
+    }
+
     .voices {
         gap: 8px;
     }
@@ -213,158 +393,4 @@ background: rgba(128, 19, 35, 0.10);
         margin-bottom: 0;
         padding-bottom: 0;
     }
-}
-/* .voices img{
-    width: 301px;
-    height: 301px;
-} */
-
-.about-podcast{
-   
-    display: flex;
-    flex-direction: column;
-
-}
-.about-podcast h2{
-    color: #FFF;
-font-family: "Schibsted Grotesk";
-font-size: 36px;
-font-style: normal;
-font-weight: 700;
-line-height: normal;
-}
-.about-podcast p{
-    color: #FFF;
-font-family: "Schibsted Grotesk";
-font-size: 16px;
-font-style: normal;
-font-weight: 300;
-line-height: normal;
-}
-
-/* Mobile Responsiveness */
-@media (max-width: 768px) {
-    .spotlight{
-        padding:40px 20px;
-    }
-    .episode-h3{
-        padding: 20px !important;
-    }
-    .category-header{
-        padding:20px !important;
-       flex-direction: column !important;
-       width: 100% !important;
-       align-items: end !important;
-       justify-items: end !important;
-    }
-    .categories{
-        display: grid !important;
-        grid-template-columns: repeat(4,1fr) !important;
-    }
-    .sort{
-        padding-top: 50px;
-        flex-direction: row !important;
-        align-items: center !important;
-        align-content: center;
-    }
-    .sort-btn{
-        border-radius: 10px;
-border: 1px solid rgba(13, 12, 18, 0.10);
-background: #FFF;
-display: flex;
-padding: 10px 16px;
-justify-content: center;
-align-items: center;
-
-    }
-    .about-section{
-        padding: 40px 20px !important;
-        display: flex;
-        flex-direction: column !important;
-       
-    }
-    .about-podcast{
-        align-items: start !important;
-        gap: 20px !important;
-    }
-    
-    .flex{
-        flex-direction: column;
-        align-items: center;
-    }
-    .all-episodes{
-        padding: 40px 20px !important;
-        gap: 0px;
-    }
-    .episode-grid{
-        grid-template-columns: 1fr;
-    }
-    .image img{
-        display: none;
-    }
-    .red-section{
-        padding: 40px 40px;
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-    }
-    .red-section h2{
-        width: 100%;
-        text-align: center;
-    }
-    .red-section-right{
-        width: 100%;
-        align-items: center;
-        flex-direction: column;
-    }
-   
-    .red-section-item{
-        width: 200px;
-        justify-content: center;
-        flex-direction: row !important;
-        display: flex !important;
-    }
-    .featured-voices{
-        padding: 40px 20px;
-    }
-    .pagination-num{
-        margin-top: 40px;
-        flex-direction: row !important;
-    }
-    form{
-        width: 100%;
-    }
-    .mc-container{
-        padding: 40px 20px;
-    }
-    .input{
-        padding:10px;
-        flex-direction: row;
-    }
-    .filter{
-        flex-direction: row;
-    }
-    .search-container{
-        gap: 20px;
-    }
-}
-
-.category-header{
-    padding: 0px 80px;
-}
-.episode-h3{
-    padding: 20px 80px;
-}
-.episode-h3 h3{
-    color: #0D0C12;
-font-family: "Schibsted Grotesk";
-font-size: 24px;
-font-style: normal;
-font-weight:700  !important;
-line-height: normal;
-}
-.podcast-header{
-    background-image: url("../../Assets/PodcastPageAssests/1064.jpg");
-    background-repeat: no-repeat;
-   background-size: cover;
 }

@@ -163,51 +163,53 @@ const LoginPage = () => {
 
           {/* Email/Password Login */}
           <form onSubmit={handleEmailLogin} id="email-login">
-            <label htmlFor="email">Email Address</label>
-            <input
-              id="email"
-              type="email"
-              name="email"
-              placeholder="e.g johndoe@gmail.com"
-              value={email}
-              onChange={handleChange}
-              required
-              className={isEmailValid ? "right-email" : "wrong-email"}
-            />
-            {!isEmailValid && email.length > 0 && (
-              <p className="error-text">
-                That doesn't look like a valid email address
-              </p>
-            )}
-
-            <label htmlFor="password">Password</label>
-            <div className="password-input-wrapper">
+            <div className="form-fields">
+              <label htmlFor="email">Email Address</label>
               <input
-                id="password"
-                type={showPassword ? "text" : "password"}
-                name="password"
-                placeholder="Enter Password"
-                value={password}
-                onChange={handlePasswordChange}
+                id="email"
+                type="email"
+                name="email"
+                placeholder="e.g johndoe@gmail.com"
+                value={email}
+                onChange={handleChange}
                 required
-                className={
-                  isPasswordValid ? "right-password" : "wrong-password"
-                }
+                className={isEmailValid ? "right-email" : "wrong-email"}
               />
-              <button
-                type="button"
-                className="toggle-password-btn"
-                onClick={() => setShowPassword(!showPassword)}
-              >
-                {showPassword ? "🙈" : "👁️"}
-              </button>
+              {!isEmailValid && email.length > 0 && (
+                <p className="error-text">
+                  That doesn't look like a valid email address
+                </p>
+              )}
+
+              <label htmlFor="password">Password</label>
+              <div className="password-input-wrapper">
+                <input
+                  id="password"
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  placeholder="Enter Password"
+                  value={password}
+                  onChange={handlePasswordChange}
+                  required
+                  className={
+                    isPasswordValid ? "right-password" : "wrong-password"
+                  }
+                />
+                <button
+                  type="button"
+                  className="toggle-password-btn"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? "🙈" : "👁️"}
+                </button>
+              </div>
+              {!isPasswordValid && password.length > 0 && (
+                <p className="error-text">
+                  Password must be at least 6 characters and include both
+                  letters and numbers
+                </p>
+              )}
             </div>
-            {!isPasswordValid && password.length > 0 && (
-              <p className="error-text">
-                Password must be at least 6 characters and include both letters
-                and numbers
-              </p>
-            )}
 
             <div className="form-options">
               <div>

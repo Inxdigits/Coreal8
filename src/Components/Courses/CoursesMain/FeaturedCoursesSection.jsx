@@ -1,18 +1,15 @@
-import React from "react";
-import openicon from '../../HomePage/Assets/open-icon.svg';
-// import image from "./image.svg";
-// import vector2 from "./vector-2.svg";
-// import vector3 from "./vector-3.svg";
-// import vector4 from "./vector-4.svg";
-// import vector5 from "./vector-5.svg";
-// import vector6 from "./vector-6.svg";
-
-import course1 from '../../HomePage/Assets/first-course.png';
-import course2 from '../../HomePage/Assets/second-course.png';
-import course3 from '../../HomePage/Assets/third-course.png';
+import React, { useState } from "react";
+import openicon from "../../HomePage/Assets/open-icon.svg";
+import course1 from "../../HomePage/Assets/first-course.png";
+import course2 from "../../HomePage/Assets/second-course.png";
+import course3 from "../../HomePage/Assets/third-course.png";
 import { Link } from "react-router-dom";
+import { SearchSection } from "./SearchSection"; // Import the search/filter nav
+import { useWaitlist } from "../../../context/WaitListcontext";
 
 export const FeaturedCoursesSection = () => {
+  const { openWaitlist } = useWaitlist();
+
   const coursesData = [
     {
       id: 1,
@@ -21,76 +18,92 @@ export const FeaturedCoursesSection = () => {
         "Learn how to lead with clarity, courage, and conviction in today's dynamic world.",
       price: "N45,000",
       icon: course1,
+      category: "Leadership & Influence",
     },
     {
       id: 2,
-      title: "The Visionary Leader's Blueprint",
+      title: "Mastering Communication",
       description:
-        "Learn how to lead with clarity, courage, and conviction in today's dynamic world.",
-      price: "N45,000",
+        "Unlock the secrets of persuasive and impactful communication.",
+      price: "N35,000",
       icon: course2,
+      category: "Communication",
     },
     {
       id: 3,
-      title: "The Visionary Leader's Blueprint",
+      title: "Personal Growth Accelerator",
       description:
-        "Learn how to lead with clarity, courage, and conviction in today's dynamic world.",
-      price: "N45,000",
+        "Develop habits and skills to accelerate your personal and professional growth.",
+      price: "N30,000",
       icon: course3,
+      category: "Personal Growth",
     },
     {
       id: 4,
-      title: "The Visionary Leader's Blueprint",
+      title: "Building High-Performance Teams",
       description:
-        "Learn how to lead with clarity, courage, and conviction in today's dynamic world.",
-      price: "N45,000",
+        "Learn proven strategies to create and manage effective teams.",
+      price: "N50,000",
       icon: course1,
+      category: "Team Building",
     },
     {
       id: 5,
-      title: "The Visionary Leader's Blueprint",
-      description:
-        "Learn how to lead with clarity, courage, and conviction in today's dynamic world.",
-      price: "N45,000",
+      title: "Advanced Leadership Strategy",
+      description: "Strategic insights to elevate your leadership style.",
+      price: "N60,000",
       icon: course2,
+      category: "Leadership & Influence",
     },
     {
       id: 6,
-      title: "The Visionary Leader's Blueprint",
-      description:
-        "Learn how to lead with clarity, courage, and conviction in today's dynamic world.",
-      price: "N45,000",
+      title: "Effective Public Speaking",
+      description: "Boost confidence and speak with authority in any setting.",
+      price: "N40,000",
       icon: course3,
+      category: "Communication",
     },
   ];
 
+  const [searchValue, setSearchValue] = useState("");
+  const [selectedSort, setSelectedSort] = useState("All"); // ✅ default to "All"
+
+  // 🔍 Filtering logic
+  const filteredCourses = coursesData.filter((course) => {
+    const query = searchValue.toLowerCase();
+    const matchesSearch =
+      course.title.toLowerCase().includes(query) ||
+      course.description.toLowerCase().includes(query);
+
+    const matchesCategory =
+      selectedSort === "All" || course.category === selectedSort;
+
+    return matchesSearch && matchesCategory;
+  });
+
   const CourseCard = ({ course }) => (
     <article className="courses-card">
-      <div className="">
-        <img className="" alt="" src={course.icon} />
+      <div className="course-card-image">
+        <img alt={course.title} src={course.icon} />
+        <span className="category">{course.category}</span>
       </div>
-      {/* <div
-        className="courses-card-img"
-        role="img"
-        aria-label="Course thumbnail"
-      /> */}
 
       <div className="courses-preview-writeup">
-        <p className="">{course.title}</p>
-
-        <span className="">{course.description}</span>
+        <p>{course.title}</p>
+        <span>{course.description}</span>
       </div>
 
       <div className="courses-card-bottom">
         <span className="course-price">{course.price}</span>
 
+          {/* to={`/courses/${course.id}`} */}
         <Link
-          to="/courses"
+          onClick={openWaitlist}
           className="view-course-link"
           aria-label={`View ${course.title} course`}
         >
-          <span className="">View Course</span>
-          <img src={openicon} />
+          <span>View Course</span>
+          <img src={openicon} alt="" />
         </Link>
       </div>
     </article>
@@ -98,20 +111,36 @@ export const FeaturedCoursesSection = () => {
 
   return (
     <section className="featured-courses">
-      <p className="">Featured Courses</p>
+      <p>Featured Courses</p>
 
+      {/* Search & Filter Nav */}
+      <SearchSection
+        searchValue={searchValue}
+        setSearchValue={setSearchValue}
+        selectedSort={selectedSort}
+        setSelectedSort={setSelectedSort}
+      />
+
+      {/* Course lineup */}
       <div className="courses-lineup">
-        <div className="courseslist">
-          {coursesData.slice(0, 3).map((course) => (
-            <CourseCard key={course.id} course={course} />
-          ))}
-        </div>
-
-        <div className="courseslist">
-          {coursesData.slice(3, 6).map((course) => (
-            <CourseCard key={course.id} course={course} />
-          ))}
-        </div>
+        {filteredCourses.length > 0 ? (
+          <div className="courseslist">
+            {filteredCourses.map((course) => (
+              <CourseCard key={course.id} course={course} />
+            ))}
+          </div>
+        ) : (
+          <p className="no-results">
+            No courses found for <strong>“{searchValue}”</strong>
+            {selectedSort !== "All" && (
+              <>
+                {" "}
+                in <strong>{selectedSort}</strong>
+              </>
+            )}
+            .
+          </p>
+        )}
       </div>
     </section>
   );

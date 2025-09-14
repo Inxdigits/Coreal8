@@ -12,7 +12,7 @@ import Leadership from "./Components/Leadership/Leadership.jsx";
 import Blogs from "./Components/Blogs/Blogs.jsx";
 import Testimonial from "./Components/Testimonial/Testimonial.jsx";
 import BookAppointment from "./Components/BookAppointment/BookAppointment.jsx";
-import Faqs from '../Courses/Faqs/Faqs.jsx';
+import Faqs from './Components/Faqs/Faqs.jsx';
 import Footer from '../Footer/Footer.jsx';
 
 const HomePage = () => {
@@ -24,8 +24,8 @@ const HomePage = () => {
       <StoryBehind />
       <Services />
       <Trust />
-      <Podcast />
       <Courses />
+      <Podcast />
       {/* <Leadership /> */}
       <Blogs />
       <Testimonial />

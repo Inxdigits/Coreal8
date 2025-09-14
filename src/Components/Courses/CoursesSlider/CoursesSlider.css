@@ -1,55 +1,84 @@
+:root {
+  --font-family-base: "Schibsted Grotesk", sans-serif;
+  --color-text: #0D0C12;
+  --color-bg-white: #FFF;
+  --card-radius: 6px;
+  --card-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  --font-size-base: 16px;
+  --font-size-small: 14px;
+  --nav-btn-size: 40px;
+}
+
+.ct-slider-container .swiper {
+  max-width: 1440px !important;
+}
+
 .ct-card {
-    display: flex;
-    padding: 20px;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 24px;
-    border-radius: 5px;
-    background: #FFF;
-    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.10);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1.25rem;
+  min-height: 180px;
+  align-items: flex-start;
+  border-radius: var(--card-radius);
+  background: var(--color-bg-white);
+  box-shadow: var(--card-shadow);
+  font-family: var(--font-family-base);
+  color: var(--color-text);
 }
 
 .ct-author {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-}
-
-.ct-custom-nav {
-    margin: 0 auto;
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
 }
 
 .author strong {
-    color: #0D0C12;
-    font-family: "Schibsted Grotesk";
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
+  font-size: var(--font-size-base);
+  font-weight: 600;
 }
 
 .author p {
-    color: #0D0C12;
-    font-family: "Schibsted Grotesk";
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
+  font-size: var(--font-size-small);
+  font-weight: 400;
+  margin: 0.25rem 0 0;
 }
 
 .ct-card-quote {
-    color: #0D0C12;
-    font-family: "Schibsted Grotesk";
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
+  font-size: var(--font-size-base);
+  font-weight: 400;
+  line-height: 1.4;
+  text-align: left;
 }
 
-.custom-swiper-prev, .custom-swiper-next {
-    height: 40px;
-    width: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.ct-custom-nav {
+  margin: 0 auto;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.custom-swiper-prev,
+.custom-swiper-next {
+  width: var(--nav-btn-size);
+  height: var(--nav-btn-size);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg-white);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.custom-swiper-prev:hover,
+.custom-swiper-next:hover {
+  background: #f4f4f4;
+  transform: scale(1.05);
+}
+
+.custom-swiper-prev:disabled,
+.custom-swiper-next:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }

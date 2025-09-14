@@ -6,15 +6,14 @@ import { Link } from 'react-router-dom';
 // import course2 from '../../HomePage/Assets/second-course.png';
 // import course3 from '../../HomePage/Assets/third-course.png';
 // import arrowdown from '../../../Assets/arrowdown.svg';
-import { SearchSection } from './SearchSection.jsx';
+// import { SearchSection } from './SearchSection.jsx';
 import { FeaturedCoursesSection } from './FeaturedCoursesSection';
 
 const CoursesMain = () => {
   
   return (
     <div className="mc-container flex-column">
-      <SearchSection />
-      <div className='mb'></div>
+      {/* <SearchSection /> */}
       <FeaturedCoursesSection />
     </div>
   );

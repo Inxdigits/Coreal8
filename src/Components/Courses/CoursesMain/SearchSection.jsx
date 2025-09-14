@@ -1,127 +1,128 @@
 import React, { useState } from "react";
-import { CiSearch } from "react-icons/ci";
-import arrowdown from "../../../Assets/arrowdown.svg";
-import Search from "../../../Assets/BlogPageAssets/search.svg";
+import SearchIcon from "../../../Assets/BlogPageAssets/search.svg";
 import "./CoursesMain.css";
 
-export const SearchSection = () => {
-  //search functionality
-  const [searchValue, setSearchValue] = useState("");
-  const handleSearchChange = (e) => {
-    setSearchValue(e.target.value);
-  };
+const sortOptions = [
+  "All", // ✅ Added here
+  "Leadership & Influence",
+  "Communication",
+  "Personal Growth",
+  "Team Building",
+];
+
+export const SearchSection = ({
+  searchValue,
+  setSearchValue,
+  selectedSort,
+  setSelectedSort,
+}) => {
+  const [isDropDownOpen, setIsDropdownOpen] = useState(false);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Search submitted:", searchValue);
   };
-  // filter functionality
-  const [selectedFilter, setSelectedFilter] = useState("All");
-  const [selectedSort, setSelectedSort] = useState("Leadership & Influence");
-  const [isDropDownOpen, setIsDropdownOpen] = useState(false);
 
-
+  const handleSortSelect = (option) => {
+    setSelectedSort(option);
+    setIsDropdownOpen(false);
+  };
 
   return (
     <nav
-      className="search-container flex justify-between items-center relative gap-5 w-full"
+      className="searchcontainer flex justify-between items-center gap-5 w-full relative"
       role="navigation"
       aria-label="Content filters and sorting"
     >
+      {/* Search Form */}
       <form
         onSubmit={handleSubmit}
-        className="inline-flex flex-row gap-3 flex-[0_0_auto] relative"
+        className="searchform flex gap-3 items-center"
         role="search"
-        aria-label="Search blogs"
+        aria-label="Search courses"
       >
-        <div className="flex w-3/5 input rounded-2xl border border-solid border-[#0d0c121a]  relative">
-          <div className="relative w-6 h-6" aria-hidden="true">
-            <div className="relative w-5 h-5 top-0.5 left-0.5">
-              <img src={Search} alt="Search Icon" className="" />
-            </div>
-          </div>
-          <label htmlFor="search-input" className="sr-only">
-            Search Courses...
-          </label>
+        <div className="searchbar flex w-3/5 items-center border border-[#0d0c121a] rounded-2xl px-2">
+          <img
+            src={SearchIcon}
+            alt=""
+            aria-hidden="true"
+            className="w-5 h-5 mr-2"
+          />
+          {/* <label htmlFor="search-input" className="sr-only">
+            Search Courses
+          </label> */}
           <input
             id="search-input"
             type="search"
             value={searchValue}
-            onChange={handleSearchChange}
+            onChange={(e) => setSearchValue(e.target.value)}
             placeholder="Search Courses..."
-            aria-describedby="search-description"
-            className="relative w-full [font-family: 'Schibsted_Grotesk-Regular', Helvetica] font-normal text-[#0d0c12] text-base text-[16px] t leading-[normal] tracking-[0] placeholder:text-[#0d0c12b3] bg-transparent border-none focus:outline-none"
+            className="w-full text-base text-[#0d0c12] placeholder:text-[#0d0c12b3] bg-transparent border-none focus:outline-none"
           />
-          <span id="search-description" className="sr-only">
-            Search Courses by keywords or blog posts
-          </span>
         </div>
         <button
           type="submit"
           aria-label="Submit search"
-          className="bg-[#801323] text-white search-btn rounded-lg hover:bg-[#6a0f1c] transition-colors duration-300 "
+          className="dark-bg-btn"
         >
-          <span className="relative w-fit font-medium text-neutral-50 text-base tracking-[0] leading-[normal]">
-            Search
-          </span>
+          Search
         </button>
       </form>
 
-      <div className="flex gap-4 w-fit">
-        <label className="content-center relative w-fit [font-family: 'Schibsted_Grotesk-Regular', Helvetica] font-normal text-[#0d0c12] text-base text-center tracking-[0] leading-[normal]">
-          Filter by:
-        </label>
-
+      {/* Sort Dropdown */}
+      <div className="flex gap-4 items-center">
+        <label className="text-base text-[#0d0c12]">Filter by:</label>
         <div className="relative">
           <button
-            onClick={() => setIsDropdownOpen(!isDropDownOpen)}
-            className="sort-tile items-center justify-center gap-2.5 px-5 py-2.5 mt-[-1.00px] mb[-1.00px] rounded-[15px] overflow-hidden border border-solid inline-flex relative flex-[0_0_auto] transition-colors duration-200 hover:opacity-80 focus:outline-none focus:ring-offset-2 focus:ring-[#801323] focus:ring-opacity-50 bg-white"
+            onClick={() => setIsDropdownOpen((prev) => !prev)}
+            className="filter-dropdown flex items-center gap-2 px-5 py-2.5 rounded-lg border bg-white hover:opacity-80 transition"
             aria-expanded={isDropDownOpen}
             aria-haspopup="listbox"
             type="button"
           >
-            <span className="relative w-fit">{selectedSort}</span>
-            <div
-              className={`items-center justify-center flex relative w-5 h-5 overflow-hidden transition-transform duration-200 ${
-                isDropDownOpen ? "rotate-180" : "rotate-0"
+            {selectedSort}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className={`w-5 h-5 transition-transform ${
+                isDropDownOpen ? "rotate-180" : ""
               }`}
+              fill="none"
+              stroke="black"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="black"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <polyline points="6 9 12 15 18 9"></polyline>
-              </svg>
-            </div>
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
           </button>
+
           {isDropDownOpen && (
-            <div className="absolute top-full right-0 mt-1 bg-white border border-solid border-[#0d0c121a] rounded-lg shadow-lg z-10 min-w-full">
-              <ul role="listbox" aria-label="Sort options" className="py-1">
-                {sortOptions.map((option) => (
-                  <li
-                    key={option}
-                    role="option"
-                    aria-selected={selectedSort === option}
+            <ul
+              role="listbox"
+              aria-label="Sort options"
+              className="listbox absolute top-full right-0 mt-1 bg-white border border-[#0d0c121a] rounded-lg shadow-lg z-10 min-w-full"
+            >
+              {sortOptions.map((option) => (
+                <li
+                  key={option}
+                  role="option"
+                  aria-selected={selectedSort === option}
+                  className={`filteroption transition-colors hover:bg-gray-50 ${
+                    selectedSort === option
+                      ? "text-[#801323] bg-gray-50"
+                      : "text-[#0d0c12]"
+                  }`}
+                >
+                  <button
+                    onClick={() => handleSortSelect(option)}
+                    className={`w-full px-5 py-2.5 text-left text-base`}
+                    type="button"
                   >
-                    <button
-                      onClick={() => handleSortSelect(option)}
-                      className={`w-full px-5 py-2.5 text-left [font-family:'Schibsted_Grotesk-Regular', Helvetica] font-normal text-base tracking-[0] leading-[normal] transition-colors duration-200 hover:bg-gray-50 focus:outline-none focus:bg-gray-50 ${
-                        selectedSort === option
-                          ? "text-[#801323] bg-gray-50"
-                          : "text-[#0d0c12] "
-                      }`}
-                      type="button"
-                    >
-                      {option}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </div>
+                    {option}
+                  </button>
+                </li>
+              ))}
+            </ul>
           )}
         </div>
       </div>

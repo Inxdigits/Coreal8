@@ -1,7 +1,10 @@
 import React, { useMemo } from "react";
 import "./CartPayment/CartPayment.css";
+import { useWaitlist } from "../../context/WaitListcontext.jsx";
 
 const CartPayment = ({ cartItems }) => {
+  const { openWaitlist } = useWaitlist();
+
   const { subtotal, discount, total } = useMemo(() => {
     const subtotal = cartItems.reduce(
       (sum, item) => sum + item.price * item.quantity,
@@ -41,7 +44,7 @@ const CartPayment = ({ cartItems }) => {
         <span>{total}</span>
       </div>
 
-      <button className="payment-button" onClick={handlePaymentClick}>
+      <button className="payment-button" onClick={openWaitlist}>
         Proceed to Payment
       </button>
       <div className="hidden-fees">

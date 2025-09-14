@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Courses.css';
 import CoursesMain from './CoursesMain/CoursesMain.jsx';
 import CoursesSlider from "./CoursesSlider/CoursesSlider.jsx";
@@ -6,8 +7,19 @@ import Faqs from "./Faqs/Faqs.jsx";
 import Navbar from '../Navbar/Navbar.jsx';
 import Footer from '../Footer/Footer.jsx';
 import johndoe from "../../Assets/john-doe.png";
+import joydoe from "../../Assets/CoursesPageAssets/joydoe.png";
+import janetdoe from "../../Assets/CoursesPageAssets/janetdoe.png";
+import julietdoe from "../../Assets/CoursesPageAssets/julietdoe.png";
+import juliusdoe from "../../Assets/CoursesPageAssets/juliusdoe.png";
 import coImage from "../../Assets/Frame179.png";
+
 const Courses = () => {
+  const navigate = useNavigate();
+
+  const handleNavigate = () => {
+    navigate("/login")
+  }
+
   return (
     <div className="courses-page">
       <Navbar />
@@ -24,8 +36,8 @@ const Courses = () => {
           </div>
           <div className="co-writeup-buttons">
             <button className="dark-bg-btn">Start a Course</button>
-            <div className="gradient-button-container">
-              <button className="gradient-button card-button courses-login-button">Login</button>
+            <div className="gradient-button-container learn-more">
+              <button onClick={handleNavigate} className="gradient-button lm-button courses-login-btn">Login</button>
             </div>
           </div>
         </div>
@@ -62,11 +74,11 @@ const Courses = () => {
       </section>
       <section className="last-container section-container flex-column">
         <div className="lc-images">
-          <img src={johndoe} alt="" />
-          <img src={johndoe} alt="" />
+          <img src={joydoe} alt="" />
+          <img src={janetdoe} alt="" />
           <img src={johndoe} alt="" style={{ zIndex: "2" }} />
-          <img src={johndoe} alt="" style={{ zIndex: "1" }} />
-          <img src={johndoe} alt="" />
+          <img src={julietdoe} alt="" style={{ zIndex: "1" }} />
+          <img src={juliusdoe} alt="" />
         </div>
         <div className="lc-text">
           <h1>

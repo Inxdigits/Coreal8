@@ -1,11 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../Navbar/Navbar.jsx";
 import Footer from "../Footer/Footer.jsx";
 import "./Podcasts.css";
-import { EpisodeListSection } from "./EpisodeListSection.jsx";
-import { FilterSection } from "./FilterSection.jsx";
+import Faqs from "./Faqs/Faqs.jsx";
 import { HeaderSection } from "./HeaderSection.jsx";
-import Image from "../../Assets/PodcastPageAssests/spotlight.png";
 import arrow from "../../Assets/PodcastPageAssests/arrow.svg";
 import play from "../../Assets/PodcastPageAssests/play.svg";
 import Phone from "../../Assets/PodcastPageAssests/phone.png";
@@ -14,110 +12,106 @@ import Apple from "../../Assets/PodcastPageAssests/applepodcast.png";
 import Spotify from "../../Assets/PodcastPageAssests/spotify.png";
 import YouTube from "../../Assets/PodcastPageAssests/youtube.png";
 import John from "../../Assets/PodcastPageAssests/john.jpg";
-import Makamba from "../../Assets/PodcastPageAssests/Makamba.jpg";
-import MakambaBig from "../../Assets/PodcastPageAssests/makamba.png";
+import Makamba from "../../Assets/PodcastPageAssests/makambalogo-nobg.png";
+import MakambaBig from "../../Assets/PodcastPageAssests/about-makamba.png";
 import Solar from "../../Assets/PodcastPageAssests/solar.svg";
-const Podcasts = () => {
-  const spotlightData = [
-    {
-      id: 1,
-      image: Image,
-      title: "Redefining Leadership in a Noisy World",
-      description:
-        "Nunc vulputate libero et velit interdum, ac aliquet odio mattis.",
-      arrow: arrow,
-      hasPlayButton: false,
-    },
-    {
-      id: 2,
-      image: Image,
-      title: "From Survival to Strategy",
-      description:
-        "Nunc vulputate libero et velit interdum,ac aliquet odio mattis.",
-      arrow: arrow,
-      hasP1ayButton: false,
-      playlcon: play,
-    },
-    {
-      id: 3,
-      image: Image,
-      title: "How to Build a Legacy That Lives After You",
-      description:
-        "Nunc vulputate libero et velit interdum, ac aliquet odio mattis. ",
-      arrow: arrow,
-      hasP1ayButton: false,
-      playlcon: play,
-    },
-  ];
+import { useWaitlist } from "../../context/WaitListcontext.jsx";
 
-  const episodeData = [
+const Podcasts = () => {
+  const { openWaitlist } = useWaitlist();
+
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedSort, setSelectedSort] = useState("Newest");
+
+  const episodes = [
     {
       id: 1,
       image: longImage,
       title: "Redefining Leadership in a Noisy World",
       description:
         "Nunc vulputate libero et velit interdum, ac aliquet odio mattis.",
-      arrow: arrow,
-      hasPlayButton: false,
+      arrow,
+      date: "2025-09-10",
+      category: "Leadership",
     },
     {
       id: 2,
       image: longImage,
       title: "From Survival to Strategy",
       description:
-        "Nunc vulputate libero et velit interdum,ac aliquet odio mattis.",
-      arrow: arrow,
-      hasP1ayButton: false,
-      playlcon: play,
+        "Nunc vulputate libero et velit interdum, ac aliquet odio mattis.",
+      arrow,
+      date: "2025-09-12",
+      category: "Lifestyle",
     },
     {
       id: 3,
       image: longImage,
       title: "How to Build a Legacy That Lives After You",
       description:
-        "Nunc vulputate libero et velit interdum, ac aliquet odio mattis. ",
-      arrow: arrow,
-      hasP1ayButton: false,
-      playlcon: play,
+        "Nunc vulputate libero et velit interdum, ac aliquet odio mattis.",
+      arrow,
+      date: "2025-09-14",
+      category: "Legacy",
     },
     {
       id: 4,
       image: longImage,
-      title: "Redefining Leadership in a Noisy World",
+      title: "The Future of African Innovation",
       description:
-        "Nunc vulputate libero et velit interdum, ac aliquet odio mattis.",
-      arrow: arrow,
-      hasPlayButton: false,
+        "Exploring the role of creativity and resilience in Africa’s tech ecosystem.",
+      arrow,
+      date: "2025-09-05",
+      category: "Leadership",
     },
     {
       id: 5,
       image: longImage,
-      title: "From Survival to Strategy",
+      title: "Purpose-Driven Leadership",
       description:
-        "Nunc vulputate libero et velit interdum,ac aliquet odio mattis.",
-      arrow: arrow,
-      hasP1ayButton: false,
-      playlcon: play,
+        "How leaders can align vision with impact for sustainable growth.",
+      arrow,
+      date: "2025-08-30",
+      category: "Leadership",
     },
     {
       id: 6,
       image: longImage,
-      title: "How to Build a Legacy That Lives After You",
+      title: "Healing Through Storytelling",
       description:
-        "Nunc vulputate libero et velit interdum, ac aliquet odio mattis. ",
-      arrow: arrow,
-      hasP1ayButton: false,
-      playlcon: play,
+        "The power of narratives in shaping community and personal resilience.",
+      arrow,
+      date: "2025-09-01",
+      category: "Lifestyle",
     },
   ];
+
+  // ✅ Filter by category
+  const filteredEpisodes =
+    selectedCategory === "All"
+      ? episodes
+      : episodes.filter((ep) => ep.category === selectedCategory);
+
+  // ✅ Sort
+  const sortedEpisodes = [...filteredEpisodes].sort((a, b) => {
+    if (selectedSort === "Newest") return new Date(b.date) - new Date(a.date);
+    if (selectedSort === "Oldest") return new Date(a.date) - new Date(b.date);
+    return 0; // "Popular" not implemented yet
+  });
+
+  // ✅ Spotlight = always most recent 3
+  const spotlightEpisodes = [...episodes]
+    .sort((a, b) => new Date(b.date) - new Date(a.date))
+    .slice(0, 3);
 
   return (
     <>
       <Navbar />
 
-      <section className=" flex-col items-center justify-center gap-3 p-20 relative bg-[#80132314] services-header podcast-header">
-        <img src={Makamba} />
-        <header className=" relative mt-[-2.00px] [font-family: 'Montserrat-Bold', sans-serif] font-bold text-[#DBA126] text-[40px] text-center tracking-[0] leading-[normal]">
+      {/* Header Section */}
+      <section className="podcasts-overview flex-col items-center justify-center gap-3 p-20 relative bg-[#80132314] services-header podcast-header">
+        <img src={Makamba} alt="Makamba Logo" />
+        <header className="relative font-bold text-white text-[40px] text-center">
           Makamba Podcast by Coreal8
         </header>
         <p className="text-white font-normal">
@@ -127,90 +121,80 @@ const Podcasts = () => {
           evolution.
         </p>
       </section>
+
+      {/* Spotlight Section */}
       <div className="spotlight">
         <h3>This Week's Spotlight</h3>
-        <div className="flex w-full items-start gap-8 relative self-stretch flex-[0_0_auto]">
-          {spotlightData.map((item) => (
+        <div className="flex w-full items-start gap-8 relative">
+          {spotlightEpisodes.map((item) => (
             <article key={item.id}>
-              <div>
+              <div className="episode-image-container relative">
                 <img
-                  className="relative w-full h-64 object-cover"
+                  className="w-full h-64 object-cover"
                   src={item.image}
+                  alt={item.title}
                 />
-                <div className="relative  rounded-[5px] overflow-hidden bg- [linear-gradient (Odeg, rgba (0, e, 0, 0.1 e, e. 1) _ 100%) ]">
-                  {item.hasP1ayButton && (
-                    <button>
-                      <div>
-                        <img
-                          className="absolute w-5 h-[21px] top-px left-0.5"
-                          alt="Play"
-                          src={item.playlcon}
-                        />
-                      </div>
-                    </button>
-                  )}
-                </div>
+                <button
+                  className="play-button absolute inset-0 flex items-center justify-center"
+                  onClick={openWaitlist}
+                >
+                  <img src={play} alt="Play" className="w-12 h-12" />
+                </button>
               </div>
               <div className="spotlight-text">
                 <h2>{item.title}</h2>
                 <p>{item.description}</p>
-                <img src={item.arrow} />
+                <img onClick={openWaitlist} src={item.arrow} alt="Arrow" />
               </div>
             </article>
           ))}
         </div>
       </div>
+
+      {/* All Episodes */}
       <div className="episode-h3">
         <h3>All Episodes</h3>
       </div>
 
-      <HeaderSection />
+      <HeaderSection
+        selectedCategory={selectedCategory}
+        setSelectedCategory={setSelectedCategory}
+        selectedSort={selectedSort}
+        setSelectedSort={setSelectedSort}
+      />
 
       <div className="spotlight all-episodes">
-        <div className="flex w-full items-start gap-8 relative self-stretch flex-[0_0_auto] episode-grid">
-          {episodeData.map((item) => (
+        <div className="episode-grid">
+          {sortedEpisodes.map((item) => (
             <article key={item.id}>
-              <div>
+              <div className="episode-image-container relative">
                 <img
-                  className="relative w-full object-cover"
+                  className="w-full h-64 object-cover"
                   src={item.image}
+                  alt={item.title}
                 />
-                <div className="relative  rounded-[5px] overflow-hidden bg- [linear-gradient (Odeg, rgba (0, e, 0, 0.1 e, e. 1) _ 100%) ]">
-                  {item.hasP1ayButton && (
-                    <button>
-                      <div>
-                        <img
-                          className="absolute w-5 h-[21px] top-px left-0.5"
-                          alt="Play"
-                          src={item.playlcon}
-                        />
-                      </div>
-                    </button>
-                  )}
-                </div>
+                <button
+                  className="play-button absolute inset-0 flex items-center justify-center"
+                  onClick={openWaitlist}
+                >
+                  <img src={play} alt="Play" className="w-12 h-12" />
+                </button>
               </div>
               <div className="spotlight-text">
                 <h2>{item.title}</h2>
                 <p>{item.description}</p>
-                <img src={item.arrow} />
+                <img onClick={openWaitlist} src={item.arrow} alt="Arrow" />
               </div>
             </article>
           ))}
         </div>
+      </div>
+
+      
+        {/* Pagination (static for now) */}
         <div className="flex w-full pagination-num">
           <div className="pagination">
-            <svg
-              width="20"
-              height="12"
-              viewBox="0 0 20 12"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M6.66667 11.834C6.66667 11.2157 6.05583 10.2923 5.4375 9.51732C4.6425 8.51732 3.6925 7.64482 2.60333 6.97898C1.78667 6.47982 0.796667 6.00065 0 6.00065M0 6.00065C0.796667 6.00065 1.7875 5.52148 2.60333 5.02232C3.6925 4.35565 4.6425 3.48315 5.4375 2.48482C6.05583 1.70898 6.66667 0.783984 6.66667 0.167317M0 6.00065L20 6.00065"
-                stroke="#0D0C12"
-              />
-            </svg>
+            <p>{"<"}</p>
           </div>
           <div className="pagination">
             <p>1</p>
@@ -221,25 +205,13 @@ const Podcasts = () => {
           <div className="pagination">
             <p>3</p>
           </div>
-
           <div className="pagination">
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 20 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M13.3333 4.16602C13.3333 4.78435 13.9442 5.70768 14.5625 6.48268C15.3575 7.48268 16.3075 8.35518 17.3967 9.02102C18.2133 9.52018 19.2033 9.99935 20 9.99935M20 9.99935C19.2033 9.99935 18.2125 10.4785 17.3967 10.9777C16.3075 11.6443 15.3575 12.5168 14.5625 13.5152C13.9442 14.291 13.3333 15.216 13.3333 15.8327M20 9.99935H4.76837e-07"
-                stroke="#0D0C12"
-              />
-            </svg>
+            <p>{">"}</p>
           </div>
         </div>
-      </div>
 
-      <section className="flex flex-row bg-[#DBA126] p-[80px] gap-[50px] text-[white] items-start about-section">
+      {/* About Section */}
+      <section className="about-makamba-container flex flex-row bg-[#DBA126] gap-[50px] text-[white] items-center about-section">
         <div className="gap-4 flex items-start about-podcast">
           <h2 className="font-black">About The Podcast</h2>
           <p>
@@ -252,80 +224,83 @@ const Podcasts = () => {
             offers perspectives, stories, and insights to inspire your next
             step.
           </p>
-          <div>
-            <div className="flex flex-row gap-2.5">
-              <img src={Solar} />
-              <p>
-                Tune in, reflect deeply, and live more intentionally — one
-                episode at a time.
-              </p>
-            </div>
+          <div className="flex flex-row gap-2.5">
+            <img src={Solar} alt="Solar Icon" />
+            <p>
+              Tune in, reflect deeply, and live more intentionally — one episode
+              at a time.
+            </p>
           </div>
         </div>
         <div className="makamba-img">
-          <img src={MakambaBig} width="3500px" />
+          <img src={MakambaBig} width="3500px" alt="Makamba Artwork" />
         </div>
       </section>
 
+      {/* Platforms */}
       <div className="flex red-section">
         <div className="image">
-          <img src={Phone} />
+          <img src={Phone} alt="Phone" />
         </div>
         <div className="red-section-right">
           <h2>Available Everywhere You Listen</h2>
           <div className="flex gap-3">
             <div className="grid-item">
-              <div className="flex gap-3 items-center  red-section-item">
-                <img src={YouTube} className="w-14" />
-                <div>
-                  <div>
-                    <p>Listen on</p>
-                    <h3>Youtube</h3>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="grid-item">
               <div className="flex gap-3 items-center red-section-item">
-                <img src={Apple} className="w-14" />
+                <img src={YouTube} className="w-14" alt="YouTube" />
                 <div>
-                  <div>
-                    <p>Listen on</p>
-                    <h3>Apple Podcasts</h3>
-                  </div>
+                  <p>Listen on</p>
+                  <h3>YouTube</h3>
                 </div>
               </div>
             </div>
             <div className="grid-item">
               <div className="flex gap-3 items-center red-section-item">
-                <img src={Spotify} className="w-14" />
+                <img src={Apple} className="w-14" alt="Apple Podcasts" />
                 <div>
-                  <div>
-                    <p>Listen on</p>
-                    <h3>Spotify</h3>
-                  </div>
+                  <p>Listen on</p>
+                  <h3>Apple Podcasts</h3>
+                </div>
+              </div>
+            </div>
+            <div className="grid-item">
+              <div className="flex gap-3 items-center red-section-item">
+                <img src={Spotify} className="w-14" alt="Spotify" />
+                <div>
+                  <p>Listen on</p>
+                  <h3>Spotify</h3>
                 </div>
               </div>
             </div>
           </div>
-
-          <div className=" app-grid"></div>
         </div>
       </div>
 
+      {/* FAQs */}
+      <section className="faqs-container flex-column section-container">
+        <div className="section-header">
+          <span>FAQs</span>
+        </div>
+        <div className="faqs-intro">
+          <h1>Frequently Asked Questions</h1>
+        </div>
+        <Faqs />
+      </section>
+
+      {/* Featured Voices */}
       <section className="featured-voices flex">
         <h1>Featured Voices</h1>
-
         <div className="voices">
-          <img src={John} />
-          <img src={John} />
-          <img src={John} />
-          <img src={John} />
+          <img src={John} alt="Featured Voice" />
+          <img src={John} alt="Featured Voice" />
+          <img src={John} alt="Featured Voice" />
+          <img src={John} alt="Featured Voice" />
         </div>
       </section>
+
       <Footer />
     </>
   );
 };
+
 export default Podcasts;

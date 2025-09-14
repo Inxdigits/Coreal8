@@ -197,6 +197,11 @@ const Contact = () => {
                 )}
               </form>
 
+              <p style={{color: "white", width: "70%", textAlign: "center"}}>
+                We respond to all inquiries within 24–48 business hours. If your
+                matter is urgent, feel free to call or send a direct message.
+              </p>
+
               {/* Decorative Icons */}
               <div className="icon3 w-8 h-8 bg-blue-200 rounded-full absolute top-0 left-0 opacity-50"></div>
               <div className="icon4 w-12 h-12 bg-purple-200 rounded-full absolute bottom-0 right-0 opacity-50"></div>

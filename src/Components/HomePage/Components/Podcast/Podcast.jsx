@@ -53,9 +53,10 @@ const Podcast = () => {
       <div className="podcast-writeup">
         <h1>The Makamba Podcast</h1>
         <p>
-          Dive into real, powerful conversations with visionary leaders,
-          entrepreneurs, and changemakers across Africa and beyond. Dr. Ezekiel
-          brings clarity, wisdom, and courage to the table in every episode.
+          Conversations that spark clarity, growth, and purpose. <br /> Hosted by
+          Coreal8, Makamba is where real stories, deep reflections, and
+          intentional dialogue meet to guide your personal and professional
+          evolution.
         </p>
       </div>
       <div className="podcasts">

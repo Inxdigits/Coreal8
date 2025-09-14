@@ -2,27 +2,32 @@
     display: grid;
     grid-template-columns: 30% 70%;
     gap: 50px;
+    align-items: start;
     text-align: left;
     background-color: rgba(128, 19, 35, 0.1);
 }
 
 .testimonial-writeup {
-    margin-top: 50px;
+    /* margin-top: 50px; */
 }
 
 .testimonial-writeup h1 {
-    font-family: "Montserrat", sans-serif;
-    font-weight: 700;
+    color: #0D0C12;
+    font-family: Montserrat;
     font-size: 40px;
-    margin: 0;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
 }
 
 .testimonial-writeup p {
     width: 100%;
-    margin: 0;
-    font-family: "Schibsted Grotesk",sans-serif;
-    font-weight: 400;
+    color: #0D0C12;
+    font-family: "Schibsted Grotesk";
     font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
 
 @media screen and (max-width: 900px) {

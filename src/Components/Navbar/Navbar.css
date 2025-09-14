@@ -89,6 +89,10 @@
   border-radius: 10px;
 }
 
+.dropdown-menu {
+  margin-top: 32px;
+}
+
 .gradient-button {
   padding: 10px 20px;
   border: none;

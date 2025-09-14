@@ -13,27 +13,27 @@ const Faqs = () => {
   const faqs = [
     {
       id: 1,
-      question: "What is the format of the courses?",
+      question: "What is the topic of your podcast?",
       answer:
-        "Our courses are typically delivered through a combination of video lectures, written materials, quizzes, and practical exercises. ",
+        "Our podcast covers a variety of topics related to having unfiltered conversations e.g., personal growth, career development, mental wellness, entrepreneurship, . We feature interviews with experts, thought leaders, and individuals with inspiring stories.",
     },
     {
       id: 2,
-      question: "How long do I have to complete a course?",
+      question: "Where can I listen to the podcast?",
       answer:
-        "Most of our courses are self-paced, giving you the flexibility to learn on your own schedule. Once you enroll, you have access to the course materials.",
+        "You can find our podcast on all major platforms, including Apple Podcasts, Spotify, Google Podcasts, and our website.",
     },
     {
       id: 3,
-      question: "Are there any prerequisites for your courses?",
+      question: "How often do you release new episodes?",
       answer:
-        "Prerequisites vary by course. Please check the individual course description for specific requirements.",
+        "We release new episodes every two weeks. You can subscribe to our podcast to get notified when a new episode is available.",
     },
     {
       id: 4,
-      question: "Do I get a certificate upon completion?",
+      question: "How can I be a guest on the podcast?",
       answer:
-        "Yes, upon successful completion of all course modules and requirements, you will receive a certificate of completion.",
+        "If you are interested in being a guest, please fill out our guest application form on our website. We review all applications and will reach out if we think you would be a good fit for the show.",
     },
   ];
 

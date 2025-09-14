@@ -24,9 +24,9 @@ const StoryBehind = () => {
           impacting personal lives, professional environments, and broader
           communities...
         </p>
-        <div className="learn-more">
+        <div className="gradient-button-container learn-more">
           <Link to="/about">
-            <button className="lm-button">Learn More</button>
+            <button className="gradient-button lm-button">Learn More</button>
           </Link>
         </div>
       </div>

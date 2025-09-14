@@ -14,7 +14,7 @@ const BookAppointment = () => {
     <div className="appointment-container">
       <div className="leftside">
         <div className="appointment-writeup">
-          <h1>Book Dr. Enobong Ezekiel</h1>
+          <h1>Book Dr. <br /> Enobong Ezekiel</h1>
           <p>
             For keynote sessions, panels, workshops, and coaching
             collaborations, Dr. Ezekiel brings clarity, experience, and impact

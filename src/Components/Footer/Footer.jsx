@@ -1,61 +1,105 @@
-import React from 'react';
-import './Footer.css';
-import yt from '../../Assets/yt-logo.svg';
-import ig from '../../Assets/ig-logo.svg';
-import x from '../../Assets/x-logo.svg';
+import React from "react";
+import "./Footer.css";
+import yt from "../../Assets/yt-logo.svg";
+import ig from "../../Assets/ig-logo.svg";
+import x from "../../Assets/x-logo.svg";
 import li from "../../Assets/linkedin-logo.svg";
-import { Link, Links } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const Footer = () => {
+  const socials = [
+    { icon: yt, alt: "YouTube", link: "https://youtube.com" },
+    { icon: ig, alt: "Instagram", link: "https://instagram.com" },
+    { icon: x, alt: "X (Twitter)", link: "https://x.com" },
+    { icon: li, alt: "LinkedIn", link: "https://linkedin.com" },
+  ];
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // TODO: hook this to EmailJS or backend API
+    alert("Thanks for subscribing! 🚀");
+  };
+
   return (
     <footer>
+      {/* Newsletter Section */}
       <div className="newsletter">
         <div className="newsletter-text">
           <h1>Join the Coreal8 Circle</h1>
           <span>
-            Get exclusive leadership content, early access to new courses,{" "}
+            Get exclusive leadership content, early access to new courses,
             <br /> and podcast updates.
           </span>
         </div>
-        <form action="" className="footer-form">
-          <input type="email" name="" id="" placeholder="Email Address" />
+        <form className="footer-form" onSubmit={handleSubmit}>
+          <label htmlFor="email" className="sr-only">
+            Email Address
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Email Address"
+            required
+          />
           <button type="submit">Subscribe</button>
         </form>
       </div>
 
+      {/* Footer Menu */}
       <div className="footer-menu">
         <div className="top">
-          <ul className="footer-nav">
-            <li className="nav-link">About</li>
-            <li className="nav-link">Podcast</li>
-            <li className="nav-link">Courses</li>
-            <li className="nav-link">Blog</li>
-            <li className="nav-link">Contact</li>
-            <li className="nav-link">Login</li>
-            <li className="nav-link"><Link to="/privacy">Privacy Policy</Link></li>
-            <li className="nav-link">Terms of Service</li>
-          </ul>
+          <nav aria-label="Footer Navigation">
+            <ul className="footer-nav">
+              <li>
+                <Link to="/about" className="footer-nav-link">About</Link>
+              </li>
+              <li>
+                <Link to="/podcast" className="footer-nav-link">Podcast</Link>
+              </li>
+              <li>
+                <Link to="/courses" className="footer-nav-link">Courses</Link>
+              </li>
+              <li>
+                <Link to="/blog" className="footer-nav-link">Blog</Link>
+              </li>
+              <li>
+                <Link to="/contact" className="footer-nav-link">Contact</Link>
+              </li>
+              <li>
+                <Link to="/login" className="footer-nav-link">Login</Link>
+              </li>
+              <li>
+                <Link to="/privacy" className="footer-nav-link">Privacy Policy</Link>
+              </li>
+              <li>
+                <Link to="/terms" className="footer-nav-link">Terms of Service</Link>
+              </li>
+            </ul>
+          </nav>
+
+          {/* Socials */}
           <div className="socials">
-            <button>
-              <img src={yt} alt="" />
-            </button>
-            <button>
-              <img src={ig} alt="" />
-            </button>
-            <button>
-              <img src={x} alt="" />
-            </button>
-            <button>
-              <img src={li} alt="" />
-            </button>
+            {socials.map(({ icon, alt, link }) => (
+              <a
+                key={alt}
+                href={link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-link"
+              >
+                <img src={icon} alt={alt} />
+              </a>
+            ))}
           </div>
         </div>
+
         <div className="bottom">
-          <span>© 2025 Coreal8. All rights reserved.</span>
+          <span>© {new Date().getFullYear()} Coreal8. All rights reserved.</span>
         </div>
       </div>
     </footer>
   );
-}
+};
 
-export default Footer
+export default Footer;
