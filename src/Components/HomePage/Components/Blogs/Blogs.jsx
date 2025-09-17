@@ -17,32 +17,32 @@ const Blogs = () => {
   const blogs = [
     {
       img: blog1,
-      dateReleased: "May 10, 2025",
-      time: "10 minute read",
+      dateReleased: "May 16, 2025",
+      time: "10 min read",
       title: "5 Habits of a Grounded Leader",
       description:
         "Vorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.",
     },
     {
       img: blog2,
-      dateReleased: "May 10, 2025",
-      time: "10 minute read",
+      dateReleased: "May 16, 2025",
+      time: "10 min read",
       title: "5 Habits of a Grounded Leader",
       description:
         "Vorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.",
     },
     {
       img: blog3,
-      dateReleased: "May 10, 2025",
-      time: "10 minute read",
+      dateReleased: "May 16, 2025",
+      time: "10 min read",
       title: "5 Habits of a Grounded Leader",
       description:
         "Vorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.",
     },
     {
       img: blog4,
-      dateReleased: "May 10, 2025",
-      time: "10 minute read",
+      dateReleased: "May 16, 2025",
+      time: "10 min read",
       title: "5 Habits of a Grounded Leader",
       description:
         "Vorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.",

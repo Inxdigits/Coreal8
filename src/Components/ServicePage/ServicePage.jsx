@@ -3,14 +3,11 @@ import "./ServicePage.css"; // Import the CSS file for styling
 import Navbar from "../Navbar/Navbar.jsx";
 import Footer from "../Footer/Footer.jsx";
 import Image from "../../Assets/ServicePageAssets/image.jpg";
+import { Link } from "react-router-dom";
+import { useWaitlist } from "../../context/WaitListcontext.jsx";
 
 const ServicePage = () => {
-  // const counselingServices = [
-  //   "Individual Counseling",
-  //   "Grief Counseling",
-  //   "Trauma Therapy",
-  //   "Stress Management",
-  // ];
+  const { openWaitlist } = useWaitlist();
 
   return (
     <div>
@@ -28,7 +25,7 @@ const ServicePage = () => {
           for you.
         </p>
       </section>
-      <section className=" individual-section">
+      <section className="individual-section">
         <div className="individual">
           <h1>Individual Counseling & Engagement</h1>
           <p>
@@ -60,26 +57,26 @@ const ServicePage = () => {
           </div>
 
           <div className="tile-grid">
-            <div className="tiles">
+            <div className="tile">
               <p>Individual Conselling</p>
             </div>
-            <div className="tiles">
+            <div className="tile">
               <p>Grief Counseling</p>
             </div>
-            <div className="tiles">
+            <div className="tile">
               <p>Trauma Therapy</p>
             </div>
-            <div className="tiles">
+            <div className="tile">
               <p>Stress Management</p>
             </div>
           </div>
           <div className="spacer"></div>
-          <div className="individual-flex  btn-flex">
+          <div className="btns-flex">
             <div className="red-btn">
-              <p>Explore Counseling Services</p>
+              <Link to="/counselling">Explore Counseling Services</Link>
             </div>
             <div className="white-btn">
-              <p>Book a Counseling Session</p>
+              <Link onClick={openWaitlist}>Book a Counseling Session</Link>
             </div>
           </div>
         </div>
@@ -88,7 +85,7 @@ const ServicePage = () => {
         </div>
       </section>
 
-      <section className=" consulting-section">
+      <section className="individual-section consulting-section">
         <div className="counseling-image">
           <img className="counseling-image" src={Image} alt="" />
         </div>
@@ -122,26 +119,26 @@ const ServicePage = () => {
           </div>
 
           <div className="tile-grid">
-            <div className="tiles">
+            <div className="tile">
               <p>Leadership Coaching</p>
             </div>
-            <div className="tiles">
+            <div className="tile">
               <p>Team Training</p>
             </div>
-            <div className="tiles">
+            <div className="tile">
               <p>Communication Skills</p>
             </div>
-            <div className="tiles">
+            <div className="tile">
               <p>Culture Alignment</p>
             </div>
           </div>
           <div className="spacer"></div>
-          <div className="btn-flex">
+          <div className="btns-flex c-btns-flex">
             <div className="red-btn">
-              <p>View Mentorship & Coaching Programs</p>
+              <Link to="/mentoring">View Mentorship & Coaching Programs</Link>
             </div>
-            <div className="yellow-btn">
-              <p>Book a Discovery Call</p>
+            <div className="white-btn">
+              <Link onClick={openWaitlist}>Book a Discovery Call</Link>
             </div>
           </div>
         </div>
@@ -177,20 +174,20 @@ const ServicePage = () => {
           </div>
 
           <div className="tile-grid">
-            <div className="tiles">
+            <div className="tile">
               <p>Personal Brand Coaching</p>
             </div>
-            <div className="tiles">
+            <div className="tile">
               <p>Communication & Influence Workshops</p>
             </div>
           </div>
           <div className="spacer"></div>
-          <div className="btn-flex">
+          <div className="btns-flex">
             <div className="red-btn">
-              <p>Discover Coaching Programs</p>
+              <Link to="/mentoring">Discover Coaching Programs</Link>
             </div>
             <div className="white-btn">
-              <p>Book Brand Strategy Session</p>
+              <Link onClick={openWaitlist}>Book Brand Strategy Session</Link>
             </div>
           </div>
         </div>
@@ -198,6 +195,13 @@ const ServicePage = () => {
           <img className="counseling-image" src={Image} alt="" />
         </div>
       </section>
+
+      <button
+        className="back-to-top"
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      >
+        ↑ Back to Top
+      </button>
 
       <Footer />
     </div>

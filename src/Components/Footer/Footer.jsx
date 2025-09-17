@@ -70,10 +70,10 @@ const Footer = () => {
                 <Link to="/login" className="footer-nav-link">Login</Link>
               </li>
               <li>
-                <Link to="/privacy" className="footer-nav-link">Privacy Policy</Link>
+                <Link to="/privacy-policy" className="footer-nav-link">Privacy Policy</Link>
               </li>
               <li>
-                <Link to="/terms" className="footer-nav-link">Terms of Service</Link>
+                <Link to="/terms-of-service" className="footer-nav-link">Terms of Service</Link>
               </li>
             </ul>
           </nav>

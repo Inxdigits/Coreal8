@@ -6,73 +6,64 @@ import cartIcon from "../../Assets/carticon.svg";
 import profileIcon from "../../Assets/profileicon.svg";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Navbar.css";
-import { FaAngleDown } from 'react-icons/fa';
-
+import { FaAngleDown } from "react-icons/fa";
 
 import { useWaitlist } from "../../context/WaitListcontext.jsx";
 
 const Navbar = () => {
   const { openWaitlist } = useWaitlist();
-
   const location = useLocation();
   const currentPath = location.pathname;
 
+  // mobile toggle
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const toggleMenu = () => setIsMenuOpen((prev) => !prev);
-  useEffect(() => {
-    setIsMenuOpen(false); // Close menu on route change
-  }, [currentPath]);
-  
-  const [dropdowns, setDropdowns] = useState({
-    services: false,
-    counseling: false,
-    mentorship: false,
-  });
 
-  // Toggle specific dropdown and close others
-  const toggleDropdown = (type) => {
-    setDropdowns((prev) => {
-      const newState = {
-        services: false,
-        counseling: false,
-        mentorship: false,
-      };
-      newState[type] = !prev[type]; // Toggle only the selected
-      return newState;
-    });
+  useEffect(() => {
+    setIsMenuOpen(false); // close menu on route change
+  }, [currentPath]);
+
+  // dropdown states (independent)
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isCounselingOpen, setIsCounselingOpen] = useState(false);
+  const [isMentorshipOpen, setIsMentorshipOpen] = useState(false);
+
+  // toggle handlers
+  const toggleServices = () => {
+    setIsServicesOpen((prev) => !prev);
+    setIsCounselingOpen(false);
+    setIsMentorshipOpen(false);
   };
-  
+
+  const toggleCounseling = (e) => {
+    e.preventDefault();
+    setIsCounselingOpen((prev) => !prev);
+    setIsMentorshipOpen(false);
+  };
+
+  const toggleMentorship = (e) => {
+    e.preventDefault();
+    setIsMentorshipOpen((prev) => !prev);
+    setIsCounselingOpen(false);
+  };
+
+  // close menus if clicked outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (!event.target.closest(".nav-item.dropdown")) {
-        setDropdowns({
-          services: false,
-          counseling: false,
-          mentorship: false,
-        });
+        setIsServicesOpen(false);
+        setIsCounselingOpen(false);
+        setIsMentorshipOpen(false);
       }
     };
-
     document.addEventListener("click", handleClickOutside);
-
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
+    return () => document.removeEventListener("click", handleClickOutside);
   }, []);
 
-
-
   return (
-    <nav
-      className="
-      navbar 
-      navbar-expand-lg 
-      border-bottom 
-      // px-80 py-3 
-      fixed-top 
-      "
-    >
+    <nav className="navbar navbar-expand-lg border-bottom fixed-top">
       <div className="container-fluid">
+        {/* Logo */}
         <Link
           to="/"
           className={`logo navbar-brand position-relative ${
@@ -82,6 +73,7 @@ const Navbar = () => {
           <img src={logo} alt="Logo" style={{ maxWidth: "123px" }} />
         </Link>
 
+        {/* Mobile toggle */}
         <button
           className="navbar-toggler"
           type="button"
@@ -97,21 +89,16 @@ const Navbar = () => {
           )}
         </button>
 
+        {/* Nav links */}
         <div
-          className={`navbar-collapse ${isMenuOpen ? "block" : "hidden"}`}
+          className="navbar-collapse"
           id="navbarNav"
         >
-          <ul
-            className="navbar-nav 
-            align-items-lg-center 
-            "
-          >
+          <ul className={`navbar-nav align-items-lg-center ${isMenuOpen ? "open" : ""}`}>
+            {/* First half of nav links */}
             {[
               { path: "/about", label: "About" },
               { path: "/courses", label: "Courses" },
-              { path: "/podcast", label: "Podcast" },
-              { path: "/blog", label: "Blog" },
-              { path: "/contact", label: "Contact" },
             ].map(({ path, label }) => (
               <li
                 key={path}
@@ -128,21 +115,22 @@ const Navbar = () => {
             {/* Services Dropdown */}
             <li
               className={`nav-item dropdown position-relative ${
-                currentPath === "/services" ? "active-link" : ""
+                currentPath.startsWith("/services") ? "active-link" : ""
               }`}
             >
               <Link
-                onClick={() => toggleDropdown("services")}
+                onClick={toggleServices}
                 className="nav-link dropdown-link dropdown-label"
               >
                 Services{" "}
                 <FaAngleDown
-                  className={`${dropdowns.services ? "rotate-icon" : ""}`}
+                  className={`${isServicesOpen ? "rotate-icon" : ""}`}
                 />
               </Link>
+
               <div
                 className={`dropdown-menu ${
-                  dropdowns.services ? "custom-dropdown" : "hidden"
+                  isServicesOpen ? "custom-dropdown" : "hidden"
                 }`}
               >
                 <Link className="dropdown-item" to="/services">
@@ -154,74 +142,88 @@ const Navbar = () => {
                 <Link className="dropdown-item" to="/services">
                   Personal Brand Development
                 </Link>
+
+                {/* Counseling Submenu */}
+                <div className="dropdown-submenu">
+                  <Link
+                    onClick={toggleCounseling}
+                    className="dropdown-item submenu-toggle"
+                  >
+                    Counseling{" "}
+                    <FaAngleDown
+                      className={`submenu-icon ${
+                        isCounselingOpen ? "rotate-icon" : ""
+                      }`}
+                    />
+                  </Link>
+                  <div
+                    className={`dropdown-menu right-submenu ${
+                      isCounselingOpen ? "show" : ""
+                    }`}
+                  >
+                    <Link className="dropdown-item" to="/counselling">
+                      Individual Counselling
+                    </Link>
+                    <Link className="dropdown-item" to="/counselling">
+                      Grief & Loss Counselling
+                    </Link>
+                    <Link className="dropdown-item" to="/counselling">
+                      Stress & Anxiety Management
+                    </Link>
+                    <Link className="dropdown-item" to="/counselling">
+                      Trauma-Informed Counselling
+                    </Link>
+                  </div>
+                </div>
+
+                {/* Mentorship Submenu */}
+                <div className="dropdown-submenu">
+                  <Link
+                    onClick={toggleMentorship}
+                    className="dropdown-item submenu-toggle"
+                  >
+                    Mentorship{" "}
+                    <FaAngleDown
+                      className={`submenu-icon ${
+                        isMentorshipOpen ? "rotate-icon" : ""
+                      }`}
+                    />
+                  </Link>
+                  <div
+                    className={`dropdown-menu right-submenu ${
+                      isMentorshipOpen ? "show" : ""
+                    }`}
+                  >
+                    <Link className="dropdown-item" to="/mentoring">
+                      Mentorship
+                    </Link>
+                    <Link className="dropdown-item" to="/mentoring">
+                      Coaching
+                    </Link>
+                  </div>
+                </div>
               </div>
             </li>
 
-            {/* Counseling Dropdown */}
-            <li
-              className={`nav-item dropdown position-relative ${
-                currentPath === "/counseling" ? "active-link" : ""
-              }`}
-            >
-              <Link
-                onClick={() => toggleDropdown("counseling")}
-                className="nav-link dropdown-link dropdown-label"
-              >
-                Counseling{" "}
-                <FaAngleDown
-                  className={`${dropdowns.counseling ? "rotate-icon" : ""}`}
-                />
-              </Link>
-              <div
-                className={`dropdown-menu ${
-                  dropdowns.counseling ? "custom-dropdown" : "hidden"
+            {/* Second half of nav links */}
+            {[
+              { path: "/podcast", label: "Podcast" },
+              { path: "/blog", label: "Blog" },
+              { path: "/contact", label: "Contact" },
+            ].map(({ path, label }) => (
+              <li
+                key={path}
+                className={`nav-item ${
+                  currentPath === path ? "active-link" : ""
                 }`}
               >
-                <Link className="dropdown-item" to="/counseling">
-                  Individual Counseling
+                <Link className="nav-link" to={path}>
+                  {label}
                 </Link>
-                <Link className="dropdown-item" to="/counseling">
-                  Couples/Relationship Counseling
-                </Link>
-                <Link className="dropdown-item" to="/counseling">
-                  Family Counseling
-                </Link>
-                <Link className="dropdown-item" to="/counseling">
-                  Group Counseling
-                </Link>
-              </div>
-            </li>
+              </li>
+            ))}
 
-            {/* Mentorship Dropdown */}
-            <li
-              className={`nav-item dropdown position-relative ${
-                currentPath === "/mentoring" ? "active-link" : ""
-              }`}
-            >
-              <Link
-                onClick={() => toggleDropdown("mentorship")}
-                className="nav-link dropdown-link dropdown-label"
-              >
-                Mentorship{" "}
-                <FaAngleDown
-                  className={`${dropdowns.mentorship ? "rotate-icon" : ""}`}
-                />
-              </Link>
-              <div
-                className={`dropdown-menu ${
-                  dropdowns.mentorship ? "custom-dropdown" : "hidden"
-                }`}
-              >
-                <Link className="dropdown-item" to="/mentoring">
-                  Mentorship
-                </Link>
-                <Link className="dropdown-item" to="/mentoring">
-                  Coaching
-                </Link>
-              </div>
-            </li>
-
-            {/* Icons */}
+            {/* Cart */}
             <li
               className={`nav-item ${
                 currentPath === "/cart" ? "active-link" : ""
@@ -232,12 +234,13 @@ const Navbar = () => {
               </Link>
             </li>
 
+            {/* Profile */}
             <li
               className={`nav-item ${
                 currentPath === "/login" ? "active-link" : ""
               }`}
             >
-              <Link className="nav-link" to="/login">
+              <Link className="nav-link" onClick={openWaitlist}>
                 <img src={profileIcon} alt="Login" className="nav-icon" />
               </Link>
             </li>
@@ -256,4 +259,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-// btn btn-outline-dark px-4 py-2

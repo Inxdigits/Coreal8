@@ -13,7 +13,6 @@ const CoursesMain = () => {
   
   return (
     <div className="mc-container flex-column">
-      {/* <SearchSection /> */}
       <FeaturedCoursesSection />
     </div>
   );

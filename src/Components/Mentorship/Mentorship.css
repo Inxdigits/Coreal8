@@ -1,71 +1,403 @@
-.header h1{
-    color: #0D0C12;
-text-align: center;
-font-family: "Schibsted Grotesk";
-font-size: 24px;
-font-style: normal;
-font-weight: 700;
-line-height: normal;
+.mnc-overview {
+    display: flex;
+    padding: 80px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    align-self: stretch;
+    background-color: rgba(128, 19, 35, 0.08);
 }
-.header p{
+
+.mnc-overview header {
+    color: #801323;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.mnc-overview p {
+    width: 60%;
+    margin: 0 auto;
     color: rgba(13, 12, 18, 0.70);
-text-align: center;
-font-family: "Schibsted Grotesk";
-font-size: 16px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
+    text-align: center;
+    font-family: "Schibsted Grotesk";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
+
+@media screen and (max-width: 1120px) {
+    .mnc-overview p {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .mnc-overview {
+        padding: 40px;
+    }
+
+    .mnc-overview header {
+        font-size: 28px;
+    }
+}
+
+@media screen and (max-width: 740px) {
+    .mnc-overview header {
+        font-size: 24px;
+    }
+
+    .mnc-overview p {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .mnc-overview header {
+        font-size: 20px;
+    }
+
+    .mnc-overview p {
+        font-size: 14px;
+    }
+}
+
+/* PATHWAYS SECTION */
 .pathways{
-    padding: 50px;
+    display: flex;
+    padding: 40px 80px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+.pathways .header h1{
+    color: #0D0C12;
+    text-align: center;
+    font-family: "Schibsted Grotesk";
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.pathways .header p{
+    color: rgba(13, 12, 18, 0.70);
+    text-align: center;
+    font-family: "Schibsted Grotesk";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.programs {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 24px;
+}
+
+.program {
+    border-radius: 10px;
+    background: #FFF;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.10);display: flex;
+    padding: 50px 20px;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    flex: 1 0 0;
+    border: none !important;
+}
+
+.program h2{
+    color: #0D0C12;
+    text-align: center;
+    font-family: "Schibsted Grotesk";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    align-self: stretch;
+
+}
+
+.program p{
+    text-align: center;
+    font-family: "Schibsted Grotesk";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: rgba(13, 12, 18, 0.50);
+}
+
+@media screen and (max-width: 950px) {
+    .programs {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .programs .program:last-of-type {
+        grid-column: span 2;
+        justify-self: center;
+    }
+}
+
+@media screen and (max-width: 740px) {
+    .pathways, .journey-section {
+        padding: 40px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .pathways .header h1 {
+        font-size: 20px;
+    }
+
+    .pathways .header p {
+        font-size: 14px;
+    }
+
+    .programs {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    
+    .programs .program:last-of-type {
+        grid-column: span 1;
+        justify-self: auto;
+    }
+
+    .program p {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .pathways, .journey-section {
+        padding: 40px 20px !important;
+    }
+
+    .pathways .header h1 {
+        font-size: 16px;
+    }
+
+    .pathways .header p {
+        font-size: 12px;
+    }
+
+    .program, .structure {
+        padding: 30px 15px !important;
+    }
+
+    .program h2 {
+        font-size: 14px;
+    }
+
+    .program p {
+        font-size: 12px;
+    }
+}
+
+/* JOURNEY SECTION */
+.journey-section {
+    display: flex;
+    padding: 80px;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    background-color: #801323;
+    color: #FFF;
+}
+
+.journey-header h1 {
+    color: #FFF;
+    text-align: center;
+    font-family: "Schibsted Grotesk";
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.journey-header p {
+    width: 60%;
+    margin: 0 auto;
+    color: #FFF;
+    text-align: center;
+    font-family: "Schibsted Grotesk";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.structures {
+    display: grid;
+    grid-template-columns: repeat(2, 40%);
+    gap: 20px;
+    justify-content: center;
+}
+
+.structures .structure {
+    display: flex;
+    /* max-width: 500px; */
+    /* height: 180px; */
+    padding: 50px 20px;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.structures .structure:last-of-type {
+    grid-column: span 2;
+    justify-self: center;
+    width: 50%;
+}
+
+.structures .structure h2 {
+    color: #FFF;
+    font-family: "Schibsted Grotesk";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.structures .structure p {
+    color: rgba(255, 255, 255, 0.70);
+    text-align: center;
+    font-family: "Schibsted Grotesk";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+@media screen and (max-width: 1060px) {
+    .journey-header p {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .journey-section {
+        padding: 80px 40px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .structures {
+        grid-template-columns: repeat(2, 50%);
+    }
+}
+
+@media screen and (max-width: 632px) {
+    .journey-header h1 {
+        font-size: 20px;
+    }
+
+    .journey-header p {
+        font-size: 14px;
+        width: 100%;
+    }
+    
+    .structures {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    
+    .structures .structure:last-of-type {
+        grid-column: span 1;
+        justify-self: auto;
+        width: 100%;
+    }
+
+    .structures .structure h2 {
+        font-size: 16px;
+    }
+
+    .structures .structure p {
+        font-size: 14px;
+    }
+}
+
+/* FP SECTION */
+.fp-section {
+    background-color: white !important;
+}
+
+.normal-subtext {
+    color: rgba(13, 12, 18, 0.70);
+    font-family: "Schibsted Grotesk";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+#session-types {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+#session-type {
+    display: flex;
+    padding: 30px 15px;
+    flex-direction: column;
+    justify-content: space-between;
+    /* align-items: flex-end; */
+    flex: 1 0 0;
+    align-self: stretch;
+}
+
+#session-type h3 {
+    color: #801323;
+    font-family: "Schibsted Grotesk";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+#session-type h2 {
+    color: #0D0C12;
+    font-family: "Schibsted Grotesk";
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+#session-type p {
+    color: #0D0C12;
+    font-family: "Schibsted Grotesk";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+@media screen and (max-width: 1000px) {
+    #session-types {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    #session-types {
+        grid-template-columns: repeat(1, 1fr);
+    }
 }
 
 .coaching{
     display: flex;
     flex-direction: column;
-}
-.article-grid{
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap:12px
-}
-
-.article{
-    border-radius: 10px;
-background: #FFF;
-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.10);display: flex;
-padding: 50px 20px;
-flex-direction: column;
-align-items: center;
-gap: 12px;
-flex: 1 0 0;
-}
-.article h2{
-    color: #0D0C12;
-text-align: center;
-font-family: "Schibsted Grotesk";
-font-size: 16px;
-font-style: normal;
-font-weight: 600;
-line-height: normal;
-align-self: stretch;
-
-}
-.article p{
-    color: rgba(13, 12, 18, 0.50);
-text-align: center;
-font-family: "Schibsted Grotesk";
-font-size: 16px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-color: rgba(13, 12, 18, 0.50);
-text-align: center;
-font-family: "Schibsted Grotesk";
-font-size: 16px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
 }
 
 .plan-text{
@@ -79,3 +411,27 @@ line-height: normal;
 .plan-type {
   box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.10);
 }
+
+/* FAQs */
+.faqs-intro h1 {
+    margin: 0 !important;
+}
+
+@media screen and (max-width: 768px) {
+    .faqs-intro h1 {
+        font-size: 24px;
+    }
+
+    .faqs-container {
+        padding: 40px 20px;
+        gap: 24px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    
+    .faqs-container {
+        gap: 12px;
+    }
+}
+

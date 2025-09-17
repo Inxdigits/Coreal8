@@ -5,6 +5,15 @@
     text-align: center;
 }
 
+.hp-podcast-logo {
+    width: 100%;
+}
+
+.hp-podcast-logo img {
+    margin: 0 auto;
+    /* margin-top: 24px; */
+}
+
 .hp-podcast-header span {
     font-family: "Open Sans", sans-serif;
     font-weight: 600;   

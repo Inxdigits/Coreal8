@@ -5,9 +5,9 @@ import Footer from "../Footer/Footer";
 import CartMechanism from "./CartMechanism/CartMechanism.jsx";
 import CartPayment from "./CartPayment.jsx";
 import { Link } from "react-router-dom";
-import course1 from "../HomePage/Assets/first-course.png";
-import course2 from "../HomePage/Assets/second-course.png";
-import course3 from "../HomePage/Assets/third-course.png";
+import course1 from "../../Assets/CoursesPageAssets/courses/strategic-leader.png";
+import course2 from "../../Assets/CoursesPageAssets/courses/modern-people-management.jpg";
+import course3 from "../../Assets/CoursesPageAssets/courses/culture-transformation.jpg";
 import openicon from "../HomePage/Assets/open-icon.svg";
 
 import { useWaitlist } from "../../context/WaitListcontext.jsx";
@@ -117,7 +117,9 @@ const CartPage = () => {
             <span>You have {arrayLength} Cart Items</span>
           </div>
           <div className="gradient-button-container ci-btn-container">
-            <button onClick={openWaitlist} className="gradient-button ci-btn">Add to Cart</button>
+            <button onClick={openWaitlist} className="gradient-button ci-btn">
+              Add to Cart
+            </button>
           </div>
         </section>
 
@@ -128,9 +130,11 @@ const CartPage = () => {
             removeItem={removeItem}
             clearCart={clearCart}
           />
-          <CartPayment cartItems={cartItems} />
+          <div className="cartpayment">
+            <CartPayment cartItems={cartItems} />
+          </div>
         </section>
-        
+
         <section className="show-courses">
           <h3>Show Courses</h3>
           <div className="courses">
@@ -159,6 +163,14 @@ const CartPage = () => {
           </div>
         </section>
       </div>
+
+      <button
+        className="back-to-top"
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      >
+        ↑ Back to Top
+      </button>
+
       <Footer />
     </div>
   );

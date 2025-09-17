@@ -9,8 +9,12 @@ import individual from '../HomePage/Assets/individual-counseling.png';
 import mvImage from '../../Assets/overview-image.png';
 import logoBg from '../../Assets/logo-background.svg';
 import arrow from '../../Assets/story-arrow.svg';
-import storyPic from "../HomePage/Assets/left-story-image.jpg";
+import storyPic from "../../Assets/AboutPageAssets/ourstory-pic.png";
 import johnDoe from '../../Assets/john-doe.png';
+import juliusDoe from "../../Assets/AboutPageAssets/julius-doe.png";
+import janetDoe from "../../Assets/AboutPageAssets/janet-doe.png";
+import julietDoe from '../../Assets/AboutPageAssets/juliet-doe.png';
+import joyDoe from '../../Assets/AboutPageAssets/joy-doe.png';
 
 const About = () => {
     
@@ -34,7 +38,7 @@ const About = () => {
   
   const SessionCard = ({ icon, header, body }) => {
     return (
-      <div className="card about-card">
+      <div className="about-card">
         <div className="session-card-img">
           <img src={icon} alt="" />
         </div>
@@ -82,8 +86,8 @@ const About = () => {
   const ValueCard = ({coreValue, valueDesc}) => {
     return (
         <div className="value-card">
-            <h3>{coreValue}</h3>
-            <p>{valueDesc}</p>
+          <h3>{coreValue}</h3>
+          <p>{valueDesc}</p>
         </div>
     )
   }
@@ -95,23 +99,23 @@ const About = () => {
       role: "Strategic Consultant",
     },
     {
-      picture: johnDoe,
-      name: "John Doe",
+      picture: juliusDoe,
+      name: "Julius Doe",
       role: "Strategic Consultant",
     },
     {
-      picture: johnDoe,
-      name: "John Doe",
+      picture: janetDoe,
+      name: "Janet Doe",
       role: "Strategic Consultant",
     },
     {
-      picture: johnDoe,
-      name: "John Doe",
+      picture: julietDoe,
+      name: "Juliet Doe",
       role: "Strategic Consultant",
     },
     {
-      picture: johnDoe,
-      name: "John Doe",
+      picture: joyDoe,
+      name: "Joy Doe",
       role: "Strategic Consultant",
     },
   ];
@@ -216,7 +220,7 @@ const About = () => {
         </section>
         <section className="our-story-section">
           <div className="story-section-left">
-            <div className="left-text">
+            <div className="story-text">
               <h2>Our Story</h2>
               <p>
                 Coreal8 was founded on the belief that personal well-being and
@@ -226,30 +230,22 @@ const About = () => {
                 life's hurdles, and a passion to bridge the gap between
                 individual potential and corporate performance.
               </p>
-              <img src={arrow} alt="" className="arrow-img" />
+              <h4>June 2025</h4>
+              <p>
+                Since our inception in June 2025 we emerge as a comprehensive
+                solution provider, driven by a growing understanding of the
+                holistic needs of our clients. Our journey has been marked by a
+                commitment to innovation and a relentless pursuit of empowering
+                our clients to define and achieve their own versions of success.
+              </p>
             </div>
-            <img src={logoBg} alt="" className='ourstory-bg-logo' />
+            <img src={logoBg} alt="" className="ourstory-bg-logo" />
           </div>
           <div className="story-section-mid">
             <img src={storyPic} alt="" />
           </div>
-          <div className="story-section-right">
-            <img src={logoBg} alt="" className='ourstory-bg-logo' />
-            <div className="right-text">
-              <img src={arrow} alt="" className="right-arrow arrow-img" />
-              <h2>June 2025</h2>
-              <p>
-                Coreal8 was founded on the belief that personal well-being and
-                organizational success are deeply interconnected. Born from The
-                personal journey of its founder, Dr Enobong Ezekiel who
-                recognized the profound impact of tailored support on overcoming
-                life's hurdles, and a passion to bridge the gap between
-                individual potential and corporate performance.
-              </p>
-            </div>
-          </div>
         </section>
-        {/* <section className="our-team-section flex-column">
+        <section className="our-team-section flex-column">
           <div className="our-team-writeup">
             <h3>Our Team</h3>
             <p>
@@ -270,11 +266,19 @@ const About = () => {
               <TeamMember key={index} {...teamMember} />
             ))}
           </div>
-        </section> */}
+        </section>
       </div>
+
+      <button
+        className="back-to-top"
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      >
+        ↑ Back to Top
+      </button>
+
       <Footer />
     </div>
   );
 }
 
-export default About
+export default About;

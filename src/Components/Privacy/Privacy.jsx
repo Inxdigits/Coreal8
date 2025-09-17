@@ -1,133 +1,155 @@
-
+import React, { useState, useEffect } from "react";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
-import "./Privacy.css"
-import React, {useState} from "react"
+import "./Privacy.css";
 
+const Privacy = () => {
+  const [activeSection, setActiveSection] = useState(
+    "1. Information We Collect"
+  );
 
-const Privacy = () =>{
-    const [activeSection, setActiveSection] = useState("Information We Collect")
-    
-    const navigationItems = [
-        {id:1, title:"1. Information We Collect", isActive:true},
-        {id:2, title:"2. How We Use Your Information", isActive:false},
-        {id:3, title:"3. Sharing Your Information", isActive:false},
-        {id:4, title:"4. Your Rights and Choices", isActive: false},
-        {id:5, title:"5. Data Security"},
-        {id:6, title:"6. Changes to this policy", isActive:false},
-        {id:7, title:"7. Contact Us", isActive:false}
-    ];
+  const navigationItems = [
+    { id: 1, title: "1. Information We Collect" },
+    { id: 2, title: "2. How We Use Your Information" },
+    { id: 3, title: "3. Sharing Your Information" },
+    { id: 4, title: "4. Your Rights and Choices" },
+    { id: 5, title: "5. Data Security" },
+    { id: 6, title: "6. Changes to This Policy" },
+    { id: 7, title: "7. Contact Us" },
+  ];
 
-    const contentSections= {
-        "1. Information We Collect": {
-            title: "Information We Collect",
-            content:`We collect information to provide and improve our Services to you. The types of personal information we may collect include:
+  const contentSections = {
+    "1. Information We Collect": {
+      title: "Information We Collect",
+      content: `
+We collect information to provide and improve our Services to you. The types of personal information we may collect include:
 
+•   Personal Identifiable Information (PII): This includes your name, email address, phone number, and mailing address when you register for a course, sign up for a newsletter, or contact us.
+•   Account Information: Your username, password, and other information related to your account.
+•   Payment Information: If you make a purchase, we collect payment details such as credit card numbers and billing addresses. This information is processed by our secure third-party payment processors. We do not store your full payment card details on our servers.
+•   Usage Data: Information about how you use our Services, such as pages visited, time spent on the site, courses enrolled in, and interactions with our content.
+•   Device and Log Information: Information your browser or device automatically sends, including your IP address, browser type, operating system, and unique device identifiers.
+•   User-Generated Content: Any content you create and share on our platform, such as comments, feedback, or forum posts.`,
+    },
+    "2. How We Use Your Information": {
+      title: "How We Use Your Information",
+      content: `
+We use your personal information for purposes such as:
 
-            • Personal Identifiable Information (PII): This includes your name, email address, phone number, and mailing address when you register for a course, sign up for a newsletter, or contact us.              
-            • Account Information: Your username, password, and other information related to your account.
-            • Payment Information: If you make a purchase, we collect payment details such as credit card numbers and billing addresses. This information is processed by our secure third-party payment processors. We do not store your full payment card details on our servers.
-            • Usage Data: Information about how you use our Services, such as pages visited, time spent on the site, courses enrolled in, and interactions with our content. Device and Log Information: Information your browser or device automatically sends, including your IP address, browser type, operating system, and unique device identifiers.
-            • User-Generated Content: Any content you create and share on our platform, such as comments, feedback, or forum posts.`
-        },
-        "2. How We Use Your Information":{
-            title:"How We Use Your Information",
-            content:`We use your personal information for various purposes, including to:
-             • Process your transactions and manage your course enrollments.•	Communicate with you about your account, course updates, and promotional offers (if you have opted in).
-             • Personalize your experience and recommend relevant content.•	Analyze and improve our Services, including our website functionality and course content.
-             • Comply with legal obligations and enforce our Terms of Service.
-             • Ensure the security of our Services and prevent fraud.
-             • Provide, operate, and maintain our Services
-           
-           `
-        },
-        "3. Sharing Your Information":{
-            title:"Sharing Your Information",
-            content: `We do not sell your personal information. We may share your information with third parties in the following limited circumstances:
-            • Service Providers: We work with third-party service providers to assist us in operating our business. These providers may have access to your personal information to perform tasks on our behalf (e.g., payment processing, hosting, analytics).
-            • Legal Requirements: We may disclose your information if required by law or in response to a valid legal request, such as a court order or subpoena.
-            • Business Transfers: In the event of a merger, acquisition, or sale of assets, your personal information may be transferred as part of the transaction. We will notify you of any such change.
-            • With Your Consent: We may share your information with other third parties when you have given us explicit consent to do so.
-`
-        },
-        "4. Your Rights and Choices":{
-            title:"Your Rights and Choices",
-            content:`Depending on your location and applicable law, you may have the following rights regarding your personal information:
-            • Access and Correction: You can request to access the personal information we hold about you and ask for any inaccuracies to be corrected.
-            • Deletion: You can request the deletion of your personal information, subject to certain legal requirements.
-            • Opt-Out: You can opt out of receiving promotional emails from us by following the unsubscribe link in the email. You may not opt out of essential service-related communications.
-`
-        }
-        
-    }
-    const handleNavClick = (title) =>{
-        setActiveSection(title);
-    }
-    return(
-        <>
-           <Navbar/>
-                  <section className=" flex-col items-center justify-center p-20 relative bg-[#80132314] services-header">
-        <header className=" relative mt-[-2.00px] [font-family: 'Montserrat-Bold', sans-serif] font-bold text-[#801323] text-[40px] text-center tracking-[0] leading-[normal] gap-3 flex flex-col">
-          Privacy Policy
+• Processing transactions and managing course enrollments.  
+• Communicating about your account, course updates, and offers (if opted in).  
+• Personalizing your experience and recommending content.  
+• Analyzing and improving Services.  
+• Complying with legal obligations.  
+• Securing Services and preventing fraud.`,
+    },
+    "3. Sharing Your Information": {
+      title: "Sharing Your Information",
+      content: `
+We do not sell your information. We may share it only:
 
-          <p className="last-updated">Last Updated: July 31st, 2025</p>
+• With Service Providers (payment, hosting, analytics).  
+• When legally required (court orders, subpoenas).  
+• In business transfers (mergers, acquisitions).  
+• With your explicit consent.`,
+    },
+    "4. Your Rights and Choices": {
+      title: "Your Rights and Choices",
+      content: `
+Depending on your location, you may have rights such as:
 
-           <p>
-        This Privacy Policy describes how Coreal8 Limited ("Coreal8," "we," "us," or "our") collects, uses, and shares your personal information when you use our website, services, courses, and other offerings (collectively, the "Services").
-        </p>
+• Access and correction of personal information.  
+• Requesting deletion (with some legal exceptions).  
+• Opting out of promotional emails via unsubscribe links.`,
+    },
+    "5. Data Security": {
+      title: "Data Security",
+      content: `
+We use administrative, technical, and physical safeguards to protect your information. However, no method of transmission over the Internet is 100% secure.`,
+    },
+    "6. Changes to This Policy": {
+      title: "Changes to This Policy",
+      content: `
+We may update this Privacy Policy from time to time. Significant changes will be communicated via our website or direct notice.`,
+    },
+    "7. Contact Us": {
+      title: "Contact Us",
+      content: `
+If you have any questions about this Privacy Policy, contact us at:
+
+📧 support@coreal8.com  
+📍 Lagos, Nigeria`,
+    },
+  };
+
+  // scroll to top when section changes
+//   useEffect(() => {
+//     window.scrollTo({ top: 0, behavior: "smooth" });
+//   }, [activeSection]);
+
+  return (
+    <>
+      <Navbar />
+
+      <section className="privacy-header">
+        <header className="privacy-header-inner">
+          <h1>Privacy Policy</h1>
+          <p>
+            This Privacy Policy describes how Coreal8 Limited ("Coreal8," "we,"
+            "us," or "our") collects, uses, and shares your personal information
+            when you use our Services.
+          </p>
+          <p className="last-updated">Last Updated: August 8th, 2025</p>
         </header>
-        </section>
+      </section>
 
+      <section className="privacy-content">
+        <aside
+          className="privacy-nav"
+          role="navigation"
+          aria-label="Privacy policy sections"
+        >
+          <ul>
+            {navigationItems.map((item) => (
+              <li
+                key={item.id}
+                className={item.title === activeSection ? "active" : ""}
+              >
+                <button
+                  onClick={() => setActiveSection(item.title)}
+                  aria-current={
+                    item.title === activeSection ? "page" : undefined
+                  }
+                >
+                  {item.title}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </aside>
 
-        <section className="flex flex-row policy justify-center">
+        <article className="privacy-info" aria-labelledby="content-heading">
+          <h2 id="content-heading">{contentSections[activeSection]?.title}</h2>
+          <div className="privacy-text">
+            {contentSections[activeSection]?.content
+              .split("\n")
+              .map((para, idx) => (
+                <p key={idx}>{para.trim()}</p>
+              ))}
+          </div>
+        </article>
+      </section>
 
-           <nav className="inline-flex flex-col items-start gap-[50px] rounded"
-           role="navigation"
-           aria-label="Privacy policy sections">
-            <ul className="inline-flex flex-col items-start gap-2.5">
-                {navigationItems.map((item)=>(
-                    <li key={item.id}
-                    className={`${item.id ===3 || item.id===6 || item.id ===7 ? "inline-flex" : "flex"}   items-center gap-2.5 relative w-full p-2.5  rounded-2xl border border-solid ${item.title === activeSection? "border-[#801323]" : "border-[#e5e5ea]"
-                    }`}>
-                        <buttton
-                        onClick={()=> handleNavClick(item.title)}
-                        className= {`tab relative w-fit text-[#0d0c12] `}
-                        aria-current ={item.title === activeSection? "page" : undefined}
-                        >
-                            {item.title}
+      <button
+        className="back-to-top"
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      >
+        ↑ Back to Top
+      </button>
 
-                        </buttton>
+      <Footer />
+    </>
+  );
+};
 
-                    </li>
-                ))}
-
-            </ul>
-
-
-           </nav>
-           <section className="flex info flex-col items-start gap-4 relative rounded-2xl"
-           aria-labelledby="content-heaading">
-            <h2 id="content-heading" className="w-fit relative font-bold heading">
-                {contentSections[activeSection]?.title || activeSection}
-            </h2>
-
-            <div className="relative self-stretch">
-                {contentSections[activeSection]?.content.split("\n").map((paragraph, index)=>(
-                    <p key={index} className={index>0 ? "mt-4" : ""}>
-                        {paragraph}
-                    </p>
-                ))
-                }
-
-            </div>
-
-           </section>
-        </section>
-      
-        <Footer/>
-        
-        </>
-     
-    )
-}
 export default Privacy;

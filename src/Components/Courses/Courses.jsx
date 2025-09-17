@@ -12,8 +12,11 @@ import janetdoe from "../../Assets/CoursesPageAssets/janetdoe.png";
 import julietdoe from "../../Assets/CoursesPageAssets/julietdoe.png";
 import juliusdoe from "../../Assets/CoursesPageAssets/juliusdoe.png";
 import coImage from "../../Assets/Frame179.png";
+import { useWaitlist } from '../../context/WaitListcontext.jsx';
 
 const Courses = () => {
+  const { openWaitlist } = useWaitlist();
+
   const navigate = useNavigate();
 
   const handleNavigate = () => {
@@ -35,9 +38,16 @@ const Courses = () => {
             </span>
           </div>
           <div className="co-writeup-buttons">
-            <button className="dark-bg-btn">Start a Course</button>
-            <div className="gradient-button-container learn-more">
-              <button onClick={handleNavigate} className="gradient-button lm-button courses-login-btn">Login</button>
+            <button onClick={openWaitlist} className="dark-bg-btn">
+              Start a Course
+            </button>
+            <div className="gradient-button-container learn-more courses-login-btn-container">
+              <button
+                onClick={handleNavigate}
+                className="gradient-button lm-button courses-login-btn"
+              >
+                Login
+              </button>
             </div>
           </div>
         </div>
@@ -93,6 +103,14 @@ const Courses = () => {
         <div className="icon-3"></div>
         <div className="icon-4"></div>
       </section>
+
+      <button
+        className="back-to-top"
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      >
+        ↑ Back to Top
+      </button>
+      
       <Footer />
     </div>
   );

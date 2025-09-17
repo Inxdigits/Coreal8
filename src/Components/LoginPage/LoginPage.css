@@ -3,11 +3,30 @@
 }
 
 .login-modal-content {
-    width: 40%;
+    /* width: 40%; */
     /* overflow-y: scroll; */
     padding: 30px 50px;
     text-align: center;
     gap: 10px;
+}
+
+@media screen and (max-width: 680px) {
+    .login-modal-content {
+        padding: 30px;
+    }
+}
+
+@media screen and (max-width: 560px) {
+    .login-modal-content {
+        width: 90%;
+        padding: 30px;
+    }
+}
+
+@media screen and (max-width: 410px) {
+    .login-modal-content {
+        padding: 20px;
+    }
 }
 
 .close-btn {
@@ -51,10 +70,17 @@
 }
 
 .google-login {
+    width: 100%;
     padding: 5px 8px;
     border-radius: 10px;
     background: rgba(128, 19, 35, 0.05);
     font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    text-wrap: nowrap;
+    gap: 5px;
 }
 
 .separatOR{

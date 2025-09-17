@@ -2,12 +2,8 @@
     background-color: rgba(128, 19, 35, 0.05);
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    align-items: center;
+    align-items: end;
     gap: 50px;
-}
-
-.courses-login-button-container {
-   width: fit-content;
 }
 
 .courses-login-btn {
@@ -44,7 +40,7 @@
     display: flex;
     align-items: center;
     justify-content: start;
-    gap: 20px;
+    gap: 12px;
 }
 
 .co-right-side img{
@@ -88,7 +84,7 @@
     
     .co-writeup-buttons {
         justify-content: center;
-        gap: 20px;
+        gap: 12px;
     }
 
     .co-writeup-text{
@@ -107,7 +103,10 @@
     } */
 }
 
-@media screen and (max-width: 930px) {
+@media screen and (max-width: 550px) {
+    .courses-login-btn-container {
+        margin: 0 !important;
+    }
 }
 
 @media screen and (max-width: 475px) {
@@ -138,6 +137,7 @@
     background: rgba(128, 19, 35, 0.10);
     padding: 80px;
     text-align: center;
+    gap: 24px;
 }
 
 .ct-intro h1 {
@@ -158,6 +158,38 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+}
+
+@media screen and (max-width: 830px) {
+    .courses-testimonial {
+        padding: 80px 40px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .ct-intro h1 {
+        font-size: 24px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .courses-testimonial {
+        padding: 40px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .courses-testimonial {
+        padding: 40px 20px;
+    }
+
+    .ct-intro h1 {
+        font-size: 20px;
+    }
+
+    .ct-intro p {
+        font-size: 14px;
+    }
 }
 
 /* FAQs Section */
@@ -261,7 +293,7 @@
   height: 100px;
   aspect-ratio: 1/1;
   position: absolute;
-  left: 400px;
+  right: 20px;
   bottom: 52px;
   rotate: 180deg;
   background-size: contain;

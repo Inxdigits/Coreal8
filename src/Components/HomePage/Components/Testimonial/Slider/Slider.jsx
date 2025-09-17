@@ -5,6 +5,8 @@ import quoteIcon from "../../../Assets/icon-quote.svg";
 import "swiper/css";
 import "swiper/css/navigation";
 import "./Slider.css";
+import right from "./right-arrow.svg";
+import left from "./left-arrow.svg";
 
 const testimonials = [
   {

@@ -31,11 +31,25 @@
     color: rgba(13, 12, 18, 1);
 }
 
+.cartpayment {
+    background: rgba(128, 19, 35, 0.05);
+}
+
 @media screen and (max-width: 980px) {
     .cartmain {
         grid-template-columns: repeat(1, 1fr);
     }
     .show-courses {
         padding: 80px 40px;
+    }
+    .cart-intro-text h2 {
+        font-size: 16px;
+    }
+    .cart-intro-text span {
+        font-size: 12px;
+    }
+
+    .ci-btn {
+        font-size: 12px;
     }
 }

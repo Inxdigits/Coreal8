@@ -4,10 +4,11 @@ import "./CoursesMain.css";
 
 const sortOptions = [
   "All", // ✅ Added here
-  "Leadership & Influence",
-  "Communication",
-  "Personal Growth",
-  "Team Building",
+  "Strategy & Leadership",
+  "People Management & Culture",
+  "Customer-Centric Business",
+  "Innovation & Growth",
+  "Performance & Analytics"
 ];
 
 export const SearchSection = ({
@@ -30,18 +31,18 @@ export const SearchSection = ({
 
   return (
     <nav
-      className="searchcontainer flex justify-between items-center gap-5 w-full relative"
+      className="searchcontainer"
       role="navigation"
       aria-label="Content filters and sorting"
     >
       {/* Search Form */}
       <form
         onSubmit={handleSubmit}
-        className="searchform flex gap-3 items-center"
+        className="searchform"
         role="search"
         aria-label="Search courses"
       >
-        <div className="searchbar flex w-3/5 items-center border border-[#0d0c121a] rounded-2xl px-2">
+        <div className="searchbar flex items-center border border-[#0d0c121a] rounded-2xl px-2">
           <img
             src={SearchIcon}
             alt=""
@@ -70,12 +71,12 @@ export const SearchSection = ({
       </form>
 
       {/* Sort Dropdown */}
-      <div className="flex gap-4 items-center">
+      <div className="nav-filter">
         <label className="text-base text-[#0d0c12]">Filter by:</label>
         <div className="relative">
           <button
             onClick={() => setIsDropdownOpen((prev) => !prev)}
-            className="filter-dropdown flex items-center gap-2 px-5 py-2.5 rounded-lg border bg-white hover:opacity-80 transition"
+            className="filter-dropdown px-5 py-2.5 rounded-lg border bg-white hover:opacity-80 transition"
             aria-expanded={isDropDownOpen}
             aria-haspopup="listbox"
             type="button"

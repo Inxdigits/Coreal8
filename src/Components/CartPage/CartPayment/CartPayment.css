@@ -7,10 +7,9 @@
     gap: 32px;
     flex-shrink: 0;
     align-self: stretch;
-    background: rgba(128, 19, 35, 0.05);
 }
 
-#order-summary-title {
+.cartpayment-container h1 {
     color: #0D0C12;
     font-family: "Schibsted Grotesk";
     font-size: 20px;
@@ -69,5 +68,44 @@
 @media screen and (max-width: 1190px) {
     .cartpayment-container {
         padding: 80px 40px;
+    }
+
+    .hidden-fees {
+        margin: 0 auto;
+    }
+}
+
+@media screen and (max-width: 980px) {
+    .cartpayment-container {
+        width: 60%;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .cartpayment-container {    
+        width: 80%;
+        padding: 40px;
+    }
+
+    .cart-intro {
+        padding: 40px;
+    }
+
+
+    .hidden-fees p {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .ci-btn-container {
+        margin: 0;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .cartpayment-container {
+        width: 100%;
     }
 }

@@ -1,147 +1,158 @@
+/* Dark overlay background */
+.overlay-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 1s ease-in-out;
+}
 
-.dark-bg-btn{
-    padding: 20px 32px;
-    border-radius: 10px;
-    background-color: rgba(128, 19, 35, 1);
-    outline: none;
-    border: none;
-    box-shadow: 0px 0px 5px 0px rgba(255, 219, 88, 1) inset;
-    color: white;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 100%;
-    letter-spacing: 0%;
-    display: flex;
-    gap: 12px;
-    align-items: center;
-    transition: all 0.2s ease-in-out;
-    position: relative;
+/* Show state (when dropdown is open) */
+.overlay-bg.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Button */
+.dark-bg-btn {
+  padding: 20px 32px;
+  border-radius: 10px;
+  background-color: rgba(128, 19, 35, 1);
+  outline: none;
+  border: none;
+  box-shadow: 0px 0px 5px 0px rgba(255, 219, 88, 1) inset;
+  color: white;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 100%;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+  position: relative;
+  z-index: 20; /* above overlay */
 }
 
 .dark-bg-btn:hover {
-    box-shadow: 0px 0px 20px 0px rgba(255, 219, 88, 1) inset;
+  box-shadow: 0px 0px 20px 0px rgba(255, 219, 88, 1) inset;
 }
 
+/* Dropdown menu */
 .overview-gtstd-menu {
-    position: absolute;
-    /* top: 58%; */
-    left: 5%;
-    width: fit-content;
-    display: flex;
-    /* justify-content: space-between; */
-    align-items: center;
-    gap: 16px;
-    padding: 50px;
-    border-radius: 10px;
-    background-color: #ffffff;
-    box-shadow: 0px 0px 30px 0px #00000026;
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(-10px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
+  position: absolute;
+  top: 35%;
+  left: 5%;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 50px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 30px 0px #00000026;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 20; /* above overlay */
 }
 
 .overview-gtstd-menu.dropdown-show {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
 }
-  
+
 .overview-gtstd-menu.dropdown-hide {
-    display: none;
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(-10px);
+  display: none;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
 }
 
 .gtstd-option {
-    border: 1px solid #80132333;
-    background-color: #8013230D;
-    border-radius: 10px;
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
+  border: 1px solid #80132333;
+  background-color: #8013230d;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
 }
-/* 
-.displaynone {
-    display: none;
-} */
 
 .dropdown-icon {
-    margin-left: 8px;
-    transition: transform 0.3s ease;
-}
-  
-.dropdown-icon.rotate {
-    transform: rotate(180deg);
+  margin-left: 8px;
+  transition: transform 0.3s ease;
 }
 
-@media screen and (max-width: 1200px)  {
-    .gtstd-btn {
-        padding: 20px;
-    }
+.dropdown-icon.rotate {
+  transform: rotate(180deg);
+}
+
+/* Responsiveness */
+@media screen and (max-width: 1200px) {
+  .gtstd-btn {
+    padding: 20px;
+  }
 }
 
 @media screen and (max-width: 930px) {
-    .overview-gtstd-menu {
-        left: 35%;
-        display: flex;
-        flex-direction: column;
-        justify-content: start;
-        align-items: start;
-        width: fit-content;
-        padding: 30px;
-        gap: 16px;
-    }
-    
-    .overview-gtstd-menu.dropdown-show {
-        display: block;
-    }
-    
-    /* .gtstd-option {
-        padding: 5px;
-    } */
+  .overview-gtstd-menu {
+    left: 35%;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    padding: 30px;
+    gap: 16px;
+  }
+
+  .overview-gtstd-menu.dropdown-show {
+    display: block;
+  }
 }
 
 @media screen and (max-width: 820px) {
-    .overview-gtstd-menu {
-        left: 32.5%;
-    }
+  .overview-gtstd-menu {
+    left: 32.5%;
+  }
 }
 
 @media screen and (max-width: 730px) {
-    .overview-gtstd-menu {
-        left: 30%;
-    }
+  .overview-gtstd-menu {
+    left: 30%;
+  }
 }
 
 @media screen and (max-width: 540px) {
-    .overview-gtstd-menu {
-        left: 23.5%;
-    }
+  .overview-gtstd-menu {
+    left: 23.5%;
+  }
 }
 
 @media screen and (max-width: 460px) {
-    .overview-gtstd-menu {
-        left: 20%;
-    }
+  .overview-gtstd-menu {
+    left: 20%;
+  }
 }
 
 @media screen and (max-width: 400px) {
-    .gtstd-btn {
-        padding: 20px;
-    }
+  .gtstd-btn {
+    padding: 20px;
+  }
 
-    .overview-gtstd-menu {
-        left: 15%;
-        /* margin: 0 auto; */
-    }
+  .overview-gtstd-menu {
+    left: 15%;
+  }
 }
 
 @media screen and (max-width: 325px) {
-    .overview-gtstd-menu {
-        left: 10%;
-    }
+  .overview-gtstd-menu {
+    left: 10%;
+  }
 }
-

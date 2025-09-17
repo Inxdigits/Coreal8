@@ -23,21 +23,18 @@
     font-weight: 400;
     font-size: 16px;
     opacity: 0.9;
-}
-
-@media screen and (max-width: 1024px) {
-    .counseling-overview-writeup {
-        width: 80%;
-    }
+    width: 90%;
+    margin: 0 auto;
 }
 
 @media screen and (max-width: 900px){
     .counseling-overview-writeup h1 {
-        font-size: 32px;
+        font-size: 28px;
     }
 
     .counseling-overview-writeup p {
-        font-size: 14px;
+        font-size: 16px;
+        width: 90%;
     }
 }
 
@@ -49,8 +46,9 @@
     .counseling-overview-writeup h1 {
         font-size: 24px;
     }
-
-    .counseling-overview-writeup {
+    
+    .counseling-overview-writeup p {
+        font-size: 14px;
         width: 100%;
     }
 }
@@ -186,6 +184,7 @@
     font-size: 16px;
     font-family: "Schibsted Grotesk", sans-serif;
     font-weight: 400;
+    line-height: 24px;
 }
 
 @media screen and (max-width: 1200px) {
@@ -261,14 +260,17 @@
     gap: 50px;
 }
 
-.booking-writeup-heading {
+/* .booking-writeup-heading {
     margin-bottom: 20px;
-}
+} */
 
 .booking-writeup-heading h2 {
-    font-family: "Schibsted Grotesk", sans-serif;
-    font-weight: 600;
+    color: #FFF;
+    font-family: "Schibsted Grotesk";
     font-size: 32px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
 } 
 
 .booking-writeup-heading p {
@@ -281,6 +283,16 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
+}
+
+.booking-writeup-list li {
+    display: flex;
+    gap: 12px;
+    align-items: start;
+}
+
+.booking-writeup-list li svg {
+    margin-top: 5px;
 }
 
 .booking-writeup-list li h3 {
@@ -300,7 +312,8 @@
 .booking-button {
     box-shadow: 0px 0px 5px 0px rgba(255, 219, 88, 1) inset;
     width: fit-content;
-    margin: 0 auto;
+    /* margin: 0 auto; */
+    margin-top: 24px;
 }
 
 .booking-button button {
@@ -309,7 +322,8 @@
 }
 
 .booking-button button:hover {
-    background-color: rgba(128, 19, 35, 1);
+    background-color: rgba(128, 19, 35, 0.8);
+    color: white;
 }
 
 .booking-image,
@@ -350,7 +364,7 @@
 
 .copo-payment-plans {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 24px;
 }
 
@@ -360,6 +374,12 @@
     border-radius: 10px;
     text-align: left;
     gap: 12px;
+    box-shadow: none !important;
+    transition: all 0.3s ease-in-out;
+}
+
+.plan-type:hover {
+    box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.10) !important;
 }
 
 .plan-type h3 {
@@ -395,7 +415,7 @@
 }
 
 .co-payment-info {
-    max-width: 40%;
+    width: 40%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -413,13 +433,13 @@
 }
 
 .info-icon {
-    max-width: fit-content;
+    /* max-width: fit-content; */
     margin: 0 auto;
     cursor: pointer;
-    padding: 5px 15px;
+    /* padding: 5px 15px;
     border-radius: 50%;
     color: white;
-    background-color: black;
+    background-color: black; */
 }
 
 .line-separator {
@@ -441,4 +461,29 @@
         grid-template-columns: repeat(1, 1fr);
         gap: 24px;
     }
+
+    .co-payment-info {
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .co-payment-options {
+        padding: 40px 20px;
+    }
+
+    .co-payment-info {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 430px) {
+    .co-payment-info {
+        width: 100%;
+    }
+}
+
+/* COUNSELLING FAQS */
+.counselling-faqs {
+    background: rgba(128, 19, 35, 0.05);
 }

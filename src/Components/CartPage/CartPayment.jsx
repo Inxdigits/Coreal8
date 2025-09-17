@@ -37,7 +37,7 @@ const CartPayment = ({ cartItems }) => {
         <span>Discount:</span>
         <span>{discount}</span>
       </div>
-      <hr />
+      {/* <hr /> */}
 
       <div className="flex-between-div total-amount">
         <span>Total:</span>

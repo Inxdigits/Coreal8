@@ -56,6 +56,7 @@
   flex-direction: column;
   /* justify-content: space-between; */
   align-items: flex-start;
+  gap: 32px;
   flex: 1 0 0;
   border-radius: 10px;
   border-top: 1px solid #801323;
@@ -74,13 +75,13 @@
 .card-main .card-text {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 12px !important;
 }
 
 .card-icon {
   /* width: 30px; */
   height: auto;
-  margin-bottom: 15px;
+  /* margin-bottom: 15px; */
 }
 
 ul#liststyledisc{
@@ -89,23 +90,23 @@ ul#liststyledisc{
   padding-left: 1rem;
 }
 
-
 .card-title {
-  font-size: 20px;
-  font-weight: 650;
   color: #0D0C12;
-  margin: 0;
-  /* margin-bottom: 10px; */
-  font-family: 'Montserrat', sans-serif;
-  font-style: semi-bold;
+  font-family: "Schibsted Grotesk";
+  font-size: 20px !important;
+  font-style: normal;
+  font-weight: 600 !important;
+  line-height: normal;
+  margin: 0 !important;
 }
 
 .card-subtitle {
-  font-size: 16px;
-  font-weight: 400;
   color: #0D0C12;
-  /* margin-bottom: 5px; */
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Schibsted Grotesk";
+  font-size: 16px !important;
+  font-style: normal;
+  font-weight: 400 !important;
+  line-height: normal;
 }
 
 .card-detail {
@@ -165,6 +166,28 @@ ul#liststyledisc{
   /* gap: 24px; */
 }
 
+.contact-form .form-title {
+  color: #FFF;
+  font-family: Montserrat;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin: 0;
+}
+
+.contact-form .form-subtitle {
+  width: 65%;
+  margin: 0 auto;
+  color: #FFF;
+  text-align: center;
+  font-family: "Schibsted Grotesk";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
 /* .form-input, .form-select {
   display: flex;
   height: 62px;
@@ -215,23 +238,6 @@ ul#liststyledisc{
   font-style: Regular;
   font-size: 16px;
   color: #FFFFFF;
-}
-
-.form-title {
-  font-size: 24px;
-  font-weight: 700;
-  color: #FFFFFF;
-  font-family: 'Montserrat', sans-serif;
-  /* margin-bottom: 8px; */
-}
-
-.form-subtitle {
-  font-size: 16px;
-  font-weight: 400;  
-  color: #FFFFFF;
-  font-style: Regular;
-  margin-top: 5px;
-  /* margin-bottom: 50px; */
 }
 
 .form-input {
@@ -472,8 +478,8 @@ ul#liststyledisc{
     text-align: center;
   }
   
-  .contact-form form {
-    width: 90%;
+  .contact-form form, .form-subtitle {
+    width: 90% !important;
     max-width: 90%;
   }
 }
@@ -491,12 +497,12 @@ ul#liststyledisc{
     gap: 24px;
   }
 
-  .card-title {
-    font-size: 16px;
+  .card-title, .form-subtitle {
+    font-size: 16px !important;
   }
 
-  .card-subtitle, .card-detail {
-    font-size: 14px;
+  .card-subtitle, .card-detail, .form-subtitle {
+    font-size: 14px !important;
   }
 
   .contact-card, .card-text {
@@ -523,6 +529,11 @@ ul#liststyledisc{
     justify-content: center;
     align-items: center;
   }
+
+  .contact-form {
+    gap: 12px;
+    padding: 40px 0;
+  }
   
   .card-title {
     font-size: 14px;
@@ -536,5 +547,13 @@ ul#liststyledisc{
 @media screen and (max-width: 525px) {
   .contact-content ,.contact-cards, .contact-form-container {
     padding: 40px 20px;
+  }
+
+  .form-title {
+    font-size: 14px !important;
+  }
+
+  .form-subtitle {
+    font-size: 12px !important;
   }
 }

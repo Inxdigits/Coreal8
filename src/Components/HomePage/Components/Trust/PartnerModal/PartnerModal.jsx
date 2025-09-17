@@ -86,18 +86,13 @@ const PartnerModal = ({ isOpen, onClose, onSubmitSuccess }) => {
       aria-labelledby="partnerModalTitle"
       onClick={onClose}
     >
+      <button id="partner-close-btn" onClick={onClose} aria-label="Close modal">
+        ✕
+      </button>
       <div
         className="modal-content fade-in"
         onClick={(e) => e.stopPropagation()}
       >
-        <button
-          id="partner-close-btn"
-          onClick={onClose}
-          aria-label="Close modal"
-        >
-          ✕
-        </button>
-
         <div className="modal-intro-text">
           <h2 id="partnerModalTitle">Partner with Coreal8</h2>
           <p>

@@ -89,7 +89,7 @@ const Contact = () => {
                     </li>
                   </ul>
                 </div>
-                <p className="card-detail">099200399012</p>
+                <p className="card-detail">08023166116</p>
               </div>
             </div>
             <div className="contact-card">
@@ -99,7 +99,7 @@ const Contact = () => {
                   <h3 className="card-title">Email Us</h3>
                   <p className="card-subtitle">Send us an email</p>
                 </div>
-                <p className="card-detail">info@coreal8.com</p>
+                <p className="card-detail">info@coreal8ng.com</p>
               </div>
             </div>
             <div className="contact-card">
@@ -110,7 +110,7 @@ const Contact = () => {
                   <p className="card-subtitle">Chat us on WhatsApp</p>
                 </div>
                 <div className="bottom-card-link">
-                  <p className="card-detail">099200399012</p>
+                  <p className="card-detail">09086999910</p>
                   <div className="card-socials">
                     <img src={ig} alt="" />
                     <img src={linkedin} alt="" />
@@ -124,10 +124,11 @@ const Contact = () => {
             <div className="contact-form">
               <h2 className="form-title">Send a Message</h2>
               <h4 className="form-subtitle">
-                Vorem ipsum dolor sit amet, consectetur adipiscing elit.
+                We respond to all inquiries within 24–48 business hours. If your
+                matter is urgent, feel free to call or send a direct message.
               </h4>
               <form onSubmit={handleSubmit} className="">
-                <label for="" className="form-label">
+                <label htmlFor="" className="form-label">
                   Full Name
                 </label>
                 <input
@@ -138,7 +139,7 @@ const Contact = () => {
                   value={formData.fullName}
                   onChange={handleChange}
                 />
-                <label for="" className="form-label">
+                <label htmlFor="" className="form-label">
                   Email Address
                 </label>
                 <input
@@ -149,7 +150,7 @@ const Contact = () => {
                   value={formData.email}
                   onChange={handleChange}
                 />
-                <label for="" className="form-label">
+                <label htmlFor="" className="form-label">
                   Subject
                 </label>
                 <select
@@ -165,7 +166,7 @@ const Contact = () => {
                   <option value="support">Support</option>
                   <option value="feedback">Feedback</option>
                 </select>
-                <label for="" className="form-label">
+                <label htmlFor="" className="form-label">
                   Message
                 </label>
                 <textarea
@@ -197,10 +198,10 @@ const Contact = () => {
                 )}
               </form>
 
-              <p style={{color: "white", width: "70%", textAlign: "center"}}>
+              {/* <p style={{color: "white", width: "70%", textAlign: "center"}}>
                 We respond to all inquiries within 24–48 business hours. If your
                 matter is urgent, feel free to call or send a direct message.
-              </p>
+              </p> */}
 
               {/* Decorative Icons */}
               <div className="icon3 w-8 h-8 bg-blue-200 rounded-full absolute top-0 left-0 opacity-50"></div>

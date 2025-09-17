@@ -8,9 +8,25 @@
     gap: 32px;
 }
 
-.trust-container h2 {
-    font-family: "Schibsted Grotesk", sans-serif;
-    font-size: 20px;
+.partner-writeup h1 {
+    color: #FFF;
+    font-family: "Schibsted Grotesk";
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.partner-writeup p {
+    color: #FFF;
+    text-align: center;
+    font-family: "Schibsted Grotesk";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    width: 60%;
+    margin: 0 auto;
 }
 
 .partners {
@@ -20,7 +36,7 @@
     gap: 12px;
 }
 
-.card {
+.partners .card {
     background-color: #F2F2F20D;
     color: white;
     padding: 20px 10px;
@@ -28,7 +44,13 @@
     display: flex;
     flex-direction: column;
     gap: 24px;
+    transition: all 0.3s ease-in-out;
+    border: none !important;
 }
+
+.partners .card:hover {
+    box-shadow: 0px 0px 30px 0px #00000026;
+} 
 
 .partner-card-text h2 {
     font-family: "Schibsted Grotesk", sans-serif;
@@ -68,7 +90,7 @@
 
 @media screen and (max-width: 768px) {
     .trust-container {
-        padding: 40px 40px;
+        padding: 40px;
     }
 
     .partners {
@@ -79,6 +101,15 @@
     .card:last-of-type {
         grid-column: 1 / span -1;
         justify-self: center;
+    }
+
+    .partner-writeup h1 {
+        font-size: 16px !important;
+    }
+
+    .partner-writeup p {
+        width: 100%;
+        font-size: 14px !important;
     }
 }
 

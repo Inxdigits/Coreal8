@@ -48,19 +48,15 @@ const Faqs = () => {
 
     return (
       <div className="faq-card">
-        <div className="faq-text">
+        <div onClick={() => handleClick(id)} className="faq-text">
           <h3>{question}</h3>
-          {isOpen && (
-            <p className="faq-answer">
-              {answer}
-            </p>
-          )}
+          {isOpen && <p className="faq-answer">{answer}</p>}
         </div>
         <button className="dropdown-circle" onClick={() => handleClick(id)}>
           <img
             src={isOpen ? minuscircle : pluscircle}
             alt={`Toggle ${question}`}
-            className='plusorminus'
+            className="plusorminus"
           />
         </button>
       </div>

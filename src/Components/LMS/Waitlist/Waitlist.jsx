@@ -58,16 +58,15 @@ const WaitlistModal = () => {
     <div className="waitlist" role="dialog" aria-modal="true">
       {!success ? (
         <div className="waitlist-container">
+          <button
+            className="waitlist-close-btn"
+            onClick={handleClose}
+            aria-label="Close waitlist modal"
+            disabled={loading}
+          >
+            ✕
+          </button>
           <div className="waitlist-form">
-            <button
-              className="waitlist-close-btn"
-              onClick={handleClose}
-              aria-label="Close waitlist modal"
-              disabled={loading}
-            >
-              ✕
-            </button>
-
             <div className="waitlist-form-content">
               <img src={logo} alt="Coreal8 logo" className="waitlist-logo" />
 

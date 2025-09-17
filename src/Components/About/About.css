@@ -97,7 +97,7 @@
 }
 
 .expertise-text {
-    width: 57%;
+    text-align: center;
 }
 
 .expertise-text h2 {
@@ -109,10 +109,12 @@
 }
 
 .expertise-text p {
+    width: 60%;
+    margin: 0 auto;
     font-family: "Schibsted Grotesk";
     font-weight: 400;
     font-size: 16px;
-    line-height: 100%;
+    line-height: 24px;
     color: rgba(13, 12, 18, 0.7);
 }
 
@@ -125,7 +127,22 @@
 } */
 
 .about-card {
-    border: 1px solid rgba(13, 12, 18, 0.1);
+    border-radius: 10px;
+    border: 1px solid rgba(13, 12, 18, 0.10) !important;
+    background: #FFF;
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    padding: 50px 20px;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    flex: 1 0 0;
+    text-align: center;
+/* align-self: stretch; */
+}
+
+.about-card:hover {
+    box-shadow: 0px 0px 30px 0px #00000026;
 }
 
 .about-card-text h2 {
@@ -140,7 +157,7 @@
     font-family: "Schibsted Grotesk";
     font-weight: 400;
     font-size: 16px;
-    line-height: 100%;
+    line-height: 24px;
 }
 
 @media screen and (max-width: 1024px) {
@@ -200,8 +217,21 @@
 }
 
 .mv-writeup h3 {
-    margin-bottom: 8px;
-    font-size: 20px;
+    color: #801323;
+    font-family: "Schibsted Grotesk";
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.mv-writeup p {
+    color: #0D0C12;
+    font-family: "Schibsted Grotesk";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 150% */
 }
 
 .mv-image img {
@@ -249,7 +279,22 @@
 }
 
 .cv-writeup h2 {
-    margin-bottom: 12px;
+    color: #0D0C12;
+    font-family: "Schibsted Grotesk";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.cv-writeup p {
+    color: #0D0C12;
+    text-align: center;
+    font-family: "Schibsted Grotesk";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
 
 .values {
@@ -258,24 +303,34 @@
 }
 
 .value-card {
+    display: flex;
     padding: 50px 20px;
-    background-color: rgba(128, 19, 35, 0.05);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    border-radius: 5px;
+    background: rgba(128, 19, 35, 0.05);
 }
 
 .value-card h3 {
-    margin-bottom: 12px;
-    font-family: "Schibsted Grotesk", sans-serif;
+    color: #0D0C12;
+    text-align: center;
+    font-family: "Schibsted Grotesk";
+    font-size: 16px;
+    font-style: normal;
     font-weight: 600;
-    font-size: 18px;
-    line-height: 100%;
+    line-height: normal;
 }
 
 .value-card p {
-    /* margin-bottom: 12px; */
-    font-family: "Schibsted Grotesk", sans-serif;
-    font-weight: 400;
+    color: #0D0C12;
+    text-align: center;
+    font-family: "Open Sans";
     font-size: 14px;
-    line-height: 100%;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
 }
 
 @media screen and (max-width: 768px) {
@@ -318,29 +373,56 @@
     background-color: rgb(128,19, 35, 1);
     color: white;
     display: grid;
-    grid-template-columns: 28% 40% 28%;
+    grid-template-columns: 35% 65%;
     gap: 32px;
     /* justify-content: space-between; */
 }
 
-.story-section-mid img {
+/* .story-section-mid img {
     width: 100%;
-}
+} */
 
-.story-section-left, 
-.story-section-right {
+.story-section-left, .story-text {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    text-align: left;
 }
 
-.right-arrow {
-    rotate: 180deg;
+.story-text {
+    gap: 12px;
 }
 
-.arrow-img {
-    margin: 50px 0;
-    width: 100%;
+.story-text h2 {
+    margin-right: auto;
+    text-align: left;
+    color: #FFF;
+    font-family: "Schibsted Grotesk";
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.story-text h4 {
+    margin-right: auto;
+    text-align: left;
+    color: #FFF;
+    font-family: "Schibsted Grotesk";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.story-text p {
+    margin-right: auto;
+    color: #FFF;
+    font-family: "Schibsted Grotesk";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
 }
 
 @media screen and (max-width: 990px) {
@@ -348,12 +430,6 @@
         grid-template-columns: repeat(1, 1fr);
         padding: 40px;
         text-align: center;
-    }
-
-    .arrow-img,
-    .ourstory-bg-logo {
-        width: 50%;
-        margin: 50px auto;
     }
 }
 
@@ -371,7 +447,6 @@
 }
 
 .our-team-writeup {
-    max-width: 62%;
     margin: 0 auto;
 }
 
@@ -383,6 +458,8 @@
 }
 
 .our-team-writeup p {
+    width: 62%;
+    margin: 0 auto;
     font-family: "Schibsted Grotesk", sans-serif;
     font-weight: 400;
     font-size: 16px;
@@ -463,6 +540,7 @@
 
     .our-team-writeup p {
         font-size: 14px;
+        width: 100%;
     }
 
     .team-members {

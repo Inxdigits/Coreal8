@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 import openicon from "../../Assets/open-icon.svg";
 import { useWaitlist } from "../../../../context/WaitListcontext.jsx";
 
-import course1 from "../../Assets/first-course.png";
-import course2 from "../../Assets/second-course.png";
-import course3 from "../../Assets/third-course.png";
+import course1 from "../../../../Assets/CoursesPageAssets/courses/strategic-leader.png";
+import course2 from "../../../../Assets/CoursesPageAssets/courses/modern-people-management.jpg";
+import course3 from "../../../../Assets/CoursesPageAssets/courses/culture-transformation.jpg";
 
 const Courses = () => {
   const { openWaitlist } = useWaitlist();
@@ -42,7 +42,7 @@ const Courses = () => {
       <div className="courses-preview">
         <div className="courses-preview-img">
           <img src={imageMap[id]} alt={title} />
-          {category && <span className="course-category">{category}</span>}
+          <span className="category">{category}</span>
         </div>
         <div className="courses-preview-writeup">
           <p>{title}</p>

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import './StoryBehind.css';
 // import left from '../../Assets/left-story-image-resized.jpg';
 // import right from "../../Assets/Frame280.png";
+// import coreal8Logo from "../../../../Assets/login-logo.png";
 
 const StoryBehind = () => {
   return (
@@ -10,7 +11,7 @@ const StoryBehind = () => {
       <div className="story-header">
         <span className="story-container-header">ABOUT US</span>
       </div>
-      <div className="story-text">
+      <div className="hp-story-text">
         <h1>About Coreal8</h1>
         <p>
           At Coreal8, we believe in the profound power of self-discovery and
@@ -32,10 +33,20 @@ const StoryBehind = () => {
       </div>
       <div className="story-images">
         <div className="left-story-image">
-      
+          <div className="lsi-text">
+            <p>
+              “Leadership is the courage to see the truth, the wisdom to chart a
+              new path, and the humility to empower others to walk it with you.
+              That is the journey I guide."
+            </p>
+            <div className="lsi-author">
+              <strong>Dr. Enobong Ezekiel</strong>
+              <span>CEO and Founder Coreal8/Makamba Podcast</span>
+            </div>
+          </div>
         </div>
         <div className="right-story-image">
-         
+          {/* <img src={coreal8Logo} alt="coreal8 Logo" /> */}
         </div>
       </div>
     </div>

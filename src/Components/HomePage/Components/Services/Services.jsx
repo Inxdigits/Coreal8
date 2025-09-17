@@ -16,7 +16,7 @@ const Services = () => {
   const sessions = [
     {
       icon: individual,
-      header: "Individual Counseling",
+      header: "Individual Counselling",
       body: "Healthcare Providers & Clinics | HR Departments & Employee Assistance Programs (EAPs) | Wellness & Lifestyle Coach | Community Organizations & NGOs."
     },
     {
@@ -59,7 +59,9 @@ const Services = () => {
       <div className="service-writeup">
         <h1>What We Do</h1>
         <p>
-         At Coreal8, we empower individuals, professionals, and teams through transformative coaching, counseling, mentorship, courses, and thought-provoking content.
+          At Coreal8, we empower individuals, professionals, and teams through
+          transformative coaching, counseling, mentorship, courses, and
+          thought-provoking content.
         </p>
       </div>
       <div className="services">

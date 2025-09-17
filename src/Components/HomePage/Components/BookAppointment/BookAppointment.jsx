@@ -22,7 +22,7 @@ const BookAppointment = () => {
           </p>
         </div>
         <div className="appointment-button-container">
-          <button onClick={openWaitlist} className="appointment-button">Book Counseling</button>
+          <button onClick={openWaitlist} className="appointment-button">Book Counselling</button>
         </div>
       </div>
       <div className="rightside">

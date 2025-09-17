@@ -190,25 +190,24 @@ const Podcasts = () => {
         </div>
       </div>
 
-      
-        {/* Pagination (static for now) */}
-        <div className="flex w-full pagination-num">
-          <div className="pagination">
-            <p>{"<"}</p>
-          </div>
-          <div className="pagination">
-            <p>1</p>
-          </div>
-          <div className="pagination">
-            <p>2</p>
-          </div>
-          <div className="pagination">
-            <p>3</p>
-          </div>
-          <div className="pagination">
-            <p>{">"}</p>
-          </div>
+      {/* Pagination (static for now) */}
+      <div className="flex w-full pagination-num">
+        <div className="pagination">
+          <p>{"<"}</p>
         </div>
+        <div className="pagination">
+          <p>1</p>
+        </div>
+        <div className="pagination">
+          <p>2</p>
+        </div>
+        <div className="pagination">
+          <p>3</p>
+        </div>
+        <div className="pagination">
+          <p>{">"}</p>
+        </div>
+      </div>
 
       {/* About Section */}
       <section className="about-makamba-container flex flex-row bg-[#DBA126] gap-[50px] text-[white] items-center about-section">
@@ -297,6 +296,13 @@ const Podcasts = () => {
           <img src={John} alt="Featured Voice" />
         </div>
       </section>
+
+      <button
+        className="back-to-top"
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      >
+        ↑ Back to Top
+      </button>
 
       <Footer />
     </>

@@ -6,7 +6,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  padding: 80px 0;
+  /* padding: 80px 0; */
   backdrop-filter: blur(10px);
   background-color: rgba(0, 0, 0, 0.8);
   z-index: 999;
@@ -16,26 +16,27 @@
   animation: fadeInBackdrop 0.3s ease forwards;
 }
 
+/* @media screen and (min-height: 701px) {
+  .modal-content {
+    margin: 80px 0 !important;
+  }
+} */
+
 .modal-content {
-  max-height: 785px;
-  /* height: 100%;
-  overflow-y: scroll; */
-  color: black;
   display: flex;
   width: 70%;
-  max-width: 1000px;
-  padding: 30px 50px;
+  padding: 50px;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 24px;
   flex-shrink: 0;
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  border: 5px solid #801323;
+  background-color: #FFF;
   animation: fadeInModal 0.3s ease forwards;
 }
 
-@media screen and (max-height: 1200px) and (max-width: 450px) {
+/* @media screen and (max-height: 1200px) and (max-width: 450px) {
   .modal-backdrop {
     padding: 20px 0 !important;
   }
@@ -47,7 +48,32 @@
     top: 5px;
     right: 5px;
   }
-}
+} */
+
+/* @media screen and (max-height: 700px) {
+  .modal-content {
+    overflow-y: scroll;
+    height: 90%;
+    padding: 20px !important;
+  }
+
+  .modal-intro-text h2 {
+    font-size: 16px;
+  }
+
+  .modal-intro-text p {
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  #partner-close-btn {
+    padding: 10px !important;
+    top: 10px !important;
+    right: 10px !important;
+    font-size: 10px !important;
+  }
+
+} */
 
 .modal-intro-text h2 {
   text-align: center !important;
@@ -58,6 +84,7 @@
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+  margin: 0;
 }
 
 .modal-intro-text p {
@@ -78,6 +105,7 @@
   flex-direction: column;
   gap: 24px;
   width: 100%;
+  color: #0D0C12;
 }
 
 .form-fields {
@@ -99,6 +127,12 @@
   border: 1px solid #ccc;
   border-radius: 6px;
   resize: none;
+}
+
+.modal-content .form-fields input::placeholder,
+.modal-content .form-fields textarea::placeholder,
+.modal-content .form-fields select::placeholder {
+  color: #ccc;
 }
 
 .modal-content .form-fields input:focus,
@@ -129,7 +163,7 @@
 
 .modal-content form button[type="submit"] {
   display: flex;
-  padding: 20px;
+  padding: 10px 20px;
   justify-content: center;
   align-items: center;
   gap: 12px;
@@ -146,7 +180,7 @@
   cursor: pointer;
   color: #FAFAFA;
   font-family: "Schibsted Grotesk";
-  font-size: 16px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
@@ -154,7 +188,7 @@
 
 #partner-close-btn {
   position: absolute;
-  right: 20px !important;
+  right: 20px;
   top: 20px;
   cursor: pointer;
 
@@ -163,11 +197,48 @@
   justify-content: center;
   align-items: center;
   border-radius: 5px;
-  border: 1px solid #0D0C12;
+  border: 1px solid #fff;
   cursor: pointer;
   font-size: 14px;
   max-height: 44px;
   max-width: 44px;
+}
+
+@media screen and (max-width: 830px) {
+  .modal-content {
+    padding: 20px;
+    gap: 12px;
+  }
+
+  .modal-content form {
+    gap: 12px;
+  }
+
+  .modal-intro-text h2 {
+    font-size: 16px;
+  }
+
+  .modal-intro-text p {
+    width: 90%;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .form-fields label {
+    font-size: 12px;
+  }
+  
+  .modal-intro-text p {
+    width: 100%;
+    margin: 0;
+    font-size: 12px;
+  }
+
+  #partner-close-btn {
+    padding: 10px;
+    right: 10px;
+  }
 }
 
 @keyframes fadeInBackdrop {
@@ -186,7 +257,7 @@
   }
 }
 
-@media screen and (max-width: 1024px) {
+/* @media screen and (max-width: 1024px) {
   .close-btn {
     top: 40px;
     right: 40px;
@@ -202,9 +273,9 @@
     top: 10px !important;
     right: 10px !important;
   }
-}
+} */
 
-@media screen and (max-width: 450px) {
+/* @media screen and (max-width: 450px) {
   .modal-backdrop {
     padding-top: 120px;
   }
@@ -217,4 +288,4 @@
     top: 10px !important;
     right: 10px !important;
   }
-}
+} */

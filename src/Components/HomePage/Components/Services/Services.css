@@ -36,6 +36,8 @@
     font-family: "Schibsted Grotesk", sans-serif;
     font-weight: 400;
     font-size: 16px;
+    width: 60%;
+    margin: 0 auto;
 }
 
 .services {
@@ -51,10 +53,11 @@
     font-family: "Schibsted Grotesk", sans-serif;
     background-color: rgba(255, 255, 255, 1);
     line-height: 100%;
-    padding: 30px 20px;
+    padding: 50px 20px;
     border-radius: 10px;
     text-align: center;
     transition: all 0.3s ease-in-out;
+    border: none !important;
 }
 
 .services .card:hover {
@@ -66,11 +69,11 @@
 } */
 
 .session-card-text h2 {
-    font-weight: 600;
+    color: #0D0C12;
     font-size: 20px;
-    /* margin: 0; */
-    margin-bottom: 12px;
-    color: black;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
 }
 
 .session-card-text p {
@@ -78,7 +81,7 @@
     font-family: "Schibsted Grotesk", sans-serif;
     font-weight: 400;
     font-size: 16px;
-    line-height: 100%;
+    line-height: 24px;
     letter-spacing: 0%;
     text-align: center;
 }
@@ -112,7 +115,7 @@
 
 .session-card-button {
     width: 100%;
-    padding: 10px 49px;
+    padding: 20px 49px;
     color: black;
 }
 
@@ -125,6 +128,16 @@
     .services-container {
         padding: 40px;
     }
+    
+    .services .card h2 {
+        font-size: 16px;
+        margin-bottom: 12px;
+    }
+    
+    .services .card p {
+        font-size: 14px;
+    }
+    
 }
 
 @media screen and (max-width: 840px) {
@@ -142,6 +155,7 @@
     
     .service-writeup p {
         font-size: 14px;
+        width: 80%;
     }
     
     .services {
@@ -156,15 +170,6 @@
     
     .services img {
         margin-bottom: 12px;
-    }
-    
-    .services .card h2 {
-        font-size: 16px;
-        margin-bottom: 12px;
-    }
-    
-    .services .card p {
-        font-size: 14px;
     }
     
     .card-button-container {
@@ -195,6 +200,7 @@
     
     .service-writeup p {
         font-size: 12px;
+        width: 100%;
     }
     
     .services {

@@ -1,8 +1,22 @@
 /* ===== Main Container ===== */
 .mc-container {
+  max-width: 1440px;
   padding: 80px;
   gap: 50px;
 }
+
+@media screen and (max-width: 880px) {
+  .mc-container {
+    padding: 80px 40px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .mc-container {
+    padding: 40px 20px !important;
+  }
+}
+
 
 /* ===== Top Section (Search + Filter) ===== */
 .mc-top {
@@ -14,8 +28,46 @@
 }
 
 /* Reset nav padding */
-nav {
+.searchcontainer {
   padding: 0 !important;
+  display: grid;
+  grid-template-columns: 65% 35%;
+}
+
+.nav-filter {
+  justify-content: flex-end;
+}
+
+@media screen and (max-width: 790px) {
+  .searchcontainer {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 12px;
+  }
+
+  .nav-filter {
+    justify-content: center;
+  }
+
+  .searchform {
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .searchbar {
+    flex-direction: row !important;
+    justify-content: space-between !important;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .searchform {
+    flex-direction: column;
+  }
+
+  .searchform button {
+    width: 100%;
+  }
 }
 
 /* ===== Search Bar ===== */
@@ -24,22 +76,24 @@ nav {
   max-width: 1440px;
 }
 
-.searchform {
-  max-width: 630px !important;
-  padding-right: -30px !important;
-  justify-content: space-between !important;
+.searchform, .nav-filter, .filter-dropdown {
+  /* max-width: 630px;
+  padding-right: -30px;
+  justify-content: space-between; */
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .searchbar {
   width: 100%;
-
 }
 
 .searchcontainer input {
   outline: none;
   padding: 16px 20px 16px 10px;
   display: flex;
-  width: 500px;
+  width: 90%;
   align-items: center;
   gap: 10px;
   background-color: transparent;
@@ -165,12 +219,19 @@ nav {
   padding: 20px;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  justify-content: space-between;
+  gap: 24px;
   border-radius: 5px;
   border-top: 1px solid #801323;
   background: #FFF;
   box-shadow: 0 10px 50px 0 rgba(0, 0, 0, 0.10);
-  min-width: 300px;
+  /* min-width: 300px; */
+}
+
+.courses-card-top {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .courses-preview-writeup {
@@ -181,6 +242,16 @@ nav {
 
 .course-card-image {
   position: relative;
+  height: 250px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.course-card-image img {
+  width: 100%;
+  display: block;
+  height: 100%;
+  object-fit: cover;
 }
 
 .category {
@@ -239,15 +310,30 @@ nav {
   border-radius: 10px;
 }
 
+.view-course-link span {
+  color: #801323;
+  font-family: "Open Sans";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
 /* ===== Responsive ===== */
 @media screen and (max-width: 991px) {
-  .courses-lineup {
+  /* .courses-lineup {
     flex-direction: row;
-  }
+  } */
 
   .courseslist {
-    flex-direction: column;
-    margin: 0 auto;
+    grid-template-columns: repeat(2, 49%);
+    /* margin: 0 auto; */
+  }
+
+  .courseslist .courses-card:last-of-type {
+    grid-column: span 2;
+    justify-self: center;
+    width: 50%;
   }
 
   nav {
@@ -259,9 +345,15 @@ nav {
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 650px) {
   .courseslist {
-    grid-template-columns: repeat(2, 49%);
+    grid-template-columns: repeat(1, 1fr);
+  }
+  
+  .courseslist .courses-card:last-of-type {
+    grid-column: span 1;
+    justify-self: auto;
+    width: 100%;
   }
 
   .courses-card {

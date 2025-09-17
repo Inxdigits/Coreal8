@@ -19,10 +19,13 @@ import Dashboard from './Components/LMS/Dashboard/Dashboard.jsx';
 // NEW imports
 import { WaitlistProvider } from '../src/context/WaitListcontext.jsx';
 import WaitlistModal from './Components/LMS/Waitlist/Waitlist.jsx';
+import ScrollToTop from './ScrollToTop.js';
+import Terms from './Components/Terms/Terms.jsx';
 
 function App() {
   return (
     <WaitlistProvider>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/contact" element={<Contact />} />
@@ -32,11 +35,12 @@ function App() {
         <Route path="/courses" element={<Courses />} />
         <Route path="/about" element={<About />} />
         <Route path="/podcast" element={<Podcasts />}/>
-        <Route path="/counseling" element={<Counseling />} />
+        <Route path="/counselling" element={<Counseling />} />
         <Route path="/mentoring" element={<Mentorship />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<Register />}/>
-        <Route path='/privacy' element={<Privacy/>}/>
+        <Route path='/privacy-policy' element={<Privacy/>}/>
+        <Route path='/terms-of-service' element={<Terms />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path='/dashboard' element={<Dashboard />} />
       </Routes>

@@ -150,7 +150,7 @@ const LoginPage = () => {
           {/* Google Login */}
           <button
             onClick={handleGoogleLogin}
-            className="google-login w-full flex items-center justify-center gap-2 hover:bg-gray-100"
+            className="google-login hover:bg-gray-100"
           >
             <FcGoogle size={20} />
             <span>Log in with Google</span>

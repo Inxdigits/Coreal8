@@ -39,7 +39,14 @@ const HomePage = () => {
         </div>
         <Faqs />
       </section>
+      <button
+        className="back-to-top"
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      >
+        ↑ Back to Top
+      </button>
       <Footer />
+
     </div>
   );
 };

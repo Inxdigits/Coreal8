@@ -1,119 +1,92 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import openicon from "../../HomePage/Assets/open-icon.svg";
-import course1 from "../../HomePage/Assets/first-course.png";
-import course2 from "../../HomePage/Assets/second-course.png";
-import course3 from "../../HomePage/Assets/third-course.png";
+import course1 from "../../../Assets/CoursesPageAssets/courses/strategic-leader.png";
+import course2 from "../../../Assets/CoursesPageAssets/courses/modern-people-management.jpg";
+import course3 from "../../../Assets/CoursesPageAssets/courses/culture-transformation.jpg";
+import course4 from "../../../Assets/CoursesPageAssets/courses/cx-mastery.jpg";
+import course5 from "../../../Assets/CoursesPageAssets/courses/sni-fundamentals.png";
+import course6 from "../../../Assets/CoursesPageAssets/courses/performance-management-reimagined.jpg";
+import course7 from "../../../Assets/CoursesPageAssets/courses/cpm.jpg";
 import { Link } from "react-router-dom";
-import { SearchSection } from "./SearchSection"; // Import the search/filter nav
+import { SearchSection } from "./SearchSection";
 import { useWaitlist } from "../../../context/WaitListcontext";
 
 export const FeaturedCoursesSection = () => {
   const { openWaitlist } = useWaitlist();
-
-  const coursesData = [
-    {
-      id: 1,
-      title: "The Visionary Leader's Blueprint",
-      description:
-        "Learn how to lead with clarity, courage, and conviction in today's dynamic world.",
-      price: "N45,000",
-      icon: course1,
-      category: "Leadership & Influence",
-    },
-    {
-      id: 2,
-      title: "Mastering Communication",
-      description:
-        "Unlock the secrets of persuasive and impactful communication.",
-      price: "N35,000",
-      icon: course2,
-      category: "Communication",
-    },
-    {
-      id: 3,
-      title: "Personal Growth Accelerator",
-      description:
-        "Develop habits and skills to accelerate your personal and professional growth.",
-      price: "N30,000",
-      icon: course3,
-      category: "Personal Growth",
-    },
-    {
-      id: 4,
-      title: "Building High-Performance Teams",
-      description:
-        "Learn proven strategies to create and manage effective teams.",
-      price: "N50,000",
-      icon: course1,
-      category: "Team Building",
-    },
-    {
-      id: 5,
-      title: "Advanced Leadership Strategy",
-      description: "Strategic insights to elevate your leadership style.",
-      price: "N60,000",
-      icon: course2,
-      category: "Leadership & Influence",
-    },
-    {
-      id: 6,
-      title: "Effective Public Speaking",
-      description: "Boost confidence and speak with authority in any setting.",
-      price: "N40,000",
-      icon: course3,
-      category: "Communication",
-    },
-  ];
-
+  const [courses, setCourses] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [searchValue, setSearchValue] = useState("");
-  const [selectedSort, setSelectedSort] = useState("All"); // ✅ default to "All"
+  const [selectedSort, setSelectedSort] = useState("All");
 
-  // 🔍 Filtering logic
-  const filteredCourses = coursesData.filter((course) => {
+  // ✅ Keep the image map centralized
+  const imageMap = {
+    1: course1,
+    2: course2,
+    3: course3,
+    4: course4,
+    5: course5,
+    6: course6,
+    7: course7
+  };
+
+  useEffect(() => {
+    fetch(`${import.meta.env.BASE_URL}courses.json`)
+      .then((res) => res.json())
+      .then((data) => setCourses(data))
+      .catch((err) => console.error("Error loading courses:", err))
+      .finally(() => setLoading(false));
+  }, []);
+
+  // 🔍 Filtering logic (wrapped in useMemo for optimization)
+  const filteredCourses = useMemo(() => {
     const query = searchValue.toLowerCase();
-    const matchesSearch =
-      course.title.toLowerCase().includes(query) ||
-      course.description.toLowerCase().includes(query);
+    return courses.filter((course) => {
+      const matchesSearch =
+        course.title.toLowerCase().includes(query) ||
+        course.description.toLowerCase().includes(query);
 
-    const matchesCategory =
-      selectedSort === "All" || course.category === selectedSort;
+      const matchesCategory =
+        selectedSort === "All" || course.category === selectedSort;
 
-    return matchesSearch && matchesCategory;
-  });
+      return matchesSearch && matchesCategory;
+    });
+  }, [courses, searchValue, selectedSort]);
 
-  const CourseCard = ({ course }) => (
-    <article className="courses-card">
-      <div className="course-card-image">
-        <img alt={course.title} src={course.icon} />
-        <span className="category">{course.category}</span>
-      </div>
+  const CourseCard = ({ course }) => {
+    const { id, title, writeup, price, category } = course;
+    return (
+      <article className="courses-card">
+        <div className="courses-card-top">
+          <div className="course-card-image">
+            <img src={imageMap[id]} alt={title} />
+            <span className="category">{category}</span>
+          </div>
 
-      <div className="courses-preview-writeup">
-        <p>{course.title}</p>
-        <span>{course.description}</span>
-      </div>
+          <div className="courses-preview-writeup">
+            <p>{title}</p>
+            <span>{writeup}</span>
+          </div>
+        </div>
 
-      <div className="courses-card-bottom">
-        <span className="course-price">{course.price}</span>
-
-          {/* to={`/courses/${course.id}`} */}
-        <Link
-          onClick={openWaitlist}
-          className="view-course-link"
-          aria-label={`View ${course.title} course`}
-        >
-          <span>View Course</span>
-          <img src={openicon} alt="" />
-        </Link>
-      </div>
-    </article>
-  );
+        <div className="courses-card-bottom">
+          <span className="course-price">₦{price}</span>
+          <Link
+            onClick={openWaitlist}
+            className="view-course-link"
+            aria-label={`View ${title} course`}
+          >
+            View Course
+            <img src={openicon} alt="open" />
+          </Link>
+        </div>
+      </article>
+    );
+  };
 
   return (
     <section className="featured-courses">
       <p>Featured Courses</p>
 
-      {/* Search & Filter Nav */}
       <SearchSection
         searchValue={searchValue}
         setSearchValue={setSearchValue}
@@ -121,9 +94,10 @@ export const FeaturedCoursesSection = () => {
         setSelectedSort={setSelectedSort}
       />
 
-      {/* Course lineup */}
       <div className="courses-lineup">
-        {filteredCourses.length > 0 ? (
+        {loading ? (
+          <p>Loading courses...</p>
+        ) : filteredCourses.length > 0 ? (
           <div className="courseslist">
             {filteredCourses.map((course) => (
               <CourseCard key={course.id} course={course} />

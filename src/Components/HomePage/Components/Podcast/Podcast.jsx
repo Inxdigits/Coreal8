@@ -6,6 +6,7 @@ import noisy from "../../Assets/noisy-world.png";
 import survival from "../../Assets/survival-strategy.png";
 import legacy from "../../Assets/legacy-img.png";
 import arrow from '../../Assets/right-arrow.svg';
+import makamba from '../../../../Assets/PodcastPageAssests/makambalogo-nobg.png';
 
 import { useWaitlist } from "../../../../context/WaitListcontext.jsx";
 
@@ -51,10 +52,13 @@ const Podcast = () => {
         <span>PODCAST EPISODES</span>
       </div>
       <div className="podcast-writeup">
+        <div className="hp-podcast-logo">
+          <img src={makamba} alt="" />
+        </div>
         <h1>The Makamba Podcast</h1>
         <p>
-          Conversations that spark clarity, growth, and purpose. <br /> Hosted by
-          Coreal8, Makamba is where real stories, deep reflections, and
+          Conversations that spark clarity, growth, and purpose. <br /> Hosted
+          by Coreal8, Makamba is where real stories, deep reflections, and
           intentional dialogue meet to guide your personal and professional
           evolution.
         </p>

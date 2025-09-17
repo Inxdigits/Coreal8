@@ -32,8 +32,8 @@
   align-items: flex-start;
   gap: 0.75rem;
   padding: clamp(1.5rem, 4vw, 3rem);
-  /* border-radius: 0.75rem; */
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  background: #FFF;
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.10);
 }
 
 .testimonial-quote {
@@ -69,8 +69,11 @@
 }
 
 .custom-nav button {
+  font-size: 32px;
+  width: 44px;
+  height: 44px;
   display: flex;
-  padding: 0.75rem 1.25rem;
+  padding: 1.25rem;
   align-items: center;
   border-radius: 0.5rem;
   border: 1px solid #801323;
