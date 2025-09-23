@@ -66,6 +66,16 @@ const filterOptions = [
 const sortOptions = ["Newest", "Oldest", "Popular", "Trending"];
 
 const Blog = () => {
+  const [showBackToTop, setShowBackToTop] = useState()
+  
+    // 🔹 Scroll listener for Back-to-Top
+    useEffect(() => {
+      const handleScroll = () => {
+        setShowBackToTop(window.scrollY > 300);
+      };
+      window.addEventListener("scroll", handleScroll);
+      return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
   // search
   const [searchValue, setSearchValue] = useState("");
   const handleSearchChange = (e) => setSearchValue(e.target.value);
@@ -313,6 +323,16 @@ const Blog = () => {
           )}
         </section>
       </main>
+
+      {/* Back to Top */}
+      {showBackToTop && (
+        <button
+          className="back-to-top"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        >
+          ↑ Back to Top
+        </button>
+      )}
 
       <Footer />
     </>

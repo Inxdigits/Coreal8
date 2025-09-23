@@ -195,7 +195,8 @@
     .courses {
         display: grid;
         grid-template-columns: repeat(2, 48.5%);
-        gap: 28px;
+        gap: 24px;
+        column-gap: 12px;
         text-align: center;
     }
 
@@ -228,17 +229,21 @@
     .courses-container {
         padding: 80px 20px;
     }
+
+    .category {
+        font-size: 12px;
+    }
     
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 500px) {
     .courses-container {
-        padding: 80px 20px;
+        padding: 40px 20px;
     }
 
     .courses {
         grid-template-columns: repeat(1, 100%);
-        gap: 24px;
+        gap: 12px;
     }
 
     .courses-preview-writeup p {

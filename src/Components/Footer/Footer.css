@@ -160,6 +160,7 @@ footer {
 @media screen and (max-width: 650px) {
     .newsletter-text h1 {
         font-size: 20px;
+        margin: 0;
     }
     
     .newsletter-text span {
@@ -173,8 +174,8 @@ footer {
     }
 
     .newsletter .footer-form button {
-        max-width: 140px;
-        margin: 0 auto;
+        /* max-width: 140px; */
+        /* margin: 0 auto; */
     }
 
     .top {
@@ -198,6 +199,18 @@ footer {
 
 @media screen and (max-width: 525px) {
     footer {
-        padding: 80px 20px;
+        padding: 40px 20px;
+    }
+
+    .newsletter {
+        padding: 20px;
+    }
+
+    .newsletter h1 {
+        margin: 0;
+    }
+
+    .newsletter .footer-form {
+        gap: 12px;
     }
 }

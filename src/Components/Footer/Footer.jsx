@@ -25,10 +25,9 @@ const Footer = () => {
       {/* Newsletter Section */}
       <div className="newsletter">
         <div className="newsletter-text">
-          <h1>Join the Coreal8 Circle</h1>
+          <h1>Join the Coreal8 Community</h1>
           <span>
-            Get exclusive leadership content, early access to new courses,
-            <br /> and podcast updates.
+            Get exclusive leadership content, early access to new courses, and podcast updates.
           </span>
         </div>
         <form className="footer-form" onSubmit={handleSubmit}>

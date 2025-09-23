@@ -1,11 +1,22 @@
 .cart-intro {
     padding: 40px 80px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     border-radius: 5px;
     border-bottom: 2px solid rgba(13, 12, 18, 0.05);
-    background: #FFF;
+    background: rgba(128, 19, 35, 0.08);
+    text-align: center;
+}
+
+.cart-intro-text h2 {
+    color: #801323;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
 }
 
 .ci-btn-container {
@@ -43,7 +54,7 @@
         padding: 80px 40px;
     }
     .cart-intro-text h2 {
-        font-size: 16px;
+        font-size: 24px;
     }
     .cart-intro-text span {
         font-size: 12px;

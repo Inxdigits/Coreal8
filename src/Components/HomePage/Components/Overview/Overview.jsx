@@ -13,7 +13,7 @@ const Overview = () => {
           <h2>Unlock Your Full Potential.</h2>
           <span>
             From personal growth to corporate excellence, we provide tailored,
-            counseling, strategic solutions, and expert training to empower
+            counselling, strategic solutions, and expert training to empower
             individuals and organizations to thrive. Elevate your impact and
             amplify your voice.
           </span>

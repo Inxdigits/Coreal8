@@ -144,7 +144,7 @@
 
 @media screen and (max-width: 860px) {
     .container {
-        padding: 40px;
+        padding: 80px 40px;
     }
 
     .blog-preview-writeup p {
@@ -163,6 +163,10 @@
 }
 
 @media screen and (max-width: 600px) {
+    .container {
+        padding: 40px;
+    }
+
     .blogs {
         grid-template-columns: 1fr;
     }

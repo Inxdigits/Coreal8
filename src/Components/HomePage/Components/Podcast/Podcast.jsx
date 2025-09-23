@@ -1,49 +1,85 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import './Podcast.css';
-import '../../../Get-Started-btn/Get-Started-btn.css';
-import noisy from "../../Assets/noisy-world.png";
-import survival from "../../Assets/survival-strategy.png";
-import legacy from "../../Assets/legacy-img.png";
-import arrow from '../../Assets/right-arrow.svg';
-import makamba from '../../../../Assets/PodcastPageAssests/makambalogo-nobg.png';
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import "./Podcast.css";
+import "../../../Get-Started-btn/Get-Started-btn.css";
+// import noisy from "../../Assets/noisy-world.png";
+// import survival from "../../Assets/survival-strategy.png";
+// import legacy from "../../Assets/legacy-img.png";
+import arrow from "../../Assets/right-arrow.svg";
+import makamba from "../../../../Assets/PodcastPageAssests/makambalogo-nobg.png";
+import play from "../../../../Assets/PodcastPageAssests/play.svg";
 
 import { useWaitlist } from "../../../../context/WaitListcontext.jsx";
 
 const Podcast = () => {
   const { openWaitlist } = useWaitlist();
+  const [episodes, setEpisodes] = useState([]);
+  const [isPlaying, setIsPlaying] = useState({});
 
-  const episodes = [
-    {
-      img: noisy,
-      title: "Redefining Leadership in a Noisy World"
-    },
-    {
-      img: survival,
-      title: "From Survival to Strategy",
-      album: "- Beyond the Boardroom"
-    },
-    {
-      img: legacy,
-      title: "How to Build a Legacy That Lives After You"
-    } 
-  ]
+  // 🔹 Helper to get YouTube video ID
+  const getYouTubeId = (url) => {
+    const regExp = /(?:youtube\.com\/.*v=|youtu\.be\/)([^#&?]*).*/;
+    const match = url.match(regExp);
+    return match && match[1] ? match[1] : null;
+  };
 
-  const Preview = ({img, title, album}) => {
-      return (
-        <div className="preview">
-          <div className="preview-img">
-            <img src={img} alt="" />
-          </div>
-          <div className="preview-writeup">
-            <p>{title}</p>
-            <span>{album}</span>
-          </div>
-          <a onClick={openWaitlist} className="session-card-img">
-            <img src={arrow} alt="" />
-          </a>
+  // 🔹 Fetch episodes list from public/podcasts.json and then oEmbed details from YouTube
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const listRes = await fetch(`${import.meta.env.BASE_URL}podcasts.json`);
+        const episodeList = await listRes.json();
+
+        const results = await Promise.all(
+          episodeList.map(async (ep) => {
+            try {
+              const res = await fetch(
+                `https://www.youtube.com/oembed?url=${encodeURIComponent(
+                  ep.url
+                )}&format=json`
+              );
+              const data = await res.json();
+              return {
+                ...ep,
+                title: data.title,
+                thumbnail: data.thumbnail_url,
+                author: data.author_name,
+                description: "", // Placeholder
+              };
+            } catch (err) {
+              console.error("Failed to fetch metadata:", err);
+              return ep;
+            }
+          })
+        );
+        setEpisodes(results);
+      } catch (err) {
+        console.error("Failed to load /podcasts.json:", err);
+      }
+    };
+    fetchData();
+  }, []);
+
+  // 🔹 Spotlight = always most recent 3
+  const spotlightEpisodes = [...episodes]
+    .sort((a, b) => new Date(b.date) - new Date(a.date))
+    .slice(0, 3);
+
+  const Preview = ({ img, title, album }) => {
+    return (
+      <div className="preview">
+        <div className="preview-img">
+          <img src={img} alt="" />
         </div>
-      );
+        <div className="preview-writeup">
+          <p>{title}</p>
+          <span>{album}</span>
+        </div>
+        <a onClick={openWaitlist} className="session-card-img">
+          <img src={arrow} alt="" />
+        </a>
+      </div>
+    );
   };
 
   return (
@@ -64,9 +100,60 @@ const Podcast = () => {
         </p>
       </div>
       <div className="podcasts">
-        {episodes.map((episode, index) => (
-          <Preview key={index} {...episode} />
-        ))}
+        {spotlightEpisodes.map((item) => {
+          const videoId = getYouTubeId(item.url);
+          return (
+            <article key={item.id} className="spotlight-item">
+              <div className="sp-top-part">
+                <div className="episode-image-container relative">
+                  {!isPlaying[item.id] ? (
+                    <>
+                      <img
+                        className="w-full h-64 object-cover"
+                        src={item.thumbnail}
+                        alt={item.title}
+                      />
+                      <button
+                        className="play-button absolute inset-0 flex items-center justify-center"
+                        onClick={() =>
+                          setIsPlaying((prev) => ({
+                            ...prev,
+                            [item.id]: true,
+                          }))
+                        }
+                      >
+                        <img
+                          src={play}
+                          alt="Play Trailer"
+                          className="w-12 h-12"
+                        />
+                      </button>
+                    </>
+                  ) : (
+                    <iframe
+                      width="100%"
+                      height="250"
+                      src={`https://www.youtube.com/embed/${videoId}?start=0&end=15&autoplay=1`}
+                      title={item.title}
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
+                  )}
+                </div>
+                <div className="spotlight-text">
+                  <h2>{item.title}</h2>
+                </div>
+              </div>
+              <div className="link-to-yt lty-homepage">
+                <p>Click arrow below to watch full episode:</p>
+                <a href={item.url} target="_blank" rel="noopener noreferrer">
+                  <img src={arrow} alt="Watch Full Episode" />
+                </a>
+              </div>
+            </article>
+          );
+        })}
       </div>
 
       <div className="podcasts-button">
@@ -76,6 +163,6 @@ const Podcast = () => {
       </div>
     </div>
   );
-}
+};
 
-export default Podcast
+export default Podcast;

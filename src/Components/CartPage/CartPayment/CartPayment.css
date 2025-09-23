@@ -108,4 +108,9 @@
     .cartpayment-container {
         width: 100%;
     }
+
+    .payment-button {
+        padding: 20px;
+        font-size: 14px;
+    }
 }

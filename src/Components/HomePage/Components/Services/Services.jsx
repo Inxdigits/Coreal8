@@ -1,5 +1,6 @@
 import React from 'react';
 import './Services.css';
+import { useNavigate } from "react-router-dom";
 import individual from '../../Assets/individual-counseling.png';
 import couples from "../../Assets/couples-counseling.png";
 import family from "../../Assets/family-counseling.png";
@@ -8,10 +9,14 @@ import family from "../../Assets/family-counseling.png";
 // import trauma from "../../Assets/trauma-counseling.png";
 import '../../../Get-Started-btn/Get-Started-btn.css';
 
-import { useWaitlist } from "../../../../context/WaitListcontext.jsx";
+// import { useWaitlist } from "../../../../context/WaitListcontext.jsx";
 
 const Services = () => {
-  const { openWaitlist } = useWaitlist();
+  const navigate = useNavigate();
+
+  const handleNavigate = () => navigate("/services");
+
+  // const { openWaitlist } = useWaitlist();
 
   const sessions = [
     {
@@ -43,7 +48,7 @@ const Services = () => {
           <p>{body}</p>
         </div>
         <div className="gradient-button-container card-button-container">
-          <button onClick={openWaitlist} className="gradient-button session-card-button">
+          <button onClick={handleNavigate} className="gradient-button session-card-button">
             View Service
           </button>
         </div>
@@ -60,7 +65,7 @@ const Services = () => {
         <h1>What We Do</h1>
         <p>
           At Coreal8, we empower individuals, professionals, and teams through
-          transformative coaching, counseling, mentorship, courses, and
+          transformative coaching, counselling, mentorship, courses, and
           thought-provoking content.
         </p>
       </div>

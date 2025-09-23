@@ -23,7 +23,7 @@ const Trust = () => {
     {
       icon: HRIcon,
       header: "HR Departments & EAPs",
-      body: "Partnering with HR teams to provide counseling and wellness programs for employee growth.",
+      body: "Partnering with HR teams to provide counselling and wellness programs for employee growth.",
     },
     {
       icon: IndustryIcon,
@@ -65,7 +65,7 @@ const Trust = () => {
         <h1>Our Strategic Partnerships</h1>
         <p>
           We collaborate with trusted organizations and professionals to enhance
-          the value we deliver across counseling, corporate training, and
+          the value we deliver across counselling, corporate training, and
           personal branding.
         </p>
       </div>

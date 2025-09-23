@@ -1,14 +1,14 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './About.css';
 import Navbar from '../Navbar/Navbar.jsx';
 import Footer from '../Footer/Footer.jsx';
 import aboutImg from '../../Assets/about-coreal8.png';
-import couples from "../HomePage/Assets/couples-counseling.png";
-import family from "../HomePage/Assets/family-counseling.png";
-import individual from '../HomePage/Assets/individual-counseling.png';
-import mvImage from '../../Assets/overview-image.png';
+import branding from "./branding.svg";
+import organization from "./organization.svg";
+import individual from './individual.svg';
+import mvImage from '../../Assets/AboutPageAssets/hands-together.png';
 import logoBg from '../../Assets/logo-background.svg';
-import arrow from '../../Assets/story-arrow.svg';
+// import arrow from '../../Assets/story-arrow.svg';
 import storyPic from "../../Assets/AboutPageAssets/ourstory-pic.png";
 import johnDoe from '../../Assets/john-doe.png';
 import juliusDoe from "../../Assets/AboutPageAssets/julius-doe.png";
@@ -16,22 +16,39 @@ import janetDoe from "../../Assets/AboutPageAssets/janet-doe.png";
 import julietDoe from '../../Assets/AboutPageAssets/juliet-doe.png';
 import joyDoe from '../../Assets/AboutPageAssets/joy-doe.png';
 
+import empowerment from './empowerment.svg';
+import integrity from './integrity.svg';
+import excellence from './excellence.svg'
+import empathy from './empathy.svg';
+import growth from './growth.svg';
+import authenticity from './authenticity.svg'
+
 const About = () => {
+  const [showBackToTop, setShowBackToTop] = useState()
+  
+    // 🔹 Scroll listener for Back-to-Top
+    useEffect(() => {
+      const handleScroll = () => {
+        setShowBackToTop(window.scrollY > 300);
+      };
+      window.addEventListener("scroll", handleScroll);
+      return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
     
   const sessions = [
     {
       icon: individual,
       header: "For the Individual",
-      body: "We provide personalized counseling and engagement solutions designed to foster self-awareness, resilience, and personal growth. We walk 	alongside you as you discover your unique strengths and navigate 	life's complexities.",
+      body: "We provide personalized counselling and engagement solutions designed to foster self-awareness, resilience, and personal growth. We walk 	alongside you as you discover your unique strengths and navigate 	life's complexities.",
     },
     {
-      icon: couples,
+      icon: organization,
       header: "For the Organization",
       body: "We drive organizational success through tailored corporate consulting and impactful training programs. Our solutions are crafted to enhance team dynamics, leadership capabilities, and overall business performance, creating workplaces where innovation and collaboration thrive.",
     },
     {
-      icon: family,
-      header: "For Your Influence",
+      icon: branding,
+      header: "For Personal Branding",
       body: "We guide you in building and showcasing your authentic personal brand. Through platforms like podcasts, blogs, and strategic brand showcases, we empower you to amplify your unique voice and establish a lasting, meaningful influence in your field.",
     },
   ];
@@ -39,7 +56,7 @@ const About = () => {
   const SessionCard = ({ icon, header, body }) => {
     return (
       <div className="about-card">
-        <div className="session-card-img">
+        <div className="session-card-img support-card-img">
           <img src={icon} alt="" />
         </div>
         <div className="session-card-text about-card-text">
@@ -52,44 +69,55 @@ const About = () => {
 
   const values = [
     {
+      icon: empowerment,
       coreValue: "Empowerment",
       valueDesc:
         "We believe in fostering inner strength and providing the tools for individuals and organizations to realize their full potential and take control of their own narratives.",
     },
     {
+      icon: integrity,
       coreValue: "Integrity",
       valueDesc:
         "We operate with unwavering honesty, transparency, and ethical conduct in all our interactions, building trust and fostering genuine connections.",
     },
     {
+      icon: excellence,
       coreValue: "Excellence",
       valueDesc:
         "We are dedicated to delivering the highest quality of service, continuously learning, innovating, and striving for optimal outcomes in every solution we provide.",
     },
     {
+      icon: empathy,
       coreValue: "Empathy",
       valueDesc:
         "We approach every client with deep understanding, respect, and compassion, recognizing and valuing their unique experiences and perspectives.",
     },
     {
+      icon: growth,
       coreValue: "Growth",
       valueDesc:
         "We champion continuous learning, adaptability, and evolution, inspiring both our clients and ourselves to embrace challenges as opportunities for progress",
     },
     {
+      icon: authenticity,
       coreValue: "Authenticity",
       valueDesc:
         "We encourage genuine self-expression and support the development of true-to-self brands and interactions, both personally and professionally.",
     },
   ];
 
-  const ValueCard = ({coreValue, valueDesc}) => {
+  const ValueCard = ({icon, coreValue, valueDesc}) => {
     return (
-        <div className="value-card">
+      <div className="value-card">
+        <div className="session-card-img support-card-img">
+          <img src={icon} alt="" />
+        </div>
+        <div>
           <h3>{coreValue}</h3>
           <p>{valueDesc}</p>
         </div>
-    )
+      </div>
+    );
   }
 
   const teamMembers = [
@@ -186,7 +214,7 @@ const About = () => {
                 results-driven solutions that empower individuals to achieve
                 personal well-being and influence, and enable organizations to
                 foster high-performing, resilient environments. We achieve this
-                by delivering expert counseling, strategic consulting,
+                by delivering expert counselling, strategic consulting,
                 transformative training, and robust personal brand development
                 services.
               </p>
@@ -269,12 +297,15 @@ const About = () => {
         </section>
       </div>
 
-      <button
-        className="back-to-top"
-        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-      >
-        ↑ Back to Top
-      </button>
+      {/* Back to Top */}
+      {showBackToTop && (
+        <button
+          className="back-to-top"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        >
+          ↑ Back to Top
+        </button>
+      )}
 
       <Footer />
     </div>

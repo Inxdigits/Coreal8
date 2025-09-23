@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './HomePage.css';
 import Navbar from '../Navbar/Navbar.jsx';
 import Overview from './Components/Overview/Overview.jsx';
@@ -16,6 +16,16 @@ import Faqs from './Components/Faqs/Faqs.jsx';
 import Footer from '../Footer/Footer.jsx';
 
 const HomePage = () => {
+  const [showBackToTop, setShowBackToTop] = useState()
+  
+    // 🔹 Scroll listener for Back-to-Top
+    useEffect(() => {
+      const handleScroll = () => {
+        setShowBackToTop(window.scrollY > 300);
+      };
+      window.addEventListener("scroll", handleScroll);
+      return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
   return (
     <div className="home">
       <Navbar />
@@ -39,14 +49,17 @@ const HomePage = () => {
         </div>
         <Faqs />
       </section>
-      <button
-        className="back-to-top"
-        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-      >
-        ↑ Back to Top
-      </button>
-      <Footer />
 
+      {/* Back to Top */}
+      {showBackToTop && (
+        <button
+          className="back-to-top"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        >
+          ↑ Back to Top
+        </button>
+      )}
+      <Footer />
     </div>
   );
 };

@@ -57,9 +57,9 @@ export const HeaderSection = ({
   }, []);
 
   return (
-    <header className="flex items-center justify-between category-header">
+    <nav className="category-header">
       {/* Categories */}
-      <nav className="flex gap-2.5 categories" aria-label="Podcast categories">
+      <div className="categories" aria-label="Podcast categories">
         {categories.map((category) => {
           const isActive = selectedCategory === category.value;
           return (
@@ -68,11 +68,11 @@ export const HeaderSection = ({
               onClick={() => setSelectedCategory(category.value)}
               type="button"
               aria-pressed={isActive}
-              className={`sort-tile px-5 py-2.5 rounded-[15px] border transition-colors duration-200 
+              className={`podcast-category sort-tile transition-colors duration-200 
                 ${
                   isActive
                     ? "bg-transparent border-[#801323]"
-                    : "bg-white border-[#0d0c121a] hover:bg-gray-50"
+                    : "bg-gray border-[#0d0c121a] hover:bg-gray-50"
                 }`}
             >
               <span
@@ -87,10 +87,10 @@ export const HeaderSection = ({
             </button>
           );
         })}
-      </nav>
+      </div>
 
       {/* Sort Dropdown */}
-      <div className="flex gap-4 sort items-center" ref={dropdownRef}>
+      <div className="nav-filter" ref={dropdownRef}>
         <label htmlFor="sort-dropdown" className="text-base text-[#0d0c12]">
           Sort by:
         </label>
@@ -101,11 +101,9 @@ export const HeaderSection = ({
             aria-expanded={isDropdownOpen}
             aria-haspopup="listbox"
             type="button"
-            className="filter-dropdown flex items-center gap-2"
+            className="filter-dropdown px-5 py-2.5 rounded-lg border bg-white hover:opacity-80 transition"
           >
-            <span className="text-[16px] font-semibold text-[#0d0c12] opacity-60 hover:opacity-80">
-              {selectedSort}
-            </span>
+            {selectedSort}
             <svg
               className={`transition-transform duration-200 ${
                 isDropdownOpen ? "rotate-180" : "rotate-0"
@@ -127,13 +125,18 @@ export const HeaderSection = ({
             <ul
               role="listbox"
               aria-labelledby="sort-dropdown"
-              className="absolute mt-2 w-full bg-white rounded-lg shadow-lg border border-[#0d0c121a] z-10"
+              className="listbox absolute top-full right-0 mt-1 bg-white border border-[#0d0c121a] rounded-lg shadow-lg z-10 min-w-full"
             >
               {sortOptions.map((option) => (
                 <li
                   key={option.id}
                   role="option"
                   aria-selected={selectedSort === option.value}
+                  className={`filteroption transition-colors hover:bg-gray-50 ${
+                    selectedSort === option.value
+                      ? "text-[#801323] bg-gray-50"
+                      : "text-[#0d0c12]"
+                  }`}
                 >
                   <button
                     onClick={() => handleSortSelect(option.value)}
@@ -148,6 +151,6 @@ export const HeaderSection = ({
           )}
         </div>
       </div>
-    </header>
+    </nav>
   );
 };

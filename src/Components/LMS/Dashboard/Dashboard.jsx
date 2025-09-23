@@ -31,7 +31,7 @@ const Dashboard = () => {
   const summaryData = {
     courses: { count: 1, label: 'On-going courses', button: 'Enrol >' },
     mentorship: { count: 0, label: 'On-going mentorship', button: 'Apply >' },
-    counseling: { count: 0, label: 'On-going counseling', button: 'Apply >' },
+    counselling: { count: 0, label: 'On-going counselling', button: 'Apply >' },
     coaching: { count: 0, label: 'On-going coaching', button: 'Apply >' }
   };
 
@@ -48,7 +48,7 @@ const Dashboard = () => {
     { id: 'courses', label: 'My Courses', icon: 'graduation-cap' },
     { id: 'mentorship', label: 'My Mentorship', icon: 'people' },
     { id: 'coaching', label: 'Coaching Sessions', icon: 'coaching' },
-    { id: 'counseling', label: 'Counseling Services', icon: 'counseling' },
+    { id: 'counselling', label: 'Counselling Services', icon: 'counseling' },
     { id: 'calendar', label: 'Calendar', icon: 'calendar' },
     { id: 'resources', label: 'Resources', icon: 'resources' },
     { id: 'settings', label: 'Account Settings', icon: 'person' },
@@ -61,7 +61,7 @@ const Dashboard = () => {
       'graduation-cap': '🎓',
       people: '👥',
       coaching: '👥➡️',
-      counseling: '👥',
+      counselling: '👥',
       calendar: '📅',
       resources: '⊞+',
       person: '👤',
@@ -74,7 +74,7 @@ const Dashboard = () => {
     const cardIcons = {
       courses: '🎓',
       mentorship: '👥',
-      counseling: '👥',
+      counselling: '👥',
       coaching: '👥➡️'
     };
     return cardIcons[type] || '•';
@@ -102,8 +102,8 @@ const Dashboard = () => {
       case 'mentorship':
         navigate('/mentoring');
         break;
-      case 'counseling':
-        navigate('/counseling');
+      case 'counselling':
+        navigate('/counselling');
         break;
       case 'coaching':
         navigate('/coaching');

@@ -19,6 +19,8 @@
 }
 
 .waitlist-form {
+  width: 70%;
+  margin: 0 auto;
   padding: 80px;
   display: flex;
   flex-direction: column;
@@ -27,6 +29,25 @@
   gap: 50px;
   flex: 1 0 0;
   align-self: stretch;
+}
+
+@media screen and (max-width: 1400px) {
+  .waitlist-form {
+    width: 75%;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .waitlist-form {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .waitlist-form {
+    width: 85%;
+    padding: 80px 40px;
+  }
 }
 
 .waitlist-form-content {
@@ -155,6 +176,10 @@
     grid-template-columns: 100%;
   }
 
+  .waitlist-form {
+    width: 90%;
+  }
+
   .waitlist-image {
     display: none;
   }
@@ -164,6 +189,8 @@
   .waitlist-form {
     padding: 30px;
     gap: 24px;
+    width: 100%;
+    margin: 0;
   }
 
   .waitlist-form-intro-text h2 {

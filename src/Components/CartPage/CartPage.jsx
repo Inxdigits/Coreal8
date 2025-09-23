@@ -8,79 +8,169 @@ import { Link } from "react-router-dom";
 import course1 from "../../Assets/CoursesPageAssets/courses/strategic-leader.png";
 import course2 from "../../Assets/CoursesPageAssets/courses/modern-people-management.jpg";
 import course3 from "../../Assets/CoursesPageAssets/courses/culture-transformation.jpg";
+// import course4 from "../../Assets/CoursesPageAssets/courses/cx-mastery.jpg";
+// import course5 from "../../Assets/CoursesPageAssets/courses/sni-fundamentals.png";
+// import course6 from "../../Assets/CoursesPageAssets/courses/performance-management-reimagined.jpg";
+// import course7 from "../../Assets/CoursesPageAssets/courses/cpm.jpg";
 import openicon from "../HomePage/Assets/open-icon.svg";
 
 import { useWaitlist } from "../../context/WaitListcontext.jsx";
 
 const CartPage = () => {
   const { openWaitlist } = useWaitlist();
+  const [loading, setLoading] = useState(true);
+  const [courses, setCourses] = useState([]);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const [showBackToTop, setShowBackToTop] = useState();
 
-  const courses = [
-    {
-      img: course1,
-      title: "The Visionary Leader's Blueprint",
-      writeup:
-        "Learn how to lead with clarity, courage, and conviction in today’s dynamic world.",
-    },
-    {
-      img: course2,
-      title: "The Visionary Leader's Blueprint",
-      writeup:
-        "Learn how to lead with clarity, courage, and conviction in today’s dynamic world.",
-    },
-    {
-      img: course3,
-      title: "The Visionary Leader's Blueprint",
-      writeup:
-        "Learn how to lead with clarity, courage, and conviction in today’s dynamic world.",
-    },
-  ];
-  const CourseCard = ({ img, title, writeup }) => {
+  // 🔹 Scroll listener for Back-to-Top
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowBackToTop(window.scrollY > 300);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+      {
+        /* Back to Top */
+      }
+      {
+        showBackToTop && (
+          <button
+            className="back-to-top"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          >
+            ↑ Back to Top
+          </button>
+        );
+      }
+
+  // Track screen size
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const imageMap = {
+    1: course1,
+    2: course2,
+    3: course3,
+    4: course3
+  };
+
+  useEffect(() => {
+    fetch(`${import.meta.env.BASE_URL}courses.json`)
+      .then((res) => res.json())
+      .then((data) => setCourses(data))
+      .catch((err) => console.error("Error loading courses:", err))
+      .finally(() => setLoading(false));
+  }, []);
+
+  const CourseCard = ({ id, title, writeup, price, category }) => {
     return (
-      <div className="courses-preview">
-        {" "}
-        <div className="courses-preview-img">
-          {" "}
-          <img src={img} alt="" />{" "}
-        </div>{" "}
-        <div className="courses-preview-writeup">
-          {" "}
-          <p>{title}</p> <span>{writeup}</span>{" "}
-        </div>{" "}
+      <article className="courses-card">
+        <div className="courses-card-top">
+          <div className="course-card-image">
+            <img src={imageMap[id]} alt={title} />
+            <span className="category">{category}</span>
+          </div>
+          <div className="courses-preview-writeup">
+            <p>{title}</p>
+            <span>{writeup}</span>
+          </div>
+        </div>
+
         <div className="courses-card-bottom">
-          {" "}
-          <span>₦45,000</span>{" "}
-          <Link onClick={openWaitlist} className="view-course-link">
-            {" "}
-            View course <img src={openicon} />{" "}
-          </Link>{" "}
-        </div>{" "}
-      </div>
+          <span className="course-price">₦{price}</span>
+          <Link
+            onClick={openWaitlist}
+            className="view-course-link"
+            aria-label={`View ${title} course`}
+          >
+            View Course
+            <img src={openicon} alt="open" />
+          </Link>
+        </div>
+      </article>
     );
   };
 
+
+  // Slice courses: show all on desktop, only first 3 on mobile unless 4th is specifically allowed
+  const displayedCourses = isMobile ? courses.slice(0, 4) : courses.slice(0, 3);
+
   const [cartItems, setCartItems] = useState([
-    {
-      id: 1,
-      title: "The Visionary Leader's Blueprint",
-      price: 45000,
-      quantity: 1,
-      image: course1,
-    },
-    {
-      id: 2,
-      title: "The Visionary Leader's Blueprint",
-      price: 45000,
-      quantity: 1,
-      image: course2,
-    },
-    {
-      id: 3,
-      title: "The Visionary Leader's Blueprint",
-      price: 45000,
-      quantity: 1,
-      image: course3,
-    },
+    // {
+    //   id: 1,
+    //   title: "The Visionary Leader's Blueprint",
+    //   price: 45000,
+    //   quantity: 1,
+    //   image: course1,
+    // },
+    // {
+    //   id: 2,
+    //   title: "The Visionary Leader's Blueprint",
+    //   price: 45000,
+    //   quantity: 1,
+    //   image: course2,
+    // },
+    // {
+    //   id: 3,
+    //   title: "The Visionary Leader's Blueprint",
+    //   price: 45000,
+    //   quantity: 1,
+    //   image: course3,
+    // },
+    // {
+    //   id: 4,
+    //   title: "The Visionary Leader's Blueprint",
+    //   price: 45000,
+    //   quantity: 1,
+    //   image: course2,
+    // },
+    // {
+    //   id: 5,
+    //   title: "The Visionary Leader's Blueprint",
+    //   price: 45000,
+    //   quantity: 1,
+    //   image: course3,
+    // },
+    // {
+    //   id: 1,
+    //   title: "The Visionary Leader's Blueprint",
+    //   price: 45000,
+    //   quantity: 1,
+    //   image: course1,
+    // },
+    // {
+    //   id: 2,
+    //   title: "The Visionary Leader's Blueprint",
+    //   price: 45000,
+    //   quantity: 1,
+    //   image: course2,
+    // },
+    // {
+    //   id: 3,
+    //   title: "The Visionary Leader's Blueprint",
+    //   price: 45000,
+    //   quantity: 1,
+    //   image: course3,
+    // },
+    // {
+    //   id: 4,
+    //   title: "The Visionary Leader's Blueprint",
+    //   price: 45000,
+    //   quantity: 1,
+    //   image: course2,
+    // },
+    // {
+    //   id: 5,
+    //   title: "The Visionary Leader's Blueprint",
+    //   price: 45000,
+    //   quantity: 1,
+    //   image: course3,
+    // },
   ]);
 
   const [arrayLength, setArrayLength] = useState(cartItems.length);
@@ -116,11 +206,11 @@ const CartPage = () => {
             <h2>Cart</h2>
             <span>You have {arrayLength} Cart Items</span>
           </div>
-          <div className="gradient-button-container ci-btn-container">
+          {/* <div className="gradient-button-container ci-btn-container">
             <button onClick={openWaitlist} className="gradient-button ci-btn">
               Add to Cart
             </button>
-          </div>
+          </div> */}
         </section>
 
         <section className="cartmain">
@@ -138,38 +228,22 @@ const CartPage = () => {
         <section className="show-courses">
           <h3>Show Courses</h3>
           <div className="courses">
-            {courses.map((course, index) => (
+            {displayedCourses.map((course, index) => (
               <CourseCard key={index} {...course} />
             ))}
-            <div className="courses-preview extra-courses-preview">
-              <div className="courses-preview-img">
-                <img src={course1} alt="" />
-              </div>
-              <div className="courses-preview-writeup">
-                <p>The Visionary Leader's Blueprint</p>
-                <span>
-                  Learn how to lead with clarity, courage, and conviction in
-                  today’s dynamic world.
-                </span>
-              </div>
-              <div className="courses-card-bottom">
-                <span>₦45,000</span>
-                <Link to="/courses" className="view-course-link">
-                  View course
-                  <img src={openicon} />
-                </Link>
-              </div>
-            </div>
           </div>
         </section>
       </div>
 
-      <button
-        className="back-to-top"
-        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-      >
-        ↑ Back to Top
-      </button>
+      {/* Back to Top */}
+      {showBackToTop && (
+        <button
+          className="back-to-top"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        >
+          ↑ Back to Top
+        </button>
+      )}
 
       <Footer />
     </div>

@@ -244,6 +244,10 @@
     /* background: lightgray 50% / cover no-repeat; */
 }
 
+.lc-button {
+    padding: 20px 30px;
+}
+
 /* .lc-text {
     width: ;
 } */

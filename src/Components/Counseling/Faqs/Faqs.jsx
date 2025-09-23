@@ -13,9 +13,9 @@ const Faqs = () => {
   const faqs = [
     {
       id: 1,
-      question: "What is the purpose of counseling?",
+      question: "What is the purpose of counselling?",
       answer:
-        "Counseling is a confidential process where you work with a trained professional to explore and address personal challenges, mental health concerns, or emotional distress. It provides a safe space for you to gain insight, develop coping strategies, and work towards positive change.",
+        "Counselling is a confidential process where you work with a trained professional to explore and address personal challenges, mental health concerns, or emotional distress. It provides a safe space for you to gain insight, develop coping strategies, and work towards positive change.",
     },
     {
       id: 2,
@@ -25,13 +25,13 @@ const Faqs = () => {
     },
     {
       id: 3,
-      question: "Is counseling confidential?",
+      question: "Is counselling confidential?",
       answer:
-        "Yes, confidentiality is a cornerstone of the counseling relationship. All information you share with your counselor is kept strictly private, with a few legal exceptions (e.g., if there is an imminent risk of harm to yourself or others).",
+        "Yes, confidentiality is a cornerstone of the counselling relationship. All information you share with your counselor is kept strictly private, with a few legal exceptions (e.g., if there is an imminent risk of harm to yourself or others).",
     },
     {
       id: 4,
-      question: "How do I get started with counseling?",
+      question: "How do I get started with counselling?",
       answer:
         "You can book a free 15-minute consultation with a counselor to discuss your needs and see if you feel comfortable working with them. If you decide to move forward, you can then schedule your first full session.",
     },

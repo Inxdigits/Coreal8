@@ -77,7 +77,7 @@ const WaitlistModal = () => {
                 </h2>
                 <p>
                   We’re almost ready to launch a transformational platform for
-                  courses, mentorship, coaching, and counseling.
+                  courses, mentorship, coaching, and counselling.
                   <br />
                   Join our waitlist to be the first to know when enrollment
                   opens!

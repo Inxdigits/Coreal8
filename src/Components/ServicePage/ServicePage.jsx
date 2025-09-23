@@ -2,7 +2,9 @@ import React from "react";
 import "./ServicePage.css"; // Import the CSS file for styling
 import Navbar from "../Navbar/Navbar.jsx";
 import Footer from "../Footer/Footer.jsx";
-import Image from "../../Assets/ServicePageAssets/image.jpg";
+import serviceOne from "../../Assets/ServicePageAssets/service-one.png";
+import serviceTwo from "../../Assets/ServicePageAssets/service-two.png";
+import serviceThree from "../../Assets/ServicePageAssets/service-three.png";
 import { Link } from "react-router-dom";
 import { useWaitlist } from "../../context/WaitListcontext.jsx";
 
@@ -76,18 +78,20 @@ const ServicePage = () => {
               <Link to="/counselling">Explore Counseling Services</Link>
             </div>
             <div className="white-btn">
-              <Link onClick={openWaitlist}>Book a Counseling Session</Link>
+              <Link onClick={openWaitlist}>
+                Book a free 20 mins Consultation Call
+              </Link>
             </div>
           </div>
         </div>
         <div className="counseling-image">
-          <img className="counseling-image" src={Image} alt="" />
+          <img className="counseling-image" src={serviceOne} alt="" />
         </div>
       </section>
 
       <section className="individual-section consulting-section">
         <div className="counseling-image">
-          <img className="counseling-image" src={Image} alt="" />
+          <img className="counseling-image" src={serviceTwo} alt="" />
         </div>
         <div className="consulting individual">
           <h1>Corporate Consulting & Training</h1>
@@ -138,7 +142,9 @@ const ServicePage = () => {
               <Link to="/mentoring">View Mentorship & Coaching Programs</Link>
             </div>
             <div className="white-btn">
-              <Link onClick={openWaitlist}>Book a Discovery Call</Link>
+              <Link onClick={openWaitlist}>
+                Book a free 20 mins Consultation Call
+              </Link>
             </div>
           </div>
         </div>
@@ -187,12 +193,14 @@ const ServicePage = () => {
               <Link to="/mentoring">Discover Coaching Programs</Link>
             </div>
             <div className="white-btn">
-              <Link onClick={openWaitlist}>Book Brand Strategy Session</Link>
+              <Link onClick={openWaitlist}>
+                Book a free 20 mins Consultation Call
+              </Link>
             </div>
           </div>
         </div>
         <div className="counseling-image">
-          <img className="counseling-image" src={Image} alt="" />
+          <img className="counseling-image" src={serviceThree} alt="" />
         </div>
       </section>
 

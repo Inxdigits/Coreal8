@@ -4,13 +4,13 @@ import Footer from "../Footer/Footer";
 import "./Counseling.css";
 import Faqs from "./Faqs/Faqs.jsx";
 import approachImg from "../../Assets/approachImg.png";
-import couples from "../HomePage/Assets/couples-counseling.png";
-import family from "../HomePage/Assets/family-counseling.png";
-import individual from "../HomePage/Assets/individual-counseling.png";
+import trauma from "./trauma.svg";
+import stress from "./stress.svg";
+import individual from "./individual.svg";
+import grief from "./grief.svg";
 import bookingImg from "../../Assets/bookCounselingImage.png";
 import { FaAngleRight } from "react-icons/fa";
 import { useWaitlist } from "../../context/WaitListcontext";
-
 
 
   const sessions = [
@@ -20,17 +20,17 @@ import { useWaitlist } from "../../context/WaitListcontext";
       body: "This one-on-one therapy focuses on personal growth, emotional regulation, stress management, anxiety, depression, grief, trauma, and navigating life transitions. We provide a safe space for self-discovery and developing coping mechanisms.",
     },
     {
-      icon: couples,
+      icon: grief,
       header: "Grief & Loss Counselling",
       body: "Provides compassionate support for individuals experiencing bereavement, helping them process loss, cope with emotions, and find ways to heal and adapt to life after loss.",
     },
     {
-      icon: family,
+      icon: stress,
       header: "Stress & Anxiety Management",
       body: "Focuses on practical strategies and therapeutic techniques to manage overwhelming stress, reduce anxiety symptoms, and develop healthier coping mechanisms for daily life.",
     },
     {
-      icon: family,
+      icon: trauma,
       header: "Trauma-Informed Counselling",
       body: "Offers a safe and sensitive approach to processing past traumatic experiences, helping clients heal, regain a sense of safety, and restore emotional well-being.",
     },
@@ -39,7 +39,7 @@ import { useWaitlist } from "../../context/WaitListcontext";
   const SessionCard = ({ icon, header, body }) => {
     return (
       <div className="about-card counseling-support-card">
-        <div className="support-card-img">
+        <div className="csc-img support-card-img">
           <img src={icon} alt="" />
         </div>
         <div className="session-card-text support-card-text">
@@ -118,7 +118,10 @@ const Counseling = () => {
             </p>
           </div>
           <div className="approach-image">
-            <img src={approachImg} alt="approach" />
+            <img
+              src="https://res.cloudinary.com/dklslzrkg/image/upload/v1758142662/image_1_v41twt.png"
+              alt="approach"
+            />
           </div>
         </section>
         <section className="counseling-support flex-column">
@@ -236,7 +239,10 @@ const Counseling = () => {
               </div>
             </div>
             <div className="booking-image">
-              <img src={bookingImg} alt="booking image" />
+              <img
+                src="https://res.cloudinary.com/dklslzrkg/image/upload/v1758143746/image_2_wzboyi.png"
+                alt="booking image"
+              />
             </div>
           </div>
         </section>
@@ -244,9 +250,9 @@ const Counseling = () => {
           <div className="copo-heading">
             <h2>Transparent Fees & Payment Options</h2>
             <p>
-              Our counseling services are provided by licensed professionals and
-              are priced to be accessible while reflecting the value of expert
-              support.
+              Our counselling services are provided by licensed professionals
+              and are priced to be accessible while reflecting the value of
+              expert support.
             </p>
           </div>
           <div className="copo-payment-plans">

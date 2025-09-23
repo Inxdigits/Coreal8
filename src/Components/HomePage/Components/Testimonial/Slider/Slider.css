@@ -24,7 +24,7 @@
 /* Testimonial card */
 .testimonial-card {
   max-width: 40rem;
-  min-height: 18rem;
+  min-height: 31.25rem;
   background-color: #fff;
   display: flex;
   flex-direction: column;

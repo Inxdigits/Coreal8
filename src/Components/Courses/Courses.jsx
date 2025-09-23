@@ -43,7 +43,7 @@ const Courses = () => {
             </button>
             <div className="gradient-button-container learn-more courses-login-btn-container">
               <button
-                onClick={handleNavigate}
+                onClick={openWaitlist}
                 className="gradient-button lm-button courses-login-btn"
               >
                 Login
@@ -110,7 +110,7 @@ const Courses = () => {
       >
         ↑ Back to Top
       </button>
-      
+
       <Footer />
     </div>
   );
