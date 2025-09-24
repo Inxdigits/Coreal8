@@ -26,6 +26,7 @@ const Courses = () => {
   return (
     <div className="courses-page">
       <Navbar />
+      <div className="page-content">
       <section className="courses-overview">
         <div className="co-writeup">
           <div className="co-writeup-text">
@@ -59,7 +60,7 @@ const Courses = () => {
         <CoursesMain />
       </section>
       <section className="courses-testimonial flex-column">
-        <div className="section-header">
+        <div className="tc section-header">
           <span>TESTIMONIALS</span>
         </div>
         <div className="ct-intro">
@@ -74,7 +75,7 @@ const Courses = () => {
         </div>
       </section>
       <section className="faqs-container flex-column section-container">
-        <div className="section-header">
+        <div className="tc section-header">
           <span>FAQs</span>
         </div>
         <div className="faqs-intro">
@@ -97,7 +98,9 @@ const Courses = () => {
           </h1>
         </div>
         <div className="lc-button-container">
-          <button className="lc-button gradient-button">Start Courses</button>
+          <button onClick={openWaitlist} className="lc-button gradient-button">
+            Start Courses
+          </button>
         </div>
 
         <div className="icon-3"></div>

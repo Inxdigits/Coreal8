@@ -57,6 +57,7 @@ const Contact = () => {
   return (
     <div className="contact-page min-h-screen bg-gray-100 flex flex-col">
       <Navbar />
+      <div className="page-content">
       {!showThankYou ? (
         <>
           <div className="contact-content">
@@ -239,6 +240,7 @@ const Contact = () => {
           <div className="icon7 w-14 h-14 bg-red-200 rounded-full absolute top-1/2 left-1/2 opacity-50"></div>
         </div>
       )}
+      </div>
       <Footer />
     </div>
   );
