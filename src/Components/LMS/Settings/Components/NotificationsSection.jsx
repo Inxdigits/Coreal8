@@ -1,72 +1,29 @@
 import React, { useState } from 'react';
 
-const NotificationsSection = () => {
-  const [emailNotifications, setEmailNotifications] = useState({
-    sessionReminders: true,
-    courseUpdates: false,
-    promotionsOffers: false,
-    communityAnnouncements: false
-  });
-
-  const [inAppNotifications, setInAppNotifications] = useState({
-    upcomingSessionAlerts: true,
-    newLessonDrops: false,
-    assignmentDeadlines: false,
-    liveEventReminders: false
-  });
-
-  const [language, setLanguage] = useState('english');
-  const [timezone, setTimezone] = useState('GMT+1');
-
-  const handleEmailNotificationToggle = (key) => {
-    setEmailNotifications(prev => ({
-      ...prev,
-      [key]: !prev[key]
-    }));
-  };
-
-  const handleInAppNotificationToggle = (key) => {
-    setInAppNotifications(prev => ({
-      ...prev,
-      [key]: !prev[key]
-    }));
-  };
-
-  const handleSaveEmailChanges = () => {
-    // In a real app, this would save to backend
-    console.log('Email notification settings saved:', emailNotifications);
-    alert('Email notification settings saved successfully!');
-  };
-
-  const handleSaveInAppChanges = () => {
-    // In a real app, this would save to backend
-    console.log('In-app notification settings saved:', inAppNotifications);
-    alert('In-app notification settings saved successfully!');
-  };
-
-  const ToggleSwitch = ({ isOn, onToggle }) => (
-    <label className="toggle-switch">
-      <input
-        type="checkbox"
-        checked={isOn}
-        onChange={onToggle}
-      />
-      <span className="toggle-slider"></span>
-    </label>
-  );
-
+const NotificationsSection = ({
+  emailNotifications,
+  inAppNotifications,
+  language,
+  timezone,
+  onEmailNotificationChange,
+  onInAppNotificationChange,
+  onLanguageChange,
+  onTimezoneChange,
+  onSaveEmailChanges,
+  onSaveInAppChanges,
+  onSaveLanguageChanges,
+  onSaveTimezoneChanges
+}) => {
   return (
     <div className="notifications-section">
       <h2 className="section-title">Notifications & Preferences</h2>
       
-      {/* Email Notifications */}
+      {/* Email Notifications Section */}
       <div className="notification-subsection">
-        <div className="subsection-header">
-          <h3 className="subsection-title">Email Notifications</h3>
-          <p className="subsection-description">
-            Control which updates and messages you receive via email.
-          </p>
-        </div>
+        <h3 className="subsection-title">Email Notifications</h3>
+        <p className="subsection-description">
+          Control which updates and messages you receive via email.
+        </p>
         
         <div className="notification-options">
           <div className="notification-option">
@@ -76,10 +33,16 @@ const NotificationsSection = () => {
                 Get an email before upcoming courses, coaching, or counseling sessions.
               </p>
             </div>
-            <ToggleSwitch
-              isOn={emailNotifications.sessionReminders}
-              onToggle={() => handleEmailNotificationToggle('sessionReminders')}
-            />
+            <div className="toggle-container">
+              <label className="toggle-switch">
+                <input
+                  type="checkbox"
+                  checked={emailNotifications.sessionReminders}
+                  onChange={(e) => onEmailNotificationChange('sessionReminders', e.target.checked)}
+                />
+                <span className="toggle-slider"></span>
+              </label>
+            </div>
           </div>
 
           <div className="notification-option">
@@ -89,10 +52,16 @@ const NotificationsSection = () => {
                 Be notified when new lessons, assignments, or live classes are added.
               </p>
             </div>
-            <ToggleSwitch
-              isOn={emailNotifications.courseUpdates}
-              onToggle={() => handleEmailNotificationToggle('courseUpdates')}
-            />
+            <div className="toggle-container">
+              <label className="toggle-switch">
+                <input
+                  type="checkbox"
+                  checked={emailNotifications.courseUpdates}
+                  onChange={(e) => onEmailNotificationChange('courseUpdates', e.target.checked)}
+                />
+                <span className="toggle-slider"></span>
+              </label>
+            </div>
           </div>
 
           <div className="notification-option">
@@ -102,10 +71,16 @@ const NotificationsSection = () => {
                 Receive occasional discounts and announcements.
               </p>
             </div>
-            <ToggleSwitch
-              isOn={emailNotifications.promotionsOffers}
-              onToggle={() => handleEmailNotificationToggle('promotionsOffers')}
-            />
+            <div className="toggle-container">
+              <label className="toggle-switch">
+                <input
+                  type="checkbox"
+                  checked={emailNotifications.promotionsOffers}
+                  onChange={(e) => onEmailNotificationChange('promotionsOffers', e.target.checked)}
+                />
+                <span className="toggle-slider"></span>
+              </label>
+            </div>
           </div>
 
           <div className="notification-option">
@@ -115,26 +90,30 @@ const NotificationsSection = () => {
                 Stay updated with platform-wide news and feature launches.
               </p>
             </div>
-            <ToggleSwitch
-              isOn={emailNotifications.communityAnnouncements}
-              onToggle={() => handleEmailNotificationToggle('communityAnnouncements')}
-            />
+            <div className="toggle-container">
+              <label className="toggle-switch">
+                <input
+                  type="checkbox"
+                  checked={emailNotifications.communityAnnouncements}
+                  onChange={(e) => onEmailNotificationChange('communityAnnouncements', e.target.checked)}
+                />
+                <span className="toggle-slider"></span>
+              </label>
+            </div>
           </div>
         </div>
 
-        <button className="save-changes-btn" onClick={handleSaveEmailChanges}>
+        <button className="save-changes-btn" onClick={onSaveEmailChanges}>
           Save Changes
         </button>
       </div>
 
-      {/* In-App Notifications */}
+      {/* In-App Notifications Section */}
       <div className="notification-subsection">
-        <div className="subsection-header">
-          <h3 className="subsection-title">In-App Notifications</h3>
-          <p className="subsection-description">
-            Choose which notifications you want to see inside the dashboard.
-          </p>
-        </div>
+        <h3 className="subsection-title">In-App Notifications</h3>
+        <p className="subsection-description">
+          Choose which notifications you want to see inside the dashboard.
+        </p>
         
         <div className="notification-options">
           <div className="notification-option">
@@ -144,10 +123,16 @@ const NotificationsSection = () => {
                 Reminder popup before coaching or counseling sessions.
               </p>
             </div>
-            <ToggleSwitch
-              isOn={inAppNotifications.upcomingSessionAlerts}
-              onToggle={() => handleInAppNotificationToggle('upcomingSessionAlerts')}
-            />
+            <div className="toggle-container">
+              <label className="toggle-switch">
+                <input
+                  type="checkbox"
+                  checked={inAppNotifications.upcomingSessionAlerts}
+                  onChange={(e) => onInAppNotificationChange('upcomingSessionAlerts', e.target.checked)}
+                />
+                <span className="toggle-slider"></span>
+              </label>
+            </div>
           </div>
 
           <div className="notification-option">
@@ -157,10 +142,16 @@ const NotificationsSection = () => {
                 Be notified when a new lesson is released in a course.
               </p>
             </div>
-            <ToggleSwitch
-              isOn={inAppNotifications.newLessonDrops}
-              onToggle={() => handleInAppNotificationToggle('newLessonDrops')}
-            />
+            <div className="toggle-container">
+              <label className="toggle-switch">
+                <input
+                  type="checkbox"
+                  checked={inAppNotifications.newLessonDrops}
+                  onChange={(e) => onInAppNotificationChange('newLessonDrops', e.target.checked)}
+                />
+                <span className="toggle-slider"></span>
+              </label>
+            </div>
           </div>
 
           <div className="notification-option">
@@ -170,10 +161,16 @@ const NotificationsSection = () => {
                 Receive due date alerts for mentorship or course tasks.
               </p>
             </div>
-            <ToggleSwitch
-              isOn={inAppNotifications.assignmentDeadlines}
-              onToggle={() => handleInAppNotificationToggle('assignmentDeadlines')}
-            />
+            <div className="toggle-container">
+              <label className="toggle-switch">
+                <input
+                  type="checkbox"
+                  checked={inAppNotifications.assignmentDeadlines}
+                  onChange={(e) => onInAppNotificationChange('assignmentDeadlines', e.target.checked)}
+                />
+                <span className="toggle-slider"></span>
+              </label>
+            </div>
           </div>
 
           <div className="notification-option">
@@ -183,51 +180,68 @@ const NotificationsSection = () => {
                 Alert 15 mins before a podcast stream or live class starts.
               </p>
             </div>
-            <ToggleSwitch
-              isOn={inAppNotifications.liveEventReminders}
-              onToggle={() => handleInAppNotificationToggle('liveEventReminders')}
-            />
+            <div className="toggle-container">
+              <label className="toggle-switch">
+                <input
+                  type="checkbox"
+                  checked={inAppNotifications.liveEventReminders}
+                  onChange={(e) => onInAppNotificationChange('liveEventReminders', e.target.checked)}
+                />
+                <span className="toggle-slider"></span>
+              </label>
+            </div>
           </div>
         </div>
 
-        <button className="save-changes-btn" onClick={handleSaveInAppChanges}>
+        <button className="save-changes-btn" onClick={onSaveInAppChanges}>
           Save Changes
         </button>
       </div>
 
-      {/* Language & Timezone */}
-      <div className="preferences-section">
-        <div className="preference-item">
-          <h3 className="preference-title">Language</h3>
-          <div className="preference-control">
-            <select 
-              value={language} 
-              onChange={(e) => setLanguage(e.target.value)}
-              className="preference-select"
-            >
-              <option value="english">English (default)</option>
-              <option value="spanish">Spanish</option>
-              <option value="french">French</option>
-              <option value="german">German</option>
-            </select>
-          </div>
+      {/* Language Section */}
+      <div className="preference-subsection">
+        <h3 className="subsection-title">Language</h3>
+        <div className="dropdown-container">
+          <select 
+            className="preference-dropdown"
+            value={language}
+            onChange={(e) => onLanguageChange(e.target.value)}
+          >
+            <option value="en">English (default)</option>
+            <option value="es">Spanish</option>
+            <option value="fr">French</option>
+            <option value="de">German</option>
+            <option value="it">Italian</option>
+            <option value="pt">Portuguese</option>
+          </select>
         </div>
+        <button className="save-changes-btn" onClick={onSaveLanguageChanges}>
+          Save Changes
+        </button>
+      </div>
 
-        <div className="preference-item">
-          <h3 className="preference-title">Time zone</h3>
-          <div className="preference-control">
-            <select 
-              value={timezone} 
-              onChange={(e) => setTimezone(e.target.value)}
-              className="preference-select"
-            >
-              <option value="GMT+1">GMT+1 — West Africa Time (WAT)</option>
-              <option value="GMT+0">GMT+0 — Greenwich Mean Time (GMT)</option>
-              <option value="GMT-5">GMT-5 — Eastern Time (ET)</option>
-              <option value="GMT-8">GMT-8 — Pacific Time (PT)</option>
-            </select>
-          </div>
+      {/* Time zone Section */}
+      <div className="preference-subsection">
+        <h3 className="subsection-title">Time zone</h3>
+        <div className="dropdown-container">
+          <select 
+            className="preference-dropdown"
+            value={timezone}
+            onChange={(e) => onTimezoneChange(e.target.value)}
+          >
+            <option value="GMT+1">GMT+1 — West Africa Time (WAT)</option>
+            <option value="GMT+0">GMT+0 — Greenwich Mean Time (GMT)</option>
+            <option value="GMT-5">GMT-5 — Eastern Time (ET)</option>
+            <option value="GMT-8">GMT-8 — Pacific Time (PT)</option>
+            <option value="GMT+2">GMT+2 — Central European Time (CET)</option>
+            <option value="GMT+5:30">GMT+5:30 — India Standard Time (IST)</option>
+            <option value="GMT+9">GMT+9 — Japan Standard Time (JST)</option>
+            <option value="GMT+10">GMT+10 — Australian Eastern Time (AET)</option>
+          </select>
         </div>
+        <button className="save-changes-btn" onClick={onSaveTimezoneChanges}>
+          Save Changes
+        </button>
       </div>
     </div>
   );

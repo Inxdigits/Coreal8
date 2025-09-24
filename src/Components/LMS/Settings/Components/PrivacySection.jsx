@@ -1,51 +1,25 @@
 import React, { useState } from 'react';
 
-const PrivacySection = () => {
-  const [dataVisibility, setDataVisibility] = useState({
-    allowMentorsToSeeHistory: false,
-    allowAnonymizedDataForResearch: false
-  });
+const PrivacySection = ({
+  dataVisibility,
+  onDataVisibilityChange,
+  onSavePreferences,
+  onRequestAccountDeletion
+}) => {
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
-  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
-
-  const handleDataVisibilityToggle = (key) => {
-    setDataVisibility(prev => ({
-      ...prev,
-      [key]: !prev[key]
-    }));
+  const handleDeleteAccount = () => {
+    if (showDeleteConfirm) {
+      onRequestAccountDeletion();
+      setShowDeleteConfirm(false);
+    } else {
+      setShowDeleteConfirm(true);
+    }
   };
 
-  const handleSavePreferences = () => {
-    // In a real app, this would save to backend
-    console.log('Data visibility preferences saved:', dataVisibility);
-    alert('Privacy preferences saved successfully!');
+  const handleCancelDelete = () => {
+    setShowDeleteConfirm(false);
   };
-
-  const handleRequestAccountDeletion = () => {
-    setShowDeleteConfirmation(true);
-  };
-
-  const handleConfirmDeletion = () => {
-    // In a real app, this would initiate account deletion process
-    console.log('Account deletion requested');
-    alert('Account deletion request submitted. You will receive an email confirmation shortly.');
-    setShowDeleteConfirmation(false);
-  };
-
-  const handleCancelDeletion = () => {
-    setShowDeleteConfirmation(false);
-  };
-
-  const ToggleSwitch = ({ isOn, onToggle }) => (
-    <label className="toggle-switch">
-      <input
-        type="checkbox"
-        checked={isOn}
-        onChange={onToggle}
-      />
-      <span className="toggle-slider"></span>
-    </label>
-  );
 
   return (
     <div className="privacy-section">
@@ -53,12 +27,10 @@ const PrivacySection = () => {
       
       {/* Data Visibility Section */}
       <div className="privacy-subsection">
-        <div className="subsection-header">
-          <h3 className="subsection-title">Data Visibility</h3>
-          <p className="subsection-description">
-            Control how your activity is used and who can see your engagement.
-          </p>
-        </div>
+        <h3 className="subsection-title">Data Visibility</h3>
+        <p className="subsection-description">
+          Control how your activity is used and who can see your engagement.
+        </p>
         
         <div className="privacy-options">
           <div className="privacy-option">
@@ -68,10 +40,16 @@ const PrivacySection = () => {
                 Enabling this helps personalize your experience during mentorship and coaching.
               </p>
             </div>
-            <ToggleSwitch
-              isOn={dataVisibility.allowMentorsToSeeHistory}
-              onToggle={() => handleDataVisibilityToggle('allowMentorsToSeeHistory')}
-            />
+            <div className="toggle-container">
+              <label className="toggle-switch">
+                <input
+                  type="checkbox"
+                  checked={dataVisibility.sessionHistory}
+                  onChange={(e) => onDataVisibilityChange('sessionHistory', e.target.checked)}
+                />
+                <span className="toggle-slider"></span>
+              </label>
+            </div>
           </div>
 
           <div className="privacy-option">
@@ -81,91 +59,87 @@ const PrivacySection = () => {
                 Your name and identity are never included. This helps improve content.
               </p>
             </div>
-            <ToggleSwitch
-              isOn={dataVisibility.allowAnonymizedDataForResearch}
-              onToggle={() => handleDataVisibilityToggle('allowAnonymizedDataForResearch')}
-            />
+            <div className="toggle-container">
+              <label className="toggle-switch">
+                <input
+                  type="checkbox"
+                  checked={dataVisibility.anonymizedData}
+                  onChange={(e) => onDataVisibilityChange('anonymizedData', e.target.checked)}
+                />
+                <span className="toggle-slider"></span>
+              </label>
+            </div>
           </div>
         </div>
 
-        <button className="save-preferences-btn" onClick={handleSavePreferences}>
+        <button className="save-preferences-btn" onClick={onSavePreferences}>
           Save Preferences
         </button>
       </div>
 
-      {/* Delete Account Section */}
+      {/* Delete My Account Section */}
       <div className="privacy-subsection">
-        <div className="subsection-header">
-          <h3 className="subsection-title">Delete My Account</h3>
-          <p className="subsection-description">
-            Permanently remove your account and all related data.
-          </p>
-        </div>
+        <h3 className="subsection-title">Delete My Account</h3>
+        <p className="subsection-description">
+          Permanently remove your account and all related data.
+        </p>
         
         <div className="warning-box">
-          <div className="warning-icon">ℹ️</div>
-          <p className="warning-text">
+          <div className="warning-icon">⚠️</div>
+          <div className="warning-text">
             This action is irreversible. All your data, including sessions, courses, progress, and saved resources will be permanently deleted.
-          </p>
+          </div>
         </div>
 
-        <button className="delete-account-btn" onClick={handleRequestAccountDeletion}>
-          Request Account Deletion
-        </button>
-      </div>
-
-      {/* Terms, Privacy & Consent Section */}
-      <div className="privacy-subsection">
-        <div className="subsection-header">
-          <h3 className="subsection-title">Terms, Privacy & Consent</h3>
-          <p className="subsection-description">
-            Your privacy matters. Learn more about how we use and protect your information.
-          </p>
-        </div>
-        
-        <div className="policy-links">
-          <a href="#" className="policy-link">
-            View Privacy Policy &gt;
-          </a>
-          <a href="#" className="policy-link">
-            View Terms of Service &gt;
-          </a>
-        </div>
-
-        <div className="consent-disclaimer">
-          <div className="disclaimer-icon">ℹ️</div>
-          <p className="disclaimer-text">
-            You agreed to these policies when creating your account.
-          </p>
-        </div>
-      </div>
-
-      {/* Delete Confirmation Modal */}
-      {showDeleteConfirmation && (
-        <div className="modal-overlay">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h3 className="modal-title">Confirm Account Deletion</h3>
-            </div>
-            <div className="modal-body">
-              <div className="warning-box">
-                <div className="warning-icon">⚠️</div>
-                <p className="warning-text">
-                  Are you sure you want to delete your account? This action cannot be undone and all your data will be permanently lost.
-                </p>
-              </div>
-            </div>
-            <div className="modal-actions">
-              <button className="cancel-btn" onClick={handleCancelDeletion}>
+        {!showDeleteConfirm ? (
+          <button className="delete-account-btn" onClick={handleDeleteAccount}>
+            Request Account Deletion
+          </button>
+        ) : (
+          <div className="delete-confirmation">
+            <p className="confirmation-text">Are you sure you want to delete your account? This action cannot be undone.</p>
+            <div className="confirmation-actions">
+              <button className="cancel-delete-btn" onClick={handleCancelDelete}>
                 Cancel
               </button>
-              <button className="confirm-delete-btn" onClick={handleConfirmDeletion}>
+              <button className="confirm-delete-btn" onClick={handleDeleteAccount}>
                 Yes, Delete My Account
               </button>
             </div>
           </div>
+        )}
+      </div>
+
+      {/* Terms, Privacy & Consent Section */}
+      <div className="privacy-subsection">
+        <h3 className="subsection-title">Terms, Privacy & Consent</h3>
+        <p className="subsection-description">
+          Your privacy matters. Learn more about how we use and protect your information.
+        </p>
+        
+        <div className="policy-links">
+          <a href="/privacy-policy" className="policy-link">
+            <span>View Privacy Policy</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 12L10 8L6 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </a>
+          
+          <a href="/terms-of-service" className="policy-link">
+            <span>View Terms of Service</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 12L10 8L6 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </a>
         </div>
-      )}
+
+        <div className="consent-message">
+          <div className="consent-icon">ℹ️</div>
+          <div className="consent-text">
+            You agreed to these policies when creating your account.
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

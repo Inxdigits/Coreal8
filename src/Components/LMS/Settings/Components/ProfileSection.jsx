@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import ProfileImage from '../../../Shared/ProfileImage.jsx';
 
 const ProfileSection = ({ 
   user, 
@@ -11,7 +12,9 @@ const ProfileSection = ({
   onSave, 
   onAddPhoto, 
   onRemovePhoto, 
-  onFileChange 
+  onFileChange,
+  photoError,
+  isUploadingPhoto
 }) => {
   const fileInputRef = useRef(null);
 
@@ -41,31 +44,44 @@ const ProfileSection = ({
       
       <div className="profile-picture-section">
         <div className="profile-picture">
-          <img src={user?.profileImage} alt="Profile" />
+          <ProfileImage 
+            user={user} 
+            size={120} 
+            className="settings-profile-image"
+            showInitials={true}
+            fallbackImage="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=120&h=120&fit=crop&crop=face"
+          />
         </div>
         <div className="profile-photo-actions">
           <button 
             className="add-photo-btn" 
             onClick={() => onAddPhoto(fileInputRef)}
-            disabled={isLoading}
+            disabled={isLoading || isUploadingPhoto}
           >
-            + Add Photo
+            {isUploadingPhoto ? 'Uploading...' : '+ Add Photo'}
           </button>
           <button 
             className="remove-photo-btn" 
             onClick={onRemovePhoto}
-            disabled={isLoading}
+            disabled={isLoading || isUploadingPhoto || !user?.profileImage}
           >
-            Remove Photo
+            {isUploadingPhoto ? 'Removing...' : 'Remove Photo'}
           </button>
         </div>
         <input
           type="file"
           ref={fileInputRef}
           onChange={onFileChange}
-          accept="image/*"
+          accept="image/jpeg,image/jpg,image/png,image/webp"
           style={{ display: 'none' }}
         />
+        
+        {/* Error Message */}
+        {photoError && (
+          <div className="photo-error">
+            {photoError}
+          </div>
+        )}
       </div>
 
       <div className="personal-info-section">

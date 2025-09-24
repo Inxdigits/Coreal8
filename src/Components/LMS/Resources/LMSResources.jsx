@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { signOut } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
 import { auth } from '../../../Firebase/Firebase.js';
-import WelcomeHeader from '../Components/WelcomeHeader';
+import { signOut } from 'firebase/auth';
+import { useCourseContext } from '../../../context/CourseContext.jsx';
+import DashboardSidebar from '../Dashboard/Components/DashboardSidebar';
+import LMSHeader from '../Components/LMSHeader';
+import resourcesService from '../../../services/ResourcesService.js';
+import '../Dashboard/Dashboard.css';
 import './LMSResources.css';
 
 const LMSResources = () => {
@@ -11,7 +15,11 @@ const LMSResources = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [activeCategory, setActiveCategory] = useState('all');
   const [currentPage, setCurrentPage] = useState(1);
+  const [resources, setResources] = useState([]);
+  const [filteredResources, setFilteredResources] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
+  const { enrolledCourses } = useCourseContext();
 
   const itemsPerPage = 12;
 
@@ -51,116 +59,35 @@ const LMSResources = () => {
     { id: 'courses', label: 'Courses' }
   ];
 
-  const resources = [
-    {
-      id: 1,
-      title: "Build personal brand & improve time discipline",
-      size: "2.5MB",
-      pages: "120 Pages",
-      type: "PDF",
-      category: "counseling",
-      icon: "▶️"
-    },
-    {
-      id: 2,
-      title: "Build personal brand & improve time discipline",
-      size: "2.5MB",
-      pages: "120 Pages",
-      type: "PDF",
-      category: "mentorship",
-      icon: "▶️"
-    },
-    {
-      id: 3,
-      title: "Build personal brand & improve time discipline",
-      size: "2.5MB",
-      pages: "120 Pages",
-      type: "PDF",
-      category: "coaching",
-      icon: "▶️"
-    },
-    {
-      id: 4,
-      title: "Build personal brand & improve time discipline",
-      size: "2.5MB",
-      pages: "120 Pages",
-      type: "PDF",
-      category: "courses",
-      icon: "▶️"
-    },
-    {
-      id: 5,
-      title: "Build personal brand & improve time discipline",
-      size: "2.5MB",
-      pages: "120 Pages",
-      type: "PDF",
-      category: "counseling",
-      icon: "▶️"
-    },
-    {
-      id: 6,
-      title: "Build personal brand & improve time discipline",
-      size: "2.5MB",
-      pages: "120 Pages",
-      type: "PDF",
-      category: "mentorship",
-      icon: "▶️"
-    },
-    {
-      id: 7,
-      title: "Build personal brand & improve time discipline",
-      size: "2.5MB",
-      pages: "120 Pages",
-      type: "PDF",
-      category: "coaching",
-      icon: "▶️"
-    },
-    {
-      id: 8,
-      title: "Build personal brand & improve time discipline",
-      size: "2.5MB",
-      pages: "120 Pages",
-      type: "PDF",
-      category: "courses",
-      icon: "▶️"
-    },
-    {
-      id: 9,
-      title: "Build personal brand & improve time discipline",
-      size: "2.5MB",
-      pages: "120 Pages",
-      type: "PDF",
-      category: "counseling",
-      icon: "▶️"
-    },
-    {
-      id: 10,
-      title: "Build personal brand & improve time discipline",
-      size: "2.5MB",
-      pages: "120 Pages",
-      type: "PDF",
-      category: "mentorship",
-      icon: "▶️"
-    },
-    {
-      id: 11,
-      title: "Build personal brand & improve time discipline",
-      size: "2.5MB",
-      pages: "120 Pages",
-      type: "PDF",
-      category: "coaching",
-      icon: "▶️"
-    },
-    {
-      id: 12,
-      title: "Build personal brand & improve time discipline",
-      size: "2.5MB",
-      pages: "120 Pages",
-      type: "PDF",
-      category: "courses",
-      icon: "▶️"
-    }
-  ];
+  // Load resources based on enrolled courses and category
+  useEffect(() => {
+    const loadResources = () => {
+      setIsLoading(true);
+      try {
+        const availableResources = resourcesService.getResourcesForEnrolledCourses(
+          enrolledCourses, 
+          activeCategory
+        );
+        setResources(availableResources);
+        setFilteredResources(availableResources);
+      } catch (error) {
+        console.error('Error loading resources:', error);
+        setResources([]);
+        setFilteredResources([]);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadResources();
+  }, [enrolledCourses, activeCategory]);
+
+  // Filter resources based on search query
+  useEffect(() => {
+    const filtered = resourcesService.searchResources(resources, searchQuery);
+    setFilteredResources(filtered);
+    setCurrentPage(1); // Reset to first page when searching
+  }, [resources, searchQuery]);
 
   const handleLogout = async () => {
     try {
@@ -175,95 +102,57 @@ const LMSResources = () => {
     setSearchQuery(e.target.value);
   };
 
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
+
+  const handleDownload = async (resource) => {
+    try {
+      const result = await resourcesService.downloadResource(resource);
+      if (result.success) {
+        // Show success message or notification
+        console.log(result.message);
+      } else {
+        alert(result.message);
+      }
+    } catch (error) {
+      console.error('Download error:', error);
+      alert('Download failed. Please try again.');
+    }
+  };
+
   const handleCategoryChange = (category) => {
     setActiveCategory(category);
     setCurrentPage(1); // Reset to first page when changing category
   };
 
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
-  };
+  // Get paginated resources
+  const paginationData = resourcesService.getPaginatedResources(
+    filteredResources, 
+    currentPage, 
+    itemsPerPage
+  );
 
-  const handleDownload = (resourceId) => {
-    console.log(`Downloading resource ${resourceId}`);
-    // In a real app, this would trigger the download
-  };
-
-  // Filter resources based on search query and category
-  const filteredResources = resources.filter(resource => {
-    const matchesSearch = resource.title.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesCategory = activeCategory === 'all' || resource.category === activeCategory;
-    return matchesSearch && matchesCategory;
-  });
-
-  // Calculate pagination
-  const totalPages = Math.ceil(filteredResources.length / itemsPerPage);
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const currentResources = filteredResources.slice(startIndex, endIndex);
+  // Check if user has access to current category
+  const hasAccess = resourcesService.hasAccessToCategory(enrolledCourses, activeCategory);
+  const isEmpty = !isLoading && filteredResources.length === 0;
+  const showEmptyState = isEmpty || !hasAccess;
 
   if (!user) {
     return <div className="loading">Loading...</div>;
   }
 
   return (
-    <div className="lms-resources-container">
-      {/* Sidebar */}
-      <div className="lms-sidebar">
-        <div className="sidebar-header">
-          <div className="logo">
-            <div className="logo-icon">C<span className="logo-8">8</span></div>
-            <span className="logo-text">Coreal8</span>
-          </div>
-        </div>
-        
-        <nav className="sidebar-nav">
-          {sidebarItems.map((item) => (
-            item.id === 'logout' ? (
-              <button
-                key={item.id}
-                className={`nav-item logout-btn ${activeSection === item.id ? 'active' : ''}`}
-                onClick={handleLogout}
-              >
-                <span className="nav-icon">{item.icon}</span>
-                <span className="nav-label">{item.label}</span>
-              </button>
-            ) : (
-              <Link
-                key={item.id}
-                to={item.path}
-                className={`nav-item ${activeSection === item.id ? 'active' : ''}`}
-                onClick={() => setActiveSection(item.id)}
-              >
-                <span className="nav-icon">{item.icon}</span>
-                <span className="nav-label">{item.label}</span>
-              </Link>
-            )
-          ))}
-        </nav>
-        
-        <div className="sidebar-footer">
-          <div className="user-profile">
-            <div className="profile-image">
-              <img src={user.profileImage} alt="Profile" />
-            </div>
-            <div className="profile-info">
-              <div className="profile-name">{user.name}</div>
-              <div className="profile-email">{user.email}</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Content */}
-      <div className="lms-main">
-        {/* Header */}
-        <WelcomeHeader 
+    <div className="dashboard-container resources-page">
+      <DashboardSidebar />
+      <div className="dashboard-main">
+        <LMSHeader 
           user={user}
           pageSubtitle="This section only shows resources from services you've enrolled in."
           searchQuery={searchQuery}
           onSearchChange={handleSearch}
         />
+        <div className="dashboard-content">
 
         {/* Category Filters */}
         <div className="category-filters">
@@ -279,53 +168,85 @@ const LMSResources = () => {
         </div>
 
         {/* Resources Grid or Empty State */}
-        {currentResources.length > 0 ? (
+        {isLoading ? (
+          <div className="loading-state">
+            <div className="loading-spinner"></div>
+            <p>Loading resources...</p>
+          </div>
+        ) : showEmptyState ? (
+          <div className="empty-state">
+            <div className="empty-state-icon">
+              <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="8" y="12" width="48" height="40" rx="4" stroke="#8B0000" strokeWidth="2" fill="none"/>
+                <path d="M20 24h24M20 32h16M20 40h20" stroke="#8B0000" strokeWidth="2" strokeLinecap="round"/>
+                <circle cx="48" cy="20" r="4" fill="#8B0000"/>
+              </svg>
+            </div>
+            <h2 className="empty-state-title">No resources available</h2>
+            <p className="empty-state-description">
+              {resourcesService.getEmptyStateMessage(activeCategory)}
+            </p>
+            <button 
+              className="empty-state-button"
+              onClick={() => {
+                // Navigate to appropriate service page
+                if (activeCategory === 'courses') {
+                  navigate('/courses');
+                } else if (activeCategory === 'mentorship') {
+                  navigate('/mentorship');
+                } else if (activeCategory === 'coaching') {
+                  navigate('/coaching');
+                } else if (activeCategory === 'counseling') {
+                  navigate('/counseling');
+                } else {
+                  navigate('/courses');
+                }
+              }}
+            >
+              {resourcesService.getCallToActionText(activeCategory)}
+            </button>
+          </div>
+        ) : (
           <div className="resources-grid">
-            {currentResources.map((resource) => (
+            {paginationData.data.map((resource) => (
               <div key={resource.id} className="resource-card">
                 <div className="resource-icon">
-                  {resource.icon}
+                  {resourcesService.getResourceIcon(resource.type)}
                 </div>
                 <div className="resource-content">
                   <h3 className="resource-title">{resource.title}</h3>
+                  <p className="resource-description">{resource.description}</p>
                   <div className="resource-details">
                     <span className="resource-size">{resource.size}</span>
                     <span className="resource-pages">{resource.pages}</span>
+                    <span className="resource-type">{resource.type}</span>
                   </div>
                 </div>
                 <button 
                   className="download-btn"
-                  onClick={() => handleDownload(resource.id)}
+                  onClick={() => handleDownload(resource)}
+                  title={`Download ${resource.title}`}
                 >
-                  ⬇️
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10 2V14M10 14L6 10M10 14L14 10M2 16H18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
                 </button>
               </div>
             ))}
           </div>
-        ) : (
-          <div className="empty-state">
-            <div className="empty-state-icon">📄!</div>
-            <h2 className="empty-state-title">No resources available</h2>
-            <p className="empty-state-description">
-              Once you enroll in a course, coaching program, or mentorship, you'll find helpful downloads, worksheets, and bonus content here.
-            </p>
-            <button className="empty-state-button">
-              Book {activeCategory === 'all' ? 'Services' : activeCategory.charAt(0).toUpperCase() + activeCategory.slice(1)}
-            </button>
-          </div>
         )}
 
         {/* Pagination */}
-        {totalPages > 1 && (
+        {paginationData.totalPages > 1 && !showEmptyState && (
           <div className="pagination">
             <button 
               className="pagination-btn"
               onClick={() => handlePageChange(currentPage - 1)}
-              disabled={currentPage === 1}
+              disabled={!paginationData.hasPrevPage}
             >
               ←
             </button>
-            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+            {Array.from({ length: paginationData.totalPages }, (_, i) => i + 1).map((page) => (
               <button
                 key={page}
                 className={`pagination-btn ${currentPage === page ? 'active' : ''}`}
@@ -337,12 +258,13 @@ const LMSResources = () => {
             <button 
               className="pagination-btn"
               onClick={() => handlePageChange(currentPage + 1)}
-              disabled={currentPage === totalPages}
+              disabled={!paginationData.hasNextPage}
             >
               →
             </button>
           </div>
         )}
+        </div>
       </div>
     </div>
   );

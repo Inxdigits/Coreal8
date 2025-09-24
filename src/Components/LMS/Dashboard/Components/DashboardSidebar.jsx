@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { signOut } from 'firebase/auth';
-import { auth } from '../../../../Firebase/Firebase.js';
+import { useUser } from '../../../../context/UserContext.jsx';
+import ProfileImage from '../../../Shared/ProfileImage.jsx';
 import './DashboardSidebar.css';
 import dashboardIcon from '../../../../Assets/LmsPageAssets/dashboard.svg';
 import courseIcon from '../../../../Assets/LmsPageAssets/course.svg';
@@ -12,30 +12,16 @@ import resourcesIcon from '../../../../Assets/LmsPageAssets/resources.svg';
 import accountIcon from '../../../../Assets/LmsPageAssets/account.svg';
 import logoutIcon from '../../../../Assets/LmsPageAssets/logout.svg';
 import logoIcon from '../../../../Assets/LmsPageAssets/logo.png';
+import calendarIcon from '../../../../Assets/LmsPageAssets/calendar.svg';
 const DashboardSidebar = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const [user, setUser] = useState(null);
+  const { user, logout } = useUser();
 
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      if (user) {
-        console.log('Firebase user data:', user);
-        console.log('User photoURL:', user.photoURL);
-        setUser({
-          name: user.displayName || 'Jane Doe',
-          email: user.email || 'janedoe@gmail.com',
-          profileImage: user.photoURL ? `${user.photoURL}?sz=40` : 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=40&h=40&fit=crop&crop=face'
-        });
-      }
-    });
-
-    return () => unsubscribe();
-  }, []);
 
   const handleLogout = async () => {
     try {
-      await signOut(auth);
+      await logout();
       navigate('/');
     } catch (error) {
       console.error('Error signing out:', error);
@@ -44,27 +30,29 @@ const DashboardSidebar = () => {
 
   const navigationItems = [
     { id: 'dashboard', label: 'Dashboard', path: '/dashboard', icon: dashboardIcon },
-    { id: 'course-management', label: 'Course Management', path: '/admin/course-management', icon: courseIcon },
-    { id: 'program-management', label: 'Program Management', path: '/admin/program-management', icon: programIcon },
-    { id: 'blog-management', label: 'Blog Management', path: '/admin/blog-management', icon: blogIcon },
-    { id: 'podcast-management', label: 'Podcast Management', path: '/admin/podcast-management', icon: podcastIcon },
-    { id: 'resources-management', label: 'Resources Management', path: '/admin/resources-management', icon: resourcesIcon },
+    { id: 'my-courses', label: 'My Courses', path: '/my-courses', icon: courseIcon },
+    { id: 'program-management', label: 'My Mentorship', path: '/admin/program-management', icon: programIcon },
+    { id: 'blog-management', label: 'Coaching Sessions', path: '/admin/blog-management', icon: blogIcon },
+    { id: 'podcast-management', label: 'Counseling Services', path: '/admin/podcast-management', icon: podcastIcon },
+    { id: 'calendar', label: 'Calendar', path: '/lms/calendar', icon: calendarIcon },
+    { id: 'resources-management', label: 'Resources', path: '/lms/resources', icon: resourcesIcon },
     { id: 'account-settings', label: 'Account Settings', path: '/admin/account-settings', icon: accountIcon },
     { id: 'logout', label: 'Logout', path: null, icon: logoutIcon }
   ];
 
   return (
     <div className="dashboard-sidebar">
-      {/* Logo Section */}  
-      <div className="sidebar-header">
-        <div className="">
-        <img src={logoIcon} alt="logo" className="logo-icon" />
-         
+      <div className="sidebar-content">
+        {/* Logo Section */}  
+        <div className="sidebar-header">
+          <div className="">
+          <img src={logoIcon} alt="logo" className="logo-icon" />
+           
+          </div>
         </div>
-      </div>
 
-      {/* Navigation Menu */}
-      <nav className="sidebar-nav">
+        {/* Navigation Menu */}
+        <nav className="sidebar-nav">
         {navigationItems.map((item) => (
           item.id === 'logout' ? (
             <button
@@ -88,33 +76,25 @@ const DashboardSidebar = () => {
         ))}
       </nav>
 
-      {/* User Profile Section */}
-      {user && (
-        <div className="user-profile-section">
-          <div className="user-profile-image">
-            <img 
-              src={user.profileImage} 
-              alt="Profile" 
-              onError={(e) => {
-                console.log('Image failed to load:', user.profileImage);
-                console.log('Error event:', e);
-                e.target.style.display = 'none';
-                e.target.nextSibling.style.display = 'flex';
-              }}
-              onLoad={() => {
-                console.log('Image loaded successfully:', user.profileImage);
-              }}
-            />
-            <div className="profile-initials" style={{ display: 'none' }}>
-              {user.name ? user.name.split(' ').map(n => n[0]).join('').toUpperCase() : 'U'}
+        {/* User Profile Section */}
+        {user && (
+          <div className="user-profile-section">
+            <div className="user-profile-image">
+              <ProfileImage 
+                user={user} 
+                size={40} 
+                className="sidebar-profile-image"
+                showInitials={true}
+                fallbackImage="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=40&h=40&fit=crop&crop=face"
+              />
+            </div>
+            <div className="user-profile-info">
+              <div className="user-name">{user.name}</div>
+              <div className="user-email">{user.email}</div>
             </div>
           </div>
-          <div className="user-profile-info">
-            <div className="user-name">{user.name}</div>
-            <div className="user-email">{user.email}</div>
-          </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };

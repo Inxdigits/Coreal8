@@ -2,14 +2,12 @@ import React from 'react';
 
 const SecuritySection = ({ 
   passwordData, 
-  passwordVisibility, 
   twoFactorEnabled, 
   isChangingPassword, 
   onPasswordChange, 
   onChangePassword, 
   onCancelPassword, 
-  onTwoFactorToggle, 
-  onTogglePasswordVisibility 
+  onTwoFactorToggle
 }) => {
   return (
     <div className="security-section">
@@ -21,69 +19,42 @@ const SecuritySection = ({
         <div className="password-form">
           <div className="form-group">
             <label htmlFor="oldPassword">Old Password</label>
-            <div className="password-input-container">
-              <input
-                type={passwordVisibility.oldPassword ? "text" : "password"}
-                id="oldPassword"
-                name="oldPassword"
-                value={passwordData.oldPassword}
-                onChange={onPasswordChange}
-                placeholder="Enter old password"
-                className="form-input password-input"
-              />
-              <button
-                type="button"
-                className="password-toggle-btn"
-                onClick={() => onTogglePasswordVisibility('oldPassword')}
-                disabled={isChangingPassword}
-              >
-                {passwordVisibility.oldPassword ? '🙈' : '👁️'}
-              </button>
-            </div>
+            <input
+              type="password"
+              id="oldPassword"
+              name="oldPassword"
+              value={passwordData.oldPassword}
+              onChange={onPasswordChange}
+              placeholder="Enter old password"
+              className="form-input"
+              disabled={isChangingPassword}
+            />
           </div>
           <div className="form-group">
             <label htmlFor="newPassword">New Password</label>
-            <div className="password-input-container">
-              <input
-                type={passwordVisibility.newPassword ? "text" : "password"}
-                id="newPassword"
-                name="newPassword"
-                value={passwordData.newPassword}
-                onChange={onPasswordChange}
-                placeholder="Enter new password"
-                className="form-input password-input"
-              />
-              <button
-                type="button"
-                className="password-toggle-btn"
-                onClick={() => onTogglePasswordVisibility('newPassword')}
-                disabled={isChangingPassword}
-              >
-                {passwordVisibility.newPassword ? '🙈' : '👁️'}
-              </button>
-            </div>
+            <input
+              type="password"
+              id="newPassword"
+              name="newPassword"
+              value={passwordData.newPassword}
+              onChange={onPasswordChange}
+              placeholder="Enter new password"
+              className="form-input"
+              disabled={isChangingPassword}
+            />
           </div>
           <div className="form-group">
             <label htmlFor="confirmPassword">Confirm Password</label>
-            <div className="password-input-container">
-              <input
-                type={passwordVisibility.confirmPassword ? "text" : "password"}
-                id="confirmPassword"
-                name="confirmPassword"
-                value={passwordData.confirmPassword}
-                onChange={onPasswordChange}
-                placeholder="Confirm new password"
-                className="form-input password-input"
-              />
-              <button
-                type="button"
-                className="password-toggle-btn"
-                onClick={() => onTogglePasswordVisibility('confirmPassword')}
-                disabled={isChangingPassword}
-              >
-                {passwordVisibility.confirmPassword ? '🙈' : '👁️'}
-              </button>
-            </div>
+            <input
+              type="password"
+              id="confirmPassword"
+              name="confirmPassword"
+              value={passwordData.confirmPassword}
+              onChange={onPasswordChange}
+              placeholder="Confirm new password"
+              className="form-input"
+              disabled={isChangingPassword}
+            />
           </div>
           <div className="password-actions">
             <button 
@@ -113,7 +84,7 @@ const SecuritySection = ({
         <div className="two-factor-content">
           <div className="email-info">
             <div className="email-label">Primary Email</div>
-            <div className="email-description">Email used to send authentication code.</div>
+            <div className="email-description">Email used to send authentication code</div>
           </div>
           <div className="toggle-container">
             <label className="toggle-switch">

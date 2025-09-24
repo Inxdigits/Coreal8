@@ -1,6 +1,9 @@
 import React from 'react';
+import { useUser } from '../../../context/UserContext.jsx';
+import ProfileImage from '../../Shared/ProfileImage.jsx';
 
-const WelcomeHeader = ({ user, pageTitle, pageSubtitle, searchQuery, onSearchChange, showSearch = true }) => {
+const WelcomeHeader = ({ pageTitle, pageSubtitle, searchQuery, onSearchChange, showSearch = true }) => {
+  const { user } = useUser();
   return (
     <div className="lms-header">
       <div className="header-left">
@@ -22,17 +25,13 @@ const WelcomeHeader = ({ user, pageTitle, pageSubtitle, searchQuery, onSearchCha
         )}
         <div className="user-profile">
           <div className="profile-image">
-            <img 
-              src={user?.profileImage || 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=40&h=40&fit=crop&crop=face'} 
-              alt="Profile" 
-              onError={(e) => {
-                e.target.style.display = 'none';
-                e.target.nextSibling.style.display = 'flex';
-              }}
+            <ProfileImage 
+              user={user} 
+              size={40} 
+              className="header-profile-image"
+              showInitials={true}
+              fallbackImage="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=40&h=40&fit=crop&crop=face"
             />
-            <div className="profile-initials" style={{ display: 'none' }}>
-              {user?.name ? user.name.split(' ').map(n => n[0]).join('').toUpperCase() : 'U'}
-            </div>
           </div>
           <div className="profile-info">
             <div className="profile-name">{user?.name || 'User'}</div>

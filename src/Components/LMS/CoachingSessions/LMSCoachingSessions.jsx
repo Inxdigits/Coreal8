@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { signOut } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
 import { auth } from '../../../Firebase/Firebase.js';
-import WelcomeHeader from '../Components/WelcomeHeader';
+import DashboardSidebar from '../Dashboard/Components/DashboardSidebar';
+import LMSHeader from '../Components/LMSHeader';
+import '../Dashboard/Dashboard.css';
 import './LMSCoachingSessions.css';
 
 const LMSCoachingSessions = () => {
@@ -25,90 +26,27 @@ const LMSCoachingSessions = () => {
     return () => unsubscribe();
   }, [navigate]);
 
-  const sidebarItems = [
-    { id: 'dashboard', label: 'Dashboard', icon: '⊞', path: '/dashboard' },
-    { id: 'courses', label: 'My Courses', icon: '🎓', path: '/lms/courses' },
-    { id: 'mentorship', label: 'My Mentorship', icon: '👥', path: '/lms/mentorship' },
-    { id: 'coaching', label: 'Coaching Sessions', icon: '👥➡️', path: '/lms/coaching' },
-    { id: 'counseling', label: 'Counseling Services', icon: '👥', path: '/lms/counseling' },
-    { id: 'calendar', label: 'Calendar', icon: '📅', path: '/lms/calendar' },
-    { id: 'resources', label: 'Resources', icon: '⊞+', path: '/lms/resources' },
-    { id: 'settings', label: 'Account Settings', icon: '👤', path: '/lms/settings' },
-    { id: 'logout', label: 'Logout', icon: '↪️', path: null }
-  ];
-
-  const handleLogout = async () => {
-    try {
-      await signOut(auth);
-      navigate('/');
-    } catch (error) {
-      console.error('Error signing out:', error);
-    }
-  };
 
   if (!user) {
     return <div className="loading">Loading...</div>;
   }
 
   return (
-    <div className="lms-coaching-container">
-      <div className="lms-sidebar">
-        <div className="sidebar-header">
-          <div className="logo">
-            <div className="logo-icon">C<span className="logo-8">8</span></div>
-            <span className="logo-text">Coreal8</span>
-          </div>
-        </div>
-        
-        <nav className="sidebar-nav">
-          {sidebarItems.map((item) => (
-            item.id === 'logout' ? (
-              <button
-                key={item.id}
-                className={`nav-item logout-btn ${activeSection === item.id ? 'active' : ''}`}
-                onClick={handleLogout}
-              >
-                <span className="nav-icon">{item.icon}</span>
-                <span className="nav-label">{item.label}</span>
-              </button>
-            ) : (
-              <Link
-                key={item.id}
-                to={item.path}
-                className={`nav-item ${activeSection === item.id ? 'active' : ''}`}
-                onClick={() => setActiveSection(item.id)}
-              >
-                <span className="nav-icon">{item.icon}</span>
-                <span className="nav-label">{item.label}</span>
-              </Link>
-            )
-          ))}
-        </nav>
-        
-        <div className="sidebar-footer">
-          <div className="user-profile">
-            <div className="profile-image">
-              <img src={user.profileImage} alt="Profile" />
-            </div>
-            <div className="profile-info">
-              <div className="profile-name">{user.name}</div>
-              <div className="profile-email">{user.email}</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="lms-main">
-        <WelcomeHeader 
+    <div className="dashboard-container">
+      <DashboardSidebar />
+      <div className="dashboard-main">
+        <LMSHeader 
           user={user}
           pageSubtitle="Professional coaching to accelerate your growth"
-          showSearch={false}
+          searchQuery=""
+          onSearchChange={() => {}}
         />
-
-        <div className="coming-soon">
-          <div className="coming-soon-icon">🚀</div>
-          <h2>Coming Soon</h2>
-          <p>Coaching sessions feature is under development. Stay tuned!</p>
+        <div className="dashboard-content">
+          <div className="coming-soon">
+            <div className="coming-soon-icon">🚀</div>
+            <h2>Coming Soon</h2>
+            <p>Coaching sessions feature is under development. Stay tuned!</p>
+          </div>
         </div>
       </div>
     </div>

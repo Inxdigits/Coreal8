@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { signOut } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
 import { auth } from '../../../Firebase/Firebase.js';
-import WelcomeHeader from '../Components/WelcomeHeader';
+import DashboardSidebar from '../Dashboard/Components/DashboardSidebar.jsx';
+import '../Dashboard/Dashboard.css';
 import './LMSCalendar.css';
 
 const LMSCalendar = () => {
@@ -30,17 +30,6 @@ const LMSCalendar = () => {
     return () => unsubscribe();
   }, [navigate]);
 
-  const sidebarItems = [
-    { id: 'dashboard', label: 'Dashboard', icon: '⊞', path: '/dashboard' },
-    { id: 'courses', label: 'My Courses', icon: '🎓', path: '/lms/courses' },
-    { id: 'mentorship', label: 'My Mentorship', icon: '👥', path: '/lms/mentorship' },
-    { id: 'coaching', label: 'Coaching Sessions', icon: '👥➡️', path: '/lms/coaching' },
-    { id: 'counseling', label: 'Counseling Services', icon: '👥', path: '/lms/counseling' },
-    { id: 'calendar', label: 'Calendar', icon: '📅', path: '/lms/calendar' },
-    { id: 'resources', label: 'Resources', icon: '⊞+', path: '/lms/resources' },
-    { id: 'settings', label: 'Account Settings', icon: '👤', path: '/lms/settings' },
-    { id: 'logout', label: 'Logout', icon: '↪️', path: null }
-  ];
 
   const categories = [
     { id: 'mentorship', label: 'Mentorship', color: '#FFD700' },
@@ -84,14 +73,6 @@ const LMSCalendar = () => {
     }
   ];
 
-  const handleLogout = async () => {
-    try {
-      await signOut(auth);
-      navigate('/');
-    } catch (error) {
-      console.error('Error signing out:', error);
-    }
-  };
 
   const handleSearch = (e) => {
     setSearchQuery(e.target.value);
@@ -164,195 +145,200 @@ const LMSCalendar = () => {
   }
 
   return (
-    <div className="lms-calendar-container">
-      {/* Left Sidebar */}
-      <div className="lms-sidebar">
-        <div className="sidebar-header">
-          <div className="logo">
-            <div className="logo-icon">C<span className="logo-8">8</span></div>
-            <span className="logo-text">Coreal8</span>
-          </div>
-        </div>
-        
-        <nav className="sidebar-nav">
-          {sidebarItems.map((item) => (
-            item.id === 'logout' ? (
-              <button
-                key={item.id}
-                className={`nav-item logout-btn ${activeSection === item.id ? 'active' : ''}`}
-                onClick={handleLogout}
-              >
-                <span className="nav-icon">{item.icon}</span>
-                <span className="nav-label">{item.label}</span>
-              </button>
-            ) : (
-              <Link
-                key={item.id}
-                to={item.path}
-                className={`nav-item ${activeSection === item.id ? 'active' : ''}`}
-                onClick={() => setActiveSection(item.id)}
-              >
-                <span className="nav-icon">{item.icon}</span>
-                <span className="nav-label">{item.label}</span>
-              </Link>
-            )
-          ))}
-        </nav>
-        
-        <div className="sidebar-footer">
-          <div className="user-profile">
-            <div className="profile-image">
-              <img 
-                src={user.profileImage} 
-                alt="Profile" 
-                onError={(e) => {
-                  e.target.style.display = 'none';
-                  e.target.nextSibling.style.display = 'flex';
-                }}
-              />
-              <div className="profile-initials" style={{ display: 'none' }}>
-                {user.name ? user.name.split(' ').map(n => n[0]).join('').toUpperCase() : 'U'}
-              </div>
-            </div>
-            <div className="profile-info">
-              <div className="profile-name">{user.name}</div>
-              <div className="profile-email">{user.email}</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Content Area */}
-      <div className="lms-main">
+    <div className="dashboard-container">
+      <DashboardSidebar />
+      <div className="dashboard-main">
         {/* Header */}
-        <WelcomeHeader 
-          user={user}
-          pageSubtitle="See all your upcoming sessions, and events in one place."
-          searchQuery={searchQuery}
-          onSearchChange={handleSearch}
-        />
-
-        {/* Calendar Content */}
-        <div className="calendar-content">
-          <div className="calendar-header">
-            <div className="calendar-title-section">
-              <h1 className="page-title">Calendar</h1>
-            </div>
-            
-            <div className="calendar-controls">
-              <div className="month-selector">
-                <button 
-                  className="month-nav-btn"
-                  onClick={() => handleMonthChange('prev')}
-                >
-                  ←
-                </button>
-                <span className="current-month">{getMonthName(currentDate)}</span>
-                <button 
-                  className="month-nav-btn"
-                  onClick={() => handleMonthChange('next')}
-                >
-                  →
-                </button>
+        <div className="dashboard-header">
+          <div className="header-left">
+            <h1 className="welcome-text">Welcome Back, {user?.name || 'User'}</h1>
+            <p className="page-subtitle">Calendar - See all your upcoming sessions, and events in one place.</p>
+          </div>
+          <div className="header-right">
+            <div className="header-actions">
+              <div className="search-container">
+                <input 
+                  type="text" 
+                  placeholder="Q Search" 
+                  className="search-input"
+                  value={searchQuery}
+                  onChange={handleSearch}
+                />
               </div>
-              
-              <div className="view-toggles">
-                <button 
-                  className={`view-toggle ${viewMode === 'day' ? 'active' : ''}`}
-                  onClick={() => handleViewModeChange('day')}
-                >
-                  Day
-                </button>
-                <button 
-                  className={`view-toggle ${viewMode === 'week' ? 'active' : ''}`}
-                  onClick={() => handleViewModeChange('week')}
-                >
-                  Week
-                </button>
-                <button 
-                  className={`view-toggle ${viewMode === 'month' ? 'active' : ''}`}
-                  onClick={() => handleViewModeChange('month')}
-                >
-                  Month
-                </button>
+              <div className="notification-bell">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 22C13.1 22 14 21.1 14 20H10C10 21.1 10.9 22 12 22ZM18 16V11C18 7.93 16.36 5.36 13.5 4.68V4C13.5 3.17 12.83 2.5 12 2.5S10.5 3.17 10.5 4V4.68C7.63 5.36 6 7.92 6 11V16L4 18V19H20V18L18 16Z" fill="#6B7280"/>
+                </svg>
               </div>
             </div>
           </div>
+        </div>
 
-          {/* Calendar Grid */}
-          <div className="calendar-grid">
-            <div className="calendar-header-row">
-              {daysOfWeek.map((day) => (
-                <div key={day} className="day-header">{day}</div>
-              ))}
-            </div>
-            
-            <div className="calendar-body">
-              {calendarDays.map((day, index) => (
-                <div 
-                  key={index} 
-                  className={`calendar-day ${isToday(day) ? 'today' : ''} ${!day ? 'empty' : ''}`}
-                >
-                  {day && (
-                    <>
-                      <div className="day-number">{day}</div>
-                      <div className="day-events">
-                        {getEventsForDate(day).map((event) => (
-                          <div 
-                            key={event.id} 
-                            className="event-item"
-                            style={{ backgroundColor: event.color }}
-                          >
-                            {event.title}
-                          </div>
-                        ))}
-                      </div>
-                    </>
-                  )}
+        {/* Main Content */}
+        <div className="dashboard-content">
+          <div className="calendar-container">
+            {/* Calendar Section */}
+            <div className="calendar-main">
+              {/* Calendar Header */}
+              <div className="calendar-header">
+                <div className="month-selector">
+                  <select className="month-dropdown">
+                    <option value="july">July</option>
+                    <option value="august">August</option>
+                    <option value="september">September</option>
+                    <option value="october">October</option>
+                    <option value="november">November</option>
+                    <option value="december">December</option>
+                  </select>
                 </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Right Sidebar */}
-      <div className="calendar-right-sidebar">
-        <div className="categories-section">
-          <h3 className="sidebar-title">Categories</h3>
-          <div className="categories-list">
-            {categories.map((category) => (
-              <div key={category.id} className="category-item">
-                <div 
-                  className="category-color" 
-                  style={{ backgroundColor: category.color }}
-                ></div>
-                <span className="category-label">{category.label}</span>
+                <div className="view-tabs">
+                  <button className="tab active">Day</button>
+                  <button className="tab">Week</button>
+                  <button className="tab">Month</button>
+                </div>
               </div>
-            ))}
-          </div>
-        </div>
 
-        <div className="reminder-settings">
-          <h3 className="sidebar-title">Reminder Settings</h3>
-          <div className="reminder-options">
-            <label className="reminder-option">
-              <input 
-                type="checkbox" 
-                checked={emailReminder}
-                onChange={(e) => setEmailReminder(e.target.checked)}
-              />
-              <span className="reminder-text">Email me 24 hrs before each event</span>
-            </label>
-            
-            <label className="reminder-option">
-              <input 
-                type="checkbox" 
-                checked={inAppReminder}
-                onChange={(e) => setInAppReminder(e.target.checked)}
-              />
-              <span className="reminder-text">In-app reminder 15 mins before live sessions</span>
-            </label>
+              {/* Calendar Grid */}
+              <div className="calendar-grid">
+                <div className="calendar-header-row">
+                  <div className="day-header">MON</div>
+                  <div className="day-header">TUE</div>
+                  <div className="day-header">WED</div>
+                  <div className="day-header">THU</div>
+                  <div className="day-header">FRI</div>
+                  <div className="day-header">SAT</div>
+                  <div className="day-header">SUN</div>
+                </div>
+                
+                <div className="calendar-body">
+                  {/* Week 1 */}
+                  <div className="calendar-week">
+                    <div className="calendar-day">
+                      <div className="day-number">18</div>
+                      <div className="event-block mentorship-event">
+                        <div className="event-title">Module 3 Live Session</div>
+                        <div className="event-date">July 18</div>
+                      </div>
+                    </div>
+                    <div className="calendar-day">
+                      <div className="day-number">19</div>
+                    </div>
+                    <div className="calendar-day">
+                      <div className="day-number">20</div>
+                      <div className="event-block coaching-event">
+                        <div className="event-title">1-on-1 with David</div>
+                        <div className="event-date">July 19</div>
+                      </div>
+                    </div>
+                    <div className="calendar-day">
+                      <div className="day-number">21</div>
+                    </div>
+                    <div className="calendar-day">
+                      <div className="day-number">22</div>
+                    </div>
+                    <div className="calendar-day">
+                      <div className="day-number">23</div>
+                    </div>
+                    <div className="calendar-day">
+                      <div className="day-number">24</div>
+                    </div>
+                  </div>
+
+                  {/* Week 2 */}
+                  <div className="calendar-week">
+                    <div className="calendar-day">
+                      <div className="day-number">25</div>
+                    </div>
+                    <div className="calendar-day">
+                      <div className="day-number">26</div>
+                    </div>
+                    <div className="calendar-day">
+                      <div className="day-number">27</div>
+                    </div>
+                    <div className="calendar-day">
+                      <div className="day-number">28</div>
+                    </div>
+                    <div className="calendar-day">
+                      <div className="day-number">29</div>
+                    </div>
+                    <div className="calendar-day">
+                      <div className="day-number">30</div>
+                    </div>
+                    <div className="calendar-day">
+                      <div className="day-number">31</div>
+                    </div>
+                  </div>
+
+                  {/* Week 3 */}
+                  <div className="calendar-week">
+                    <div className="calendar-day">
+                      <div className="day-number">1</div>
+                    </div>
+                    <div className="calendar-day">
+                      <div className="day-number">2</div>
+                    </div>
+                    <div className="calendar-day">
+                      <div className="day-number">3</div>
+                    </div>
+                    <div className="calendar-day">
+                      <div className="day-number">4</div>
+                    </div>
+                    <div className="calendar-day">
+                      <div className="day-number">5</div>
+                    </div>
+                    <div className="calendar-day">
+                      <div className="day-number">6</div>
+                    </div>
+                    <div className="calendar-day">
+                      <div className="day-number">7</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Sidebar */}
+            <div className="calendar-sidebar">
+              {/* Categories Section */}
+              <div className="categories-section">
+                <h3 className="sidebar-title">Categories</h3>
+                <div className="category-list">
+                  <div className="category-item">
+                    <div className="category-color mentorship-color"></div>
+                    <span className="category-label">Mentorship</span>
+                  </div>
+                  <div className="category-item">
+                    <div className="category-color counseling-color"></div>
+                    <span className="category-label">Counseling</span>
+                  </div>
+                  <div className="category-item">
+                    <div className="category-color coaching-color"></div>
+                    <span className="category-label">Coaching</span>
+                  </div>
+                  <div className="category-item">
+                    <div className="category-color mentorship-dark-color"></div>
+                    <span className="category-label">Mentorship</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Reminder Settings Section */}
+              <div className="reminder-settings-section">
+                <h3 className="sidebar-title">Reminder Settings</h3>
+                <div className="reminder-options">
+                  <label className="reminder-option">
+                    <input type="checkbox" />
+                    <span className="checkmark"></span>
+                    <span className="reminder-text">Email me 24 hrs before each event</span>
+                  </label>
+                  <label className="reminder-option">
+                    <input type="checkbox" />
+                    <span className="checkmark"></span>
+                    <span className="reminder-text">In-app reminder 15 mins before live sessions</span>
+                  </label>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

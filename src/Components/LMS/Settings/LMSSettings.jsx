@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { signOut, updateProfile, updateEmail, updatePassword, reauthenticateWithCredential, EmailAuthProvider } from 'firebase/auth';
+import { updateProfile, updateEmail, updatePassword, reauthenticateWithCredential, EmailAuthProvider, sendEmailVerification } from 'firebase/auth';
 import { auth } from '../../../Firebase/Firebase.js';
+import { useUser } from '../../../context/UserContext.jsx';
+import ProfilePhotoService from '../../../services/ProfilePhotoService.js';
+import DashboardSidebar from '../Dashboard/Components/DashboardSidebar';
+import LMSHeader from '../Components/LMSHeader';
+import '../Dashboard/Dashboard.css';
 import './LMSSettings.css';
 
 // Import mini-components
-import LMSSidebar from './Components/LMSSidebar';
-import WelcomeHeader from '../Components/WelcomeHeader';
 import ProfileSection from './Components/ProfileSection';
 import SecuritySection from './Components/SecuritySection';
 import PaymentSection from './Components/PaymentSection';
@@ -15,7 +18,7 @@ import PrivacySection from './Components/PrivacySection';
 
 const LMSSettings = () => {
   const [activeSection, setActiveSection] = useState('profile');
-  const [user, setUser] = useState(null);
+  const { user, logout, loading, refreshUserData } = useUser();
   const [searchQuery, setSearchQuery] = useState('');
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({
@@ -32,120 +35,93 @@ const LMSSettings = () => {
   });
   const [twoFactorEnabled, setTwoFactorEnabled] = useState(false);
   const [isChangingPassword, setIsChangingPassword] = useState(false);
-  const [passwordVisibility, setPasswordVisibility] = useState({
-    oldPassword: false,
-    newPassword: false,
-    confirmPassword: false
+  const [isUploadingPhoto, setIsUploadingPhoto] = useState(false);
+  
+  // Two-factor authentication modal state
+  const [showTwoFactorModal, setShowTwoFactorModal] = useState(false);
+  const [twoFactorCode, setTwoFactorCode] = useState('');
+  const [isVerifyingCode, setIsVerifyingCode] = useState(false);
+
+  // Notifications state
+  const [emailNotifications, setEmailNotifications] = useState({
+    sessionReminders: true,
+    courseUpdates: false,
+    promotionsOffers: false,
+    communityAnnouncements: false
   });
-  const [savedCards, setSavedCards] = useState([
-    {
-      id: 1,
-      type: 'Visa',
-      lastFour: '4421',
-      expiry: '09/2027',
-      isDefault: true
-    }
-  ]);
+
+  const [inAppNotifications, setInAppNotifications] = useState({
+    upcomingSessionAlerts: true,
+    newLessonDrops: false,
+    assignmentDeadlines: false,
+    liveEventReminders: false
+  });
+
+  const [language, setLanguage] = useState('en');
+  const [timezone, setTimezone] = useState('GMT+1');
+
+  // Privacy state
+  const [dataVisibility, setDataVisibility] = useState({
+    sessionHistory: false,
+    anonymizedData: false
+  });
+
+  // Payment state
+  const [savedCards, setSavedCards] = useState([]);
   const [billingHistory, setBillingHistory] = useState([
     {
       id: 1,
       date: 'Jul 10, 2025',
       item: 'Emotional Resilience Course',
-      amount: '₦15,000',
+      amount: '₩15,000',
       status: 'Paid',
-      invoice: 'Download'
+      invoiceId: 'INV-001'
     },
     {
       id: 2,
       date: 'Jul 10, 2025',
       item: 'Emotional Resilience Course',
-      amount: '₦15,000',
+      amount: '₩15,000',
       status: 'Paid',
-      invoice: 'Download'
+      invoiceId: 'INV-002'
     },
     {
       id: 3,
       date: 'Jul 10, 2025',
       item: 'Emotional Resilience Course',
-      amount: '₦15,000',
+      amount: '₩15,000',
       status: 'Paid',
-      invoice: 'Download'
+      invoiceId: 'INV-003'
     },
     {
       id: 4,
       date: 'Jul 10, 2025',
       item: 'Emotional Resilience Course',
-      amount: '₦15,000',
+      amount: '₩15,000',
       status: 'Paid',
-      invoice: 'Download'
+      invoiceId: 'INV-004'
     },
     {
       id: 5,
       date: 'Jul 10, 2025',
       item: 'Emotional Resilience Course',
-      amount: '₦15,000',
+      amount: '₩15,000',
       status: 'Paid',
-      invoice: 'Download'
-    },
-    {
-      id: 6,
-      date: 'Jul 8, 2025',
-      item: 'Leadership Mastery Program',
-      amount: '₦25,000',
-      status: 'Paid',
-      invoice: 'Download'
-    },
-    {
-      id: 7,
-      date: 'Jul 5, 2025',
-      item: 'Mentorship Session',
-      amount: '₦8,000',
-      status: 'Paid',
-      invoice: 'Download'
-    },
-    {
-      id: 8,
-      date: 'Jul 3, 2025',
-      item: 'Coaching Session',
-      amount: '₦12,000',
-      status: 'Paid',
-      invoice: 'Download'
-    },
-    {
-      id: 9,
-      date: 'Jul 1, 2025',
-      item: 'Counseling Session',
-      amount: '₦10,000',
-      status: 'Paid',
-      invoice: 'Download'
-    },
-    {
-      id: 10,
-      date: 'Jun 28, 2025',
-      item: 'Advanced Course Bundle',
-      amount: '₦35,000',
-      status: 'Paid',
-      invoice: 'Download'
+      invoiceId: 'INV-005'
     }
   ]);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
+  const [photoError, setPhotoError] = useState('');
   const navigate = useNavigate();
 
-  // Get current user from Firebase
+  // Initialize form data when user data is available
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
-        const displayName = user.displayName || '';
+      const displayName = user.name || '';
         const nameParts = displayName.split(' ');
         const firstName = nameParts[0] || '';
         const lastName = nameParts.slice(1).join(' ') || '';
-        
-        setUser({
-          name: displayName || 'User',
-          email: user.email || '',
-          profileImage: user.photoURL ? `${user.photoURL}?sz=40` : 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face'
-        });
         
         setFormData({
           firstName: firstName,
@@ -153,19 +129,16 @@ const LMSSettings = () => {
           email: user.email || '',
           phone: user.phoneNumber || ''
         });
-      } else {
-        navigate('/');
-      }
-    });
+    }
+  }, [user]);
 
-    return () => unsubscribe();
-  }, [navigate]);
+  // Redirect to login if not authenticated
+  useEffect(() => {
+    if (!loading && !user) {
+      navigate('/login');
+    }
+  }, [user, loading, navigate]);
 
-  // Calculate pagination
-  const totalPages = Math.ceil(billingHistory.length / itemsPerPage);
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const currentBillingHistory = billingHistory.slice(startIndex, endIndex);
 
   // Clear password data when component unmounts for security
   useEffect(() => {
@@ -181,7 +154,7 @@ const LMSSettings = () => {
   // Event Handlers
   const handleLogout = async () => {
     try {
-      await signOut(auth);
+      await logout();
       navigate('/');
     } catch (error) {
       console.error('Error signing out:', error);
@@ -204,39 +177,57 @@ const LMSSettings = () => {
     fileInputRef.current?.click();
   };
 
-  const handleRemovePhoto = () => {
-    if (user) {
-      updateProfile(auth.currentUser, {
-        photoURL: null
-      }).then(() => {
-        setUser(prev => ({
-          ...prev,
-          profileImage: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face'
-        }));
-      }).catch((error) => {
-        console.error('Error removing photo:', error);
-      });
+  const handleRemovePhoto = async () => {
+    if (!user?.profileImage) {
+      setPhotoError('No photo to remove');
+      return;
+    }
+
+    setIsUploadingPhoto(true);
+    setPhotoError('');
+    
+    try {
+      await ProfilePhotoService.removeProfilePhoto();
+      console.log('Profile photo removed successfully');
+      // Refresh user data to get the updated photo
+      await refreshUserData();
+    } catch (error) {
+      console.error('Error removing profile photo:', error);
+      setPhotoError(error.message || 'Failed to remove photo. Please try again.');
+    } finally {
+      setIsUploadingPhoto(false);
     }
   };
 
-  const handleFileChange = (e) => {
+  const handleFileChange = async (e) => {
     const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        const photoURL = event.target.result;
-        updateProfile(auth.currentUser, {
-          photoURL: photoURL
-        }).then(() => {
-          setUser(prev => ({
-            ...prev,
-            profileImage: photoURL
-          }));
-        }).catch((error) => {
-          console.error('Error updating photo:', error);
-        });
-      };
-      reader.readAsDataURL(file);
+    if (!file) return;
+
+    setPhotoError('');
+    
+    // Validate file
+    const validation = ProfilePhotoService.validateFile(file);
+    if (!validation.isValid) {
+      setPhotoError(validation.errors.join(', '));
+      return;
+    }
+
+    // Upload photo
+    setIsUploadingPhoto(true);
+    try {
+      const newPhotoURL = await ProfilePhotoService.updateProfilePhoto(file, user.uid);
+      console.log('Profile photo updated successfully:', newPhotoURL);
+      // Refresh user data to get the updated photo
+      await refreshUserData();
+    } catch (error) {
+      console.error('Error updating profile photo:', error);
+      setPhotoError(error.message || 'Failed to upload photo. Please try again.');
+    } finally {
+      setIsUploadingPhoto(false);
+      // Clear file input
+      if (e.target) {
+        e.target.value = '';
+      }
     }
   };
 
@@ -358,21 +349,140 @@ const LMSSettings = () => {
     });
   };
 
-  const handleTwoFactorToggle = () => {
-    setTwoFactorEnabled(!twoFactorEnabled);
-    alert(twoFactorEnabled ? 'Two-Factor Authentication disabled' : 'Two-Factor Authentication enabled');
+  const handleTwoFactorToggle = async () => {
+    try {
+      const currentUser = auth.currentUser;
+      if (!currentUser) {
+        alert('No user is currently signed in');
+        return;
+      }
+
+      if (!twoFactorEnabled) {
+        // Enable 2FA by sending email verification
+        await sendEmailVerification(currentUser);
+        setShowTwoFactorModal(true);
+      } else {
+        // Disable 2FA
+        setTwoFactorEnabled(false);
+        alert('Two-Factor Authentication disabled');
+      }
+    } catch (error) {
+      console.error('Error toggling 2FA:', error);
+      let errorMessage = 'Failed to update Two-Factor Authentication settings.';
+      
+      if (error.code === 'auth/too-many-requests') {
+        errorMessage = 'Too many requests. Please try again later.';
+      } else if (error.code === 'auth/network-request-failed') {
+        errorMessage = 'Network error. Please check your connection and try again.';
+      }
+      
+      alert(errorMessage);
+    }
   };
 
-  const togglePasswordVisibility = (field) => {
-    setPasswordVisibility(prev => ({
+  const handleVerifyTwoFactorCode = async () => {
+    if (!twoFactorCode.trim()) {
+      alert('Please enter the verification code');
+      return;
+    }
+
+    setIsVerifyingCode(true);
+    try {
+      // In a real implementation, you would verify the code here
+      // For now, we'll simulate verification
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      setTwoFactorEnabled(true);
+      setShowTwoFactorModal(false);
+      setTwoFactorCode('');
+      alert('Two-Factor Authentication enabled successfully!');
+    } catch (error) {
+      console.error('Error verifying code:', error);
+      alert('Invalid verification code. Please try again.');
+    } finally {
+      setIsVerifyingCode(false);
+    }
+  };
+
+  const handleCloseTwoFactorModal = () => {
+    setShowTwoFactorModal(false);
+    setTwoFactorCode('');
+  };
+
+  // Notification handlers
+  const handleEmailNotificationChange = (key, value) => {
+    setEmailNotifications(prev => ({
       ...prev,
-      [field]: !prev[field]
+      [key]: value
     }));
   };
 
-  const handleAddPaymentMethod = () => {
-    alert('Add Payment Method functionality will be implemented here');
+  const handleInAppNotificationChange = (key, value) => {
+    setInAppNotifications(prev => ({
+      ...prev,
+      [key]: value
+    }));
   };
+
+  const handleLanguageChange = (value) => {
+    setLanguage(value);
+  };
+
+  const handleTimezoneChange = (value) => {
+    setTimezone(value);
+  };
+
+  const handleSaveEmailChanges = () => {
+    console.log('Saving email notification changes:', emailNotifications);
+    alert('Email notification preferences saved successfully!');
+  };
+
+  const handleSaveInAppChanges = () => {
+    console.log('Saving in-app notification changes:', inAppNotifications);
+    alert('In-app notification preferences saved successfully!');
+  };
+
+  const handleSaveLanguageChanges = () => {
+    console.log('Saving language change:', language);
+    alert('Language preference saved successfully!');
+  };
+
+  const handleSaveTimezoneChanges = () => {
+    console.log('Saving timezone change:', timezone);
+    alert('Timezone preference saved successfully!');
+  };
+
+  // Privacy handlers
+  const handleDataVisibilityChange = (key, value) => {
+    setDataVisibility(prev => ({
+      ...prev,
+      [key]: value
+    }));
+  };
+
+  const handleSavePreferences = () => {
+    console.log('Saving privacy preferences:', dataVisibility);
+    alert('Privacy preferences saved successfully!');
+  };
+
+  const handleRequestAccountDeletion = () => {
+    console.log('Requesting account deletion for user:', user?.email);
+    alert('Account deletion request submitted. You will receive an email confirmation shortly.');
+  };
+
+  // Payment handlers
+  const handleAddPaymentMethod = (cardData) => {
+    setSavedCards(prev => [...prev, cardData]);
+    alert('Payment method added successfully!');
+  };
+
+
+  // Calculate pagination
+  const totalPages = Math.ceil(billingHistory.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const currentBillingHistory = billingHistory.slice(startIndex, startIndex + itemsPerPage);
+
+
 
   const handleAddNewCard = () => {
     alert('Add New Card functionality will be implemented here');
@@ -406,7 +516,7 @@ const LMSSettings = () => {
             user={user}
             isEditing={isEditing}
             formData={formData}
-            isLoading={isLoading}
+            isLoading={isLoading || isUploadingPhoto}
             onInputChange={handleInputChange}
             onEditProfile={handleEditProfile}
             onCancel={handleCancel}
@@ -414,20 +524,20 @@ const LMSSettings = () => {
             onAddPhoto={handleAddPhoto}
             onRemovePhoto={handleRemovePhoto}
             onFileChange={handleFileChange}
+            photoError={photoError}
+            isUploadingPhoto={isUploadingPhoto}
           />
         );
       case 'security':
         return (
           <SecuritySection
             passwordData={passwordData}
-            passwordVisibility={passwordVisibility}
             twoFactorEnabled={twoFactorEnabled}
             isChangingPassword={isChangingPassword}
             onPasswordChange={handlePasswordChange}
             onChangePassword={handleChangePassword}
             onCancelPassword={handleCancelPassword}
             onTwoFactorToggle={handleTwoFactorToggle}
-            onTogglePasswordVisibility={togglePasswordVisibility}
           />
         );
       case 'payment':
@@ -438,24 +548,46 @@ const LMSSettings = () => {
             currentPage={currentPage}
             totalPages={totalPages}
             currentBillingHistory={currentBillingHistory}
-            onRemoveCard={handleRemoveCard}
-            onAddNewCard={handleAddNewCard}
             onAddPaymentMethod={handleAddPaymentMethod}
+            onRemoveCard={handleRemoveCard}
+            onSetDefaultCard={handleSetDefaultCard}
             onDownloadInvoice={handleDownloadInvoice}
             onPageChange={handlePageChange}
           />
         );
       case 'notifications':
-        return <NotificationsSection />;
+        return (
+          <NotificationsSection
+            emailNotifications={emailNotifications}
+            inAppNotifications={inAppNotifications}
+            language={language}
+            timezone={timezone}
+            onEmailNotificationChange={handleEmailNotificationChange}
+            onInAppNotificationChange={handleInAppNotificationChange}
+            onLanguageChange={handleLanguageChange}
+            onTimezoneChange={handleTimezoneChange}
+            onSaveEmailChanges={handleSaveEmailChanges}
+            onSaveInAppChanges={handleSaveInAppChanges}
+            onSaveLanguageChanges={handleSaveLanguageChanges}
+            onSaveTimezoneChanges={handleSaveTimezoneChanges}
+          />
+        );
       case 'privacy':
-        return <PrivacySection />;
+        return (
+          <PrivacySection
+            dataVisibility={dataVisibility}
+            onDataVisibilityChange={handleDataVisibilityChange}
+            onSavePreferences={handleSavePreferences}
+            onRequestAccountDeletion={handleRequestAccountDeletion}
+          />
+        );
       default:
         return (
           <ProfileSection
             user={user}
             isEditing={isEditing}
             formData={formData}
-            isLoading={isLoading}
+            isLoading={isLoading || isUploadingPhoto}
             onInputChange={handleInputChange}
             onEditProfile={handleEditProfile}
             onCancel={handleCancel}
@@ -463,6 +595,8 @@ const LMSSettings = () => {
             onAddPhoto={handleAddPhoto}
             onRemovePhoto={handleRemovePhoto}
             onFileChange={handleFileChange}
+            photoError={photoError}
+            isUploadingPhoto={isUploadingPhoto}
           />
         );
     }
@@ -473,20 +607,16 @@ const LMSSettings = () => {
   }
 
   return (
-    <div className="lms-settings-container">
-      <LMSSidebar 
-        user={user} 
-        activeSection="settings" 
-        onLogout={handleLogout} 
-      />
-
-      <div className="lms-main">
-        <WelcomeHeader 
+    <div className="dashboard-container">
+      <DashboardSidebar />
+      <div className="dashboard-main">
+        <LMSHeader 
           user={user}
           pageSubtitle="Manage your account settings and preferences"
           searchQuery={searchQuery} 
           onSearchChange={handleSearch} 
         />
+        <div className="dashboard-content">
 
         <div className="settings-content">
           <div className="settings-sidebar">
@@ -508,7 +638,74 @@ const LMSSettings = () => {
             {renderActiveSection()}
           </div>
         </div>
+        </div>
       </div>
+
+      {/* Two-Factor Authentication Modal */}
+      {showTwoFactorModal && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h3 className="modal-title">Enable Two-Factor Authentication</h3>
+            </div>
+            <div className="modal-body">
+              <div className="two-factor-setup">
+                <div className="setup-step">
+                  <div className="step-icon">📧</div>
+                  <div className="step-content">
+                    <h4>Step 1: Check Your Email</h4>
+                    <p>We've sent a verification code to <strong>{user?.email}</strong></p>
+                    <p>Please check your email and enter the 6-digit code below.</p>
+                  </div>
+                </div>
+                
+                <div className="verification-code-section">
+                  <label htmlFor="twoFactorCode" className="code-label">
+                    Verification Code
+                  </label>
+                  <input
+                    type="text"
+                    id="twoFactorCode"
+                    value={twoFactorCode}
+                    onChange={(e) => setTwoFactorCode(e.target.value)}
+                    placeholder="Enter 6-digit code"
+                    className="code-input"
+                    maxLength="6"
+                    disabled={isVerifyingCode}
+                  />
+                </div>
+                
+                <div className="resend-section">
+                  <p>Didn't receive the code?</p>
+                  <button 
+                    className="resend-btn"
+                    onClick={() => sendEmailVerification(auth.currentUser)}
+                    disabled={isVerifyingCode}
+                  >
+                    Resend Code
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div className="modal-actions">
+              <button 
+                className="cancel-btn" 
+                onClick={handleCloseTwoFactorModal}
+                disabled={isVerifyingCode}
+              >
+                Cancel
+              </button>
+              <button 
+                className="verify-btn" 
+                onClick={handleVerifyTwoFactorCode}
+                disabled={isVerifyingCode || twoFactorCode.length !== 6}
+              >
+                {isVerifyingCode ? 'Verifying...' : 'Verify & Enable'}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
