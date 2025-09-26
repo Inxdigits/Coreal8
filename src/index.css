@@ -8,6 +8,7 @@
 body {
   padding: 0;
   margin:0;
+  padding-top: 100px;
   max-width: 100%;
   font-family: -apple-system, BlinkMacSystemFont, 'Open Sans', 'Montserrat', 'Schibsted Grotesk',
     sans-serif;
@@ -29,8 +30,3 @@ a {
   color: inherit;
   text-decoration: none !important;
 }
-
-/* Page content spacing to account for fixed navbar */
-/* .page-content {
-  padding-top: 100px;
-} */

@@ -12,7 +12,7 @@ const CourseCompletionModal = ({ isOpen, onClose, courseTitle, course, onGoToMyC
           <h3 className="course-completed-title">Course Completed!</h3>
         </div>
         
-        <div className="modal-content">
+        <div className="cc-modal-content">
           <p className="modal-message">
             You have successfully completed <strong>{courseTitle}</strong>! 
             {course && course.certificate === 'Available' ? 

@@ -506,8 +506,8 @@ const AccountSettings = () => {
                   className={`settings-nav-item ${activeTab === tab.id ? 'active' : ''}`}
                   onClick={() => setActiveTab(tab.id)}
                 >
-                  <span className="nav-icon">{tab.icon}</span>
-                  <span className="nav-label">{tab.label}</span>
+                  <span className="settings-nav-icon">{tab.icon}</span>
+                  <span className="settings-nav-label">{tab.label}</span>
                 </button>
               ))}
             </nav>
@@ -743,7 +743,7 @@ const AccountSettings = () => {
       {/* Two-Factor Authentication Modal */}
       {showTwoFactorModal && (
         <div className="modal-overlay">
-          <div className="modal-content">
+          <div className="settings-modal-content">
             <div className="modal-header">
               <h3 className="modal-title">Enable Two-Factor Authentication</h3>
             </div>

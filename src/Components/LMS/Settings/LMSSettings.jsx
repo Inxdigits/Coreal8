@@ -644,7 +644,7 @@ const LMSSettings = () => {
       {/* Two-Factor Authentication Modal */}
       {showTwoFactorModal && (
         <div className="modal-overlay">
-          <div className="modal-content">
+          <div className="lms-settings-modal-content">
             <div className="modal-header">
               <h3 className="modal-title">Enable Two-Factor Authentication</h3>
             </div>

@@ -28,20 +28,20 @@ const LMSSidebar = ({ user, activeSection, onLogout }) => {
           item.id === 'logout' ? (
             <button
               key={item.id}
-              className={`nav-item logout-btn ${activeSection === item.id ? 'active' : ''}`}
+              className={`sidebar-nav-item logout-btn ${activeSection === item.id ? 'active' : ''}`}
               onClick={onLogout}
             >
-              <span className="nav-icon">{item.icon}</span>
-              <span className="nav-label">{item.label}</span>
+              <span className="sidebar-nav-icon">{item.icon}</span>
+              <span className="sidebar-nav-label">{item.label}</span>
             </button>
           ) : (
             <Link
               key={item.id}
               to={item.path}
-              className={`nav-item ${activeSection === item.id ? 'active' : ''}`}
+              className={`sidebar-nav-item ${activeSection === item.id ? 'active' : ''}`}
             >
-              <span className="nav-icon">{item.icon}</span>
-              <span className="nav-label">{item.label}</span>
+              <span className="sidebar-nav-icon">{item.icon}</span>
+              <span className="sidebar-nav-label">{item.label}</span>
             </Link>
           )
         ))}

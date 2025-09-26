@@ -22,7 +22,7 @@ const UnenrollSuccessModal = ({ isOpen, onClose, courseTitle }) => {
           <h2 className="modal-title">Course Unenrolled Successfully!</h2>
         </div>
         
-        <div className="modal-content">
+        <div className="us-modal-content">
           <p className="modal-message">
             You have successfully unenrolled from <strong>{courseTitle}</strong>. 
             Your progress has been removed and you can re-enroll anytime to start fresh.

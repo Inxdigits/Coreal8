@@ -36,15 +36,15 @@
 }
 
 /* Smooth transitions for navigation items */
-.route-transition .nav-item {
+.route-transition .sidebar-nav-item {
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.route-transition .nav-item:hover {
+.route-transition .sidebar-nav-item:hover {
   transform: translateX(4px);
 }
 
-.route-transition .nav-item.active {
+.route-transition .sidebar-nav-item.active {
   transform: translateX(2px);
 }
 

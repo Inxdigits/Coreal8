@@ -58,7 +58,6 @@ const Mentorship = () => {
         <p>{planDescription}</p>
         <div className="start-plan-button">
           <button onClick={openWaitlist}>
-          <button onClick={openWaitlist}>
             Get Started
             <FaAngleRight
             // style
@@ -67,7 +66,6 @@ const Mentorship = () => {
         </div>
       </div>
     );
-  };
   };
 
   return (

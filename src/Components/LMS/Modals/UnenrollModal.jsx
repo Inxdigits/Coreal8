@@ -22,7 +22,7 @@ const UnenrollModal = ({ isOpen, onClose, courseTitle, onConfirmUnenroll }) => {
           <h2 className="modal-title">Unenroll from Course?</h2>
         </div>
         
-        <div className="modal-content">
+        <div className="unenroll-modal-content">
           <p className="modal-message">
             Are you sure you want to unenroll from <strong>{courseTitle}</strong>? 
             This action will remove all your progress and you'll need to re-enroll to continue learning.

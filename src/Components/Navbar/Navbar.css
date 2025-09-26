@@ -9,6 +9,14 @@
   border-bottom: 1px solid #0d0c120d;
 }
 
+.homepage-navbar {
+  position: fixed !important;
+  top: -100px;
+  left: 0;
+  width: 100%;
+  max-width: 1440px;
+}
+
 .container-fluid {
   padding: 0;
   display: flex;

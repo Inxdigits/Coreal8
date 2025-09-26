@@ -22,7 +22,7 @@ const EnrollmentModal = ({ isOpen, onClose, courseTitle, onUnenroll, isEnrolled 
           <h2 className="modal-title">Course Enrolled Successfully!</h2>
         </div>
         
-        <div className="modal-content">
+        <div className="enrollment-modal-content">
           <p className="modal-message">
             You have successfully enrolled in <strong>{courseTitle}</strong>. 
             You can now start learning and track your progress.

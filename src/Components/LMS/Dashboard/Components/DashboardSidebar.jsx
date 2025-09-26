@@ -31,12 +31,12 @@ const DashboardSidebar = () => {
   const navigationItems = [
     { id: 'dashboard', label: 'Dashboard', path: '/dashboard', icon: dashboardIcon },
     { id: 'my-courses', label: 'My Courses', path: '/my-courses', icon: courseIcon },
-    { id: 'program-management', label: 'My Mentorship', path: '/admin/program-management', icon: programIcon },
-    { id: 'blog-management', label: 'Coaching Sessions', path: '/admin/blog-management', icon: blogIcon },
-    { id: 'podcast-management', label: 'Counseling Services', path: '/admin/podcast-management', icon: podcastIcon },
+    { id: 'program-management', label: 'My Mentorship', path: '/lms/mentorship', icon: programIcon },
+    { id: 'blog-management', label: 'Coaching Sessions', path: '/lms/coaching', icon: blogIcon },
+    { id: 'podcast-management', label: 'Counselling Services', path: '/lms/counselling', icon: podcastIcon },
     { id: 'calendar', label: 'Calendar', path: '/lms/calendar', icon: calendarIcon },
     { id: 'resources-management', label: 'Resources', path: '/lms/resources', icon: resourcesIcon },
-    { id: 'account-settings', label: 'Account Settings', path: '/admin/account-settings', icon: accountIcon },
+    { id: 'account-settings', label: 'Account Settings', path: '/lms/settings', icon: accountIcon },
     { id: 'logout', label: 'Logout', path: null, icon: logoutIcon }
   ];
 
@@ -57,20 +57,20 @@ const DashboardSidebar = () => {
           item.id === 'logout' ? (
             <button
               key={item.id}
-              className={`nav-item logout-btn ${location.pathname === item.path ? 'active' : ''}`}
+              className={`sidebar-nav-item logout-btn ${location.pathname === item.path ? 'active' : ''}`}
               onClick={handleLogout}
             >
-              <img src={item.icon} alt={item.label} className="nav-icon" />
-              <span className="nav-label">{item.label}</span>
+              <img src={item.icon} alt={item.label} className="sidebar-nav-icon" />
+              <span className="sidebar-nav-label">{item.label}</span>
             </button>
           ) : (
             <Link
               key={item.id}
               to={item.path}
-              className={`nav-item ${location.pathname === item.path ? 'active' : ''}`}
+              className={`sidebar-nav-item ${location.pathname === item.path ? 'active' : ''}`}
             >
-              <img src={item.icon} alt={item.label} className="nav-icon" />
-              <span className="nav-label">{item.label}</span>
+              <img src={item.icon} alt={item.label} className="sidebar-nav-icon" />
+              <span className="sidebar-nav-label">{item.label}</span>
             </Link>
           )
         ))}

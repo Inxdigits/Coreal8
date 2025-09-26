@@ -72,7 +72,7 @@ We reserve the right to suspend or terminate your access to our Services at our 
       "8. Contact Information": {
         title: "Contact Information",
         content: `If you have any questions about these Terms of Service, please contact us at:
-• Email: Corea8ng@gmail.com 
+• Email: Coreal8ng@gmail.com 
 • Address: 20 Oluseun Crescent, Corona School Estate, Anthony/Gbagada`,
       },
     };

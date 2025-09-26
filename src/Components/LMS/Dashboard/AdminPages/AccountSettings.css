@@ -134,13 +134,13 @@
   border-right: 3px solid #dc2626;
 }
 
-.nav-icon {
+.sidebar-nav-icon {
   font-size: 16px;
   width: 20px;
   text-align: center;
 }
 
-.nav-label {
+.sidebar-nav-label {
   font-size: 14px;
   font-weight: 500;
 }
@@ -503,7 +503,7 @@
   z-index: 1000;
 }
 
-.modal-content {
+.settings-modal-content {
   background: white;
   border-radius: 12px;
   padding: 0;
@@ -683,7 +683,7 @@
 
 /* Modal Responsive Design */
 @media (max-width: 768px) {
-  .modal-content {
+  .settings-modal-content {
     width: 95%;
     margin: 20px;
   }

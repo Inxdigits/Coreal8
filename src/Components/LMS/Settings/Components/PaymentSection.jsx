@@ -249,7 +249,7 @@ const PaymentSection = ({
       {/* Add Card Modal */}
       {showAddCardModal && (
         <div className="modal-overlay">
-          <div className="modal-content">
+          <div className="ps-modal-content">
             <div className="modal-header">
               <h3 className="modal-title">Add New Payment Method</h3>
             </div>

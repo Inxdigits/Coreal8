@@ -61,7 +61,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="navbar navbar-expand-lg border-bottom fixed-top">
+    <nav className="homepage-navbar navbar navbar-expand-lg border-bottom">
       <div className="container-fluid">
         {/* Logo */}
         <Link
@@ -240,7 +240,7 @@ const Navbar = () => {
                 currentPath === "/login" ? "active-link" : ""
               }`}
             >
-              <Link className="nav-link" onClick={openWaitlist}>
+              <Link className="nav-link" to="/login">
                 <img src={profileIcon} alt="Login" className="nav-icon" />
               </Link>
             </li>
