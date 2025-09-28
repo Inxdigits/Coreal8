@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "../../Assets/coreal8-logo.png";
 import menuIcon from "../../Assets/menu-icon.svg";
 import cartIcon from "../../Assets/carticon.svg";
@@ -14,6 +14,9 @@ const Navbar = () => {
   const { openWaitlist } = useWaitlist();
   const location = useLocation();
   const currentPath = location.pathname;
+  const navigate = useNavigate();
+
+  const handleNavigate = () => navigate("/booking");
 
   // mobile toggle
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -207,8 +210,8 @@ const Navbar = () => {
 
             {/* Second half of nav links */}
             {[
-              { path: "/podcast", label: "Podcast" },
-              { path: "/blog", label: "Blog" },
+              { path: "/podcasts", label: "Podcasts" },
+              { path: "/blogs", label: "Blogs" },
               { path: "/contact", label: "Contact" },
             ].map(({ path, label }) => (
               <li
@@ -247,7 +250,7 @@ const Navbar = () => {
 
             {/* Book Button */}
             <li className="gradient-button-container">
-              <button onClick={openWaitlist} className="gradient-button">
+              <button onClick={handleNavigate} className="gradient-button">
                 Book a Session
               </button>
             </li>

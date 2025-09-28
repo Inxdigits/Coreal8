@@ -182,6 +182,7 @@
     
     .expertise-text p {
         font-size: 14px;
+        width: 80%;
     }
 }
 
@@ -196,6 +197,7 @@
 
     .expertise-text p {
         font-size: 12px;
+        width: 100%;
     }
 }
 

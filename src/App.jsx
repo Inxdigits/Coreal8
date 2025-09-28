@@ -8,6 +8,7 @@ import ServicePage from './Components/ServicePage/ServicePage.jsx';
 import Podcasts from './Components/Podcasts/Podcasts.jsx';
 import Mentorship from './Components/Mentorship/Mentorship.jsx';
 import Blog from './Components/Blog/Blog.jsx';
+import BlogDetail from "./Components/Blog/BlogDetail.jsx";
 import Privacy from "./Components/Privacy/Privacy.jsx"
 import './App.css';
 import CartPage from './Components/CartPage/CartPage.jsx';
@@ -21,6 +22,7 @@ import { WaitlistProvider } from '../src/context/WaitListcontext.jsx';
 import WaitlistModal from './Components/LMS/Waitlist/Waitlist.jsx';
 import ScrollToTop from './ScrollToTop.js';
 import Terms from './Components/Terms/Terms.jsx';
+import BookingPage from './Components/BookingPage/BookingPage.jsx';
 
 function App() {
   return (
@@ -30,19 +32,21 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/services" element={<ServicePage />} />
-        <Route path="/blog" element={<Blog />} />
+        <Route path="/blogs" element={<Blog />} />
+        <Route path="/blogs/:slug" element={<BlogDetail />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/courses" element={<Courses />} />
         <Route path="/about" element={<About />} />
-        <Route path="/podcast" element={<Podcasts />}/>
+        <Route path="/podcasts" element={<Podcasts />} />
         <Route path="/counselling" element={<Counseling />} />
         <Route path="/mentoring" element={<Mentorship />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<Register />}/>
-        <Route path='/privacy-policy' element={<Privacy/>}/>
-        <Route path='/terms-of-service' element={<Terms />} />
+        <Route path='/booking' element={<BookingPage />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/privacy-policy" element={<Privacy />} />
+        <Route path="/terms-of-service" element={<Terms />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
-        <Route path='/dashboard' element={<Dashboard />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
 
       <WaitlistModal />
