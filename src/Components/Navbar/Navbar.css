@@ -315,6 +315,10 @@
 }
 
 @media screen and (max-width: 550px) {
+  .navbar {
+    padding: 0 20px !important;
+  }
+  
   .navbar-nav {
     width: 100%;
   }
@@ -325,6 +329,10 @@
 
   .gradient-button-container {
     margin: 0 auto;
+  }
+  
+  .dropdown-link {
+    justify-content: center;
   }
 }
 
