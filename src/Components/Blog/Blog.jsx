@@ -4,27 +4,32 @@ import "./Blog.css";
 import "./BlogDetail.css";
 import Navbar from "../Navbar/Navbar.jsx";
 import Footer from "../Footer/Footer.jsx";
-import { BlogCard } from "./BlogCard.jsx";
+import { BlogCard } from "./Blogcard.jsx";
 import { blogPosts } from "./BlogData.js";
 import { filterOptions, sortOptions, sortPosts } from "./BlogHelpers.js";
 
 const Blog = () => {
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [searchValue, setSearchValue] = useState("");
-  const [selectedFilter, setSelectedFilter] = useState("All");
-  const [selectedSort, setSelectedSort] = useState("Newest");
+  const [debouncedSearch, setDebouncedSearch] = useState(""); // ✅ Debounce
+  const [selectedFilter, setSelectedFilter] = useState(
+    localStorage.getItem("blogFilter") || "All"
+  );
+  const [selectedSort, setSelectedSort] = useState(
+    localStorage.getItem("blogSort") || "Newest"
+  );
   const [isDropDownOpen, setIsDropdownOpen] = useState(false);
   const [postsPerPage, setPostsPerPage] = useState(6);
   const dropdownRef = useRef(null);
 
-  // Scroll listener
+  // ✅ Scroll listener
   useEffect(() => {
     const handleScroll = () => setShowBackToTop(window.scrollY > 300);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close dropdown on click outside / escape
+  // ✅ Close dropdown on outside click / escape
   useEffect(() => {
     if (!isDropDownOpen) return;
     const onDocumentClick = (e) => {
@@ -43,9 +48,26 @@ const Blog = () => {
     };
   }, [isDropDownOpen]);
 
-  // Filter + Search + Sort
+  // ✅ Debounce search input
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedSearch(searchValue);
+    }, 400); // 400ms delay
+    return () => clearTimeout(handler);
+  }, [searchValue]);
+
+  // ✅ Persist filter & sort
+  useEffect(() => {
+    localStorage.setItem("blogFilter", selectedFilter);
+  }, [selectedFilter]);
+
+  useEffect(() => {
+    localStorage.setItem("blogSort", selectedSort);
+  }, [selectedSort]);
+
+  // ✅ Filter + Search + Sort
   const filteredSortedPosts = useMemo(() => {
-    const q = searchValue.trim().toLowerCase();
+    const q = debouncedSearch.trim().toLowerCase();
     let result = blogPosts.filter((p) =>
       selectedFilter === "All"
         ? true
@@ -60,7 +82,7 @@ const Blog = () => {
       );
     }
     return sortPosts(result, selectedSort);
-  }, [searchValue, selectedFilter, selectedSort]);
+  }, [debouncedSearch, selectedFilter, selectedSort]);
 
   const visiblePosts = filteredSortedPosts.slice(0, postsPerPage);
   const hasMore = filteredSortedPosts.length > visiblePosts.length;
@@ -74,12 +96,17 @@ const Blog = () => {
           <header className="hero-inner">
             <h1 className="hero-title">Insights & Reflections</h1>
             <p className="hero-sub">
-              Vorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-              vulputate libero et velit interdum, ac aliquet odio mattis.
+              Explore thought-provoking articles and insights from Dr. Ezekiel’s
+              reflections, experiences, and vision for Africa’s future.
             </p>
           </header>
 
-          <form className="search-form" role="search" aria-label="Search blogs">
+          <form
+            className="search-form"
+            role="search"
+            aria-label="Search blogs"
+            onSubmit={(e) => e.preventDefault()}
+          >
             <div className="search-input-wrapper">
               <div className="search-icon" aria-hidden="true">
                 <img src={Search} alt="" />
@@ -176,16 +203,19 @@ const Blog = () => {
               </div>
             </div>
           </nav>
-
-          {/* Blog List */}
+          {/* Blog Count Feedback */}
+          <p className="blog-count">
+            Showing {visiblePosts.length} of {filteredSortedPosts.length} posts
+          </p>
+          {/* Blog List */}{" "}
           {visiblePosts.length > 0 ? (
             <BlogCard posts={visiblePosts} />
           ) : (
             <div className="no-results" role="status" aria-live="polite">
-              No posts found matching your search / filters.
+              {" "}
+              No posts found matching your search / filters.{" "}
             </div>
           )}
-
           {/* Show More */}
           {hasMore && (
             <div className="show-more-wrap">

@@ -1,4 +1,3 @@
-// /Blog/BlogData.js
 import Read from "../../Assets/BlogPageAssets/read.svg";
 import Line from "../../Assets/BlogPageAssets/line.svg";
 
