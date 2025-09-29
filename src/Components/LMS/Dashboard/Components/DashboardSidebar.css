@@ -1,6 +1,6 @@
 .dashboard-sidebar {
   width: 280px;
-  height: 100vh;
+  min-height: 100vh;
   background-color: #801323;
   position: fixed;
   left: 0;
@@ -10,7 +10,7 @@
   flex-direction: column;
   align-items: flex-start;
   z-index: 1000;
-  overflow: hidden;
+  overflow-y: scroll;
 }
 
 .sidebar-content {
@@ -23,8 +23,7 @@
 
 .sidebar-header {
   padding: 50px 0px 0px 0px !important;
-  margin-left: 40px !important;
-  margin-right: 40px !important;
+  margin: 0 auto;
   border-bottom: 5px solid rgba(255, 255, 255, 0.1);
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
@@ -33,17 +32,17 @@
   flex-shrink: 0;
 }
 
-.sidebar-logo {
+/* .sidebar-logo {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-}
+} */
 
-.logo-icon {
+/* .logo-icon {
   width: 152.381px;
 height: 32px;
 margin-bottom: 50px;
-}
+} */
 
 .logo-text {
   color: white;
@@ -56,7 +55,7 @@ margin-bottom: 50px;
   flex-direction: column;
   width: 100%;
   flex: 1;
-  overflow: hidden; /* Prevent any scrolling */
+  overflow-y: scroll; /* Prevent any scrolling */
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* Internet Explorer 10+ */
 }

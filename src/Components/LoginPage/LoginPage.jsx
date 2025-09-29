@@ -124,7 +124,7 @@ const LoginPage = () => {
       <div className="modal-backdrop" id="login-main">
         {/* Close button */}
         <button
-          className="close-btn"
+          // className="close-btn"
           id="partner-close-btn"
           style={{ color: "white" }}
           onClick={handleClose}

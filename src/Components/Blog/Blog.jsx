@@ -102,26 +102,26 @@ const Blog = () => {
           </header>
 
           <form
-            className="search-form"
+            className="blog-search-form"
             role="search"
             aria-label="Search blogs"
             onSubmit={(e) => e.preventDefault()}
           >
-            <div className="search-input-wrapper">
-              <div className="search-icon" aria-hidden="true">
+            <div className="blog-search-input-wrapper">
+              <div className="blog-search-icon" aria-hidden="true">
                 <img src={Search} alt="" />
               </div>
-              <label htmlFor="search-input" className="sr-only">
+              <label htmlFor="blog-search-input" className="sr-only">
                 Search Blogs
               </label>
               <input
-                id="search-input"
+                id="blog-search-input"
                 type="search"
                 value={searchValue}
                 onChange={(e) => setSearchValue(e.target.value)}
                 placeholder="Search blogs..."
                 aria-describedby="search-description"
-                className="search-input"
+                className="blog-search-input"
               />
               <span id="search-description" className="sr-only">
                 Search blogs by keywords or blog posts

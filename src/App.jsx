@@ -54,117 +54,99 @@ function App() {
           <CartProvider>
             <PaymentProvider>
               <Routes>
-                <Route
-                  path="/"
-                  element={
-                    <RouteTransition>
-                      <HomePage />
-                    </RouteTransition>
-                  }
-                />
+                <Route path="/" element={<HomePage />} />
+                <Route path="/booking" element={<BookingPage />} />
                 <Route
                   path="/contact"
                   element={
-                    <RouteTransition>
                       <Contact />
-                    </RouteTransition>
+                    
                   }
                 />
                 <Route
                   path="/services"
                   element={
-                    <RouteTransition>
                       <ServicePage />
-                    </RouteTransition>
+                    
                   }
                 />
                 <Route
-                  path="/blog"
+                  path="/blogs"
                   element={
-                    <RouteTransition>
                       <Blog />
-                    </RouteTransition>
+                    
+                  }
+                />
+                <Route
+                  path="/blogs/:slug"
+                  element={
+                      <BlogDetail />
+                    
                   }
                 />
                 <Route
                   path="/cart"
                   element={
-                    <RouteTransition>
                       <CartPage />
-                    </RouteTransition>
+                    
                   }
                 />
                 <Route
                   path="/courses"
                   element={
-                    <RouteTransition>
                       <Courses />
-                    </RouteTransition>
+                    
                   }
                 />
-                <Route
-                  path="/about"
-                  element={
-                    <RouteTransition>
-                      <About />
-                    </RouteTransition>
-                  }
-                />
+                <Route path="/about" element={<About />} />
                 <Route
                   path="/podcast"
                   element={
-                    <RouteTransition>
                       <Podcasts />
-                    </RouteTransition>
+                    
                   }
                 />
                 <Route
                   path="/counselling"
                   element={
-                    <RouteTransition>
                       <Counseling />
-                    </RouteTransition>
+                    
                   }
                 />
                 <Route
                   path="/mentoring"
                   element={
-                    <RouteTransition>
                       <Mentorship />
-                    </RouteTransition>
+                    
                   }
                 />
                 <Route
                   path="/login"
                   element={
-                    <RouteTransition>
                       <LoginPage />
-                    </RouteTransition>
+                    
                   }
                 />
                 <Route
                   path="/register"
                   element={
-                    <RouteTransition>
                       <Register />
-                    </RouteTransition>
+                    
                   }
                 />
                 <Route
                   path="/privacy-policy"
                   element={
-                    <RouteTransition>
                       <Privacy />
-                    </RouteTransition>
+                    
                   }
                 />
                 <Route path="/terms-of-service" element={<Terms />} />
                 <Route
                   path="/forgot-password"
                   element={
-                    <RouteTransition>
                       <ForgotPassword />
-                    </RouteTransition>
+                    
                   }
                 />
                 <Route

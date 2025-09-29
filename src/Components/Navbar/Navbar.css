@@ -11,7 +11,7 @@
 
 .homepage-navbar {
   position: fixed !important;
-  top: -100px;
+  top: 0;
   left: 0;
   width: 100%;
   max-width: 1440px;
@@ -68,8 +68,8 @@
   background: linear-gradient(270deg, #ffdb58 0%, #801323 100%);
 }
 
-.dropdown-link {
-  display: flex;
+.nav-item .dropdown-link {
+  display: flex !important;
   align-items: center;
   gap: 5px;
   text-decoration: none;
