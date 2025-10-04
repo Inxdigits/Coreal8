@@ -37,7 +37,7 @@ const Courses = () => {
 
 
   // Card Component
-  const CourseCard = ({ id, title, writeup, category }) => {
+  const CourseCard = ({ id, title, writeup, category, price }) => {
     return (
       <div className="courses-preview">
         <div className="courses-preview-img">
@@ -49,7 +49,7 @@ const Courses = () => {
           <span>{writeup}</span>
         </div>
         <div className="courses-card-bottom">
-          <span>₦45,000</span>
+          <span>₦{price}</span>
           <Link onClick={openWaitlist} className="view-course-link">
             View course
             <img src={openicon} alt="open" />

@@ -192,7 +192,7 @@ const Podcasts = () => {
                       <iframe
                         width="100%"
                         height="250"
-                        src={`https://www.youtube.com/embed/${videoId}?start=0&end=15&autoplay=1`}
+                        src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
                         title={item.title}
                         frameBorder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -206,7 +206,11 @@ const Podcasts = () => {
                 </div>
                 <div className="link-to-yt">
                   <p>Click arrow below to watch full episode:</p>
-                  <a href={item.url} target="_blank" rel="noopener noreferrer">
+                  <a
+                    href={item.fullVideoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <img src={arrow} alt="Watch Full Episode" />
                   </a>
                 </div>
@@ -231,31 +235,66 @@ const Podcasts = () => {
 
         <div className="spotlight all-episodes">
           <div className="episode-grid spotlight-episodes">
-            {paginatedEpisodes.map((item) => (
-              <article key={item.id} className="spotlight-item">
-                <div className="sp-top-part">
-                  <div className="episode-image-container relative">
-                    <img
-                      className="w-full h-64 object-cover"
-                      src={item.thumbnail}
-                      alt={item.title}
-                    />
+            {paginatedEpisodes.map((item) => {
+              const videoId = getYouTubeId(item.url);
+              return (
+                <article key={item.id} className="spotlight-item">
+                  <div className="sp-top-part">
+                    <div className="episode-image-container relative">
+                      {!isPlaying[item.id] ? (
+                        <>
+                          <img
+                            className="w-full h-64 object-cover"
+                            src={item.thumbnail}
+                            alt={item.title}
+                          />
+                          <button
+                            className="play-button absolute inset-0 flex items-center justify-center"
+                            onClick={() =>
+                              setIsPlaying((prev) => ({
+                                ...prev,
+                                [item.id]: true,
+                              }))
+                            }
+                          >
+                            <img
+                              src={play}
+                              alt="Play Episode"
+                              className="w-12 h-12"
+                            />
+                          </button>
+                        </>
+                      ) : (
+                        <iframe
+                          width="100%"
+                          height="250"
+                          src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
+                          title={item.title}
+                          frameBorder="0"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                        />
+                      )}
+                    </div>
+                    <div className="spotlight-text">
+                      <h2>{item.title}</h2>
+                    </div>
+                  </div>
+
+                  {/* Arrow link same as Spotlight */}
+                  <div className="link-to-yt">
+                    <p>Click arrow below to watch full episode:</p>
                     <a
                       href={item.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="play-button absolute inset-0 flex items-center justify-center"
                     >
-                      <img src={play} alt="Play" className="w-12 h-12" />
+                      <img src={arrow} alt="Watch Full Episode" />
                     </a>
                   </div>
-                  <div className="spotlight-text">
-                    <h2>{item.title}</h2>
-                  </div>
-                </div>
-                <p>{item.description}</p>
-              </article>
-            ))}
+                </article>
+              );
+            })}
           </div>
         </div>
 

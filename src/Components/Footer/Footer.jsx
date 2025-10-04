@@ -8,10 +8,10 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   const socials = [
-    { icon: yt, alt: "YouTube", link: "https://youtube.com" },
-    { icon: ig, alt: "Instagram", link: "https://instagram.com" },
-    { icon: x, alt: "X (Twitter)", link: "https://x.com" },
-    { icon: li, alt: "LinkedIn", link: "https://linkedin.com" },
+    { icon: yt, alt: "YouTube", link: "https://youtube.com/@MakambaUC" },
+    { icon: ig, alt: "Instagram", link: "https://instagram.com/coreal8.ng" },
+    // { icon: x, alt: "X (Twitter)", link: "https://x.com" },
+    { icon: li, alt: "LinkedIn", link: "https://linkedin.com/company/coreal8-limited" },
   ];
 
   const handleSubmit = (e) => {

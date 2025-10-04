@@ -76,7 +76,7 @@ export const SearchSection = ({
         <div className="relative">
           <button
             onClick={() => setIsDropdownOpen((prev) => !prev)}
-            className="filter-dropdown px-5 py-2.5 rounded-lg border bg-white hover:opacity-80 transition"
+            className="filter-select sort-filter-dropdown px-5 py-2.5 rounded-lg border bg-white hover:opacity-80 transition"
             aria-expanded={isDropDownOpen}
             aria-haspopup="listbox"
             type="button"

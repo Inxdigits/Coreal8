@@ -276,7 +276,7 @@ const About = () => {
               <img src={storyPic} alt="" />
             </div>
           </section>
-          <section className="our-team-section flex-column">
+          {/* <section className="our-team-section flex-column">
             <div className="our-team-writeup">
               <h3>Our Team</h3>
               <p>
@@ -297,7 +297,7 @@ const About = () => {
                 <TeamMember key={index} {...teamMember} />
               ))}
             </div>
-          </section>
+          </section> */}
         </div>
 
         {/* Back to Top */}

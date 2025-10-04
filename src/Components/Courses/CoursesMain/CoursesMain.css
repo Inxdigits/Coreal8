@@ -121,14 +121,17 @@
 }
 
 /* ===== Filter Dropdown ===== */
-.filter-dropdown {
+.sort-filter-dropdown {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
   border-radius: 15px;
   border: 1px solid rgba(13, 12, 18, 0.10);
   background: #FFF;
   padding: 10px 20px;
 }
 
-.filter-dropdown:focus, .filter-dropdown:active {
+.sort-filter-dropdown:focus, .sort-filter-dropdown:active {
   outline: none;
   border: 1px solid #0d0c121a;
 }

@@ -485,7 +485,7 @@ const LMSSettings = () => {
 
 
   const handleAddNewCard = () => {
-    alert('Add New Card functionality will be implemented here');
+    alert('Add New Card functionality will be implemented soon');
   };
 
   const handleRemoveCard = (cardId) => {
@@ -550,7 +550,7 @@ const LMSSettings = () => {
             currentBillingHistory={currentBillingHistory}
             onAddPaymentMethod={handleAddPaymentMethod}
             onRemoveCard={handleRemoveCard}
-            onSetDefaultCard={handleSetDefaultCard}
+            // onSetDefaultCard={handleSetDefaultCard}
             onDownloadInvoice={handleDownloadInvoice}
             onPageChange={handlePageChange}
           />

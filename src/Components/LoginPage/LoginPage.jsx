@@ -16,7 +16,7 @@ const LoginPage = () => {
   const navigate = useNavigate();
 
   // Modal open/close state
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen] = useState(true);
 
   // form states
   const [email, setEmail] = useState("");
@@ -67,6 +67,17 @@ const LoginPage = () => {
       return;
     }
 
+    // ✅ DEMO ADMIN LOGIN (Temporary for client review)
+    // TODO: REMOVE before going live
+    const demoEmail = "admin@coreal8.com";
+    const demoPassword = "password123";
+    if (email === demoEmail && password === demoPassword) {
+      console.log("Demo Admin Authenticated ✅");
+      navigate("/dashboard");
+      return;
+    }
+
+    // 🔹 Normal Firebase login
     try {
       const persistence = rememberMe
         ? browserLocalPersistence
@@ -74,13 +85,9 @@ const LoginPage = () => {
 
       await setPersistence(auth, persistence);
 
-      const userCredential = await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
+      const { user } = await signInWithEmailAndPassword(auth, email, password);
+      console.log("User logged in:", user);
 
-      console.log("User logged in:", userCredential.user);
       navigate("/dashboard");
     } catch (error) {
       let customError = "Login failed. Please try again.";
@@ -111,8 +118,12 @@ const LoginPage = () => {
 
       navigate("/dashboard");
     } catch (error) {
-      setErrorMessage("Google login failed. Please try again.");
       console.error("Error logging in with Google:", error.message);
+
+      // ✅ DEMO GOOGLE LOGIN FALLBACK
+      // TODO: REMOVE before going live
+      console.log("Demo Google Auth ✅ (fallback)");
+      navigate("/dashboard");
     }
   };
 
@@ -124,7 +135,6 @@ const LoginPage = () => {
       <div className="modal-backdrop" id="login-main">
         {/* Close button */}
         <button
-          // className="close-btn"
           id="partner-close-btn"
           style={{ color: "white" }}
           onClick={handleClose}
@@ -212,17 +222,15 @@ const LoginPage = () => {
             </div>
 
             <div className="form-options">
-              <div>
-                <label htmlFor="remember-me" className="remember-me">
-                  <input
-                    type="checkbox"
-                    id="remember-me"
-                    checked={rememberMe}
-                    onChange={(e) => setRememberMe(e.target.checked)}
-                  />{" "}
-                  Remember Me
-                </label>
-              </div>
+              <label htmlFor="remember-me" className="remember-me">
+                <input
+                  type="checkbox"
+                  id="remember-me"
+                  checked={rememberMe}
+                  onChange={(e) => setRememberMe(e.target.checked)}
+                />{" "}
+                Remember Me
+              </label>
               <Link to="/forgot-password" className="forgot-password">
                 Forgot Password?
               </Link>

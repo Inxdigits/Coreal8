@@ -14,7 +14,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  max-width: 1440px;
+  /* max-width: 1440px; */
 }
 
 .container-fluid {
@@ -234,6 +234,7 @@
     overflow: scroll;
     transition: right 0.35s ease-in-out;
     z-index: 1050;
+    justify-content: start;
   }
 
   .navbar-nav.open {
@@ -241,7 +242,7 @@
   }
 
   .navbar-nav .nav-item {
-    margin: 20px 0;
+    margin: 15px 0;
     display: block !important;
   }
 
@@ -277,7 +278,7 @@
 
   /* Dropdown items take full width */
   .custom-dropdown .dropdown-item {
-    padding: 20px 10px;
+    padding: 15px 10px;
     width: 100%;
   }
 
@@ -297,8 +298,8 @@
   }
 
   .dropdown-submenu .right-submenu.show .dropdown-item {
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
   }
 
   .submenu-toggle {
@@ -324,7 +325,7 @@
   }
 
   .navbar-nav .nav-item {
-    margin: 20px auto;
+    margin: 15px auto;
   }
 
   .gradient-button-container {

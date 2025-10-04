@@ -100,7 +100,7 @@ function App() {
                 />
                 <Route path="/about" element={<About />} />
                 <Route
-                  path="/podcast"
+                  path="/podcasts"
                   element={
                       <Podcasts />
                     
