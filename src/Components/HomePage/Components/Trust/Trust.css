@@ -59,7 +59,7 @@
     line-height: 100%;
     letter-spacing: 0%;
     text-align: center;
-    margin-bottom: 12px;
+    margin-bottom: 12px !important;
 }
 
 .partner-card-text p {

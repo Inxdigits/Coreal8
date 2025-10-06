@@ -62,7 +62,7 @@
 }
 
 /* Search */
-.search-form {
+.blog-search-form {
   display: flex;
   justify-content: center;
   gap: 12px;
@@ -70,7 +70,7 @@
   align-items: center;
 }
 
-.search-input-wrapper {
+.blog-search-input-wrapper {
   display: flex;
   width: 500px;
   padding: 16px 20px;
@@ -80,12 +80,12 @@
   border: 1px solid rgba(13, 12, 18, 0.10);
 }
 
-.search-icon img {
+.blog-search-icon img {
   width: 18px;
   height: 18px;
 }
 
-.search-input {
+.blog-search-input {
   border: none;
   outline: none;
   font-family: "Schibsted_Grotesk-Regular", Helvetica, Arial, sans-serif;
@@ -96,7 +96,7 @@
   background: transparent;
 }
 
-.search-button {
+.blog-search-button {
   background: #801323;
   color: #fff;
   border-radius: 8px;
@@ -211,13 +211,13 @@
 }
 
 .blog-section {
-    display: flex;
-    padding: 80px;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 50px;
-    align-self: stretch;
+  display: flex;
+  padding: 80px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 50px;
+  align-self: stretch;
 }
 
 /* Posts grid */
@@ -311,35 +311,59 @@
 }
 
 @media screen and (max-width: 860px) {
-    .posts-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+  .posts-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media screen and (max-width: 768px) {
-    .blog-hero, .blog-section{
-        padding: 40px;
-    }
+  .blog-hero, .blog-section{
+    padding: 40px;
+  }
 }
 
 @media screen and (max-width: 600px) {
-    .search-form, .filters-nav {
-        flex-direction: column;
-        gap: 12px;
-    }
+  .blog-search-form, .filters-nav {
+    flex-direction: column;
+    justify-content: start;
+    gap: 12px;
+  }
 
-    .posts-grid {
-        grid-template-columns: repeat(1, 1fr);
-    }
+  .filters-nav {
+    flex-direction: column-reverse;
+  }
 
-    .hero-title {
-        font-size: 24px;
-    }
+  .sort-area,
+  .filter-buttons {
+    justify-content: start;
+    margin-right: auto;
+  }
+
+  .filter-buttons {
+    flex-wrap: wrap;
+  }
+
+  .posts-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .hero-title {
+    font-size: 24px;
+  }
 
 }
 
 @media screen and (max-width: 520px) {
-    .search-input-wrapper, .hero-sub {
-        width: 100%;
-    }
+  .blog-search-input-wrapper, .hero-sub {
+    width: 100%;
+  }
+
+  .blog-section {
+    padding: 40px 20px;
+    gap: 20px;
+  }
+
+  .filter-button {
+    font-size: 12px;
+  }
 }

@@ -3,11 +3,20 @@
 }
 
 .login-modal-content {
-    /* width: 40%; */
+    width: 100%;
+    max-width: 742px;
     /* overflow-y: scroll; */
     padding: 30px 50px;
     text-align: center;
     gap: 10px;
+    border: none;
+    border-radius: 10px;
+}
+
+@media screen and (max-width: 745px) {
+    .login-modal-content {
+        width: 90%;
+    }
 }
 
 @media screen and (max-width: 680px) {

@@ -7,13 +7,10 @@ import { HeaderSection } from "./HeaderSection.jsx";
 import { FaAngleRight } from "react-icons/fa";
 import arrow from "../../Assets/PodcastPageAssests/arrow.svg";
 import play from "../../Assets/PodcastPageAssests/play.svg";
-import Phone from "../../Assets/PodcastPageAssests/phone.png";
+import Solar from "../../Assets/PodcastPageAssests/solar.svg";
 import Apple from "../../Assets/PodcastPageAssests/applepodcast.png";
 import Spotify from "../../Assets/PodcastPageAssests/spotify.png";
 import YouTubeLogo from "../../Assets/PodcastPageAssests/youtube.png";
-import headerImage from "../../Assets/PodcastPageAssests/podcast-overview.jpg";
-import MakambaBig from "../../Assets/PodcastPageAssests/about-makamba.png";
-import Solar from "../../Assets/PodcastPageAssests/solar.svg";
 import { useWaitlist } from "../../context/WaitListcontext.jsx";
 
 // Episodes: You only provide YouTube URLs + category/date
@@ -152,7 +149,7 @@ const Podcasts = () => {
 
       {/* Header */}
       <section className="podcasts-overview podcast-header">
-        <img src={headerImage} alt="overview image" />
+        <img src="https://res.cloudinary.com/dklslzrkg/image/upload/v1759694678/podcast-overview_ixif1z.jpg" alt="overview image" />
       </section>
 
       {/* Spotlight */}
@@ -192,7 +189,7 @@ const Podcasts = () => {
                       <iframe
                         width="100%"
                         height="250"
-                        src={`https://www.youtube.com/embed/${videoId}?start=0&end=15&autoplay=1`}
+                        src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
                         title={item.title}
                         frameBorder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -206,7 +203,11 @@ const Podcasts = () => {
                 </div>
                 <div className="link-to-yt">
                   <p>Click arrow below to watch full episode:</p>
-                  <a href={item.url} target="_blank" rel="noopener noreferrer">
+                  <a
+                    href={item.fullVideoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <img src={arrow} alt="Watch Full Episode" />
                   </a>
                 </div>
@@ -231,31 +232,66 @@ const Podcasts = () => {
 
         <div className="spotlight all-episodes">
           <div className="episode-grid spotlight-episodes">
-            {paginatedEpisodes.map((item) => (
-              <article key={item.id} className="spotlight-item">
-                <div className="sp-top-part">
-                  <div className="episode-image-container relative">
-                    <img
-                      className="w-full h-64 object-cover"
-                      src={item.thumbnail}
-                      alt={item.title}
-                    />
+            {paginatedEpisodes.map((item) => {
+              const videoId = getYouTubeId(item.url);
+              return (
+                <article key={item.id} className="spotlight-item">
+                  <div className="sp-top-part">
+                    <div className="episode-image-container relative">
+                      {!isPlaying[item.id] ? (
+                        <>
+                          <img
+                            className="w-full h-64 object-cover"
+                            src={item.thumbnail}
+                            alt={item.title}
+                          />
+                          <button
+                            className="play-button absolute inset-0 flex items-center justify-center"
+                            onClick={() =>
+                              setIsPlaying((prev) => ({
+                                ...prev,
+                                [item.id]: true,
+                              }))
+                            }
+                          >
+                            <img
+                              src={play}
+                              alt="Play Episode"
+                              className="w-12 h-12"
+                            />
+                          </button>
+                        </>
+                      ) : (
+                        <iframe
+                          width="100%"
+                          height="250"
+                          src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
+                          title={item.title}
+                          frameBorder="0"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                        />
+                      )}
+                    </div>
+                    <div className="spotlight-text">
+                      <h2>{item.title}</h2>
+                    </div>
+                  </div>
+
+                  {/* Arrow link same as Spotlight */}
+                  <div className="link-to-yt">
+                    <p>Click arrow below to watch full episode:</p>
                     <a
                       href={item.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="play-button absolute inset-0 flex items-center justify-center"
                     >
-                      <img src={play} alt="Play" className="w-12 h-12" />
+                      <img src={arrow} alt="Watch Full Episode" />
                     </a>
                   </div>
-                  <div className="spotlight-text">
-                    <h2>{item.title}</h2>
-                  </div>
-                </div>
-                <p>{item.description}</p>
-              </article>
-            ))}
+                </article>
+              );
+            })}
           </div>
         </div>
 
@@ -330,7 +366,7 @@ const Podcasts = () => {
           </div>
         </div>
         <div className="makamba-img">
-          <img src={MakambaBig} alt="Makamba Artwork" />
+          <img src="https://res.cloudinary.com/dklslzrkg/image/upload/v1759694787/about-makamba_kmwm8y.png" alt="Makamba Artwork" />
         </div>
       </section>
 
@@ -391,7 +427,7 @@ const Podcasts = () => {
       {/* Platforms */}
       <div className="red-section">
         <div className="rs-image">
-          <img src={Phone} alt="Phone" />
+          <img src="https://res.cloudinary.com/dklslzrkg/image/upload/v1759694784/phone_ayxryu.png" alt="Phone" />
         </div>
         <div className="red-section-right">
           <h2>Available Everywhere You Listen</h2>

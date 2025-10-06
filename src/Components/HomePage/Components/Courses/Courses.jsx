@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 import openicon from "../../Assets/open-icon.svg";
 import { useWaitlist } from "../../../../context/WaitListcontext.jsx";
 
-import course1 from "../../../../Assets/CoursesPageAssets/courses/strategic-leader.png";
-import course2 from "../../../../Assets/CoursesPageAssets/courses/modern-people-management.jpg";
-import course3 from "../../../../Assets/CoursesPageAssets/courses/culture-transformation.jpg";
+// import course1 from "../../../../Assets/CoursesPageAssets/courses/strategic-leader.png";
+// import course2 from "../../../../Assets/CoursesPageAssets/courses/modern-people-management.jpg";
+// import course3 from "../../../../Assets/CoursesPageAssets/courses/culture-transformation.jpg";
 
 const Courses = () => {
   const { openWaitlist } = useWaitlist();
@@ -29,33 +29,41 @@ const Courses = () => {
   }, []);
 
   const imageMap = {
-    1: course1,
-    2: course2,
-    3: course3,
-    4: course3
+    // 1: course1,
+    // 2: course2,
+    // 3: course3,
+    // 4: course3
   };
 
 
   // Card Component
-  const CourseCard = ({ id, title, writeup, category }) => {
+  const CourseCard = ({ id, image, title, writeup, category, price }) => {
     return (
-      <div className="courses-preview">
-        <div className="courses-preview-img">
-          <img src={imageMap[id]} alt={title} />
-          <span className="category">{category}</span>
+      <article className="courses-card">
+        <div className="courses-card-top">
+          <div className="course-card-image">
+            <img src={image} alt={title} />
+            <span className="category">{category}</span>
+          </div>
+
+          <div className="courses-preview-writeup">
+            <p>{title}</p>
+            <span>{writeup}</span>
+          </div>
         </div>
-        <div className="courses-preview-writeup">
-          <p>{title}</p>
-          <span>{writeup}</span>
-        </div>
+
         <div className="courses-card-bottom">
-          <span>₦45,000</span>
-          <Link onClick={openWaitlist} className="view-course-link">
-            View course
+          <span className="course-price">₦{price}</span>
+          <Link
+            onClick={openWaitlist}
+            className="view-course-link"
+            aria-label={`View ${title} course`}
+          >
+            View Course
             <img src={openicon} alt="open" />
           </Link>
         </div>
-      </div>
+      </article>
     );
   };
 

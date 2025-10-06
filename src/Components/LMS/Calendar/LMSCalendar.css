@@ -1,0 +1,374 @@
+/* Calendar Container */
+.calendar-container {
+  display: flex;
+  gap: 1.5rem;
+  height: calc(100vh - 200px);
+  background: white;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+/* Calendar Main Section */
+.calendar-main {
+  flex: 1;
+  background: white;
+  border-radius: 8px;
+  padding: 1rem;
+  min-width: 0;
+  overflow: hidden;
+}
+
+/* Calendar Header */
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.month-selector {
+  position: relative;
+}
+
+.month-dropdown {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1f2937;
+  background: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.5rem center;
+  background-size: 1rem;
+  padding-right: 2rem;
+}
+
+.view-tabs {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.tab {
+  padding: 0.5rem 1rem;
+  border: none;
+  background: transparent;
+  color: #6b7280;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.tab.active {
+  color: #dc2626;
+  border-bottom: 2px solid #dc2626;
+  background: transparent;
+}
+
+.tab:hover {
+  background: #f3f4f6;
+}
+
+/* Calendar Grid */
+.calendar-grid {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+}
+
+.calendar-header-row {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  background: #f9fafb;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.day-header {
+  padding: 1rem;
+  text-align: center;
+  font-weight: 600;
+  color: #6b7280;
+  font-size: 0.875rem;
+  border-right: 1px solid #e5e7eb;
+}
+
+.day-header:last-child {
+  border-right: none;
+}
+
+.calendar-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.calendar-week {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  border-bottom: 1px solid #e5e7eb;
+  min-height: 120px;
+}
+
+.calendar-week:last-child {
+  border-bottom: none;
+}
+
+.calendar-day {
+  position: relative;
+  padding: 0.5rem;
+  border-right: 1px solid #e5e7eb;
+  min-height: 100px;
+  background: white;
+  transition: background-color 0.2s ease;
+  overflow: hidden;
+}
+
+.calendar-day:last-child {
+  border-right: none;
+}
+
+.calendar-day:hover {
+  background: #f9fafb;
+}
+
+.day-number {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 0.5rem;
+}
+
+/* Event Blocks */
+.event-block {
+  padding: 0.375rem;
+  border-radius: 4px;
+  margin-bottom: 0.25rem;
+  font-size: 0.6875rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  line-height: 1.2;
+}
+
+.event-block:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.event-title {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: white;
+}
+
+.event-date {
+  font-size: 0.5625rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Event Colors */
+.mentorship-event {
+  background: #fbbf24;
+}
+
+.coaching-event {
+  background: #10b981;
+}
+
+.counseling-event {
+  background: #ef4444;
+}
+
+.weekly-checkin-event {
+  background: #f59e0b;
+}
+
+.milestone-review-event {
+  background: #ec4899;
+}
+
+/* Calendar Sidebar */
+.calendar-sidebar {
+  width: 250px;
+  min-width: 200px;
+  background: #f9fafb;
+  border-radius: 8px;
+  padding: 1rem;
+  height: fit-content;
+  flex-shrink: 0;
+}
+
+.sidebar-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 1rem;
+}
+
+/* Categories Section */
+.categories-section {
+  margin-bottom: 2rem;
+}
+
+.category-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.category-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.category-item:hover {
+  background: #e5e7eb;
+}
+
+.category-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.mentorship-color {
+  background: #fbbf24;
+}
+
+.counseling-color {
+  background: #8b5cf6;
+}
+
+.coaching-color {
+  background: #10b981;
+}
+
+.mentorship-dark-color {
+  background: #1e40af;
+}
+
+.category-label {
+  font-size: 0.875rem;
+  color: #374151;
+  font-weight: 500;
+}
+
+/* Reminder Settings Section */
+.reminder-settings-section {
+  margin-top: 1rem;
+}
+
+.reminder-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.reminder-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.reminder-option:hover {
+  background: #e5e7eb;
+}
+
+.reminder-option input[type="checkbox"] {
+  display: none;
+}
+
+.checkmark {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #d1d5db;
+  border-radius: 3px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.reminder-option input[type="checkbox"]:checked + .checkmark {
+  background: #3b82f6;
+  border-color: #3b82f6;
+}
+
+.reminder-option input[type="checkbox"]:checked + .checkmark::after {
+  content: '✓';
+  position: absolute;
+  top: -2px;
+  left: 2px;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.reminder-text {
+  font-size: 0.875rem;
+  color: #374151;
+  line-height: 1.4;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .calendar-container {
+    gap: 1rem;
+  }
+  
+  .calendar-sidebar {
+    width: 220px;
+    min-width: 180px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .calendar-container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .calendar-sidebar {
+    width: 100%;
+    min-width: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .calendar-main {
+    padding: 0.75rem;
+  }
+  
+  .calendar-sidebar {
+    padding: 0.75rem;
+  }
+  
+  .calendar-day {
+    min-height: 80px;
+    padding: 0.375rem;
+  }
+  
+  .event-block {
+    font-size: 0.625rem;
+    padding: 0.25rem;
+  }
+  
+  .day-header {
+    padding: 0.75rem 0.5rem;
+    font-size: 0.75rem;
+  }
+}

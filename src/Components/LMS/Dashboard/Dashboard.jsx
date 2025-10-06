@@ -1,326 +1,270 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { signOut } from 'firebase/auth';
-import { auth } from '../../../Firebase/Firebase.js';
+import { useNavigate } from 'react-router-dom';
+import { useUser } from '../../../context/UserContext.jsx';
+import { useCourseContext } from '../../../context/CourseContext.jsx';
+import DashboardSidebar from './Components/DashboardSidebar';
 import './Dashboard.css';
+import courseIcon from '../../../Assets/LmsPageAssets/icon-courses.svg';
+import mentorshipIcon from '../../../Assets/LmsPageAssets/icon-mentorship.svg';
+import counselingIcon from '../../../Assets/LmsPageAssets/icon-counseling.svg';
+import coachingIcon from '../../../Assets/LmsPageAssets/icon-coaching.svg';
+import arrowIcon from '../../../Assets/LmsPageAssets/arrow.svg';
 
 const Dashboard = () => {
-  const [activeSection, setActiveSection] = useState('dashboard');
-  const [user, setUser] = useState(null);
-  const [searchQuery, setSearchQuery] = useState('');
   const navigate = useNavigate();
-  
-  // Get current user from Firebase
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      if (user) {
-        setUser({
-          name: user.displayName || 'User',
-          email: user.email || 'user@example.com',
-          profileImage: user.photoURL || 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face'
-        });
-      } else {
-        navigate('/login');
+  const { user, loading } = useUser();
+  const { enrolledCourses, completedCourses, getCourseProgress } = useCourseContext();
+
+  // Get course data for enrolled courses (same as in CourseManagement)
+  const getCourseData = (courseId) => {
+    const coursesData = {
+      1: {
+        id: 1,
+        title: "The Visionary Leader's Blueprint",
+        thumbnail: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=200&h=120&fit=crop&crop=faces"
+      },
+      2: {
+        id: 2,
+        title: "Strategic Management Fundamentals",
+        thumbnail: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=120&fit=crop&crop=faces"
+      },
+      3: {
+        id: 3,
+        title: "Digital Transformation Leadership",
+        thumbnail: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=200&h=120&fit=crop&crop=faces"
       }
-    });
-
-    return () => unsubscribe();
-  }, [navigate]);
-
-  // Mock data for summary cards
-  const summaryData = {
-    courses: { count: 1, label: 'On-going courses', button: 'Enrol >' },
-    mentorship: { count: 0, label: 'On-going mentorship', button: 'Apply >' },
-    counselling: { count: 0, label: 'On-going counselling', button: 'Apply >' },
-    coaching: { count: 0, label: 'On-going coaching', button: 'Apply >' }
-  };
-
-  // Mock course data
-  const courseData = {
-    title: "The Visionary Leader's Blueprint",
-    progress: 50,
-    status: "In progress",
-    thumbnail: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=120&fit=crop&crop=face"
-  };
-
-  const sidebarItems = [
-    { id: 'dashboard', label: 'Dashboard', icon: 'grid' },
-    { id: 'courses', label: 'My Courses', icon: 'graduation-cap' },
-    { id: 'mentorship', label: 'My Mentorship', icon: 'people' },
-    { id: 'coaching', label: 'Coaching Sessions', icon: 'coaching' },
-    { id: 'counselling', label: 'Counselling Services', icon: 'counseling' },
-    { id: 'calendar', label: 'Calendar', icon: 'calendar' },
-    { id: 'resources', label: 'Resources', icon: 'resources' },
-    { id: 'settings', label: 'Account Settings', icon: 'person' },
-    { id: 'logout', label: 'Logout', icon: 'logout' }
-  ];
-
-  const getIcon = (iconName) => {
-    const icons = {
-      grid: '⊞',
-      'graduation-cap': '🎓',
-      people: '👥',
-      coaching: '👥➡️',
-      counselling: '👥',
-      calendar: '📅',
-      resources: '⊞+',
-      person: '👤',
-      logout: '↪️'
     };
-    return icons[iconName] || '•';
+    return coursesData[courseId];
   };
 
-  const getCardIcon = (type) => {
-    const cardIcons = {
-      courses: '🎓',
-      mentorship: '👥',
-      counselling: '👥',
-      coaching: '👥➡️'
-    };
-    return cardIcons[type] || '•';
+  // Get the first enrolled course for display
+  const firstEnrolledCourse = enrolledCourses.length > 0 ? enrolledCourses[0] : null;
+  const firstCourseData = firstEnrolledCourse ? getCourseData(firstEnrolledCourse.id) : null;
+  const firstCourseProgress = firstEnrolledCourse ? getCourseProgress(firstEnrolledCourse.id) : 0;
+
+  const handleViewCourse = (courseId) => {
+    navigate(`/course/${courseId}`);
   };
 
-  const handleLogout = async () => {
-    try {
-      await signOut(auth);
+  // Redirect to login if not authenticated
+  useEffect(() => {
+    if (!loading && !user) {
       navigate('/login');
-    } catch (error) {
-      console.error('Error signing out:', error);
     }
-  };
-
-  const handleSearch = (e) => {
-    setSearchQuery(e.target.value);
-    // Implement search functionality here
-  };
-
-  const handleCardClick = (type) => {
-    switch (type) {
-      case 'courses':
-        navigate('/courses');
-        break;
-      case 'mentorship':
-        navigate('/mentoring');
-        break;
-      case 'counselling':
-        navigate('/counselling');
-        break;
-      case 'coaching':
-        navigate('/coaching');
-        break;
-      default:
-        break;
-    }
-  };
-
-  if (!user) {
-    return <div className="loading">Loading...</div>;
-  }
+  }, [user, loading, navigate]);
 
   return (
     <div className="dashboard-container">
-      {/* Sidebar */}
-      <div className="dashboard-sidebar">
-        <div className="sidebar-header">
-          <div className="logo">
-            <div className="logo-icon">C<span className="logo-8">8</span></div>
-            <span className="logo-text">Coreal8</span>
-          </div>
-        </div>
-        
-        <nav className="sidebar-nav">
-          {sidebarItems.map((item) => (
-            item.id === 'logout' ? (
-              <button
-                key={item.id}
-                className={`nav-item logout-btn ${activeSection === item.id ? 'active' : ''}`}
-                onClick={handleLogout}
-              >
-                <span className="nav-icon">{getIcon(item.icon)}</span>
-                <span className="nav-label">{item.label}</span>
-              </button>
-            ) : (
-              <Link
-                key={item.id}
-                to={`/${item.id === 'dashboard' ? 'dashboard' : item.id}`}
-                className={`nav-item ${activeSection === item.id ? 'active' : ''}`}
-                onClick={() => setActiveSection(item.id)}
-              >
-                <span className="nav-icon">{getIcon(item.icon)}</span>
-                <span className="nav-label">{item.label}</span>
-              </Link>
-            )
-          ))}
-        </nav>
-        
-        <div className="sidebar-footer">
-          <div className="user-profile">
-            <div className="profile-image">
-              <img src={user.profileImage} alt="Profile" />
-            </div>
-            <div className="profile-info">
-              <div className="profile-name">{user.name}</div>
-              <div className="profile-email">{user.email}</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Content */}
+      <DashboardSidebar />
       <div className="dashboard-main">
         {/* Header */}
         <div className="dashboard-header">
           <div className="header-left">
-            <h1 className="welcome-text">Welcome Back, {user.name}</h1>
+            <h1 className="welcome-text">Welcome Back, {user?.name || 'User'}</h1>
           </div>
           <div className="header-right">
-            <div className="notification-icon">🔔</div>
-            <div className="search-bar">
-              <span className="search-icon">🔍</span>
-              <input 
-                type="text" 
-                placeholder="Search" 
-                value={searchQuery}
-                onChange={handleSearch}
-              />
+            <div className="header-actions">
+              <div className="search-container">
+                <input type="text" placeholder="Q Search" className="search-input" />
+              </div>
+              <div className="notification-bell">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 22C13.1 22 14 21.1 14 20H10C10 21.1 10.9 22 12 22ZM18 16V11C18 7.93 16.36 5.36 13.5 4.68V4C13.5 3.17 12.83 2.5 12 2.5S10.5 3.17 10.5 4V4.68C7.63 5.36 6 7.92 6 11V16L4 18V19H20V18L18 16Z" fill="#6B7280"/>
+                </svg>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Summary Cards */}
-        <div className="summary-cards">
-          <div className="summary-card courses" onClick={() => handleCardClick('courses')}>
-            <div className="card-icon">{getCardIcon('courses')}</div>
-            <div className="card-content">
-              <div className="card-title">Courses</div>
-              <div className="card-number">{summaryData.courses.count}</div>
-              <div className="card-label">{summaryData.courses.label}</div>
-              <button className="card-button">Enrol </button>
-            </div>
-          </div>
-          
-          <div className="summary-card mentorship" onClick={() => handleCardClick('mentorship')}>
-            <div className="card-icon">{getCardIcon('mentorship')}</div>
-            <div className="card-content">
-              <div className="card-title">Mentorship</div>
-              <div className="card-number">{summaryData.mentorship.count}</div>
-              <div className="card-label">{summaryData.mentorship.label}</div>
-              <button className="card-button">Apply </button>
-            </div>
-          </div>
-          
-          <div className="summary-card counseling" onClick={() => handleCardClick('counseling')}>
-            <div className="card-icon">{getCardIcon('counseling')}</div>
-            <div className="card-content">
-              <div className="card-title">Counseling</div>
-              <div className="card-number">{summaryData.counseling.count}</div>
-              <div className="card-label">{summaryData.counseling.label}</div>
-              <button className="card-button">Apply </button>
-            </div>
-          </div>
-          
-          <div className="summary-card coaching" onClick={() => handleCardClick('coaching')}>
-            <div className="card-icon">{getCardIcon('coaching')}</div>
-            <div className="card-content">
-              <div className="card-title">Coaching</div>
-              <div className="card-number">{summaryData.coaching.count}</div>
-              <div className="card-label">{summaryData.coaching.label}</div>
-              <button className="card-button">Apply </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Dashboard Content */}
+        {/* Main Content */}
         <div className="dashboard-content">
-          <div className="content-left">
-            {/* My Courses */}
-            <div className="dashboard-section">
-              <div className="section-header">
-                <h3>My Courses</h3>
-                <Link to="/courses" className="view-all-link">View all</Link>
+          {/* Service Cards */}
+          <div className="service-cards">
+            {/* Courses Card */}
+            <div className="service-card">
+              <div className="service-title-row">
+                <div className="service-icon"><img src={courseIcon} alt="course" /></div>
+                <h3 className="service-title">Courses</h3>
               </div>
-              <div className="course-item">
-                <div className="course-thumbnail">
-                  <img src={courseData.thumbnail} alt="Course" />
+              <div className="service-content">
+                <div className="service-count">{enrolledCourses.length}</div>
+                <div className="service-subtitle-row">
+                  <p className="service-subtitle">On-going courses</p>
+                  <button className="service-button" onClick={() => navigate('/my-courses')}>
+                    Enrol <img src={arrowIcon} alt="arrow" />
+                  </button>
                 </div>
-                <div className="course-info">
-                  <h4 className="course-title">{courseData.title}</h4>
-                  <div className="course-status">{courseData.status}</div>
-                  <div className="progress-container">
-                    <div className="progress-bar">
-                      <div 
-                        className="progress-fill" 
-                        style={{ width: `${courseData.progress}%` }}
-                      ></div>
-                    </div>
-                    <span className="progress-text">{courseData.progress}%</span>
-                  </div>
+              </div>
+            </div>
+
+            {/* Mentorship Card */}
+            <div className="service-card">
+              <div className="service-title-row">
+                <div className="service-icon"><img src={mentorshipIcon} alt="mentorship" /></div>
+                <h3 className="service-title">Mentorship</h3>
+              </div>
+              <div className="service-content">
+                <div className="service-count">0</div>
+                <div className="service-subtitle-row">
+                  <p className="service-subtitle">On-going mentorship</p>
+                  <button className="service-button">
+                    Apply <img src={arrowIcon} alt="arrow" />
+                  </button>
                 </div>
-                <div className="course-arrow">→</div>
               </div>
             </div>
 
-            {/* My Counseling */}
-            <div className="dashboard-section">
-              <div className="section-header">
-                <h3>My Counseling</h3>
-                <Link to="/counseling" className="view-all-link">View all</Link>
+            {/* Counseling Card */}
+            <div className="service-card">
+              <div className="service-title-row">
+                <div className="service-icon"><img src={counselingIcon} alt="counseling" /></div>
+                <h3 className="service-title">Counseling</h3>
               </div>
-              <div className="empty-state">
-                <div className="empty-title">No Active Counseling Sessions</div>
-                <div className="empty-description">You're not enrolled in a counseling program yet.</div>
-                <button className="cta-button" onClick={() => navigate('/counseling')}>Start Counseling</button>
-              </div>
-            </div>
-
-            {/* My Mentorship */}
-            <div className="dashboard-section">
-              <div className="section-header">
-                <h3>My Mentorship</h3>
-                <Link to="/mentoring" className="view-all-link">View all</Link>
-              </div>
-              <div className="empty-state">
-                <div className="empty-title">No Active Mentorship Sessions</div>
-                <div className="empty-description">You're not enrolled in a mentorship program yet.</div>
-                <button className="cta-button" onClick={() => navigate('/mentoring')}>Explore Mentorships</button>
+              <div className="service-content">
+                <div className="service-count">0</div>
+                <div className="service-subtitle-row">
+                  <p className="service-subtitle">On-going counseling</p>
+                  <button className="service-button">
+                    Apply <img src={arrowIcon} alt="arrow" />
+                  </button>
+                </div>
               </div>
             </div>
 
-            {/* My Coaching */}
-            <div className="dashboard-section">
-              <div className="section-header">
-                <h3>My Coaching</h3>
-                <Link to="/coaching" className="view-all-link">View all</Link>
+            {/* Coaching Card */}
+            <div className="service-card">
+              <div className="service-title-row">
+                <div className="service-icon"><img src={coachingIcon} alt="coaching" /></div>
+                <h3 className="service-title">Coaching</h3>
               </div>
-              <div className="empty-state">
-                <div className="empty-title">No Active Coaching Sessions</div>
-                <div className="empty-description">You're not enrolled in a coaching program yet.</div>
-                <button className="cta-button" onClick={() => navigate('/coaching')}>Book Coaching</button>
+              <div className="service-content">
+                <div className="service-count">0</div>
+                <div className="service-subtitle-row">
+                  <p className="service-subtitle">On-going coaching</p>
+                  <button className="service-button">
+                    Apply <img src={arrowIcon} alt="arrow" />
+                  </button>
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Right Column */}
-          <div className="content-right">
-            {/* My Calendar */}
-            <div className="dashboard-section">
-              <div className="section-header">
-                <h3>My Calendar</h3>
+          {/* Main Content Sections */}
+          <div className="main-sections">
+            {/* Left Column */}
+            <div className="left-column">
+              {/* My Courses Section */}
+              <div className="section-card">
+                <div className="section-header">
+                  <h2 className="section-title">My Courses</h2>
+                  <a href="/my-courses" className="view-all-link">View all</a>
+                </div>
+                {enrolledCourses.length > 0 ? (
+                  <div className="courses-list">
+                    {enrolledCourses.map((course) => {
+                      const courseData = getCourseData(course.id);
+                      const courseProgress = getCourseProgress(course.id);
+                      return (
+                        <div key={course.id} className="course-card" onClick={() => handleViewCourse(course.id)}>
+                          <div className="course-thumbnail">
+                            <img src={courseData?.thumbnail || "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=80&h=80&fit=crop"} alt={courseData?.title || course.title} />
+                          </div>
+                          <div className="course-info">
+                            <h3 className="course-title">{courseData?.title || course.title}</h3>
+                            <div className="course-status">In progress</div>
+                            <div className="progress-container">
+                              <div className="progress-bar">
+                                <div className="progress-fill" style={{width: `${courseProgress}%`}}></div>
+                              </div>
+                              <span className="progress-text">{courseProgress}%</span>
+                            </div>
+                          </div>
+                          <div className="course-arrow">
+                            <img src={arrowIcon} alt="arrow" />
+                          </div>
+                        </div>
+                      );
+                    })}
+                    {enrolledCourses.length > 3 && (
+                      <div className="more-courses-indicator">
+                        <p className="more-courses-text">
+                          +{enrolledCourses.length - 3} more courses
+                        </p>
+                        <p className="more-courses-subtext">Click "View all" to see all courses</p>
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <div className="empty-state">
+                    <p className="empty-text">No Active Courses</p>
+                    <p className="empty-subtext">You're not enrolled in any courses yet.</p>
+                    <button className="action-button" onClick={() => navigate('/my-courses')}>Browse Courses</button>
+                  </div>
+                )}
               </div>
-              <div className="empty-state">
-                <div className="empty-title">Nothing in Calendar</div>
-                <div className="empty-description">You have nothing in your calendar</div>
+
+              {/* My Counseling Section */}
+              <div className="section-card">
+                <div className="section-header">
+                  <h2 className="section-title">My Counseling</h2>
+                  <a href="/lms/counseling" className="view-all-link">View all</a>
+                </div>
+                <div className="empty-state">
+                  <p className="empty-text">No Active Counseling Sessions</p>
+                  <p className="empty-subtext">You're not enrolled in a counseling program yet.</p>
+                  <button className="action-button">Start Counseling</button>
+                </div>
+              </div>
+
+              {/* My Mentorship Section */}
+              <div className="section-card">
+                <div className="section-header">
+                  <h2 className="section-title">My Mentorship</h2>
+                  <a href="/lms/mentorship" className="view-all-link">View all</a>
+                </div>
+                <div className="empty-state">
+                  <p className="empty-text">No Active Mentorship Sessions</p>
+                  <p className="empty-subtext">You're not enrolled in a mentorship program yet.</p>
+                  <button className="action-button">Explore Mentorships</button>
+                </div>
+              </div>
+
+              {/* My Coaching Section */}
+              <div className="section-card">
+                <div className="section-header">
+                  <h2 className="section-title">My Coaching</h2>
+                  <a href="/lms/coaching" className="view-all-link">View all</a>
+                </div>
+                <div className="empty-state">
+                  <p className="empty-text">No Active Coaching Sessions</p>
+                  <p className="empty-subtext">You're not enrolled in a coaching program yet.</p>
+                  <button className="action-button">Book Coaching</button>
+                </div>
               </div>
             </div>
 
-            {/* Events */}
-            <div className="dashboard-section">
-              <div className="section-header">
-                <h3>Events</h3>
+            {/* Right Column */}
+            <div className="right-column">
+              {/* My Calendar Section */}
+              <div className="section-card" id='calendar-section'>
+                <div className="section-header" id='calendar'>
+                  <h2 className="section-title">My Calendar</h2>
+                </div>
+                <div className="empty-state calendar-empty">
+                  <p className="empty-text">Nothing in Calendar</p>
+                  <p className="empty-subtext">You have nothing in your calendar.</p>
+                </div>
               </div>
-              <div className="empty-state">
-                <div className="empty-title">No Upcoming Event</div>
-                <div className="empty-description">You have upcoming event.</div>
+
+              {/* Events Section */}
+              <div className="section-card">
+                <div className="section-header">
+                  <h2 className="section-title">Events</h2>
+                </div>
+                <div className="empty-state event-empty">
+                  <p className="empty-text">No Upcoming Event</p>
+                  <p className="empty-subtext">You have upcoming event.</p>
+                </div>
               </div>
             </div>
           </div>

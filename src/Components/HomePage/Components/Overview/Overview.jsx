@@ -1,8 +1,6 @@
 import React from 'react';
 import './Overview.css';
 import OverviewBtn from './Overview-btn/Overview-btn.jsx';
-// import '../../../Get-Started-btn/Get-Started-btn.css';
-import overviewImage from '../../../../Assets/overview-image.png';
 
 const Overview = () => {
   return (
@@ -23,7 +21,7 @@ const Overview = () => {
         </div>
       </div>
       <div className="right-side">
-        <img src={overviewImage} alt="" className="overview-image" />
+        <img src="https://res.cloudinary.com/dklslzrkg/image/upload/v1759686216/overview-image_omqtor.png" alt="" className="overview-image" />
       </div>
     </div>
   );

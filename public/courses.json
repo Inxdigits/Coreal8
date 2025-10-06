@@ -1,51 +1,58 @@
 [
   {
     "id": 1,
+    "image": "https://res.cloudinary.com/dklslzrkg/image/upload/v1759687786/strategic-leader_ibd31x.png",
     "category": "Strategy & Leadership",
     "title": "The Strategic Leader",
     "writeup": "This course provides a framework for developing and implementing effective business strategies...",
-    "price": 45000
+    "price": "60,000 - 150,000"
   },
   {
     "id": 2,
+    "image": "https://res.cloudinary.com/dklslzrkg/image/upload/v1759687794/modern-people-management_dcmx9e.jpg",
     "category": "People Management & Culture",
     "title": "Modern People Management",
     "writeup": "Go beyond traditional management and learn to lead with empathy, emotional intelligence...",
-    "price": 45000
+    "price": "60,000 - 150,000"
   },
   {
     "id": 3,
+    "image": "https://res.cloudinary.com/dklslzrkg/image/upload/v1759687791/culture-transformation_beg4vm.jpg",
     "category": "People Management & Culture",
     "title": "Culture Transformation",
     "writeup": "An organization's culture is its operating system. This course provides a practical guide for...",
-    "price": 45000
+    "price": "60,000 - 150,000"
   },
   {
     "id": 4,
+    "image": "https://res.cloudinary.com/dklslzrkg/image/upload/v1759687791/cx-mastery_hirufr.jpg",
     "category": "Customer-Centric Business",
     "title": "Customer Experience (CX) Mastery",
     "writeup": "Learn to design, implement, and measure a customer experience strategy that delights your...",
-    "price": 45000
+    "price": "60,000 - 150,000"
   },
   {
     "id": 5,
+    "image": "https://res.cloudinary.com/dklslzrkg/image/upload/v1759687799/sni-fundamentals_kke8ni.png",
     "category": "Innovation & Growth",
     "title": "Startup & Innovation Fundamentals",
     "writeup": "This course is a hands-on guide for aspiring entrepreneurs and intrapreneurs.",
-    "price": 45000
+    "price": "60,000 - 150,000"
   },
   {
     "id": 6,
+    "image": "https://res.cloudinary.com/dklslzrkg/image/upload/v1759687792/performance-management-reimagined_sj4jkl.jpg",
     "category": "Performance & Analytics",
     "title": "Performance Management Reimagined",
     "writeup": "Move away from outdated annual reviews and learn how to build a continuous performance.",
-    "price": 45000
+    "price": "60,000 - 150,000"
   },
   {
     "id": 7,
+    "image": "https://res.cloudinary.com/dklslzrkg/image/upload/v1759687793/cpm_m1jgnh.jpg",
     "category": "Performance & Analytics",
     "title": "Corporate Performance Management (CPM)",
     "writeup": "This course provides a high-level view of how to link strategy to financial and operational.",
-    "price": 45000
+    "price": "60,000 - 150,000"
   }
 ]

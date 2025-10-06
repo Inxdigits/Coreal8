@@ -121,14 +121,17 @@
 }
 
 /* ===== Filter Dropdown ===== */
-.filter-dropdown {
+.sort-filter-dropdown {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
   border-radius: 15px;
   border: 1px solid rgba(13, 12, 18, 0.10);
   background: #FFF;
   padding: 10px 20px;
 }
 
-.filter-dropdown:focus, .filter-dropdown:active {
+.sort-filter-dropdown:focus, .sort-filter-dropdown:active {
   outline: none;
   border: 1px solid #0d0c121a;
 }
@@ -286,6 +289,8 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  text-align: left;
+  margin-right: auto;
 }
 
 .courses-card-bottom {
@@ -298,7 +303,7 @@
   color: #0d0c12;
   text-align: center;
   font-family: "Open Sans", sans-serif;
-  font-size: 24px;
+  font-size: 16px !important;
   font-weight: 700;
 }
 
@@ -320,6 +325,13 @@
 }
 
 /* ===== Responsive ===== */
+@media screen and (max-width: 1080px) {
+  .courses-card-bottom {
+    flex-direction: column;
+    align-items: start;
+  }
+}
+
 @media screen and (max-width: 991px) {
   /* .courses-lineup {
     flex-direction: row;
@@ -363,7 +375,7 @@
     padding: 12px !important;
   }
 
-  .courses-card-bottom {
+  /* .courses-card-bottom {
     flex-direction: row;
-  }
+  } */
 }

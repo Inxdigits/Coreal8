@@ -248,6 +248,10 @@ const Mentorship = () => {
               Sessions cancelled with less than 24-hour notice will be subject
               to a 50% charge. This allows us to offer the slot to other clients
               in need.
+              We require 24-hour notice for cancellations or rescheduling.
+              Sessions cancelled with less than 24-hour notice will be subject
+              to a 50% charge. This allows us to offer the slot to other clients
+              in need.
             </p>
           </div>
         </div>
@@ -275,3 +279,4 @@ const Mentorship = () => {
 };
 
 export default Mentorship;
+

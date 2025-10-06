@@ -77,8 +77,8 @@ We may update this Privacy Policy from time to time. Significant changes will be
       content: `
 If you have any questions about this Privacy Policy, contact us at:
 
-📧 support@coreal8.com  
-📍 Lagos, Nigeria`,
+📧 support@coreal8ng.com  
+📍 20 Oluseun Crescent, Corona School Estate, Anthony/Gbagada`,
     },
   };
 

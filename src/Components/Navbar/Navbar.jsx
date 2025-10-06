@@ -64,7 +64,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="navbar navbar-expand-lg border-bottom fixed-top">
+    <nav className="homepage-navbar navbar navbar-expand-lg border-bottom">
       <div className="container-fluid">
         {/* Logo */}
         <Link

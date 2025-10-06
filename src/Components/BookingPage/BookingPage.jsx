@@ -26,7 +26,7 @@ const BookingPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form Data:", formData);
+    // console.log("Form Data:", formData);
 
     // reset form
     setFormData({

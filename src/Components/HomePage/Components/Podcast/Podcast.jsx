@@ -133,7 +133,7 @@ const Podcast = () => {
                     <iframe
                       width="100%"
                       height="250"
-                      src={`https://www.youtube.com/embed/${videoId}?start=0&end=15&autoplay=1`}
+                      src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
                       title={item.title}
                       frameBorder="0"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -147,7 +147,7 @@ const Podcast = () => {
               </div>
               <div className="link-to-yt lty-homepage">
                 <p>Click arrow below to watch full episode:</p>
-                <a href={item.url} target="_blank" rel="noopener noreferrer">
+                <a href={item.fullVideoUrl} target="_blank" rel="noopener noreferrer">
                   <img src={arrow} alt="Watch Full Episode" />
                 </a>
               </div>
@@ -157,7 +157,7 @@ const Podcast = () => {
       </div>
 
       <div className="podcasts-button">
-        <Link to="/podcast">
+        <Link to="/podcasts">
           <button className="dark-bg-btn">Explore All Episodes</button>
         </Link>
       </div>
