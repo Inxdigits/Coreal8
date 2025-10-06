@@ -5,7 +5,7 @@ import './BookAppointment.css';
 
 import { useWaitlist } from "../../../../context/WaitListcontext.jsx";
 
-import appImage from "../../Assets/Frame86.png"
+// import appImage from "../../Assets/Frame86.png"
 
 const BookAppointment = () => {
   const { openWaitlist } = useWaitlist();
@@ -26,7 +26,7 @@ const BookAppointment = () => {
         </div>
       </div>
       <div className="rightside">
-        <img src={appImage} alt="" />
+        <img src="https://res.cloudinary.com/dklslzrkg/image/upload/v1759688405/Frame86_j3ecgg.png" alt="" />
       </div>
 
       {/* Decorative Icons */}

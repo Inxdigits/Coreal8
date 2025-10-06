@@ -158,6 +158,12 @@
   }
 }
 
+@media screen and (max-width: 375px) {
+  .bf-input-field input, .bf-input-field select, .bf-input-field textarea {
+    padding: 10px;
+  }
+}
+
 /* Overlay background */
 .popup-overlay {
   position: fixed;

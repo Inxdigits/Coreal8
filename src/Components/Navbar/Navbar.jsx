@@ -243,7 +243,7 @@ const Navbar = () => {
                 currentPath === "/login" ? "active-link" : ""
               }`}
             >
-              <Link className="nav-link" to="/login">
+              <Link className="nav-link" onClick={openWaitlist}>
                 <img src={profileIcon} alt="Login" className="nav-icon" />
               </Link>
             </li>

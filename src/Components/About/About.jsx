@@ -2,19 +2,15 @@ import React, { useState, useEffect } from "react";
 import "./About.css";
 import Navbar from "../Navbar/Navbar.jsx";
 import Footer from "../Footer/Footer.jsx";
-import aboutImg from "../../Assets/about-coreal8.png";
 import branding from "./branding.svg";
 import organization from "./organization.svg";
 import individual from "./individual.svg";
-import mvImage from "../../Assets/AboutPageAssets/hands-together.png";
 import logoBg from "../../Assets/logo-background.svg";
-// import arrow from '../../Assets/story-arrow.svg';
-import storyPic from "../../Assets/AboutPageAssets/ourstory-pic.png";
-import johnDoe from "../../Assets/john-doe.png";
-import juliusDoe from "../../Assets/AboutPageAssets/julius-doe.png";
-import janetDoe from "../../Assets/AboutPageAssets/janet-doe.png";
-import julietDoe from "../../Assets/AboutPageAssets/juliet-doe.png";
-import joyDoe from "../../Assets/AboutPageAssets/joy-doe.png";
+// import johnDoe from "../../Assets/john-doe.png";
+// import juliusDoe from "../../Assets/AboutPageAssets/julius-doe.png";
+// import janetDoe from "../../Assets/AboutPageAssets/janet-doe.png";
+// import julietDoe from "../../Assets/AboutPageAssets/juliet-doe.png";
+// import joyDoe from "../../Assets/AboutPageAssets/joy-doe.png";
 
 import empowerment from "./empowerment.svg";
 import integrity from "./integrity.svg";
@@ -120,45 +116,45 @@ const About = () => {
     );
   };
 
-  const teamMembers = [
-    {
-      picture: johnDoe,
-      name: "John Doe",
-      role: "Strategic Consultant",
-    },
-    {
-      picture: juliusDoe,
-      name: "Julius Doe",
-      role: "Strategic Consultant",
-    },
-    {
-      picture: janetDoe,
-      name: "Janet Doe",
-      role: "Strategic Consultant",
-    },
-    {
-      picture: julietDoe,
-      name: "Juliet Doe",
-      role: "Strategic Consultant",
-    },
-    {
-      picture: joyDoe,
-      name: "Joy Doe",
-      role: "Strategic Consultant",
-    },
-  ];
+  // const teamMembers = [
+  //   {
+  //     picture: johnDoe,
+  //     name: "John Doe",
+  //     role: "Strategic Consultant",
+  //   },
+  //   {
+  //     picture: juliusDoe,
+  //     name: "Julius Doe",
+  //     role: "Strategic Consultant",
+  //   },
+  //   {
+  //     picture: janetDoe,
+  //     name: "Janet Doe",
+  //     role: "Strategic Consultant",
+  //   },
+  //   {
+  //     picture: julietDoe,
+  //     name: "Juliet Doe",
+  //     role: "Strategic Consultant",
+  //   },
+  //   {
+  //     picture: joyDoe,
+  //     name: "Joy Doe",
+  //     role: "Strategic Consultant",
+  //   },
+  // ];
 
-  const TeamMember = ({ picture, name, role }) => {
-    return (
-      <div className="member">
-        <div className="member-img">
-          <img src={picture} alt={name} />
-        </div>
-        <p>{name}</p>
-        <span>{role}</span>
-      </div>
-    );
-  };
+  // const TeamMember = ({ picture, name, role }) => {
+  //   return (
+  //     <div className="member">
+  //       <div className="member-img">
+  //         <img src={picture} alt={name} />
+  //       </div>
+  //       <p>{name}</p>
+  //       <span>{role}</span>
+  //     </div>
+  //   );
+  // };
 
   return (
     <div className="About-Page">
@@ -185,7 +181,10 @@ const About = () => {
               </p>
             </div>
             <div className="ac-image">
-              <img src={aboutImg} alt="" />
+              <img
+                src="https://res.cloudinary.com/dklslzrkg/image/upload/v1759692191/about-coreal8_zup51q.png"
+                alt=""
+              />
             </div>
           </section>
           <section className="coreal8-expertise flex-column">
@@ -206,7 +205,10 @@ const About = () => {
           </section>
           <section className="mission-vision">
             <div className="mv-image">
-              <img src={mvImage} alt="" />
+              <img
+                src="https://res.cloudinary.com/dklslzrkg/image/upload/v1759692315/hands-together_anmk9d.png"
+                alt=""
+              />
             </div>
             <div className="mv-writeup">
               <div className="mission">
@@ -273,7 +275,10 @@ const About = () => {
               <img src={logoBg} alt="" className="ourstory-bg-logo" />
             </div>
             <div className="story-section-mid">
-              <img src={storyPic} alt="" />
+              <img
+                src="https://res.cloudinary.com/dklslzrkg/image/upload/v1759763436/story-pic_oo9cly.png"
+                alt=""
+              />
             </div>
           </section>
           {/* <section className="our-team-section flex-column">

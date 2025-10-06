@@ -11,7 +11,7 @@ import joydoe from "../../Assets/CoursesPageAssets/joydoe.png";
 import janetdoe from "../../Assets/CoursesPageAssets/janetdoe.png";
 import julietdoe from "../../Assets/CoursesPageAssets/julietdoe.png";
 import juliusdoe from "../../Assets/CoursesPageAssets/juliusdoe.png";
-import coImage from "../../Assets/Frame179.png";
+// import coImage from "../../Assets/Frame179.png";
 import { useWaitlist } from "../../context/WaitListcontext.jsx";
 
 const Courses = () => {
@@ -44,7 +44,7 @@ const Courses = () => {
               </button>
               <div className="gradient-button-container learn-more courses-login-btn-container">
                 <button
-                  onClick={handleNavigate}
+                  onClick={openWaitlist}
                   className="gradient-button lm-button courses-login-btn"
                 >
                   Login
@@ -53,7 +53,7 @@ const Courses = () => {
             </div>
           </div>
           <div className="co-right-side">
-            <img src={coImage} alt="Contact Overview Image" />
+            <img src="https://res.cloudinary.com/dklslzrkg/image/upload/v1759692558/Frame179_nznsso.png" alt="Contact Overview Image" />
           </div>
         </section>
         <section className="courses-section">

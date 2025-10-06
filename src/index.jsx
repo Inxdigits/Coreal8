@@ -9,7 +9,7 @@ const CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID || "1005667666192-5cjr92
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter basename="/Coreal8">
+    <BrowserRouter basename="/">
       <GoogleOAuthProvider clientId={CLIENT_ID}>
         <App />
       </GoogleOAuthProvider>

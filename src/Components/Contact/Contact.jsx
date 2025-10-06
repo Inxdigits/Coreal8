@@ -147,7 +147,7 @@ const Contact = () => {
                   your matter is urgent, feel free to call or send a direct
                   message.
                 </h4>
-                <form onSubmit={handleSubmit} className="">
+                <form onSubmit={handleSubmit} className="contact-page-form">
                   <label htmlFor="" className="form-label">
                     Full Name
                   </label>

@@ -7,13 +7,10 @@ import { HeaderSection } from "./HeaderSection.jsx";
 import { FaAngleRight } from "react-icons/fa";
 import arrow from "../../Assets/PodcastPageAssests/arrow.svg";
 import play from "../../Assets/PodcastPageAssests/play.svg";
-import Phone from "../../Assets/PodcastPageAssests/phone.png";
+import Solar from "../../Assets/PodcastPageAssests/solar.svg";
 import Apple from "../../Assets/PodcastPageAssests/applepodcast.png";
 import Spotify from "../../Assets/PodcastPageAssests/spotify.png";
 import YouTubeLogo from "../../Assets/PodcastPageAssests/youtube.png";
-import headerImage from "../../Assets/PodcastPageAssests/podcast-overview.jpg";
-import MakambaBig from "../../Assets/PodcastPageAssests/about-makamba.png";
-import Solar from "../../Assets/PodcastPageAssests/solar.svg";
 import { useWaitlist } from "../../context/WaitListcontext.jsx";
 
 // Episodes: You only provide YouTube URLs + category/date
@@ -152,7 +149,7 @@ const Podcasts = () => {
 
       {/* Header */}
       <section className="podcasts-overview podcast-header">
-        <img src={headerImage} alt="overview image" />
+        <img src="https://res.cloudinary.com/dklslzrkg/image/upload/v1759694678/podcast-overview_ixif1z.jpg" alt="overview image" />
       </section>
 
       {/* Spotlight */}
@@ -369,7 +366,7 @@ const Podcasts = () => {
           </div>
         </div>
         <div className="makamba-img">
-          <img src={MakambaBig} alt="Makamba Artwork" />
+          <img src="https://res.cloudinary.com/dklslzrkg/image/upload/v1759694787/about-makamba_kmwm8y.png" alt="Makamba Artwork" />
         </div>
       </section>
 
@@ -430,7 +427,7 @@ const Podcasts = () => {
       {/* Platforms */}
       <div className="red-section">
         <div className="rs-image">
-          <img src={Phone} alt="Phone" />
+          <img src="https://res.cloudinary.com/dklslzrkg/image/upload/v1759694784/phone_ayxryu.png" alt="Phone" />
         </div>
         <div className="red-section-right">
           <h2>Available Everywhere You Listen</h2>

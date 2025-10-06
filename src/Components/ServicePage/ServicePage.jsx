@@ -2,9 +2,6 @@ import React from "react";
 import "./ServicePage.css"; // Import the CSS file for styling
 import Navbar from "../Navbar/Navbar.jsx";
 import Footer from "../Footer/Footer.jsx";
-import serviceOne from "../../Assets/ServicePageAssets/service-one.png";
-import serviceTwo from "../../Assets/ServicePageAssets/service-two.png";
-import serviceThree from "../../Assets/ServicePageAssets/service-three.png";
 import { Link } from "react-router-dom";
 import { useWaitlist } from "../../context/WaitListcontext.jsx";
 
@@ -76,23 +73,23 @@ const ServicePage = () => {
             <div className="spacer"></div>
             <div className="btns-flex">
               <div className="red-btn">
-                <Link to="/counselling">Explore Counseling Services</Link>
+                <Link to="/counselling">Explore Counselling Services</Link>
               </div>
               <div className="white-btn">
-                <Link onClick={openWaitlist}>
+                <Link to="/booking">
                   Book a free 20 mins Consultation Call
                 </Link>
               </div>
             </div>
           </div>
           <div className="counseling-image">
-            <img className="counseling-image" src={serviceOne} alt="" />
+            <img className="counseling-image" src="https://res.cloudinary.com/dklslzrkg/image/upload/v1759688761/service-one_asjzxu.png" alt="" />
           </div>
         </section>
 
         <section className="individual-section consulting-section">
           <div className="counseling-image">
-            <img className="counseling-image" src={serviceTwo} alt="" />
+            <img className="counseling-image" src="https://res.cloudinary.com/dklslzrkg/image/upload/v1759688761/service-two_tbuh8b.png" alt="" />
           </div>
           <div className="consulting individual">
             <h1>Corporate Consulting & Training</h1>
@@ -140,10 +137,10 @@ const ServicePage = () => {
             <div className="spacer"></div>
             <div className="btns-flex c-btns-flex">
               <div className="red-btn">
-                <Link to="/mentoring">View Mentorship & Coaching Programs</Link>
+                <Link to="/mentoring">View Mentorship Programs</Link>
               </div>
               <div className="white-btn">
-                <Link onClick={openWaitlist}>
+                <Link to="/booking">
                   Book a free 20 mins Consultation Call
                 </Link>
               </div>
@@ -194,14 +191,14 @@ const ServicePage = () => {
                 <Link to="/mentoring">Discover Coaching Programs</Link>
               </div>
               <div className="white-btn">
-                <Link onClick={openWaitlist}>
+                <Link to="/booking">
                   Book a free 20 mins Consultation Call
                 </Link>
               </div>
             </div>
           </div>
           <div className="counseling-image">
-            <img className="counseling-image" src={serviceThree} alt="" />
+            <img className="counseling-image" src="https://res.cloudinary.com/dklslzrkg/image/upload/v1759688761/service-three_qqvm8v.png" alt="" />
           </div>
         </section>
 

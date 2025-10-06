@@ -157,7 +157,7 @@ const Podcast = () => {
       </div>
 
       <div className="podcasts-button">
-        <Link to="/podcast">
+        <Link to="/podcasts">
           <button className="dark-bg-btn">Explore All Episodes</button>
         </Link>
       </div>
