@@ -100,7 +100,7 @@ const Contact = () => {
                     <h3 className="card-title">Email Us</h3>
                     <p className="card-subtitle">Send us an email</p>
                   </div>
-                  <p className="card-detail">info@coreal8ng.com</p>
+                  <p className="card-detail">support@coreal8ng.com</p>
                 </div>
               </div>
               <div className="contact-card">

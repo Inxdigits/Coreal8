@@ -173,11 +173,6 @@ footer {
         gap: 24px;
     }
 
-    .newsletter .footer-form button {
-        /* max-width: 140px; */
-        /* margin: 0 auto; */
-    }
-
     .top {
         align-items: start;
     }
@@ -213,4 +208,53 @@ footer {
     .newsletter .footer-form {
         gap: 12px;
     }
+}
+/* === Newsletter Popup (Coreal8 theme) === */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(13, 12, 18, 0.7); /* dark translucent backdrop */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.footer-mc p {
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+}
+
+/* Variants */
+.popup-overlay.success .popup-box {
+  border-left-color: #22c55e; /* green */
+}
+
+.popup-overlay.error .popup-box {
+  border-left-color: #ef4444; /* red */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0.7;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
