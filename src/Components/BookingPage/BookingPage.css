@@ -59,6 +59,10 @@
   box-shadow: 0 10px 50px 0 rgba(0, 0, 0, 0.15);
 } 
 
+.bf-input-field select option{
+  color: black;
+} 
+
 .bf-input-field textarea {
   resize: none;
   width: 100%;

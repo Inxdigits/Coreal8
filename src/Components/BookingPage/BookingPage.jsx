@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import './BookingPage.css';
+import "./BookingPage.css";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
+import emailjs from "emailjs-com";
 
 const BookingPage = () => {
   const [formData, setFormData] = useState({
@@ -15,6 +16,7 @@ const BookingPage = () => {
 
   const [showPopup, setShowPopup] = useState(false);
   const [fadeOut, setFadeOut] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -26,28 +28,48 @@ const BookingPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log("Form Data:", formData);
+    setIsLoading(true);
 
-    // reset form
-    setFormData({
-      fullName: "",
-      email: "",
-      interests: "",
-      support: "",
-      date: "",
-      time: "",
-    });
+    // Send email using EmailJS
+    emailjs
+      .send(
+        "service_xopexhh",
+        "template_xo7fwtk",
+        formData,
+        "XR4lGAPyZYEliY8KM"
+      )
+      .then(
+        (result) => {
+          console.log("✅ Email sent successfully:", result.text);
 
-    // show success popup
-    setShowPopup(true);
-    setFadeOut(false);
+          // Reset form
+          setFormData({
+            fullName: "",
+            email: "",
+            interests: "",
+            support: "",
+            date: "",
+            time: "",
+          });
 
-    // trigger fade-out after 5s
-    setTimeout(() => {
-      setFadeOut(true);
-      // remove from DOM after fade animation (0.5s)
-      setTimeout(() => setShowPopup(false), 500);
-    }, 5000);
+          setIsLoading(false);
+
+          // Show success popup
+          setShowPopup(true);
+          setFadeOut(false);
+
+          // Trigger fade-out after 5 seconds
+          setTimeout(() => {
+            setFadeOut(true);
+            setTimeout(() => setShowPopup(false), 500);
+          }, 5000);
+        },
+        (error) => {
+          console.error("❌ Email failed to send:", error.text);
+          alert("Failed to send booking. Please try again later.");
+          setIsLoading(false);
+        }
+      );
   };
 
   const handleClose = () => {
@@ -72,7 +94,7 @@ const BookingPage = () => {
           </header>
         </section>
 
-        {/* Form Section */}
+        {/* Booking Form Section */}
         <section className="booking-mechanism">
           <form className="booking-form" onSubmit={handleSubmit}>
             <div className="bf-input-field">
@@ -81,7 +103,7 @@ const BookingPage = () => {
                 id="fullName"
                 type="text"
                 name="fullName"
-                placeholder="e.g John Doe"
+                placeholder="e.g. John Doe"
                 value={formData.fullName}
                 onChange={handleChange}
                 required
@@ -94,7 +116,7 @@ const BookingPage = () => {
                 id="email"
                 type="email"
                 name="email"
-                placeholder="e.g johndoe@email.com"
+                placeholder="e.g. johndoe@email.com"
                 value={formData.email}
                 onChange={handleChange}
                 required
@@ -155,11 +177,17 @@ const BookingPage = () => {
             </div>
 
             <div className="partner-button-container">
-              <button type="submit" className="partner-button">
-                Book Session
+              <button
+                type="submit"
+                className="partner-button"
+                disabled={isLoading}
+              >
+                {isLoading ? "Sending..." : "Book Session"}
               </button>
             </div>
           </form>
+
+          {/* Booking Info */}
           <div className="booking-info">
             <div className="booking-info-icon">
               <svg
@@ -175,6 +203,7 @@ const BookingPage = () => {
                 />
               </svg>
             </div>
+
             <div className="booking-bulletpoints">
               <ol>
                 <li>
@@ -200,16 +229,13 @@ const BookingPage = () => {
       {/* Popup Modal */}
       {showPopup && (
         <div
-          className={`popup-overlay ${fadeOut ? "fade-out" : ""}`}
+          className={`modal-backdrop popup-overlay ${fadeOut ? "fade-out" : ""}`}
           onClick={handleClose}
         >
-          <div
-            className="popup-content"
-            onClick={(e) => e.stopPropagation()} // prevent close on inner click
-          >
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <h2>🎉 Success!</h2>
             <p>Your booking has been submitted successfully.</p>
-            <button className="close-btn" onClick={handleClose}>
+            <button className="dark-bg-btn" onClick={handleClose}>
               Close
             </button>
           </div>
