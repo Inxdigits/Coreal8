@@ -21,9 +21,9 @@ const BookAppointment = () => {
             to every space.
           </p>
         </div>
-        <div className="appointment-button-container">
-          <button onClick={openWaitlist} className="appointment-button">Book Counselling</button>
-        </div>
+        <Link to="/booking" className="appointment-button-container">
+          <button className="appointment-button">Book Counselling</button>
+        </Link>
       </div>
       <div className="rightside">
         <img src="https://res.cloudinary.com/dklslzrkg/image/upload/v1759688405/Frame86_j3ecgg.png" alt="" />
