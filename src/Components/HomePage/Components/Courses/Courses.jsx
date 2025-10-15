@@ -89,8 +89,8 @@ const Courses = () => {
           <p>Featured Courses</p>
         </div>
         <div className="courses">
-          {displayedCourses.map((course, index) => (
-            <CourseCard key={index} {...course} />
+          {displayedCourses.map((course) => (
+            <CourseCard key={course.id} {...course} />
           ))}
         </div>
       </div>
